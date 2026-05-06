@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# 자격증명
+credentials/
+.env
+.env.*
+*.json.bak
+
+# 출력물
+output/
+*.mp4
+
+# 동물 사용 기록 (서버에서만 의미 있음, 로컬 테스트시 누적 X)
+used_animals.json
+
+# 빌드
+build/
+dist/
+*.spec
