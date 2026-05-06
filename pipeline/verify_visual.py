@@ -73,19 +73,21 @@ def verify_animal(video_path: str, animal_single: str,
 
         # 단일 yes/no 응답 — 토큰 최소화 + 일관된 판정
         # NOTE: animal_single 변수명은 호환 유지. 의미상은 "subject" (우주 토픽).
-        # v2 더 엄격: 같은 우주여도 다른 행성/객체면 reject (예: jupiter 토픽에 moon 영상 X)
+        # v3 더 엄격: 다른 행성/객체 + 비행운/지상 객체 + 일반 하늘 모두 reject.
         question = (
             f"Does this image specifically show {animal_single}"
             + (f" ({animal_display})" if animal_display and animal_display.lower() != animal_single.lower() else "")
-            + " — the actual subject, NOT a different space object?"
+            + " as the main subject?"
             f" Answer ONLY one word: 'yes' or 'no'."
             f" REJECT (answer 'no') if:"
-            f" — The image shows a different planet/object (e.g. shows the Moon when asked about Jupiter, or shows Saturn when asked about Mars)."
-            f" — The image shows generic deep space stars when asked about a SPECIFIC planet/object."
-            f" — The image is unrelated to space (e.g. kitchen, car, animal, building)."
-            f" — The image is too blurry to identify."
-            f" Accept (answer 'yes') ONLY if the image clearly shows {animal_single} as the main subject,"
-            f" OR shows a directly related visual (e.g. Hubble telescope photo of the topic, NASA mission of the topic)."
+            f" — Shows a different planet/object (e.g. Moon when asked about Jupiter, Saturn when asked about Mars)."
+            f" — Shows aircraft contrails, jet trails, airplane lines, helicopter, drones (these are NOT comets/meteors)."
+            f" — Shows generic blue sky, generic clouds, sunset, sunrise (when asked about a specific cosmic object)."
+            f" — Shows ground objects (buildings, mountains, trees, cars, people, animals)."
+            f" — Shows generic 'space' or just stars when asked about a SPECIFIC named planet or object."
+            f" — Image is too blurry, dark, or unidentifiable."
+            f" Accept (answer 'yes') ONLY if image clearly shows {animal_single} as the visible main subject"
+            f" OR shows a directly related NASA/Hubble/observatory photo of THIS specific topic."
         )
 
         resp = client.chat.completions.create(
