@@ -67,9 +67,9 @@ AVOID picking these topics (recently used): {exclude_str}
 
 REQUIREMENTS:
 - The fact MUST be SURPRISING / counter-intuitive / mind-blowing with a specific number when possible.
-- **Each fact MUST be 32-40 words. NOT LESS THAN 32. NOT MORE THAN 40.** Count the words. Three short facts = REJECT and rewrite.
+- **Each fact MUST be 28-36 words. NOT LESS THAN 28. NOT MORE THAN 36.** Count the words. Three short facts = REJECT and rewrite.
 - Each fact = ONE rich sentence packed with a specific number + comparison/context + surprising consequence. Spoken at TTS rate +12% this gives ~12s per fact.
-- Provide EXACTLY 4 facts (not 3). Total spoken length target: intro ~3s + 4 facts × ~11.5s + outro ~3s ≈ 52s.
+- Provide EXACTLY 4 facts (not 3). Total spoken length target: intro ~3s + 4 facts × ~10s + outro ~3s ≈ 46s (실TTS는 보통 +5~10s 늘어남, 영상 60s 안에 안전).
 - Hook line (intro narration) MUST start with "Did you know" / "Wait until you see" / "This is why" / "Watch this".
 - Outro CTA MUST be one of: "Follow for more space facts." / "Follow for daily cosmic facts." / "Comment your favorite space mystery."
 - Each fact MUST start differently (vary openers — never repeat "X is way more interesting" or any generic opener).
@@ -108,7 +108,7 @@ Output STRICT JSON only:
   "description_en": "... #shorts #space #astronomy #cosmos #saturn",
   "hook": "Saturn • Trivia",
   "intro": "Did you know Saturn does this?",
-  "facts": ["fact1 (32-40 words)", "fact2 (32-40 words)", "fact3 (32-40 words)", "fact4 (32-40 words)"],
+  "facts": ["fact1 (28-36 words)", "fact2 (28-36 words)", "fact3 (28-36 words)", "fact4 (28-36 words)"],
   "outro": "Follow for more space facts.",
   "comment": "Saturn's rings could fit 1 million Earths inside — let that sink in",
   "tags": ["shorts","space","astronomy","cosmos","trivia","did you know","saturn","planet","nasa"]
@@ -169,19 +169,19 @@ Output STRICT JSON only:
     facts = [str(f).strip() for f in facts[:5] if str(f).strip()]
     if len(facts) < 3:
         facts = facts + [f"{display} hides cosmic secrets most people never learn."] * (3 - len(facts))
-    if any(len(f.split()) < 32 for f in facts):
-        log.warning(f"facts too short ({[len(f.split()) for f in facts]}), expanding to 32-40 words each...")
+    if any(len(f.split()) < 26 for f in facts):
+        log.warning(f"facts too short ({[len(f.split()) for f in facts]}), expanding to 28-36 words each...")
         try:
             from openai import OpenAI
             client = OpenAI(api_key=OPENAI_API_KEY)
             n = len(facts)
             joined = "\n".join(f"{i+1}. {f}" for i, f in enumerate(facts))
-            expand_prompt = f"""Rewrite each fact to EXACTLY 32-40 words. Add a specific number, a comparison or context, and a surprising consequence. Keep them TRUE. Vary the sentence openers.
+            expand_prompt = f"""Rewrite each fact to EXACTLY 28-36 words. Add a specific number, a comparison or context, and a surprising consequence. Keep them TRUE. Vary the sentence openers.
 
 Original {n} facts about {display}:
 {joined}
 
-Output STRICT JSON: {{"facts": [{', '.join(['"fact (32-40 words)"'] * n)}]}}"""
+Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
             r2 = client.chat.completions.create(
                 model=META_MODEL,
                 messages=[{"role": "user", "content": expand_prompt}],
@@ -233,7 +233,7 @@ def expand_legacy_to_rich(meta: dict) -> dict:
     prompt = f"""Write a 55-second YouTube Shorts script about {display} ({single}).
 
 REQUIREMENTS:
-- 4 facts, each EXACTLY 32-40 words. Specific numbers + comparison + surprising consequence per fact.
+- 4 facts, each EXACTLY 28-36 words. Specific numbers + comparison + surprising consequence per fact.
 - Each fact opens DIFFERENTLY (no repeated openers).
 - Intro: 5-9 words, MUST start with "Did you know" / "Wait until you see" / "This is why" / "Watch this".
 - Outro: 4-7 words CTA, one of: "Follow for more space facts." / "Follow for daily cosmic facts." / "Comment your favorite space mystery."
@@ -254,7 +254,7 @@ Output STRICT JSON: {{
   "description_en": "... #shorts #space #astronomy #cosmos #{single.lower().replace(' ', '')}",
   "hook": "{display} • Trivia",
   "intro": "Did you know {display} does this?",
-  "facts": ["fact1 (32-40 words)", "fact2", "fact3", "fact4"],
+  "facts": ["fact1 (28-36 words)", "fact2", "fact3", "fact4"],
   "outro": "Follow for more space facts.",
   "comment": "..."
 }}"""
@@ -381,11 +381,11 @@ Benchmark: PBS Space Time, Kurzgesagt, NASA, Astrum — punchy hook, surprising 
 
 Generate a ~55-second script about {display} ({single}). Structure:
 - 0~3s: hook line (must START with "Did you know" / "Wait until you see" / "This is why" — proven viral templates)
-- 3~50s: four RICH facts, each ~11.5s spoken (about 32-40 words each)
+- 3~50s: four RICH facts, each ~10s spoken (TTS 실속도 고려 안전선) (about 28-36 words each)
 - 50~55s: outro CTA
 
 HARD RULES:
-- Each fact MUST be EXACTLY 32-40 words. Count the words.
+- Each fact MUST be EXACTLY 28-36 words. Count the words.
 - Each fact = ONE long sentence. Pack a specific number + concrete comparison/extra detail.
 - Always include a specific number/measurement. Always add a comparison or surprising consequence.
 - Plain spoken English, no jargon, no emoji.
@@ -401,7 +401,7 @@ Output STRICT JSON only:
   "description_en": "...",
   "hook": "...",
   "intro": "...",
-  "facts": ["fact1 (32-40 words)", "fact2", "fact3", "fact4"],
+  "facts": ["fact1 (28-36 words)", "fact2", "fact3", "fact4"],
   "outro": "..."
 }}"""
 
