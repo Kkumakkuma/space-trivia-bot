@@ -25,20 +25,18 @@ _OAUTH_TOKEN = os.path.join(CREDENTIALS_DIR, "gdrive_oauth_token.json")
 GDRIVE_ROOT = "MusicShorts"
 GDRIVE_QUEUE = "queue"
 
-# 카테고리 → 음악 테마 매핑 (모든 동물 자동 적용)
+# 카테고리 → 음악 테마 매핑 (우주 토픽 전용)
+# 모든 우주 카테고리 → "space" 테마 우선, 없으면 ambient 계열로 fallback
 CATEGORY_TO_MUSIC = {
-    "mammal": ["comfort", "study", "morning"],
-    "bird": ["dawn", "morning", "comfort"],
-    "marine": ["sleep", "comfort", "rainy_day"],
-    "fish": ["sleep", "comfort"],
-    "reptile": ["dawn", "comfort"],
-    "amphibian": ["sleep", "rainy_day", "comfort"],
-    "insect": ["morning", "study"],
-    "cephalopod": ["sleep", "comfort"],
-    "arachnid": ["dawn", "study"],
-    "crustacean": ["sleep", "comfort"],
+    "planet": ["space"],
+    "star": ["space"],
+    "moon": ["space"],
+    "galaxy": ["space"],
+    "phenomenon": ["space"],
+    "spacecraft": ["space"],
+    "object": ["space"],
 }
-DEFAULT_MUSIC_THEMES = ["comfort", "study"]
+DEFAULT_MUSIC_THEMES = ["space", "comfort", "study"]  # space 비어있으면 ambient lo-fi로 fallback
 
 
 def _get_service():
