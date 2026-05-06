@@ -25,10 +25,106 @@ _BAD_TITLE_EN = ["compilation", "best of", "top 10", "top 20", " mix", " list"]
 _VALID_CATEGORIES = {"planet", "star", "galaxy", "moon", "phenomenon",
                      "spacecraft", "object", "constellation", "mission"}
 
+# 다른 우주 토픽 단어 — comment에서 본 토픽 외 다른 토픽이 등장하면 off-topic 의심.
+# 예: Saturn 영상인데 comment에 "Jupiter" 들어감 → 사용자 사고 (2026-05-06).
+_OTHER_TOPIC_WORDS = {
+    "saturn", "jupiter", "mars", "venus", "mercury", "neptune", "uranus", "pluto",
+    "earth", "moon", "sun", "titan", "europa", "io", "ganymede", "enceladus",
+    "andromeda", "milky way", "milkyway",
+    "comet", "asteroid", "nebula", "supernova", "pulsar", "blackhole",
+    "hubble", "voyager", "iss", "apollo",
+}
+
 
 def _has_bad(text: str, words) -> bool:
     low = text.lower()
     return any(w.lower() in low for w in words)
+
+
+def _topic_tokens(text: str) -> set:
+    """소문자 단어 토큰 집합 (영문만)."""
+    import re as _re
+    return {w for w in _re.findall(r"[a-z]+", text.lower()) if len(w) >= 3}
+
+
+def verify_consistency(meta: dict) -> dict:
+    """GPT 1회로 facts/comment 내부 일관성 검증/수정.
+
+    Catches:
+    - facts 내 숫자 모순 (Saturn 위성 82 vs 79 — 2026-05-06 사용자 신고)
+    - comment가 다른 토픽 (Saturn 영상에 Jupiter 댓글 — 2026-05-06 사용자 신고)
+    - title/description/comment 토픽 불일치
+
+    실패 시 원본 meta 유지 (검증 실패해도 발행 자체는 진행).
+    """
+    if not OPENAI_API_KEY:
+        return meta
+
+    display = meta.get("display", "").strip()
+    single = meta.get("single", "").strip()
+    facts = list(meta.get("facts", []) or [])
+    comment = meta.get("comment", "").strip()
+    title = meta.get("title_en", "").strip()
+
+    if not facts or not display:
+        return meta
+
+    # 1) Python 사전 체크: comment에 다른 우주 토픽 단어가 본 토픽 단어 없이 등장 → off-topic 의심
+    own_tokens = _topic_tokens(f"{display} {single}")
+    comment_tokens = _topic_tokens(comment)
+    other_in_comment = (comment_tokens & _OTHER_TOPIC_WORDS) - own_tokens
+    has_own_in_comment = bool(comment_tokens & own_tokens) or display.lower() in comment.lower() or single.lower() in comment.lower()
+    suspect_offtopic_comment = bool(other_in_comment) or not has_own_in_comment
+
+    review_prompt = f"""You are a script consistency editor for YouTube Shorts about {display} ({single}).
+
+Review this script for two CRITICAL issues:
+1. NUMERIC CONTRADICTIONS between facts (e.g. fact 1 says "82 moons" + fact 2 says "79 moons" for the same metric)
+2. COMMENT OFF-TOPIC (comment mentions a planet/object that is NOT {display})
+
+Title: {title}
+Facts:
+{chr(10).join(f"{i+1}. {f}" for i, f in enumerate(facts))}
+Comment: {comment}
+
+INSTRUCTIONS:
+- If 2+ facts cite different numbers for the SAME metric (e.g. moons of {display}, age in years, distance in km, percentage),
+  pick ONE accurate value (use latest 2024 consensus) and rewrite ALL contradicting facts to use THAT value.
+  Keep facts at 28-36 words. Only modify the contradicting numeric claim, keep the rest of the sentence.
+- If comment mentions any planet/object other than {display}, rewrite the comment to be about {display} ONLY,
+  in 8-20 words, using one of: hot take / forced choice within {display} / what-if / personal challenge / confession bait / fill-in-the-blank.
+- If everything is fine, return original facts and comment unchanged.
+
+Output STRICT JSON: {{"facts": ["...", "...", "...", "..."], "comment": "...", "fixed": ["short list of issues fixed, empty if none"]}}"""
+
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=OPENAI_API_KEY)
+        resp = client.chat.completions.create(
+            model=META_MODEL,
+            messages=[{"role": "user", "content": review_prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.3,
+            max_tokens=900,
+        )
+        d = json.loads(resp.choices[0].message.content)
+        new_facts = d.get("facts") or []
+        new_comment = (d.get("comment") or "").strip()
+        fixed = d.get("fixed") or []
+        if isinstance(new_facts, list) and len(new_facts) == len(facts):
+            new_facts = [str(f).strip() for f in new_facts if str(f).strip()]
+            if len(new_facts) == len(facts):
+                meta["facts"] = new_facts
+        if new_comment and 5 < len(new_comment) <= 280:
+            meta["comment"] = new_comment
+        if fixed:
+            log.info(f"consistency check fixed {len(fixed)}건: {fixed}")
+        elif suspect_offtopic_comment:
+            log.warning(f"comment 사전 의심됐지만 GPT는 수정 없다고 판단 (other_in_comment={other_in_comment}, has_own={has_own_in_comment})")
+    except Exception as e:
+        log.warning(f"consistency check 실패 — 원본 유지: {e}")
+
+    return meta
 
 
 def pick_random_animal(exclude_keys: list = None) -> dict:
@@ -70,6 +166,11 @@ REQUIREMENTS:
 - **Each fact MUST be 28-36 words. NOT LESS THAN 28. NOT MORE THAN 36.** Count the words. Three short facts = REJECT and rewrite.
 - Each fact = ONE rich sentence packed with a specific number + comparison/context + surprising consequence. Spoken at TTS rate +12% this gives ~12s per fact.
 - Provide EXACTLY 4 facts (not 3). Total spoken length target: intro ~3s + 4 facts × ~10s + outro ~3s ≈ 46s (실TTS는 보통 +5~10s 늘어남, 영상 60s 안에 안전).
+- **INTERNAL CONSISTENCY (CRITICAL — viewers WILL catch contradictions and call you out)**:
+  - All numeric claims across the 4 facts MUST agree. If fact 1 says "Saturn has 146 confirmed moons", fact 2/3/4 must NOT cite a different number for the same metric. Pick ONE number per metric and use it consistently.
+  - If you cite "X% of [thing]" or "Y times [thing]", any other fact about the SAME metric MUST use the SAME value.
+  - Use latest 2024 scientific consensus values (e.g., Saturn has 146 confirmed moons as of 2024, Jupiter has 95). Do not mix old and new numbers.
+  - title and description MUST be about the same topic as the facts (no Jupiter title on a Saturn script).
 - Hook line (intro narration) MUST start with "Did you know" / "Wait until you see" / "This is why" / "Watch this".
 - Outro CTA MUST be one of: "Follow for more space facts." / "Follow for daily cosmic facts." / "Comment your favorite space mystery."
 - Each fact MUST start differently (vary openers — never repeat "X is way more interesting" or any generic opener).
@@ -88,14 +189,20 @@ REQUIREMENTS:
 - Description: 2 sentences + 5 hashtags (no emoji).
 - Hook (on-screen overlay text): 2-4 words like "Saturn • Trivia" or "Black Hole Facts".
 - **comment** (auto-pinned reply-magnet comment under the video): ONE line, 8-20 words.
-  GOAL: provoke viewers to actually reply. Pick ONE of these reply-magnet patterns:
-  (a) Hot take / fight me — "Hot take: living on Mars would be miserable. Fight me 🚀"
-  (b) Forced choice — "Saturn's rings or Jupiter's storm — which is the cooler view?"
-  (c) Reincarnation / what-if — "If I could visit one planet for a day, it'd be Titan. Yours?"
-  (d) Personal challenge — "Bet you can name 3 moons of Jupiter without Googling. Try it."
-  (e) Confession bait — "Confession: I still get chills looking up at the Milky Way. Anyone else?"
-  (f) Fill-in-the-blank — "If aliens watched Earth, they'd think we're ___"
-  Vary the pattern across topics. Use 0-1 emoji max. **NEVER** these dead patterns: "Which fact surprised you most?", "Tag a friend who...", "Did you know any of these?", "Like if you learned something" — those get zero replies.
+  GOAL: provoke viewers to actually reply.
+  **CRITICAL — TOPIC LOCK**: The comment MUST be about THE EXACT TOPIC YOU JUST PICKED.
+  If you picked Saturn → comment is about Saturn ONLY. Do NOT mention Jupiter, Mars, Earth, the Moon,
+  or any OTHER cosmic object. Do NOT contrast against another planet (no "Saturn or Jupiter?"
+  type comments — that drives viewers to the other topic, not yours). Pick ONE reply-magnet pattern below
+  and write a fresh line that ONLY references the picked topic. The patterns below show STYLE — replace
+  the example topic with whatever you actually picked.
+  (a) Hot take / fight me — STYLE: "Hot take: [topic] is [provocative claim]. Fight me 🔥"
+  (b) Forced choice WITHIN the same topic — STYLE: "Would you rather visit [topic feature A] or [topic feature B]?"
+  (c) Reincarnation / what-if — STYLE: "If I could spend one day on/at/with [topic], I'd [action]. You?"
+  (d) Personal challenge — STYLE: "Bet you can't name 3 things about [topic] without Googling. Try it."
+  (e) Confession bait — STYLE: "Confession: [topic] still blows my mind every time. Anyone else?"
+  (f) Fill-in-the-blank — STYLE: "If [topic] were a [role], they'd be the one who ___"
+  Use 0-1 emoji max. **NEVER** these dead patterns: "Which fact surprised you most?", "Tag a friend who...", "Did you know any of these?", "Like if you learned something" — those get zero replies.
 
 Output STRICT JSON only:
 {{
@@ -202,7 +309,7 @@ Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
         comment = f"What's the wildest thing you knew about {display}?"
     comment = comment[:280]
 
-    return {
+    meta = {
         "animal_key": animal_key,
         "display": display,
         "single": single,
@@ -218,6 +325,7 @@ Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
         "tags": d.get("tags") or ["shorts", "space", "astronomy", "cosmos", "trivia",
                                   "did you know", animal_key.replace("_", " "), single, "nasa"],
     }
+    return verify_consistency(meta)
 
 
 def expand_legacy_to_rich(meta: dict) -> dict:
@@ -235,6 +343,7 @@ def expand_legacy_to_rich(meta: dict) -> dict:
 REQUIREMENTS:
 - 4 facts, each EXACTLY 28-36 words. Specific numbers + comparison + surprising consequence per fact.
 - Each fact opens DIFFERENTLY (no repeated openers).
+- **INTERNAL CONSISTENCY (CRITICAL)**: All numeric claims across the 4 facts MUST agree. If fact 1 says "{display} has 146 moons", fact 2/3/4 must NOT cite a different number. Use latest 2024 scientific consensus values. No contradictions between facts, title, and comment.
 - Intro: 5-9 words, MUST start with "Did you know" / "Wait until you see" / "This is why" / "Watch this".
 - Outro: 4-7 words CTA, one of: "Follow for more space facts." / "Follow for daily cosmic facts." / "Comment your favorite space mystery."
 - Hook (overlay text): 2-4 words like "{display} • Trivia".
@@ -247,7 +356,8 @@ REQUIREMENTS:
   (f) Question hook: "How Does {display} Survive ___?"
   NEVER use "Amazing Facts About", "Wild Facts About", "Facts You Didn't Know" — generic patterns kill CTR.
 - Description: 2 sentences + 5 hashtags (no emoji).
-- comment (reply-magnet, 8-20 words): hot take / forced choice / what-if / personal challenge / confession bait / fill-in-the-blank. Vary across topics. 0-1 emoji max. NEVER "Which fact surprised you most?" or "Tag a friend".
+- **comment** (reply-magnet, 8-20 words): hot take / forced choice WITHIN {display} only / what-if / personal challenge / confession bait / fill-in-the-blank.
+  **TOPIC LOCK**: comment MUST be about {display} ONLY. NEVER mention any OTHER cosmic object (no "Saturn or Jupiter?" type cross-topic comments). 0-1 emoji max. NEVER "Which fact surprised you most?" or "Tag a friend".
 
 Output STRICT JSON: {{
   "title_en": "...",
@@ -307,7 +417,7 @@ Output STRICT JSON: {{
         comment = f"What's the wildest thing you knew about {display}?"
     comment = comment[:280]
 
-    return {
+    rich = {
         "title_en": title_en,
         "description_en": (d.get("description_en") or f"4 cosmic facts about {display}.")[:4900],
         "intro": (d.get("intro") or f"Did you know {display} does this?").strip(),
@@ -316,6 +426,12 @@ Output STRICT JSON: {{
         "hook": (d.get("hook") or f"{display} • Trivia").strip()[:40],
         "comment": comment,
     }
+    # consistency 검증을 위해 display/single 임시 추가 후 검증, 결과는 rich만 반환
+    review_input = {**rich, "display": display, "single": single}
+    review_input = verify_consistency(review_input)
+    rich["facts"] = review_input.get("facts", rich["facts"])
+    rich["comment"] = review_input.get("comment", rich["comment"])
+    return rich
 
 
 def _legacy_meta(animal_key: str) -> dict:
