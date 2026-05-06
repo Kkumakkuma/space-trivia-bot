@@ -73,14 +73,19 @@ def verify_animal(video_path: str, animal_single: str,
 
         # 단일 yes/no 응답 — 토큰 최소화 + 일관된 판정
         # NOTE: animal_single 변수명은 호환 유지. 의미상은 "subject" (우주 토픽).
+        # v2 더 엄격: 같은 우주여도 다른 행성/객체면 reject (예: jupiter 토픽에 moon 영상 X)
         question = (
-            f"Does this image show {animal_single}"
+            f"Does this image specifically show {animal_single}"
             + (f" ({animal_display})" if animal_display and animal_display.lower() != animal_single.lower() else "")
-            + " or a clearly related space/cosmos visual (planet, star, galaxy, nebula, telescope, deep space, astronaut, etc.)?"
+            + " — the actual subject, NOT a different space object?"
             f" Answer ONLY one word: 'yes' or 'no'."
-            f" If the image shows something completely unrelated to space (e.g. a kitchen, a car, an animal), answer 'no'."
-            f" If the image is too blurry to identify, answer 'no'."
-            f" If the image shows ANY plausible space/astronomy visual that fits the cosmic theme, answer 'yes'."
+            f" REJECT (answer 'no') if:"
+            f" — The image shows a different planet/object (e.g. shows the Moon when asked about Jupiter, or shows Saturn when asked about Mars)."
+            f" — The image shows generic deep space stars when asked about a SPECIFIC planet/object."
+            f" — The image is unrelated to space (e.g. kitchen, car, animal, building)."
+            f" — The image is too blurry to identify."
+            f" Accept (answer 'yes') ONLY if the image clearly shows {animal_single} as the main subject,"
+            f" OR shows a directly related visual (e.g. Hubble telescope photo of the topic, NASA mission of the topic)."
         )
 
         resp = client.chat.completions.create(
