@@ -77,24 +77,31 @@ def verify_animal(video_path: str, animal_single: str,
         from openai import OpenAI
         client = OpenAI(api_key=OPENAI_API_KEY)
 
-        # 단일 yes/no 응답 — 토큰 최소화 + 일관된 판정
-        # NOTE: animal_single 변수명은 호환 유지. 의미상은 "subject" (우주 토픽).
-        # v3 더 엄격: 다른 행성/객체 + 비행운/지상 객체 + 일반 하늘 모두 reject.
+        # 2026-05-06 v4: prompt 완화. 이전 v3은 "Saturn을 main subject로" 요구해서
+        # Pexels 커버리지 한계로 정상 우주 영상까지 모두 reject (10토픽 시도 0/60). 정책 변경:
+        # 우주/cosmic 이미지면 통과, 명확한 garbage(결혼/케이크/사람/지상/하늘)만 reject.
+        # 토픽 정확 매칭은 포기 — Pexels에 그런 영상이 없음. slug filter가 1차 garbage 차단,
+        # vision은 2차로 명백한 비-우주 콘텐츠만 거름.
         question = (
-            f"Does this image specifically show {animal_single}"
+            f"This image will be used as background for a 60-second YouTube Shorts video about {animal_single}"
             + (f" ({animal_display})" if animal_display and animal_display.lower() != animal_single.lower() else "")
-            + " as the main subject?"
+            + ". Is this image visually appropriate as a space/cosmic background?"
             f" Answer ONLY one word: 'yes' or 'no'."
-            f" REJECT (answer 'no') if:"
-            f" — Shows a different planet/object (e.g. Moon when asked about Jupiter, Saturn when asked about Mars)."
-            f" — Shows aircraft contrails, jet trails, airplane lines, helicopter, drones (these are NOT comets/meteors)."
-            f" — Shows generic blue sky, generic clouds, sunset, sunrise (when asked about a specific cosmic object)."
-            f" — Shows ground objects (buildings, mountains, trees, cars, people, animals)."
-            f" — Shows wedding rings, engagement rings, jewelry, cakes, food, fashion, weddings, manicured nails."
-            f" — Shows generic 'space' or just stars when asked about a SPECIFIC named planet or object."
+            f" REJECT (answer 'no') ONLY if image clearly shows ANY of these:"
+            f" — Wedding rings, engagement rings, jewelry, diamonds, necklaces."
+            f" — Cakes, cupcakes, food, desserts, baking."
+            f" — People as the main subject (selfies, portraits, models, couples, families, kissing)."
+            f" — Manicures, fashion shoots, makeup, lipstick, beauty products."
+            f" — Earthly indoor scenes (kitchens, bedrooms, offices, restaurants, shops, party rooms)."
+            f" — Outdoor earth scenes with no cosmic content (urban streets, parks, animals, sports, beaches, forests)."
+            f" — Aircraft contrails, jet trails, airplane lines, helicopters, drones (these are NOT space)."
+            f" — Generic blue sky with clouds, sunset, or sunrise without any visible stars/galaxies/planets."
             f" — Image is too blurry, dark, or unidentifiable."
-            f" Accept (answer 'yes') ONLY if image clearly shows {animal_single} as the visible main subject"
-            f" OR shows a directly related NASA/Hubble/observatory photo of THIS specific topic."
+            f" ACCEPT (answer 'yes') for ANY space/cosmic imagery: stars, galaxies, nebulae, planets,"
+            f" cosmic dust, deep space scenes, NASA/Hubble/observatory photos, telescope footage,"
+            f" rocket launches, astronaut shots, spacecraft, milky way photography, aurora,"
+            f" or even artist renderings of cosmic phenomena."
+            f" It does NOT need to specifically show {animal_single} — generic cosmic imagery is fine."
         )
 
         # rate limit 429에서 fail-OPEN으로 garbage 통과되던 사고 방지 — 3회 backoff 재시도.
