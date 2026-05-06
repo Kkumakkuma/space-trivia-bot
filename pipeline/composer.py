@@ -501,10 +501,19 @@ def compose(
     if hook_clip is not None:
         layers.append(hook_clip)
 
-    # CTA 카드 시각 (마지막 4초) — 자막이 여기 침범하면 안 됨
-    cta_dur = min(4.0, total_dur * 0.18)  # 영상 18% 또는 4초 중 작은 값
-    cta_start = max(0.0, total_dur - cta_dur)
-    cap_cutoff = max(0.0, cta_start - 0.2)  # 자막은 CTA 시작 0.2s 전에 사라짐
+    # CTA 카드 시각 — v2: outro TTS 끝난 후 0.3s 텀 두고 시작 (outro 음성 중 CTA 뜨는 문제 fix)
+    # 이전 버그: cta_start = total_dur - 4 → outro TTS가 cta 시작 시점 후에도 말하고 있으면 음성 잘림
+    # 새 로직: outro 음성이 끝나는 시점부터 CTA. 영상 끝까지 시간 부족하면 CTA 축소 또는 제거
+    last_tts_end = timeline[-1]["end"] if timeline else total_dur
+    cta_dur_target = min(4.0, total_dur * 0.18)
+    cta_start = max(0.0, last_tts_end + 0.3)
+    cta_dur = max(0.0, min(cta_dur_target, total_dur - cta_start))
+    if cta_dur < 1.0:
+        cta_dur = 0.0  # 시간 부족 → CTA 표시 안 함 (음성 절단보다 낫다)
+        cap_cutoff = total_dur
+    else:
+        cap_cutoff = max(0.0, cta_start - 0.2)
+    log.info(f"cta: start={cta_start:.2f}s dur={cta_dur:.2f}s (outro_end={last_tts_end:.2f}s)")
 
     # phrase 단위 자막 (TikTok karaoke 스타일)
     # 마지막 라인(outro)은 CTA 카드와 겹치니 자막에서 제외.
