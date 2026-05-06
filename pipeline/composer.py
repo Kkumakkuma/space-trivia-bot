@@ -317,7 +317,7 @@ def _make_hook_clip(text: str, duration: float):
     return clip
 
 
-def _make_brand_clip(duration: float, text="@AnimalTrivia60s"):
+def _make_brand_clip(duration: float, text="@SpaceTrivia60s"):
     arr = _make_text_image(text, font_size=44, max_width=VIDEO_WIDTH - 100,
                            fg=(255, 255, 255, 200))
     if arr.shape[0] <= 1:
@@ -357,7 +357,7 @@ def _make_cta_card_clip(start: float, duration: float):
 
     # 보조 텍스트
     small_arr = _make_text_image(
-        "for more animal facts",
+        "for more space facts",
         font_size=64,
         max_width=VIDEO_WIDTH - 80,
         fg=(255, 255, 255, 240),
