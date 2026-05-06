@@ -259,16 +259,34 @@ Output STRICT JSON: {{
   "comment": "..."
 }}"""
 
+    # Rate limit 429 회피: 최대 3회 retry + exponential backoff (1s → 5s → 15s)
+    import time as _time
     from openai import OpenAI
     client = OpenAI(api_key=OPENAI_API_KEY)
-    resp = client.chat.completions.create(
-        model=META_MODEL,
-        messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"},
-        temperature=0.9,
-        max_tokens=1100,
-    )
-    d = json.loads(resp.choices[0].message.content)
+    last_err = None
+    d = None
+    for attempt in range(3):
+        try:
+            resp = client.chat.completions.create(
+                model=META_MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0.9,
+                max_tokens=1100,
+            )
+            d = json.loads(resp.choices[0].message.content)
+            break
+        except Exception as e:
+            last_err = e
+            es = str(e).lower()
+            if "rate_limit" in es or "429" in es or "tpm" in es:
+                wait = [5, 15, 30][attempt]
+                log.warning(f"expand_legacy_to_rich rate limit → {wait}s 후 재시도 (attempt {attempt+1}/3)")
+                _time.sleep(wait)
+            else:
+                raise
+    if d is None:
+        raise last_err or RuntimeError("expand_legacy_to_rich GPT 호출 3회 모두 실패")
 
     facts = d.get("facts") or []
     if not isinstance(facts, list) or len(facts) < 3:
