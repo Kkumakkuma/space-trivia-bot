@@ -449,8 +449,12 @@ def compose(
         cursor = end + pad_between
 
     raw_total = cursor - pad_between + end_pad
-    total_dur = min(raw_total, VIDEO_DURATION_SEC - 0.3)  # Shorts 안전선
-    log.info(f"timeline: total={total_dur:.2f}s lines={len(timeline)}")
+    # v2 영상 길이 강제: TTS가 짧아도 최소 50s, 길어도 60s 안전선
+    # (이전 버그: TTS 28s면 영상도 28s — Shorts 알고리즘 retention 깎임)
+    min_dur = float(getattr(__import__('config'), 'MIN_VIDEO_DURATION_SEC', 50.0))
+    target_dur = float(VIDEO_DURATION_SEC) - 0.3
+    total_dur = min(target_dur, max(raw_total, min_dur))
+    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (min={min_dur}, max={target_dur:.2f}) lines={len(timeline)}")
 
     # 라인이 잘리는 경우, 마지막 라인 끝을 total_dur로 클램프
     for w in timeline:
