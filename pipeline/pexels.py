@@ -1,4 +1,9 @@
-"""Pexels에서 동물 영상 다운로드 (세로/portrait 우선)."""
+"""Pexels에서 우주 영상 다운로드 (세로/portrait 우선).
+
+2026-05-06 fix: Pexels "saturn rings" 검색에 wedding/engagement ring 영상이
+섞여서 vision 통과 못 하고 토픽 자체가 fail하는 사고. URL slug 기반 사전
+필터로 vision 호출 전에 garbage 후보를 일찍 거름.
+"""
 import logging
 import os
 import random
@@ -9,6 +14,74 @@ from config import PEXELS_API_KEY, VIDEO_DURATION_SEC
 
 log = logging.getLogger("spacebot.pexels")
 PEXELS_API = "https://api.pexels.com/videos/search"
+
+# Pexels video.url slug에 이 단어가 있고 토픽 단어가 없으면 사전 reject.
+# 우주봇은 wedding/jewelry/cake/fashion 류 garbage가 "rings"/"sun" 검색에 섞여 들어옴.
+_BLOCK_SLUG_WORDS = {
+    "wedding", "weddings", "bride", "groom", "engagement",
+    "jewelry", "necklace", "diamond", "ring", "rings",
+    "cake", "cupcake", "muffin", "pastry", "donut", "icecream", "dessert",
+    "love", "valentine", "couple", "kissing", "kiss",
+    "manicure", "fashion", "model", "selfie", "makeup",
+    "baby", "newborn", "infant", "toddler",
+}
+
+# 우주 토픽이 slug에 들어 있으면 위 차단어가 있어도 "혹시 진짜 우주 사진"이라
+# 보고 통과시킴 (예: "saturn-photo-with-ring-... " 같은 진짜 사진).
+_SPACE_TOPIC_TOKENS = {
+    "space", "spacecraft", "galaxy", "galaxies", "galactic",
+    "nebula", "nebulae", "cosmos", "cosmic", "universe", "universes",
+    "planet", "planets", "planetary",
+    "moon", "lunar",
+    "star", "stars", "stellar", "starry", "supernova", "pulsar",
+    "sun", "solar", "corona",
+    "comet", "asteroid", "meteor", "meteorite",
+    "saturn", "jupiter", "mars", "venus", "mercury", "neptune", "uranus", "pluto",
+    "telescope", "observatory", "satellite", "satellites", "orbit", "orbital",
+    "celestial", "interstellar", "milky", "blackhole", "constellation",
+    "hubble", "nasa", "esa", "iss", "astronaut", "astronomy", "astronomical",
+    "earth", "exoplanet",
+    "rocket", "spaceship", "voyager",
+}
+
+
+def _slug_tokens(url: str) -> set:
+    """Pexels url slug → 단어 토큰 집합 (소문자)."""
+    if not url:
+        return set()
+    try:
+        slug = url.lower().split("/video/", 1)[1].rstrip("/")
+        # 끝의 숫자 ID 제거: "saturn-rings-9168193" → "saturn-rings"
+        parts = slug.split("-")
+        if parts and parts[-1].isdigit():
+            parts = parts[:-1]
+        return {p for p in parts if p}
+    except Exception:
+        return set()
+
+
+def _passes_slug_filter(video: dict, single_lower: str) -> bool:
+    """Pexels url slug 토큰 기반 사전 필터.
+
+    True: vision 검증으로 넘김
+    False: 사전 reject (garbage 후보 일찍 거름)
+    """
+    tokens = _slug_tokens(video.get("url", ""))
+    if not tokens:
+        # url 정보 없으면 일단 vision으로 넘김 (안전 통과)
+        return True
+    blocked = tokens & _BLOCK_SLUG_WORDS
+    if not blocked:
+        return True
+    # 차단어 있어도 우주 토픽이 같이 들어있으면 진짜 우주 사진일 가능성 → 통과
+    space_hit = tokens & _SPACE_TOPIC_TOKENS
+    if space_hit:
+        return True
+    if single_lower:
+        single_words = {w for w in single_lower.split() if len(w) >= 3}
+        if tokens & single_words:
+            return True
+    return False
 
 
 def fetch_background(keywords: list, output_dir: str) -> str:
@@ -82,19 +155,22 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
     os.makedirs(output_dir, exist_ok=True)
     headers = {"Authorization": PEXELS_API_KEY}
 
-    # 동물명 검증 안전망 — 키워드에 동물명이 없으면 generic으로 매칭 위험
+    # 토픽명 검증 안전망 — 키워드에 토픽명이 없으면 generic으로 매칭 위험
+    single_lower = ""
     if animal_single:
         single_lower = animal_single.lower()
         verified = [kw for kw in keywords if single_lower in kw.lower()]
         if not verified:
-            verified = [animal_single, f"{animal_single} close up",
-                        f"{animal_single} in wild"]
+            # 우주 토픽이라 "in wild" 같은 동물 fallback은 부적절 → "nasa"/"telescope"로 안전 fallback
+            verified = [animal_single, f"{animal_single} space", f"{animal_single} nasa",
+                        f"{animal_single} telescope"]
         keywords = verified
-        log.info(f"pexels keywords (animal-locked): {keywords}")
+        log.info(f"pexels keywords (topic-locked): {keywords}")
 
     candidates = list(keywords) * 3  # 키워드 풀 늘림
     random.shuffle(candidates)
 
+    skipped_slug = 0
     for kw in candidates:
         if len(paths) >= n:
             break
@@ -113,6 +189,10 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
                 if v.get("id") in used_ids:
                     continue
                 if v.get("duration", 0) < 6:
+                    continue
+                # URL slug 사전 필터 (vision 비용/TPM 절약 + garbage 사전 차단)
+                if not _passes_slug_filter(v, single_lower):
+                    skipped_slug += 1
                     continue
                 files = v.get("video_files", [])
                 portrait_files = [f for f in files
@@ -141,6 +221,8 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
             log.warning(f"pexels kw={kw} 실패: {e}")
             continue
 
+    if skipped_slug:
+        log.info(f"pexels slug filter: {skipped_slug}개 garbage 후보 사전 차단")
     if not paths:
         raise RuntimeError("Pexels 영상 하나도 못 찾음")
     return paths
