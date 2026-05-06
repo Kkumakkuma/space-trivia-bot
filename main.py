@@ -192,7 +192,7 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
             except Exception as e:
                 log.warning(f"legacy GPT-rich 실패 → 기본 템플릿 유지: {e}")
 
-    log.info(f"=== 동물: {animal_key} ({meta['display']}, {meta['category']}) ===")
+    log.info(f"=== 토픽: {animal_key} ({meta['display']}, {meta['category']}) ===")
     log.info(f"title_en: {meta['title_en']}")
     log.info(f"hook: {meta['hook']}")
     for i, f in enumerate(meta["facts"]):

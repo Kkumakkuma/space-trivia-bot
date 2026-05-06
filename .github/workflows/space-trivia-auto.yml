@@ -108,14 +108,14 @@ jobs:
           from datetime import datetime, timedelta, timezone
           KST = timezone(timedelta(hours=9))
           ok = os.environ.get("OUTCOME") == "success"
-          icon = "🦦" if ok else "❌"
+          icon = "🚀" if ok else "❌"
 
           yt_url, animal, locales = None, None, None
           try:
               content = open("run_stdout.log", encoding="utf-8", errors="ignore").read()[-12000:]
               m = re.search(r"https?://(?:youtu\.be/|(?:www\.)?youtube\.com/(?:watch\?v=|shorts/))[\w\-]+", content)
               if m: yt_url = m.group(0)
-              am = re.search(r"=== 동물: (\w+)", content)
+              am = re.search(r"=== 토픽: (\w+)", content)
               if am: animal = am.group(1)
               lm = re.search(r"localizations 완료: ([\w,]+)", content)
               if lm: locales = lm.group(1)
@@ -123,10 +123,10 @@ jobs:
               pass
 
           lines = [
-              f"{icon} 동물쇼츠 {'발행 완료' if ok else '실패'}",
+              f"{icon} 우주쇼츠 {'발행 완료' if ok else '실패'}",
               f"📅 {datetime.now(KST).strftime('%Y-%m-%d %H:%M')} KST",
           ]
-          if animal: lines.append(f"🐾 동물: {animal}")
+          if animal: lines.append(f"🪐 토픽: {animal}")
           if locales: lines.append(f"🌐 다국어: {locales}")
           if yt_url: lines.append(f"🎥 {yt_url}")
           if not ok:
