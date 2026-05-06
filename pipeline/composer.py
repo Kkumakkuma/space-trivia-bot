@@ -449,12 +449,13 @@ def compose(
         cursor = end + pad_between
 
     raw_total = cursor - pad_between + end_pad
-    # v2 영상 길이 강제: TTS가 짧아도 최소 50s, 길어도 60s 안전선
-    # (이전 버그: TTS 28s면 영상도 28s — Shorts 알고리즘 retention 깎임)
-    min_dur = float(getattr(__import__('config'), 'MIN_VIDEO_DURATION_SEC', 50.0))
-    target_dur = float(VIDEO_DURATION_SEC) - 0.3
-    total_dur = min(target_dur, max(raw_total, min_dur))
-    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (min={min_dur}, max={target_dur:.2f}) lines={len(timeline)}")
+    # v3 영상 길이: 항상 60s 가까이 강제 (CTA 자리 보장).
+    # 음성 짧으면 BGM/배경으로 채움. 음성 길면 잘림 (어쩔 수 없음, prompt에서 길이 제어 시도).
+    target_dur = float(VIDEO_DURATION_SEC) - 0.3  # 59.7s
+    total_dur = target_dur
+    if raw_total > target_dur:
+        log.warning(f"음성 {raw_total:.2f}s > 영상 {target_dur:.2f}s — outro 일부 잘림 가능 (facts 단어수 prompt 조정 검토)")
+    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (강제 60s, CTA 자리 보장) lines={len(timeline)}")
 
     # 라인이 잘리는 경우, 마지막 라인 끝을 total_dur로 클램프
     for w in timeline:
