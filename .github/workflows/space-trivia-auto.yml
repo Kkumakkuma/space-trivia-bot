@@ -19,7 +19,7 @@ concurrency:
 jobs:
   generate-and-upload:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40  # 2026-05-07 25→40 변경: GitHub Actions apt-get 22분 지연 사고로 timeout. 영상 12분 + 여유
     steps:
       - uses: actions/checkout@v4
         with:
