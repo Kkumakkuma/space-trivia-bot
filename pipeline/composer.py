@@ -346,21 +346,22 @@ def _make_big_hook_intro(topic_text: str, duration: float = 2.4):
     # 2) Topic BIG name (zoom-in pop)
     topic_clean = _strip_emoji(topic_text or "")
     if topic_clean:
-        # 폰트 자동 축소 — 긴 토픽명도 한 줄에 들어가게
+        # 1줄에 들어가게 폰트 자동축소 (220→80). 2026-05-07 사용자 신고: 긴 토픽명이
+        # 못나게 잘림 → 1줄 전제 + 더 적극적 축소.
         size = 220
-        while size >= 110:
-            font_path = _find_font(bold=True)
+        font_path = _find_font(bold=True)
+        while size >= 80:
             font = ImageFont.truetype(font_path, size) if font_path else ImageFont.load_default()
             tmp = Image.new("RGBA", (VIDEO_WIDTH - 80, 100), (0, 0, 0, 0))
             td = ImageDraw.Draw(tmp)
-            lines = _wrap_text(td, topic_clean, font, VIDEO_WIDTH - 100)
-            if len(lines) <= 2:
+            text_w = td.textlength(topic_clean, font=font)
+            if text_w <= VIDEO_WIDTH - 120:
                 break
-            size -= 14
+            size -= 12
         topic_arr = _make_text_image(
             topic_clean,
             font_size=size,
-            max_width=VIDEO_WIDTH - 80,
+            max_width=VIDEO_WIDTH - 60,
             fg=(255, 255, 255, 255),
             stroke_color=(0, 0, 0, 255),
             stroke_width=8,
@@ -567,14 +568,10 @@ def compose(
     if hook_clip is not None:
         layers.append(hook_clip)
 
-    # CTA 카드 시각 — v3: 마지막 4초 자리 보장 + 음성과 안 겹침
-    # 이상적: 음성 56s + CTA 4s = 60s
-    # - 음성 짧으면(예 50s): CTA = 56~60s (선호 자리). 음성 끝나고 1s 텀 + CTA
-    # - 음성 길면(예 58s): CTA = 58.3~60s (음성 끝난 직후)
-    # - 음성이 60s 가득 차면: CTA 표시 안 함 (음성 절단 회피)
+    # CTA 카드 시각 — v4: 음성 outro 끝나자마자 CTA 표시 (사용자 신고: 음성과 글자 갭 1초+).
+    # cta_start = last_tts_end + 0.1 (즉시), 단 최소 4초 자리 보장.
     last_tts_end = timeline[-1]["end"] if timeline else total_dur
-    preferred_cta_start = total_dur - 4.0  # 마지막 4s 선호 자리
-    cta_start = max(preferred_cta_start, last_tts_end + 0.3)
+    cta_start = max(last_tts_end + 0.1, total_dur - 6.0)
     cta_dur = max(0.0, total_dur - cta_start)
     if cta_dur < 1.0:
         cta_dur = 0.0

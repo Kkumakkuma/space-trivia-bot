@@ -227,19 +227,53 @@ Output STRICT JSON only:
   "tags": ["shorts","space","astronomy","cosmos","trivia","did you know","saturn","planet","nasa"]
 }}"""
 
-    try:
-        from openai import OpenAI
-        client = OpenAI(api_key=OPENAI_API_KEY)
-        resp = client.chat.completions.create(
-            model=META_MODEL,
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"},
-            temperature=1.0,
-            max_tokens=1200,
+    # 2026-05-07 fix (동물봇 9연속 pangolin 사고 동기화): GPT가 prompt example/recent topic에
+    # bias되어 같은 토픽 반복 → 코드 reject + retry로 강제 다양화.
+    exclude_set = {k.lower().strip() for k in (exclude_keys or [])}
+
+    from openai import OpenAI
+    client = OpenAI(api_key=OPENAI_API_KEY)
+    d = None
+    last_pick = None
+    for attempt in range(4):
+        try_prompt = prompt
+        if attempt > 0 and last_pick:
+            try_prompt = (
+                f"REJECTED previous pick: '{last_pick}' is in exclude list. Pick a COMPLETELY DIFFERENT space topic.\n\n"
+                + try_prompt
+            )
+        try:
+            resp = client.chat.completions.create(
+                model=META_MODEL,
+                messages=[{"role": "user", "content": try_prompt}],
+                response_format={"type": "json_object"},
+                temperature=1.0,
+                max_tokens=1200,
+            )
+            cand = json.loads(resp.choices[0].message.content)
+        except Exception as e:
+            log.warning(f"GPT 우주 토픽 픽 실패 → legacy fallback: {e}")
+            key = pick_animal(exclude=exclude_keys or [])
+            return _legacy_meta(key)
+
+        cand_key = (cand.get("animal_key") or "").strip().lower().replace(" ", "_")
+        cand_single = (cand.get("single") or "").strip().lower()
+        cand_display = (cand.get("display") or "").strip().lower()
+        is_excluded = (
+            cand_key in exclude_set
+            or cand_single in exclude_set
+            or cand_display in exclude_set
+            or any(e and (e in cand_key or e in cand_single) for e in exclude_set if e)
         )
-        d = json.loads(resp.choices[0].message.content)
-    except Exception as e:
-        log.warning(f"GPT 우주 토픽 픽 실패 → legacy fallback: {e}")
+        if is_excluded:
+            last_pick = cand_key or cand_single
+            log.warning(f"[picker try {attempt+1}] GPT가 exclude된 '{last_pick}' 픽 → 재요청")
+            continue
+        d = cand
+        break
+
+    if d is None:
+        log.warning(f"GPT가 4회 모두 exclude된 토픽만 픽 → legacy fallback")
         key = pick_animal(exclude=exclude_keys or [])
         return _legacy_meta(key)
 
