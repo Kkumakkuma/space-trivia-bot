@@ -585,8 +585,9 @@ def compose(
 
     # phrase 단위 자막 (TikTok karaoke 스타일)
     # 마지막 라인(outro)은 CTA 카드와 겹치니 자막에서 제외.
-    # 그리고 모든 자막 종료시간은 cap_cutoff 이하로 클램프 — 마지막 fact가 길어
-    # CTA에 침범하는 케이스 방지 (2026-05-05 사용자 신고: 마지막 자막 + CTA 중복).
+    # 첫 2.4초는 BIG HOOK이 화면 가운데 점령 — phrase 자막 같이 띄우면 글자 겹침
+    # (2026-05-07 사용자 신고). BIG HOOK 끝난 뒤(2.4s+)부터 자막 시작.
+    BIG_HOOK_END = 2.4
     for i, w in enumerate(timeline):
         if i == len(timeline) - 1:
             continue
@@ -597,17 +598,31 @@ def compose(
         line_end = min(w["end"], cap_cutoff)
         words = w.get("words") or []
         if words:
-            # phrases도 cap_cutoff 이하로 잘라냄
+            # phrases도 cap_cutoff 이하로 잘라냄. BIG HOOK 구간(0~2.4s) phrase는 skip.
             phrases = _split_into_phrases(words, line_start, line_end)
             for ph in phrases:
                 ph_end = min(ph["end"], cap_cutoff)
                 if ph_end <= ph["start"]:
                     continue
-                clip = _make_phrase_clip(ph["text"], ph["start"], ph_end)
+                # BIG HOOK 구간과 겹치는 phrase는 표시 안 함 — 글자 충돌 방지
+                if ph["start"] < BIG_HOOK_END:
+                    if ph_end <= BIG_HOOK_END:
+                        continue
+                    # phrase 끝이 BIG HOOK 이후로 이어지면 BIG HOOK 끝부터 표시
+                    ph_start_clipped = BIG_HOOK_END
+                    if ph_end <= ph_start_clipped:
+                        continue
+                    clip = _make_phrase_clip(ph["text"], ph_start_clipped, ph_end)
+                else:
+                    clip = _make_phrase_clip(ph["text"], ph["start"], ph_end)
                 if clip is not None:
                     layers.append(clip)
         else:
-            cap = _make_caption_window(w["text"], line_start, line_end, base_size=CAPTION_BASE_SIZE)
+            # words 없을 때 — line_start를 BIG HOOK 끝 이후로 클램프
+            line_start_clipped = max(line_start, BIG_HOOK_END if line_start < BIG_HOOK_END else line_start)
+            if line_end <= line_start_clipped:
+                continue
+            cap = _make_caption_window(w["text"], line_start_clipped, line_end, base_size=CAPTION_BASE_SIZE)
             if cap:
                 layers.extend([c for c in cap if c is not None])
 
