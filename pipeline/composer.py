@@ -317,6 +317,65 @@ def _make_hook_clip(text: str, duration: float):
     return clip
 
 
+def _make_big_hook_intro(topic_text: str, duration: float = 2.4):
+    """첫 2~3초 화면 가득 BIG HOOK — 스크롤 멈춤 유도.
+
+    유명 우주/동물 숏츠 채널 벤치마크: 첫 0.5s 안에 화면 큰 글씨가 등장해야
+    feed에서 손가락 스크롤이 멈춤. 기존 상단 작은 hook으로는 부족.
+
+    구성:
+    - "WAIT —" punch word 0~0.3s (화면 중앙, 노랑, 240pt)
+    - 토픽명 BIG (240→200pt 줌인) 0.3~duration
+    """
+    layers = []
+    # 1) Punch word
+    punch_arr = _make_text_image(
+        "WAIT —",
+        font_size=200,
+        max_width=VIDEO_WIDTH - 80,
+        fg=(255, 220, 0, 255),
+        stroke_color=(0, 0, 0, 255),
+        stroke_width=8,
+    )
+    if punch_arr.shape[0] > 1:
+        punch = ImageClip(punch_arr, transparent=True).set_duration(0.7).set_start(0)
+        punch = punch.set_position(("center", int(VIDEO_HEIGHT * 0.30)))
+        punch = punch.crossfadein(0.05).crossfadeout(0.25)
+        layers.append(punch)
+
+    # 2) Topic BIG name (zoom-in pop)
+    topic_clean = _strip_emoji(topic_text or "")
+    if topic_clean:
+        # 폰트 자동 축소 — 긴 토픽명도 한 줄에 들어가게
+        size = 220
+        while size >= 110:
+            font_path = _find_font(bold=True)
+            font = ImageFont.truetype(font_path, size) if font_path else ImageFont.load_default()
+            tmp = Image.new("RGBA", (VIDEO_WIDTH - 80, 100), (0, 0, 0, 0))
+            td = ImageDraw.Draw(tmp)
+            lines = _wrap_text(td, topic_clean, font, VIDEO_WIDTH - 100)
+            if len(lines) <= 2:
+                break
+            size -= 14
+        topic_arr = _make_text_image(
+            topic_clean,
+            font_size=size,
+            max_width=VIDEO_WIDTH - 80,
+            fg=(255, 255, 255, 255),
+            stroke_color=(0, 0, 0, 255),
+            stroke_width=8,
+        )
+        if topic_arr.shape[0] > 1:
+            topic_clip = ImageClip(topic_arr, transparent=True).set_duration(duration - 0.3).set_start(0.3)
+            topic_clip = topic_clip.set_position(("center", int(VIDEO_HEIGHT * 0.42)))
+            # 줌인 pop — 1.4 → 1.0
+            topic_clip = topic_clip.resize(lambda t: 1.4 - 0.4 * min(1.0, t / 0.25))
+            topic_clip = topic_clip.crossfadein(0.1).crossfadeout(0.4)
+            layers.append(topic_clip)
+
+    return layers
+
+
 def _make_brand_clip(duration: float, text="@SpaceTrivia60s"):
     arr = _make_text_image(text, font_size=44, max_width=VIDEO_WIDTH - 100,
                            fg=(255, 255, 255, 200))
@@ -497,6 +556,12 @@ def compose(
 
     # 시각 jolt (첫 0.5초 화이트 플래시 — 스크롤 멈춤 유도)
     layers.append(_make_jolt_flash(0.5))
+
+    # 첫 2.4초 BIG HOOK — 화면 중앙 가득 "WAIT —" + 토픽명 (유명 채널 벤치마크)
+    # 기존 상단 작은 hook으로는 0.5초 안에 스크롤 멈춤 유도 부족.
+    # 토픽명은 "Saturn • Trivia" 같은 hook 문자열에서 • 앞부분 추출, 없으면 hook 통째로 사용.
+    big_hook_text = hook.split("•")[0].strip() if "•" in hook else hook
+    layers.extend(_make_big_hook_intro(big_hook_text, duration=2.4))
 
     hook_clip = _make_hook_clip(hook, total_dur)
     if hook_clip is not None:

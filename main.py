@@ -38,6 +38,10 @@ log = logging.getLogger("spacebot")
 USED_PATH = os.path.join(BASE_DIR, "used_animals.json")
 USED_KEEP = 30  # 직전 30번 사용한 동물 회피 (4편/일 × 약 7.5일 — GPT 픽 다양성 확보)
 
+# Pexels 풋티지 dedup (2026-05-07 사용자 지적: 최근 영상 풋티지 가타)
+USED_PEXELS_PATH = os.path.join(BASE_DIR, "used_pexels.json")
+USED_PEXELS_KEEP = 30  # 직전 30개 영상 풋티지 차단 (1편당 3개 풋티지 × 10편 분량)
+
 
 def _load_used():
     if not os.path.exists(USED_PATH):
@@ -52,8 +56,30 @@ def _save_used(used):
     json.dump(used[-USED_KEEP:], open(USED_PATH, "w", encoding="utf-8"))
 
 
+def _load_used_pexels() -> list:
+    if not os.path.exists(USED_PEXELS_PATH):
+        return []
+    try:
+        return [int(i) for i in json.load(open(USED_PEXELS_PATH, encoding="utf-8")) if str(i).isdigit() or isinstance(i, int)]
+    except Exception:
+        return []
+
+
+def _save_used_pexels(used: list):
+    json.dump(used[-USED_PEXELS_KEEP:], open(USED_PEXELS_PATH, "w", encoding="utf-8"))
+
+
+def _extract_pexels_id(path: str):
+    """pexels_<id>.mp4 파일명에서 id 추출. 실패 시 None."""
+    import re as _re
+    base = os.path.basename(path or "")
+    m = _re.match(r"pexels_(\d+)\.mp4$", base)
+    return int(m.group(1)) if m else None
+
+
 def fetch_verified_backgrounds(meta: dict, work_dir: str, n: int = 3,
-                                oversample: int = 2) -> list:
+                                oversample: int = 2,
+                                exclude_pexels_ids: list = None) -> list:
     """비전 검증 통과한 영상 N개 확보 — 잘못된 영상 reject.
 
     1. fetch_backgrounds로 N*oversample 개 후보 다운
@@ -70,6 +96,7 @@ def fetch_verified_backgrounds(meta: dict, work_dir: str, n: int = 3,
         meta["pexels_keywords"], work_dir,
         n=n * oversample,
         animal_single=meta["single"],
+        exclude_pexels_ids=exclude_pexels_ids,
     )
     paths = []
     rejected = []
@@ -117,13 +144,14 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     from pipeline import animals, pexels, tts, composer, translator
 
     used = _load_used()
+    used_pexels = _load_used_pexels()
 
     if forced_animal:
         meta = animals._legacy_meta(forced_animal)
         animal_key = meta["animal_key"]
         work_dir = os.path.join(OUTPUT_DIR, datetime.now().strftime("%Y%m%d"), animal_key)
         os.makedirs(work_dir, exist_ok=True)
-        bg_paths = fetch_verified_backgrounds(meta, work_dir, n=3)
+        bg_paths = fetch_verified_backgrounds(meta, work_dir, n=3, exclude_pexels_ids=used_pexels)
     else:
         # GPT 동적 픽 + Pexels 매칭 + 비전 검증 재시도 (최대 5번)
         meta = None
@@ -136,7 +164,7 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
             wd = os.path.join(OUTPUT_DIR, datetime.now().strftime("%Y%m%d"), ak)
             os.makedirs(wd, exist_ok=True)
             try:
-                bgs = fetch_verified_backgrounds(try_meta, wd, n=3)
+                bgs = fetch_verified_backgrounds(try_meta, wd, n=3, exclude_pexels_ids=used_pexels)
             except RuntimeError as e:
                 log.warning(f"[try {attempt+1}] 검증 실패 ({try_meta['display']}): {e} → GPT 재픽")
                 retry_used.append(ak)
@@ -162,7 +190,7 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
                 os.makedirs(wd, exist_ok=True)
                 log.info(f"[legacy try {legacy_attempt+1}/5] {legacy_key} ({legacy_meta['display']})")
                 try:
-                    bgs = fetch_verified_backgrounds(legacy_meta, wd, n=3)
+                    bgs = fetch_verified_backgrounds(legacy_meta, wd, n=3, exclude_pexels_ids=used_pexels)
                 except RuntimeError as e:
                     log.warning(f"[legacy try {legacy_attempt+1}] vision 부족 ({legacy_meta['display']}): {e} → 다음 fallback")
                     legacy_tries.append(legacy_key)
@@ -242,6 +270,13 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     # 7) 사용 기록 (GPT 회피용)
     used.append(animal_key)
     _save_used(used)
+
+    # 7-1) Pexels 풋티지 사용 기록 (다음 영상부터 같은 풋티지 안 뜨도록)
+    new_pexels_ids = [pid for pid in (_extract_pexels_id(p) for p in bg_paths) if pid]
+    if new_pexels_ids:
+        used_pexels.extend(new_pexels_ids)
+        _save_used_pexels(used_pexels)
+        log.info(f"used_pexels.json 갱신: +{new_pexels_ids} (전체 {len(used_pexels)}개 추적)")
 
     return {
         "animal": animal_key,

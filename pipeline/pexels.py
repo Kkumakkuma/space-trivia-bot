@@ -141,15 +141,21 @@ def fetch_background(keywords: list, output_dir: str) -> str:
 
 
 def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
-                       animal_single: str = "") -> list:
+                       animal_single: str = "",
+                       exclude_pexels_ids: list = None) -> list:
     """동영상 N개를 다운로드 (각 fact 구간별로 다른 영상).
 
     animal_single: 안전 보장 — 모든 키워드가 동물명을 포함하지 않으면
     fallback으로 동물명 단독 검색. generic 키워드("wild mammal" 등)로
     엉뚱한 동물 매칭되는 문제 방지.
+
+    exclude_pexels_ids: 최근 N개 영상에서 사용된 Pexels video_id 리스트.
+    같은 풋티지 반복으로 채널 영상이 비슷해 보이는 문제 방지 (2026-05-07
+    사용자 지적: Saturn/Uranus 두 영상 풋티지 가타). 풀이 부족할 때만 일부 허용.
     """
     paths = []
     used_ids = set()
+    blocked_recent = set(int(i) for i in (exclude_pexels_ids or []) if str(i).isdigit() or isinstance(i, int))
     if not PEXELS_API_KEY:
         raise RuntimeError("PEXELS_API_KEY 없음")
     os.makedirs(output_dir, exist_ok=True)
@@ -171,58 +177,73 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
     random.shuffle(candidates)
 
     skipped_slug = 0
-    for kw in candidates:
-        if len(paths) >= n:
+    skipped_recent = 0
+    # 1차: 최근 사용 video_id 차단하면서 매칭 시도
+    # 2차: 풀이 부족하면 차단 풀고 재시도 (안전 폴백)
+    for pass_idx in (0, 1):
+        block_set = blocked_recent if pass_idx == 0 else set()
+        if pass_idx == 1 and len(paths) >= n:
             break
-        try:
-            r = requests.get(
-                PEXELS_API,
-                headers=headers,
-                params={"query": kw, "per_page": 20, "orientation": "portrait"},
-                timeout=20,
-            )
-            r.raise_for_status()
-            data = r.json()
-            videos = data.get("videos", [])
-            random.shuffle(videos)
-            for v in videos:
-                if v.get("id") in used_ids:
-                    continue
-                if v.get("duration", 0) < 6:
-                    continue
-                # URL slug 사전 필터 (vision 비용/TPM 절약 + garbage 사전 차단)
-                if not _passes_slug_filter(v, single_lower):
-                    skipped_slug += 1
-                    continue
-                files = v.get("video_files", [])
-                portrait_files = [f for f in files
-                                  if f.get("width", 0) <= f.get("height", 0)
-                                  and (f.get("file_type") == "video/mp4" or "mp4" in (f.get("link", "")))]
-                if not portrait_files:
-                    portrait_files = [f for f in files if f.get("file_type") == "video/mp4"]
-                portrait_files.sort(key=lambda f: abs((f.get("width") or 0) - 1080))
-                if not portrait_files:
-                    continue
-                pick = portrait_files[0]
-                url = pick["link"]
-                fname = f"pexels_{v['id']}.mp4"
-                out = os.path.join(output_dir, fname)
-                with requests.get(url, stream=True, timeout=60) as resp:
-                    resp.raise_for_status()
-                    with open(out, "wb") as fh:
-                        for chunk in resp.iter_content(chunk_size=1 << 20):
-                            fh.write(chunk)
-                paths.append(out)
-                used_ids.add(v["id"])
-                log.info(f"pexels bg[{len(paths)}]: kw={kw} id={v['id']} dur={v.get('duration')}s")
-                if len(paths) >= n:
-                    break
-        except Exception as e:
-            log.warning(f"pexels kw={kw} 실패: {e}")
-            continue
+        if pass_idx == 1:
+            log.warning(f"pexels: 1차 후 {len(paths)}/{n} 부족 — 최근 사용 차단 풀고 재시도")
+        for kw in candidates:
+            if len(paths) >= n:
+                break
+            try:
+                r = requests.get(
+                    PEXELS_API,
+                    headers=headers,
+                    params={"query": kw, "per_page": 20, "orientation": "portrait"},
+                    timeout=20,
+                )
+                r.raise_for_status()
+                data = r.json()
+                videos = data.get("videos", [])
+                random.shuffle(videos)
+                for v in videos:
+                    if v.get("id") in used_ids:
+                        continue
+                    if v.get("id") in block_set:
+                        skipped_recent += 1
+                        continue
+                    if v.get("duration", 0) < 6:
+                        continue
+                    # URL slug 사전 필터 (vision 비용/TPM 절약 + garbage 사전 차단)
+                    if not _passes_slug_filter(v, single_lower):
+                        skipped_slug += 1
+                        continue
+                    files = v.get("video_files", [])
+                    portrait_files = [f for f in files
+                                      if f.get("width", 0) <= f.get("height", 0)
+                                      and (f.get("file_type") == "video/mp4" or "mp4" in (f.get("link", "")))]
+                    if not portrait_files:
+                        portrait_files = [f for f in files if f.get("file_type") == "video/mp4"]
+                    portrait_files.sort(key=lambda f: abs((f.get("width") or 0) - 1080))
+                    if not portrait_files:
+                        continue
+                    pick = portrait_files[0]
+                    url = pick["link"]
+                    fname = f"pexels_{v['id']}.mp4"
+                    out = os.path.join(output_dir, fname)
+                    with requests.get(url, stream=True, timeout=60) as resp:
+                        resp.raise_for_status()
+                        with open(out, "wb") as fh:
+                            for chunk in resp.iter_content(chunk_size=1 << 20):
+                                fh.write(chunk)
+                    paths.append(out)
+                    used_ids.add(v["id"])
+                    log.info(f"pexels bg[{len(paths)}]: kw={kw} id={v['id']} dur={v.get('duration')}s")
+                    if len(paths) >= n:
+                        break
+            except Exception as e:
+                log.warning(f"pexels kw={kw} 실패: {e}")
+                continue
 
     if skipped_slug:
         log.info(f"pexels slug filter: {skipped_slug}개 garbage 후보 사전 차단")
+    if skipped_recent:
+        log.info(f"pexels dedup: {skipped_recent}개 최근 사용 풋티지 차단 (used_pexels.json)")
     if not paths:
         raise RuntimeError("Pexels 영상 하나도 못 찾음")
+    # 호출 측에서 사용한 ID 추적 가능하도록 paths의 파일명에 video_id가 포함됨 (pexels_<id>.mp4).
     return paths
