@@ -568,10 +568,11 @@ def compose(
     if hook_clip is not None:
         layers.append(hook_clip)
 
-    # CTA 카드 시각 — v4: 음성 outro 끝나자마자 CTA 표시 (사용자 신고: 음성과 글자 갭 1초+).
-    # cta_start = last_tts_end + 0.1 (즉시), 단 최소 4초 자리 보장.
+    # CTA 카드 시각 — v5: 음성 outro 시작과 동시에 CTA 글자 표시 (사용자 요청: 자막 음성 싱크).
+    # outro 음성 = timeline 마지막. cta_start = outro_voice_start.
+    last_tts_start = timeline[-1]["start"] if timeline else (total_dur - 4.0)
     last_tts_end = timeline[-1]["end"] if timeline else total_dur
-    cta_start = max(last_tts_end + 0.1, total_dur - 6.0)
+    cta_start = max(last_tts_start, total_dur - 7.0)  # 최소 7초 자리 보장
     cta_dur = max(0.0, total_dur - cta_start)
     if cta_dur < 1.0:
         cta_dur = 0.0
