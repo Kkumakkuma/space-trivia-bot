@@ -273,9 +273,18 @@ Output STRICT JSON only:
         break
 
     if d is None:
-        log.warning(f"GPT가 4회 모두 exclude된 토픽만 픽 → legacy fallback")
+        log.warning(f"GPT가 4회 모두 exclude된 토픽만 픽 → legacy fallback + expand")
         key = pick_animal(exclude=exclude_keys or [])
-        return _legacy_meta(key)
+        legacy = _legacy_meta(key)
+        # 2026-05-08 fix: 기존엔 placeholder facts ("Saturn hides phenomena that defy...")
+        # 그대로 발행 직전까지 갔음. expand로 진짜 28-36단어 facts 강제 생성.
+        try:
+            rich = expand_legacy_to_rich(legacy)
+            legacy.update(rich)
+            log.info(f"picker fallback → expand 완료 ({len(legacy['facts'])} facts)")
+        except Exception as e:
+            log.warning(f"picker fallback expand 실패 → placeholder facts 유지: {e}")
+        return legacy
 
     # 검증 + 정제
     animal_key = (d.get("animal_key") or "").strip().lower().replace(" ", "_") or "space_topic"
