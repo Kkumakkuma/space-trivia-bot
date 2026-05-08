@@ -124,7 +124,29 @@ def fetch_verified_backgrounds(meta: dict, work_dir: str, n: int = 3,
                 pass
         return paths
 
-    # n개 미달 — 모두 삭제하고 RuntimeError (garbage 발행 방지)
+    # n개 미달 — AI 이미지 폴백 시도 (Pexels → codex → gpt-image2 → gemini 순)
+    # 2026-05-08 추가: Pexels 우주 영상 커버리지 부족(Uranus 0/6 등) 사고 대응.
+    needed = n - len(paths)
+    log.warning(f"vision 통과 {len(paths)}/{n} — AI 이미지 폴백 {needed}장 시도")
+    try:
+        from pipeline import image_fallback, image_to_video
+        png_paths = image_fallback.generate_fallback_images(meta, needed, work_dir)
+        if png_paths:
+            ai_clips = image_to_video.pngs_to_videos(png_paths, work_dir, duration=10.0)
+            paths.extend(ai_clips)
+            log.info(f"AI 이미지 폴백 완료: 총 {len(paths)}/{n} (Pexels {len(paths)-len(ai_clips)} + AI {len(ai_clips)})")
+    except Exception as e:
+        log.warning(f"AI 이미지 폴백 자체 실패: {e}")
+
+    if len(paths) >= n:
+        for r in rejected:
+            try:
+                os.remove(r)
+            except Exception:
+                pass
+        return paths
+
+    # 폴백도 부족 → garbage 발행 방지 위해 모두 삭제 + RuntimeError
     for r in rejected:
         try:
             os.remove(r)
@@ -136,7 +158,7 @@ def fetch_verified_backgrounds(meta: dict, work_dir: str, n: int = 3,
         except Exception:
             pass
     raise RuntimeError(
-        f"비전 검증 통과 영상 부족 ({len(paths)}/{n}) — 다른 토픽 픽 필요"
+        f"비전 검증 + AI 폴백 모두 부족 ({len(paths)}/{n}) — 다른 토픽 픽 필요"
     )
 
 
