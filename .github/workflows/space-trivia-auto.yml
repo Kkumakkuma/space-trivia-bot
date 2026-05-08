@@ -55,6 +55,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           YT_CLIENT_SECRET_B64: ${{ secrets.YT_CLIENT_SECRET_B64 }}
           YT_TOKEN_B64: ${{ secrets.YT_TOKEN_B64 }}
           GDRIVE_OAUTH_TOKEN_B64: ${{ secrets.GDRIVE_OAUTH_TOKEN_B64 }}
@@ -62,6 +63,7 @@ jobs:
           mkdir -p credentials
           printf "OPENAI_API_KEY=%s\n" "$OPENAI_API_KEY" > .env
           printf "PEXELS_API_KEY=%s\n" "$PEXELS_API_KEY" >> .env
+          printf "GEMINI_API_KEY=%s\n" "$GEMINI_API_KEY" >> .env
           echo "$YT_CLIENT_SECRET_B64" | base64 -d > credentials/youtube_client_secret.json
           echo "$YT_TOKEN_B64" | base64 -d > credentials/youtube_token.json
           # GDrive 토큰 (BGM 다운로드용, 음악쇼츠봇과 동일 secret 재사용)
