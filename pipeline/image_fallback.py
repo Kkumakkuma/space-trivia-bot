@@ -244,11 +244,11 @@ def generate_fallback_images(meta: dict, n_needed: int, output_dir: str) -> List
 
     collected: List[str] = []
 
-    # 2026-05-08 쿠마님 결정 — 우선순위: gemini(1) → codex(2) → gpt-image2(3)
+    # 2026-05-08 쿠마님 결정 v2 — Pexels 다음 순위: gemini(1) → gpt-image2(2) → codex(3)
     for tier_name, tier_fn in [
         ("gemini", _try_gemini),
-        ("codex", _try_codex),
         ("gpt-image2", _try_gpt_image2),
+        ("codex", _try_codex),
     ]:
         if len(collected) >= n_needed:
             break
