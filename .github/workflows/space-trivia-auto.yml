@@ -98,7 +98,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Telegram notify
-        if: always()
+        if: always() && !cancelled()
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
