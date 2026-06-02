@@ -36,7 +36,7 @@ logging.basicConfig(
 log = logging.getLogger("spacebot")
 
 USED_PATH = os.path.join(BASE_DIR, "used_animals.json")
-USED_KEEP = 30  # 직전 30번 사용한 동물 회피 (4편/일 × 약 7.5일 — GPT 픽 다양성 확보)
+USED_KEEP = 30  # 직전 30개 토픽 회피 + 코드 레벨 강제 dedup (토픽 풀 ~50개라 30 유지, 중복 방지)
 
 # Pexels 풋티지 dedup (2026-05-07 사용자 지적: 최근 영상 풋티지 가타)
 USED_PEXELS_PATH = os.path.join(BASE_DIR, "used_pexels.json")
@@ -183,6 +183,12 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
             try_meta = animals.pick_random_animal(exclude_keys=retry_used)
             ak = try_meta["animal_key"]
             log.info(f"[try {attempt+1}/5] picked animal: {ak} ({try_meta['display']})")
+            # 강제 중복 차단: 회피는 GPT 프롬프트 의존이라 무시될 때가 있음 → 최근 사용
+            # 토픽을 다시 픽하면 코드가 확실히 거르고 재픽한다 (쿠마님 중복 신고 대응).
+            if ak in retry_used:
+                log.warning(f"[try {attempt+1}] 중복 토픽 {ak} (직전 {USED_KEEP}개에 있음) → 재픽")
+                retry_used.append(ak)
+                continue
             wd = os.path.join(OUTPUT_DIR, datetime.now().strftime("%Y%m%d"), ak)
             os.makedirs(wd, exist_ok=True)
             try:
