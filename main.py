@@ -260,7 +260,7 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     out_video = os.path.join(
         work_dir, f"{animal_key}_{datetime.now().strftime('%H%M%S')}.mp4"
     )
-    composer.compose(bg_paths, tts_lines, meta["hook"], out_video, bgm_path=bgm_path)
+    composer.compose(bg_paths, tts_lines, meta["hook"], out_video, bgm_path=bgm_path, title=meta.get("title_en"))
     log.info(f"video: {out_video} ({os.path.getsize(out_video) / 1024 / 1024:.1f}MB)")
 
     # 5) 7개국 localizations

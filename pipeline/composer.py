@@ -317,7 +317,7 @@ def _make_hook_clip(text: str, duration: float):
     return clip
 
 
-def _make_big_hook_intro(topic_text: str, duration: float = 2.4):
+def _make_big_hook_intro(topic_text: str, duration: float = 2.4, title: str = None):
     """첫 2~3초 화면 가득 BIG HOOK — 스크롤 멈춤 유도.
 
     유명 우주/동물 숏츠 채널 벤치마크: 첫 0.5s 안에 화면 큰 글씨가 등장해야
@@ -327,11 +327,28 @@ def _make_big_hook_intro(topic_text: str, duration: float = 2.4):
     - "WAIT —" punch word 0~0.3s (화면 중앙, 노랑, 240pt)
     - 토픽명 BIG (240→200pt 줌인) 0.3~duration
     """
+    import re as _re
+    import random as _rnd
     layers = []
-    # 1) Punch word
+    # 1) Punch word — 제목 핵심 숫자 추출 ("146 MOONS!" = 정보 갭), 없으면 punch 로테이션
+    punch_text = None
+    if title:
+        _m = _re.search(r"(\d[\d,]*)\s+([A-Za-z][A-Za-z\-]*)", _strip_emoji(title))
+        if _m:
+            punch_text = f"{_m.group(1)} {_m.group(2).upper()}!"
+    if not punch_text:
+        punch_text = _rnd.choice(["WAIT —", "NO WAY", "HOLD ON", "WATCH THIS"])
+    _psize = 200
+    _fp = _find_font(bold=True)
+    while _psize >= 96:
+        _pf = ImageFont.truetype(_fp, _psize) if _fp else ImageFont.load_default()
+        _tmp = Image.new("RGBA", (10, 10), (0, 0, 0, 0))
+        if ImageDraw.Draw(_tmp).textlength(punch_text, font=_pf) <= VIDEO_WIDTH - 120:
+            break
+        _psize -= 12
     punch_arr = _make_text_image(
-        "WAIT —",
-        font_size=200,
+        punch_text,
+        font_size=_psize,
         max_width=VIDEO_WIDTH - 80,
         fg=(255, 220, 0, 255),
         stroke_color=(0, 0, 0, 255),
@@ -484,6 +501,7 @@ def compose(
     pad_between: float = 0.35,
     end_pad: float = 0.6,
     bgm_path: str = None,
+    title: str = None,
 ) -> str:
     """tts_lines: [{"text", "path", "duration"}] (intro + fact x3 + outro 순서)
     bg_paths: Pexels mp4 경로 리스트 (3개 권장)
@@ -562,7 +580,7 @@ def compose(
     # 기존 상단 작은 hook으로는 0.5초 안에 스크롤 멈춤 유도 부족.
     # 토픽명은 "Saturn • Trivia" 같은 hook 문자열에서 • 앞부분 추출, 없으면 hook 통째로 사용.
     big_hook_text = hook.split("•")[0].strip() if "•" in hook else hook
-    layers.extend(_make_big_hook_intro(big_hook_text, duration=2.4))
+    layers.extend(_make_big_hook_intro(big_hook_text, duration=2.4, title=title))
 
     hook_clip = _make_hook_clip(hook, total_dur)
     if hook_clip is not None:
