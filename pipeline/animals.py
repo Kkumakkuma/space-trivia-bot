@@ -84,9 +84,10 @@ def verify_consistency(meta: dict) -> dict:
 
     review_prompt = f"""You are a script consistency editor for YouTube Shorts about {display} ({single}).
 
-Review this script for two CRITICAL issues:
+Review this script for three CRITICAL issues:
 1. NUMERIC CONTRADICTIONS between facts (e.g. fact 1 says "82 moons" + fact 2 says "79 moons" for the same metric)
-2. COMMENT OFF-TOPIC (comment mentions a planet/object that is NOT {display})
+2. FACTUALLY FALSE claims — any statement that contradicts the 2024 scientific consensus (wrong figure, debunked myth, invented detail)
+3. COMMENT OFF-TOPIC (comment mentions a planet/object that is NOT {display})
 
 Title: {title}
 Facts:
@@ -97,6 +98,8 @@ INSTRUCTIONS:
 - If 2+ facts cite different numbers for the SAME metric (e.g. moons of {display}, age in years, distance in km, percentage),
   pick ONE accurate value (use latest 2024 consensus) and rewrite ALL contradicting facts to use THAT value.
   Keep facts at 28-36 words. Only modify the contradicting numeric claim, keep the rest of the sentence.
+- If any fact is factually FALSE per 2024 scientific consensus, correct it to an accurate, equally
+  surprising fact (keep 28-36 words). Do NOT invent numbers you are not confident about.
 - If comment mentions any planet/object other than {display}, rewrite the comment to be about {display} ONLY,
   in 8-20 words, using one of: hot take / forced choice within {display} / what-if / personal challenge / confession bait / fill-in-the-blank.
 - If everything is fine, return original facts and comment unchanged.

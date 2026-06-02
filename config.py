@@ -62,7 +62,7 @@ TTS_PITCH = "+0Hz"
 
 # 자막 스타일
 CAPTION_BASE_SIZE = 80
-CAPTION_Y_RATIO = 0.50  # 화면 정중앙 (인스타 UI 버튼 회피)
+CAPTION_Y_RATIO = 0.60  # 하단 1/3 (피사체 가림 해소 + 인스타 UI 버튼 회피, 쇼츠 가독성)
 CAPTION_PHRASE_SIZE = 4  # 한 자막에 3-4 단어 묶음 (TikTok 스타일)
 CAPTION_HIGHLIGHT_NUMBERS = True  # 숫자는 옐로우 강조
 

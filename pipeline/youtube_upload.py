@@ -17,18 +17,17 @@ SCOPES = [
     "https://www.googleapis.com/auth/youtube.force-ssl",
 ]
 
-# 업로드 후 자동 댓글 풀 (engagement boost)
+# 업로드 후 자동 댓글 풀 (reply-magnet — 답글 유도형. "Tag a friend"/"Like if" 같은
+# 답글 0% 죽은 패턴 금지, 의문/맞히기/도전형으로 댓글 engagement 유도. 우주 토픽)
 COMMENT_HOOKS = [
-    "Which fact surprised you most? 👇",
-    "Did you know any of these already?",
-    "What's your favorite animal? Tag it!",
-    "Tag a friend who loves animals 🐾",
-    "Which one blew your mind?",
-    "Drop your favorite animal in the comments",
-    "Save this for later 💾",
-    "Comment another wild fact you know!",
-    "Like if you learned something new ✨",
-    "What animal should we cover next?",
+    "Which one of these blew your mind? 👇",
+    "Bet you didn't know the last one 👀",
+    "Wait — is #3 actually true??",
+    "What should we cover next — black holes or quasars? 👇",
+    "Which fact do you think we made up?",
+    "What's the wildest space fact YOU know?",
+    "How many of these did you already know?",
+    "Drop a 🚀 if you watched till the end",
 ]
 
 
