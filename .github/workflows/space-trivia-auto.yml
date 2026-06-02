@@ -116,9 +116,10 @@ jobs:
           ok = os.environ.get("OUTCOME") == "success"
           icon = "🚀" if ok else "❌"
 
-          yt_url, animal, locales = None, None, None
+          yt_url, animal, locales, token_expired = None, None, None, False
           try:
               content = open("run_stdout.log", encoding="utf-8", errors="ignore").read()[-12000:]
+              token_expired = bool(re.search(r"invalid_grant|RefreshError|expired or revoked", content))
               m = re.search(r"https?://(?:youtu\.be/|(?:www\.)?youtube\.com/(?:watch\?v=|shorts/))[\w\-]+", content)
               if m: yt_url = m.group(0)
               am = re.search(r"=== 토픽: (\w+)", content)
@@ -137,6 +138,8 @@ jobs:
           if yt_url: lines.append(f"🎥 {yt_url}")
           if not ok:
               lines.append(f"⚠️ Run: https://github.com/Kkumakkuma/space-trivia-bot/actions/runs/{os.environ['RUN_ID']}")
+              if token_expired:
+                  lines.append("🔑 OAuth 토큰 만료/폐지 — PC에서 '갱신_전체.bat' 실행해 재발급하세요")
 
           text = "\n".join(lines)
           tg = f"https://api.telegram.org/bot{os.environ['TELEGRAM_BOT_TOKEN']}/sendMessage"
