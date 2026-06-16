@@ -21,6 +21,14 @@ import os
 import pickle
 import sys
 
+# Windows cp949 콘솔에서 이모지 print 시 UnicodeEncodeError 크래시 방지
+# (인코딩은 유지 → 한글 정상, 인코딩 불가한 이모지만 ? 로 대체)
+try:
+    sys.stdout.reconfigure(errors="replace")
+    sys.stderr.reconfigure(errors="replace")
+except Exception:
+    pass
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 CREDS = os.path.join(ROOT, "credentials")
 CLIENT = os.path.join(CREDS, "youtube_client_secret.json")
