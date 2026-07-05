@@ -142,7 +142,9 @@ def fetch_background(keywords: list, output_dir: str) -> str:
 
 def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
                        animal_single: str = "",
-                       exclude_pexels_ids: list = None) -> list:
+                       exclude_pexels_ids: list = None,
+                       ordered: bool = False,
+                       hard_exclude_ids: list = None) -> list:
     """동영상 N개를 다운로드 (각 fact 구간별로 다른 영상).
 
     animal_single: 안전 보장 — 모든 키워드가 동물명을 포함하지 않으면
@@ -152,10 +154,15 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
     exclude_pexels_ids: 최근 N개 영상에서 사용된 Pexels video_id 리스트.
     같은 풋티지 반복으로 채널 영상이 비슷해 보이는 문제 방지 (2026-05-07
     사용자 지적: Saturn/Uranus 두 영상 풋티지 가타). 풀이 부족할 때만 일부 허용.
+
+    ordered: True면 키워드를 셔플하지 않고 주어진 순서대로 각 키워드당 1클립씩
+    수집 → fact_keywords를 fact 순서대로 넘기면 배경도 fact 순서로 매칭됨.
+    (2026-07-05 per-fact 배경 매칭)
     """
     paths = []
     used_ids = set()
-    blocked_recent = set(int(i) for i in (exclude_pexels_ids or []) if str(i).isdigit() or isinstance(i, int))
+    blocked_soft = set(int(i) for i in (exclude_pexels_ids or []) if str(i).isdigit() or isinstance(i, int))
+    blocked_hard = set(int(i) for i in (hard_exclude_ids or []) if str(i).isdigit() or isinstance(i, int))
     if not PEXELS_API_KEY:
         raise RuntimeError("PEXELS_API_KEY 없음")
     os.makedirs(output_dir, exist_ok=True)
@@ -173,15 +180,17 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
         keywords = verified
         log.info(f"pexels keywords (topic-locked): {keywords}")
 
-    candidates = list(keywords) * 3  # 키워드 풀 늘림
-    random.shuffle(candidates)
+    if ordered:
+        candidates = list(keywords)  # fact 순서 유지 (셔플/증식 안 함)
+    else:
+        candidates = list(keywords) * 3  # 키워드 풀 늘림
+        random.shuffle(candidates)
 
     skipped_slug = 0
     skipped_recent = 0
-    # 1차: 최근 사용 video_id 차단하면서 매칭 시도
-    # 2차: 풀이 부족하면 차단 풀고 재시도 (안전 폴백)
+    # 1차: soft+hard 모두 차단. 2차: 풀 부족 시 soft만 완화, **hard는 유지**.
     for pass_idx in (0, 1):
-        block_set = blocked_recent if pass_idx == 0 else set()
+        block_set = (blocked_soft | blocked_hard) if pass_idx == 0 else blocked_hard
         if pass_idx == 1 and len(paths) >= n:
             break
         if pass_idx == 1:
@@ -235,6 +244,8 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
                     log.info(f"pexels bg[{len(paths)}]: kw={kw} id={v['id']} dur={v.get('duration')}s")
                     if len(paths) >= n:
                         break
+                    if ordered:
+                        break  # 키워드당 1클립 → 다음 키워드로 (fact 순서 유지)
             except Exception as e:
                 log.warning(f"pexels kw={kw} 실패: {e}")
                 continue

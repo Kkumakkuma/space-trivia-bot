@@ -29,13 +29,14 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      # 회피 상태 영속화 (동물/댓글)
+      # 회피 상태 영속화 (토픽/댓글/콘텐츠 이력)
       - name: Restore avoid state cache
         uses: actions/cache@v4
         with:
           path: |
             used_animals.json
             used_comments.json
+            content_history.json
           key: avoid-state-${{ github.run_id }}
           restore-keys: avoid-state-
 

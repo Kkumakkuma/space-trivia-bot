@@ -69,6 +69,15 @@ CAPTION_HIGHLIGHT_NUMBERS = True  # 숫자는 옐로우 강조
 # BGM (선택) — assets/bgm/*.mp3 풀에서 랜덤. 없으면 BGM 없이 진행
 BGM_VOLUME_DB = -22  # TTS 가리지 않게 작게
 
+# 콘텐츠 이력 (시간 기반 중복 방지 + 클립 dedup + angle/format 로테이션) — 2026-07-05
+CONTENT_HISTORY = os.path.join(BASE_DIR, "content_history.json")
+CONTENT_WINDOW_DAYS = 45        # 우주: 45일 내 같은 topic 재등장 차단
+HISTORY_MIN_CANDIDATES = 8      # 제외 후 후보 8개 미만이면 창 0.75배씩 완화
+HISTORY_MIN_WINDOW_DAYS = 7     # 완화 하한 (한 번에 전체 리셋 금지)
+CLIP_DEDUP_DAYS = 30            # 30일 내 사용한 클립(Pexels/NASA id) 재사용 금지
+RECENT_FORMAT_KEEP = 2          # 전역 직전 N편 format 연속 금지
+USE_NASA_MEDIA = True           # 우주봇: NASA Images and Video Library 소스 사용
+
 # 우주 토픽 사전 — Pexels에서 잘 뽑히는 우주 비주얼 위주
 # 변수명은 ANIMALS 그대로 유지 (animals.py 코드 호환). 실제 내용은 우주 토픽.
 ANIMALS = {
@@ -206,5 +215,136 @@ ANIMALS = {
             "deep space asteroid", "asteroid surface",
         ],
         "category": "object",
+    },
+    # === 2026-07-05 확장 (NASA 커버리지 좋은 토픽 위주로 40+개) ===
+    "venus": {
+        "display": "Venus", "single": "Venus", "category": "planet",
+        "pexels_keywords": ["venus planet", "venus surface", "planet venus space",
+                            "venus atmosphere", "bright planet"],
+    },
+    "mercury": {
+        "display": "Mercury", "single": "Mercury", "category": "planet",
+        "pexels_keywords": ["mercury planet", "mercury surface", "planet mercury space",
+                            "cratered planet", "innermost planet"],
+    },
+    "uranus": {
+        "display": "Uranus", "single": "Uranus", "category": "planet",
+        "pexels_keywords": ["uranus planet", "ice giant", "planet uranus space",
+                            "blue planet space", "tilted planet"],
+    },
+    "neptune": {
+        "display": "Neptune", "single": "Neptune", "category": "planet",
+        "pexels_keywords": ["neptune planet", "ice giant blue", "planet neptune space",
+                            "deep blue planet", "windy planet"],
+    },
+    "pluto": {
+        "display": "Pluto", "single": "Pluto", "category": "object",
+        "pexels_keywords": ["pluto dwarf planet", "pluto surface", "pluto new horizons",
+                            "distant world space", "kuiper belt object"],
+    },
+    "europa": {
+        "display": "Europa", "single": "Europa", "category": "moon",
+        "pexels_keywords": ["europa moon", "icy moon jupiter", "europa surface",
+                            "frozen moon space", "moon of jupiter"],
+    },
+    "titan": {
+        "display": "Titan", "single": "Titan", "category": "moon",
+        "pexels_keywords": ["titan moon saturn", "titan surface", "hazy moon",
+                            "saturn largest moon", "titan atmosphere"],
+    },
+    "enceladus": {
+        "display": "Enceladus", "single": "Enceladus", "category": "moon",
+        "pexels_keywords": ["enceladus moon", "icy moon geysers", "enceladus saturn",
+                            "frozen moon plumes", "saturn moon ice"],
+    },
+    "supernova": {
+        "display": "Supernovae", "single": "supernova", "category": "phenomenon",
+        "pexels_keywords": ["supernova explosion", "star explosion space", "supernova remnant",
+                            "stellar explosion", "exploding star"],
+    },
+    "pulsar": {
+        "display": "Pulsars", "single": "pulsar", "category": "star",
+        "pexels_keywords": ["pulsar star", "spinning neutron star", "pulsar space",
+                            "rotating star beam", "cosmic lighthouse"],
+    },
+    "quasar": {
+        "display": "Quasars", "single": "quasar", "category": "phenomenon",
+        "pexels_keywords": ["quasar galaxy", "active galactic nucleus", "quasar space",
+                            "distant bright galaxy", "black hole jet"],
+    },
+    "dark_matter": {
+        "display": "Dark Matter", "single": "dark matter", "category": "phenomenon",
+        "pexels_keywords": ["dark matter universe", "cosmic web", "galaxy dark matter",
+                            "invisible mass space", "universe structure"],
+    },
+    "solar_flare": {
+        "display": "Solar Flares", "single": "solar flare", "category": "phenomenon",
+        "pexels_keywords": ["solar flare sun", "solar eruption", "sun flare space",
+                            "coronal mass ejection", "solar surface activity"],
+    },
+    "aurora": {
+        "display": "Auroras", "single": "aurora", "category": "phenomenon",
+        "pexels_keywords": ["aurora borealis", "northern lights", "aurora night sky",
+                            "green aurora", "aurora time lapse"],
+    },
+    "meteor_shower": {
+        "display": "Meteor Showers", "single": "meteor shower", "category": "phenomenon",
+        "pexels_keywords": ["meteor shower night", "shooting stars", "meteor sky",
+                            "perseid meteor", "meteor streak sky"],
+    },
+    "kuiper_belt": {
+        "display": "the Kuiper Belt", "single": "Kuiper Belt", "category": "object",
+        "pexels_keywords": ["kuiper belt space", "outer solar system", "icy objects space",
+                            "distant solar system", "deep space objects"],
+    },
+    "voyager": {
+        "display": "the Voyager Probes", "single": "Voyager", "category": "spacecraft",
+        "pexels_keywords": ["voyager spacecraft", "deep space probe", "voyager nasa",
+                            "interstellar probe", "space probe stars"],
+    },
+    "james_webb": {
+        "display": "the James Webb Space Telescope", "single": "James Webb", "category": "spacecraft",
+        "pexels_keywords": ["james webb telescope", "space telescope", "webb deep field",
+                            "infrared telescope space", "telescope galaxies"],
+    },
+    "apollo": {
+        "display": "the Apollo Missions", "single": "Apollo", "category": "mission",
+        "pexels_keywords": ["apollo moon landing", "astronaut moon", "lunar mission",
+                            "moon landing nasa", "apollo spacecraft"],
+    },
+    "andromeda": {
+        "display": "the Andromeda Galaxy", "single": "Andromeda", "category": "galaxy",
+        "pexels_keywords": ["andromeda galaxy", "spiral galaxy space", "andromeda night sky",
+                            "distant galaxy", "galaxy stars"],
+    },
+    "red_giant": {
+        "display": "Red Giants", "single": "red giant", "category": "star",
+        "pexels_keywords": ["red giant star", "dying star space", "giant star",
+                            "stellar evolution", "large red star"],
+    },
+    "white_dwarf": {
+        "display": "White Dwarfs", "single": "white dwarf", "category": "star",
+        "pexels_keywords": ["white dwarf star", "dense star space", "stellar remnant",
+                            "collapsed star", "small hot star"],
+    },
+    "gravitational_waves": {
+        "display": "Gravitational Waves", "single": "gravitational waves", "category": "phenomenon",
+        "pexels_keywords": ["gravitational waves space", "spacetime ripples", "black hole merger",
+                            "space time distortion", "cosmic collision"],
+    },
+    "mars_rover": {
+        "display": "Mars Rovers", "single": "Mars rover", "category": "spacecraft",
+        "pexels_keywords": ["mars rover", "rover red planet", "mars exploration rover",
+                            "curiosity rover mars", "mars surface robot"],
+    },
+    "solar_system": {
+        "display": "the Solar System", "single": "solar system", "category": "object",
+        "pexels_keywords": ["solar system planets", "planets orbit", "solar system space",
+                            "planetary system", "sun and planets"],
+    },
+    "milky_way_center": {
+        "display": "the Galactic Center", "single": "galactic center", "category": "galaxy",
+        "pexels_keywords": ["galactic center", "milky way core", "galaxy center space",
+                            "sagittarius a star", "dense star field"],
     },
 }

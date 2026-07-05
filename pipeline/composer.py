@@ -564,11 +564,30 @@ def compose(
     else:
         full_audio = voice_audio
 
-    # 3) 배경 — 3개 영상을 fact 구간에 맞춰 자르기
-    # 단순화: total_dur을 3등분 (intro/outro는 첫·마지막 영상에 포함)
-    n_bg = max(1, min(len(bg_paths), 3))
-    seg_durs = [total_dur / n_bg] * n_bg
-    bg_clip = _build_background(bg_paths[:n_bg], seg_durs, total_dur)
+    # 3) 배경 — fact TTS 시작 시점 기준으로 클립 전환 (클립 수 = fact 수 지향).
+    # timeline = [intro, fact1..factk, outro]. fact 라인 = timeline[1:-1].
+    # 배경 클립 수가 fact 수와 같으면: seg0=[0, fact2.start)(intro 포함) ... 마지막 seg는 outro 포함.
+    # 아니면(부족 등) 기존 균등 분할로 폴백.
+    fact_lines = timeline[1:-1] if len(timeline) >= 3 else timeline
+    k = len(fact_lines)
+    if k >= 1 and len(bg_paths) >= k:
+        starts = [0.0]
+        for j in range(1, k):
+            s = min(max(float(fact_lines[j]["start"]), starts[-1] + 0.5), total_dur)
+            starts.append(s)
+        seg_durs = []
+        for j in range(k):
+            s = starts[j]
+            e = starts[j + 1] if j + 1 < k else total_dur
+            seg_durs.append(max(0.5, e - s))
+        bg_for_seg = bg_paths[:k]
+        log.info(f"배경 세그먼트(fact 시작 기준) durs={[round(x,1) for x in seg_durs]}")
+    else:
+        n_bg = max(1, min(len(bg_paths), 4))
+        seg_durs = [total_dur / n_bg] * n_bg
+        bg_for_seg = bg_paths[:n_bg]
+        log.info(f"배경 세그먼트(균등 폴백) n={n_bg}")
+    bg_clip = _build_background(bg_for_seg, seg_durs, total_dur)
 
     # 4) 비네트 + hook + brand + 자막
     layers = [bg_clip, _make_vignette_clip(total_dur)]
