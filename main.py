@@ -481,6 +481,25 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     except Exception as e:
         log.warning(f"content_history 기록 실패: {e}")
 
+    # 8) CC 자막 트랙 (en + 7개국) — 기록(used/history) 저장을 먼저 끝낸 뒤 수행.
+    #    **fail-soft**: 자막 실패가 영상 발행/기록을 실패시키지 않음. CC 전체 예산 180s.
+    cap_ok = {}
+    if url and not no_upload:
+        try:
+            import time as _time
+            from pipeline import captions
+            cc_deadline = _time.monotonic() + 180.0  # CC 단계 전체 예산(초)
+            video_id = url.rstrip("/").split("/")[-1].split("?")[0]
+            srts = captions.generate_all(
+                tts_lines, work_dir,
+                total_dur=composer.final_video_duration(), deadline=cc_deadline,
+            )
+            cap_ok = captions.upload_captions(video_id, srts, deadline=cc_deadline)
+            n_ok = sum(1 for v in cap_ok.values() if v)
+            log.info(f"CC 자막: {n_ok}/{captions.EXPECTED_CC_LANGS} 언어 등록")
+        except Exception as e:
+            log.warning(f"CC 자막 전체 실패 (영상 정상 발행됨): {e}")
+
     return {
         "animal": animal_key,
         "video": out_video,

@@ -113,6 +113,7 @@ jobs:
           icon = "🚀" if ok else "❌"
 
           yt_url, animal, locales, token_expired = None, None, None, False
+          captions_n = None
           try:
               content = open("run_stdout.log", encoding="utf-8", errors="ignore").read()[-12000:]
               token_expired = bool(re.search(r"invalid_grant|RefreshError|expired or revoked", content))
@@ -122,6 +123,8 @@ jobs:
               if am: animal = am.group(1)
               lm = re.search(r"localizations 완료: ([\w,]+)", content)
               if lm: locales = lm.group(1)
+              cm = re.search(r"captions: (\d+)/(\d+) langs uploaded", content)
+              if cm: captions_n = (cm.group(1), cm.group(2))
           except Exception:
               pass
 
@@ -131,6 +134,7 @@ jobs:
           ]
           if animal: lines.append(f"🪐 토픽: {animal}")
           if locales: lines.append(f"🌐 다국어: {locales}")
+          if captions_n: lines.append(f"💬 CC자막: {captions_n[0]}/8개국")
           if yt_url: lines.append(f"🎥 {yt_url}")
           if not ok:
               lines.append(f"⚠️ Run: https://github.com/Kkumakkuma/space-trivia-bot/actions/runs/{os.environ['RUN_ID']}")

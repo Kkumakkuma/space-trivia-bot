@@ -53,6 +53,10 @@ log = logging.getLogger("spacebot.composer")
 # 화면 텍스트(펀치/토픽/자막/CTA)는 가로 중앙 SAFE_WIDTH_RATIO 이내로 배치.
 SAFE_WIDTH_RATIO = 0.72
 CAPTION_MAX_W = int(VIDEO_WIDTH * SAFE_WIDTH_RATIO)
+
+# 진단 전용 훅: {"path": <wav>} 설정 시 compose가 비디오 인코딩 없이 최종 오디오만 저장하고 반환.
+# 프로덕션 경로에선 항상 None (동작 불변). 음성 끊김 분석용.
+_AUDIO_PROBE_OUT = {"path": None}
 # _make_text_image가 내부에서 max_width-80으로 줄바꿈하므로, 폰트 축소 판정도 같은 폭을 써야
 # 단어 중간 쪼개짐/1줄 초과를 막을 수 있다.
 CAPTION_WRAP_W = CAPTION_MAX_W - 80
@@ -525,12 +529,31 @@ def _build_background(bg_paths: list, segment_durations: list, total_dur: float)
     return final_bg
 
 
+def final_video_duration() -> float:
+    """compose가 강제하는 최종 영상 길이(초). 자막(captions) 등 외부 모듈이 참조하는 단일 출처.
+    compose 내부 target_dur과 동일해야 자막이 잘린 영상 뒤로 삐져나오지 않는다."""
+    return float(VIDEO_DURATION_SEC) - 0.3
+
+
+def _mix_bgm(bgm_file: str, voice_audio, total_dur: float):
+    """BGM 파일 로드 → 길이 맞춤(loop/subclip) → 볼륨/페이드 → voice와 믹스. 실패 시 예외 전파."""
+    bgm = AudioFileClip(bgm_file)
+    if bgm.duration < total_dur:
+        from moviepy.audio.fx.all import audio_loop
+        bgm = audio_loop(bgm, duration=total_dur)
+    else:
+        bgm = bgm.subclip(0, total_dur)
+    bgm = bgm.volumex(10 ** (BGM_VOLUME_DB / 20.0))
+    bgm = bgm.fx(afx.audio_fadein, 0.5).fx(afx.audio_fadeout, 1.0)
+    return CompositeAudioClip([bgm, voice_audio])
+
+
 def compose(
     bg_paths: list,
     tts_lines: list,
     hook: str,
     output_path: str,
-    pad_between: float = 0.35,
+    pad_between: float = 0.18,
     end_pad: float = 0.6,
     bgm_path: str = None,
     title: str = None,
@@ -566,7 +589,7 @@ def compose(
     raw_total = cursor - pad_between + end_pad
     # v3: 항상 60s 가까이 강제 (CTA 자리 보장 + Shorts retention 안정).
     # 음성 짧으면 BGM/배경으로 채움. 음성 길면 outro 잘림 (prompt에서 facts 단어수 제한).
-    target_dur = float(VIDEO_DURATION_SEC) - 0.3
+    target_dur = final_video_duration()
     total_dur = target_dur
     if raw_total > target_dur:
         log.warning(f"음성 {raw_total:.2f}s > 영상 {target_dur:.2f}s — outro 일부 잘림 가능")
@@ -583,23 +606,36 @@ def compose(
 
     # 명시 인자 우선, 없으면 로컬 풀에서 픽
     chosen_bgm = bgm_path or _pick_bgm()
+    full_audio = voice_audio
     if chosen_bgm:
         try:
-            bgm = AudioFileClip(chosen_bgm)
-            if bgm.duration < total_dur:
-                from moviepy.audio.fx.all import audio_loop
-                bgm = audio_loop(bgm, duration=total_dur)
-            else:
-                bgm = bgm.subclip(0, total_dur)
-            bgm = bgm.volumex(10 ** (BGM_VOLUME_DB / 20.0))
-            bgm = bgm.fx(afx.audio_fadein, 0.5).fx(afx.audio_fadeout, 1.0)
-            full_audio = CompositeAudioClip([bgm, voice_audio])
+            full_audio = _mix_bgm(chosen_bgm, voice_audio, total_dur)
             log.info(f"bgm mix: {os.path.basename(chosen_bgm)} ({BGM_VOLUME_DB}dB)")
         except Exception as e:
-            log.warning(f"bgm 적용 실패 → voice only: {e}")
-            full_audio = voice_audio
-    else:
-        full_audio = voice_audio
+            # 1차(GDrive/로컬 픽) 로드 실패 → voice-only 직행 금지, 2차 폴백(리포 내장 ambient) 시도
+            log.warning(f"bgm 적용 실패 → 2차 폴백(ambient_fallback) 시도: {e}")
+            fb = os.path.join(BASE_DIR, "assets", "bgm", "ambient_fallback.mp3")
+            if os.path.exists(fb):
+                try:
+                    full_audio = _mix_bgm(fb, voice_audio, total_dur)
+                    log.info(f"bgm fallback mix: ambient_fallback.mp3 ({BGM_VOLUME_DB}dB)")
+                except Exception as e2:
+                    log.warning(f"2차 BGM 폴백도 실패 → voice only: {e2}")
+                    full_audio = voice_audio
+            else:
+                log.warning("2차 BGM 폴백 파일 없음(assets/bgm/ambient_fallback.mp3) → voice only")
+                full_audio = voice_audio
+
+    # 오디오 프로브(진단 전용, guarded): 비디오 인코딩 없이 최종 오디오만 wav로 저장하고 반환.
+    # 실제 발행 audio(full_audio)와 동일 — 침묵/끊김 분석용. 프로덕션 동작 불변.
+    if qa_frame_times is None and _AUDIO_PROBE_OUT.get("path"):
+        ap = _AUDIO_PROBE_OUT["path"]
+        try:
+            full_audio.set_duration(total_dur).write_audiofile(ap, fps=44100, verbose=False, logger=None)
+        finally:
+            for ac in audio_clips:
+                ac.close()
+        return ap
 
     # 3) 배경 — fact TTS 시작 시점 기준으로 클립 전환 (클립 수 = fact 수 지향).
     # timeline = [intro, fact1..factk, outro]. fact 라인 = timeline[1:-1].

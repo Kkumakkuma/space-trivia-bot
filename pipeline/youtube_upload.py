@@ -96,6 +96,26 @@ def get_service():
     return build("youtube", "v3", credentials=creds)
 
 
+def has_caption_scope() -> bool:
+    """captions.insert에 필요한 youtube.force-ssl scope가 현재 토큰에 있는지 검사.
+
+    확정적으로 '없음'일 때만 False(→ captions 단계만 skip). 토큰 없음 / scope 정보 불명(None·빈값)은
+    판단 보류 → True (영상 업로드 경로는 막지 않고, captions는 insert 자체가 fail-soft라 안전).
+    구 토큰(youtube.upload만 보유)에서 force-ssl 미포함이면 여기서 잡아 무의미한 8회 실패를 방지."""
+    force_ssl = "https://www.googleapis.com/auth/youtube.force-ssl"
+    try:
+        if not os.path.exists(YOUTUBE_TOKEN):
+            return True
+        with open(YOUTUBE_TOKEN, "rb") as f:
+            creds = pickle.load(f)
+        scopes = getattr(creds, "scopes", None)
+        if not scopes:
+            return True  # scope 정보 없음 → 판단 보류(시도 허용)
+        return force_ssl in scopes
+    except Exception:
+        return True  # 판단 불가 → 보류(시도 허용)
+
+
 def upload(video_path: str, title: str, description: str, tags: list,
            thumbnail_path: str = None, localizations: dict = None,
            default_language: str = "en", custom_comment: str = None) -> str:
