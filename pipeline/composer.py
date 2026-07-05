@@ -49,6 +49,14 @@ from config import (
 
 log = logging.getLogger("spacebot.composer")
 
+# 쇼츠 재생 UI 안전영역: 우측 ~15%(좋아요/댓글 버튼열)·하단 ~20%(제목/채널/음악) 회피.
+# 화면 텍스트(펀치/토픽/자막/CTA)는 가로 중앙 SAFE_WIDTH_RATIO 이내로 배치.
+SAFE_WIDTH_RATIO = 0.72
+CAPTION_MAX_W = int(VIDEO_WIDTH * SAFE_WIDTH_RATIO)
+# _make_text_image가 내부에서 max_width-80으로 줄바꿈하므로, 폰트 축소 판정도 같은 폭을 써야
+# 단어 중간 쪼개짐/1줄 초과를 막을 수 있다.
+CAPTION_WRAP_W = CAPTION_MAX_W - 80
+
 _EMOJI_RE = re.compile(
     "["
     "\U0001F300-\U0001F6FF"
@@ -247,24 +255,46 @@ def _phrase_color(text: str):
     return (255, 255, 255, 255)
 
 
+def _add_caption_box(arr: np.ndarray, pad: int = 26, radius: int = 26, box_alpha: int = 175) -> np.ndarray:
+    """텍스트 RGBA 뒤에 반투명 다크 라운드 박스 합성 → 밝은/복잡한 배경에서도 가독성 확보."""
+    if arr is None or arr.shape[0] <= 1 or arr.shape[1] <= 1:
+        return arr
+    img = Image.fromarray(arr, "RGBA")
+    bbox = img.split()[3].getbbox()
+    if not bbox:
+        return arr
+    x0, y0, x1, y1 = bbox
+    x0 = max(0, x0 - pad); y0 = max(0, y0 - pad)
+    x1 = min(img.width, x1 + pad); y1 = min(img.height, y1 + pad)
+    box = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    bd = ImageDraw.Draw(box)
+    try:
+        bd.rounded_rectangle([x0, y0, x1, y1], radius=radius, fill=(0, 0, 0, box_alpha))
+    except Exception:
+        bd.rectangle([x0, y0, x1, y1], fill=(0, 0, 0, box_alpha))
+    return np.array(Image.alpha_composite(box, img))
+
+
 def _make_phrase_clip(phrase_text: str, start: float, end: float, base_size=None):
     """짧은 phrase (3-4단어) 자막. 짧은 시간이라 fade도 빠르게."""
     base_size = base_size or CAPTION_BASE_SIZE
     if end <= start:
         return None
     fg = _phrase_color(phrase_text)
-    # 짧은 phrase라 max_lines=2면 충분
+    # 짧은 phrase라 max_lines=2면 충분. 실제 wrap 폭(CAPTION_WRAP_W) 기준으로 자동 축소 →
+    # 단어 중간 쪼개짐/1줄 초과 방지.
     size = base_size
-    while size >= 56:
+    while size >= 44:
         font_path = _find_font()
         font = ImageFont.truetype(font_path, size) if font_path else ImageFont.load_default()
-        tmp = Image.new("RGBA", (VIDEO_WIDTH - 60, 100), (0, 0, 0, 0))
+        tmp = Image.new("RGBA", (CAPTION_MAX_W, 100), (0, 0, 0, 0))
         td = ImageDraw.Draw(tmp)
-        lines = _wrap_text(td, phrase_text, font, VIDEO_WIDTH - 80)
-        if len(lines) <= 2:
+        lines = _wrap_text(td, phrase_text, font, CAPTION_WRAP_W)
+        if len(lines) <= 2 and all(td.textlength(ln, font=font) <= CAPTION_WRAP_W for ln in lines):
             break
         size -= 4
-    arr = _make_text_image(phrase_text, size, VIDEO_WIDTH - 80, fg=fg, stroke_width=3)
+    arr = _make_text_image(phrase_text, size, CAPTION_MAX_W, fg=fg, stroke_width=3)
+    arr = _add_caption_box(arr)  # 가독성: 반투명 다크 박스 배경
     if arr.shape[0] <= 1:
         return None
     clip = ImageClip(arr, transparent=True).set_duration(end - start).set_start(start)
@@ -306,8 +336,8 @@ def _make_caption_window(text: str, start: float, end: float, base_size=80):
 
 
 def _make_hook_clip(text: str, duration: float):
-    """상단 hook 박스 — 전체 영상 동안 표시."""
-    arr = _make_text_image(text, font_size=78, max_width=VIDEO_WIDTH - 200)
+    """상단 hook 박스 — 전체 영상 동안 표시 (상단 y=0.10, 안전영역 폭)."""
+    arr = _make_text_image(text, font_size=72, max_width=CAPTION_MAX_W)
     if arr.shape[0] <= 1:
         return None
     clip = ImageClip(arr, transparent=True).set_duration(duration)
@@ -317,76 +347,75 @@ def _make_hook_clip(text: str, duration: float):
     return clip
 
 
-def _make_big_hook_intro(topic_text: str, duration: float = 2.4, title: str = None):
-    """첫 2~3초 화면 가득 BIG HOOK — 스크롤 멈춤 유도.
+def _extract_punch(title: str = None, facts=None):
+    """펀치 텍스트("9 BRAINS!") 추출: 제목 숫자+명사 → 실패 시 facts → 둘 다 없으면 None(스킵).
 
-    유명 우주/동물 숏츠 채널 벤치마크: 첫 0.5s 안에 화면 큰 글씨가 등장해야
-    feed에서 손가락 스크롤이 멈춤. 기존 상단 작은 hook으로는 부족.
-
-    구성:
-    - "WAIT —" punch word 0~0.3s (화면 중앙, 노랑, 240pt)
-    - 토픽명 BIG (240→200pt 줌인) 0.3~duration
+    빈/이상한 펀치를 화면에 내보내지 않기 위해 숫자 근거가 없으면 None을 반환한다.
     """
     import re as _re
-    import random as _rnd
-    layers = []
-    # 1) Punch word — 제목 핵심 숫자 추출 ("146 MOONS!" = 정보 갭), 없으면 punch 로테이션
-    punch_text = None
-    if title:
-        _m = _re.search(r"(\d[\d,]*)\s+([A-Za-z][A-Za-z\-]*)", _strip_emoji(title))
-        if _m:
-            punch_text = f"{_m.group(1)} {_m.group(2).upper()}!"
-    if not punch_text:
-        punch_text = _rnd.choice(["WAIT —", "NO WAY", "HOLD ON", "WATCH THIS"])
-    _psize = 200
-    _fp = _find_font(bold=True)
-    while _psize >= 96:
-        _pf = ImageFont.truetype(_fp, _psize) if _fp else ImageFont.load_default()
-        _tmp = Image.new("RGBA", (10, 10), (0, 0, 0, 0))
-        if ImageDraw.Draw(_tmp).textlength(punch_text, font=_pf) <= VIDEO_WIDTH - 120:
-            break
-        _psize -= 12
-    punch_arr = _make_text_image(
-        punch_text,
-        font_size=_psize,
-        max_width=VIDEO_WIDTH - 80,
-        fg=(255, 220, 0, 255),
-        stroke_color=(0, 0, 0, 255),
-        stroke_width=8,
-    )
-    if punch_arr.shape[0] > 1:
-        punch = ImageClip(punch_arr, transparent=True).set_duration(0.7).set_start(0)
-        punch = punch.set_position(("center", int(VIDEO_HEIGHT * 0.30)))
-        punch = punch.crossfadein(0.05).crossfadeout(0.25)
-        layers.append(punch)
+    pat = r"(\d[\d,\.]*)\s+([A-Za-z][A-Za-z\-]*)"
+    for src in ([title] if title else []) + list(facts or []):
+        if not src:
+            continue
+        m = _re.search(pat, _strip_emoji(src))
+        if m:
+            num = m.group(1).rstrip(".")
+            word = m.group(2).upper()
+            if word.lower() in {"the", "and", "of", "a", "an", "to", "in", "for"}:
+                continue
+            return f"{num} {word}!"
+    return None
 
-    # 2) Topic BIG name (zoom-in pop)
+
+def _make_big_hook_intro(topic_text: str, duration: float = 2.4, title: str = None, facts=None):
+    """첫 2~3초 화면 가득 BIG HOOK — 스크롤 멈춤 유도.
+
+    구성:
+    - punch 0~0.7s (화면 중앙 y=0.30, 노랑): 제목→facts에서 핵심 숫자 추출. 숫자 없으면 스킵.
+    - 토픽명 BIG (자동축소, 줌인 pop) 0.3~duration, y=0.42. 폭은 안전영역(CAPTION_MAX_W) 이내.
+    hook 자막은 호출 측에서 BIG_HOOK_END(=duration) 이후에 시작 → 펀치/자막 겹침 없음.
+    """
+    layers = []
+    # punch: 제목/facts의 숫자+명사. 근거 없으면 스킵(빈 펀치 금지, 견고화)
+    punch_text = _extract_punch(title, facts)
+    if punch_text:
+        _psize = 200
+        _fp = _find_font(bold=True)
+        while _psize >= 80:
+            _pf = ImageFont.truetype(_fp, _psize) if _fp else ImageFont.load_default()
+            _tmp = Image.new("RGBA", (10, 10), (0, 0, 0, 0))
+            if ImageDraw.Draw(_tmp).textlength(punch_text, font=_pf) <= CAPTION_WRAP_W:
+                break
+            _psize -= 12
+        punch_arr = _make_text_image(
+            punch_text, font_size=_psize, max_width=CAPTION_MAX_W,
+            fg=(255, 220, 0, 255), stroke_color=(0, 0, 0, 255), stroke_width=8,
+        )
+        if punch_arr.shape[0] > 1:
+            punch = ImageClip(punch_arr, transparent=True).set_duration(0.7).set_start(0)
+            punch = punch.set_position(("center", int(VIDEO_HEIGHT * 0.30)))
+            punch = punch.crossfadein(0.05).crossfadeout(0.25)
+            layers.append(punch)
+
     topic_clean = _strip_emoji(topic_text or "")
     if topic_clean:
-        # 1줄에 들어가게 폰트 자동축소 (220→80). 2026-05-07 사용자 신고: 긴 토픽명이
-        # 못나게 잘림 → 1줄 전제 + 더 적극적 축소.
-        size = 220
+        # 1줄에 들어가게 폰트 자동축소. 폭은 안전영역 이내.
+        size = 200
         font_path = _find_font(bold=True)
-        while size >= 80:
+        while size >= 64:
             font = ImageFont.truetype(font_path, size) if font_path else ImageFont.load_default()
-            tmp = Image.new("RGBA", (VIDEO_WIDTH - 80, 100), (0, 0, 0, 0))
+            tmp = Image.new("RGBA", (CAPTION_MAX_W, 100), (0, 0, 0, 0))
             td = ImageDraw.Draw(tmp)
-            text_w = td.textlength(topic_clean, font=font)
-            if text_w <= VIDEO_WIDTH - 120:
+            if td.textlength(topic_clean, font=font) <= CAPTION_WRAP_W:
                 break
             size -= 12
         topic_arr = _make_text_image(
-            topic_clean,
-            font_size=size,
-            max_width=VIDEO_WIDTH - 60,
-            fg=(255, 255, 255, 255),
-            stroke_color=(0, 0, 0, 255),
-            stroke_width=8,
+            topic_clean, font_size=size, max_width=CAPTION_MAX_W,
+            fg=(255, 255, 255, 255), stroke_color=(0, 0, 0, 255), stroke_width=8,
         )
         if topic_arr.shape[0] > 1:
             topic_clip = ImageClip(topic_arr, transparent=True).set_duration(duration - 0.3).set_start(0.3)
             topic_clip = topic_clip.set_position(("center", int(VIDEO_HEIGHT * 0.42)))
-            # 줌인 pop — 1.4 → 1.0
             topic_clip = topic_clip.resize(lambda t: 1.4 - 0.4 * min(1.0, t / 0.25))
             topic_clip = topic_clip.crossfadein(0.1).crossfadeout(0.4)
             layers.append(topic_clip)
@@ -395,12 +424,15 @@ def _make_big_hook_intro(topic_text: str, duration: float = 2.4, title: str = No
 
 
 def _make_brand_clip(duration: float, text="@SpaceTrivia60s"):
-    arr = _make_text_image(text, font_size=44, max_width=VIDEO_WIDTH - 100,
-                           fg=(255, 255, 255, 200))
+    # 워터마크는 상단 topic 라벨(y0.10)과 punch 영역(y0.30) 사이 빈 공간(y0.24)에 둔다 —
+    # 중앙 자막(y0.60)/CTA(y0.42~0.68)와 절대 안 겹치고, topic 라벨과도 충분히 벌린다.
+    # 레이어 순서상 자막보다 먼저 그려 자막이 항상 위로 오게(compose에서 처리).
+    arr = _make_text_image(text, font_size=38, max_width=CAPTION_MAX_W,
+                           fg=(255, 255, 255, 185))
     if arr.shape[0] <= 1:
         return None
     clip = ImageClip(arr, transparent=True).set_duration(duration)
-    y = int(VIDEO_HEIGHT * 0.92)
+    y = int(VIDEO_HEIGHT * 0.24)
     clip = clip.set_position(("center", y))
     return clip
 
@@ -418,11 +450,11 @@ def _make_cta_card_clip(start: float, duration: float):
     if duration <= 0:
         return []
     layers = []
-    # 큰 메인 텍스트
+    # 큰 메인 텍스트 (안전영역 폭 이내, 1줄 유지 위해 120px)
     big_arr = _make_text_image(
         "FOLLOW + LIKE",
-        font_size=140,
-        max_width=VIDEO_WIDTH - 60,
+        font_size=120,
+        max_width=CAPTION_MAX_W,
         fg=(255, 220, 0, 255),
         stroke_color=(0, 0, 0, 255),
         stroke_width=6,
@@ -435,8 +467,8 @@ def _make_cta_card_clip(start: float, duration: float):
     # 보조 텍스트
     small_arr = _make_text_image(
         "for more space facts",
-        font_size=64,
-        max_width=VIDEO_WIDTH - 80,
+        font_size=60,
+        max_width=CAPTION_MAX_W,
         fg=(255, 255, 255, 240),
         stroke_color=(0, 0, 0, 220),
         stroke_width=3,
@@ -502,12 +534,17 @@ def compose(
     end_pad: float = 0.6,
     bgm_path: str = None,
     title: str = None,
-) -> str:
+    qa_frame_times: list = None,
+):
     """tts_lines: [{"text", "path", "duration"}] (intro + fact x3 + outro 순서)
     bg_paths: Pexels mp4 경로 리스트 (3개 권장)
 
-    리턴: output_path
+    리턴: output_path (일반). qa_frame_times 주면 전체 인코딩 없이 그 시점 프레임 PNG만
+    저장하고 [(t, png), ...]를 반환(렌더 QA 전용, 프로덕션 동작 불변).
     """
+    if not bg_paths:
+        raise ValueError("compose: bg_paths가 비었음 — 검증 통과 배경 0개(발행 불가)")
+
     # 1) 오디오 timeline 계산
     timeline = []
     cursor = 0.0
@@ -527,13 +564,13 @@ def compose(
         cursor = end + pad_between
 
     raw_total = cursor - pad_between + end_pad
-    # v3 영상 길이: 항상 60s 가까이 강제 (CTA 자리 보장).
-    # 음성 짧으면 BGM/배경으로 채움. 음성 길면 잘림 (어쩔 수 없음, prompt에서 길이 제어 시도).
-    target_dur = float(VIDEO_DURATION_SEC) - 0.3  # 59.7s
+    # v3: 항상 60s 가까이 강제 (CTA 자리 보장 + Shorts retention 안정).
+    # 음성 짧으면 BGM/배경으로 채움. 음성 길면 outro 잘림 (prompt에서 facts 단어수 제한).
+    target_dur = float(VIDEO_DURATION_SEC) - 0.3
     total_dur = target_dur
     if raw_total > target_dur:
-        log.warning(f"음성 {raw_total:.2f}s > 영상 {target_dur:.2f}s — outro 일부 잘림 가능 (facts 단어수 prompt 조정 검토)")
-    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (강제 60s, CTA 자리 보장) lines={len(timeline)}")
+        log.warning(f"음성 {raw_total:.2f}s > 영상 {target_dur:.2f}s — outro 일부 잘림 가능")
+    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (강제 60s) lines={len(timeline)}")
 
     # 라인이 잘리는 경우, 마지막 라인 끝을 total_dur로 클램프
     for w in timeline:
@@ -595,21 +632,25 @@ def compose(
     # 시각 jolt (첫 0.5초 화이트 플래시 — 스크롤 멈춤 유도)
     layers.append(_make_jolt_flash(0.5))
 
-    # 첫 2.4초 BIG HOOK — 화면 중앙 가득 "WAIT —" + 토픽명 (유명 채널 벤치마크)
-    # 기존 상단 작은 hook으로는 0.5초 안에 스크롤 멈춤 유도 부족.
-    # 토픽명은 "Saturn • Trivia" 같은 hook 문자열에서 • 앞부분 추출, 없으면 hook 통째로 사용.
+    # 첫 2.4초 BIG HOOK — 화면 중앙 가득 punch(제목/facts 핵심 숫자 "9 BRAINS!") + 토픽명
     big_hook_text = hook.split("•")[0].strip() if "•" in hook else hook
-    layers.extend(_make_big_hook_intro(big_hook_text, duration=2.4, title=title))
+    _fact_texts = [ln.get("text", "") for ln in timeline[1:-1]] if len(timeline) >= 3 else []
+    layers.extend(_make_big_hook_intro(big_hook_text, duration=2.4, title=title, facts=_fact_texts))
 
     hook_clip = _make_hook_clip(hook, total_dur)
     if hook_clip is not None:
         layers.append(hook_clip)
 
-    # CTA 카드 시각 — v5: 음성 outro 시작과 동시에 CTA 글자 표시 (사용자 요청: 자막 음성 싱크).
-    # outro 음성 = timeline 마지막. cta_start = outro_voice_start.
+    # 브랜드 워터마크(상단) — 자막/CTA보다 **먼저** 그려서 자막이 항상 위로 오게 (겹침 시 자막 우선)
+    brand = _make_brand_clip(total_dur)
+    if brand is not None:
+        layers.append(brand)
+
+    # CTA 카드 시각 — v5: 음성 outro 시작과 동시에 CTA 글자 표시 (사용자 신고: 자막 음성 싱크 맞춰).
+    # outro 음성은 timeline 마지막 라인. cta_start = outro_voice_start (자막=음성 동시 시작).
     last_tts_start = timeline[-1]["start"] if timeline else (total_dur - 4.0)
     last_tts_end = timeline[-1]["end"] if timeline else total_dur
-    cta_start = max(last_tts_start, total_dur - 7.0)  # 최소 7초 자리 보장
+    cta_start = max(last_tts_start, total_dur - 7.0)  # 최소 7초 자리 보장 (CTA 보이는 시간)
     cta_dur = max(0.0, total_dur - cta_start)
     if cta_dur < 1.0:
         cta_dur = 0.0
@@ -633,7 +674,6 @@ def compose(
         line_end = min(w["end"], cap_cutoff)
         words = w.get("words") or []
         if words:
-            # phrases도 cap_cutoff 이하로 잘라냄. BIG HOOK 구간(0~2.4s) phrase는 skip.
             phrases = _split_into_phrases(words, line_start, line_end)
             for ph in phrases:
                 ph_end = min(ph["end"], cap_cutoff)
@@ -643,7 +683,6 @@ def compose(
                 if ph["start"] < BIG_HOOK_END:
                     if ph_end <= BIG_HOOK_END:
                         continue
-                    # phrase 끝이 BIG HOOK 이후로 이어지면 BIG HOOK 끝부터 표시
                     ph_start_clipped = BIG_HOOK_END
                     if ph_end <= ph_start_clipped:
                         continue
@@ -653,7 +692,6 @@ def compose(
                 if clip is not None:
                     layers.append(clip)
         else:
-            # words 없을 때 — line_start를 BIG HOOK 끝 이후로 클램프
             line_start_clipped = max(line_start, BIG_HOOK_END if line_start < BIG_HOOK_END else line_start)
             if line_end <= line_start_clipped:
                 continue
@@ -661,14 +699,29 @@ def compose(
             if cap:
                 layers.extend([c for c in cap if c is not None])
 
-    brand = _make_brand_clip(total_dur)
-    if brand is not None:
-        layers.append(brand)
-
     layers.extend(_make_cta_card_clip(cta_start, cta_dur))
 
     final = CompositeVideoClip(layers, size=(VIDEO_WIDTH, VIDEO_HEIGHT)).set_duration(total_dur)
     final = final.set_audio(full_audio)
+
+    # 렌더 QA: 전체 인코딩 없이 지정 시점 프레임만 저장 (실제 레이어 스택 그대로).
+    # 라벨 밀림 방지: 요청 시점마다 항상 1개 반환 (실패 시 png=None).
+    if qa_frame_times is not None:
+        saved = []
+        for t in qa_frame_times:
+            tt = max(0.0, min(float(t), total_dur - 0.05))
+            fp = f"{output_path}.qa_{tt:.2f}.png"
+            try:
+                final.save_frame(fp, t=tt)
+                saved.append((tt, fp if os.path.exists(fp) else None))
+            except Exception as e:
+                log.warning(f"QA save_frame 실패 t={tt}: {e}")
+                saved.append((tt, None))
+        final.close()
+        bg_clip.close()
+        for ac in audio_clips:
+            ac.close()
+        return saved
 
     final.write_videofile(
         output_path,

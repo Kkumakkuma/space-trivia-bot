@@ -270,9 +270,51 @@ def _finalize_fact_keywords(meta: dict, generic: list = None) -> dict:
     return meta
 
 
+def _strip_hook_deterministic(hook, max_words=12):
+    """API 없이 결정적으로 hook 정리: 'Did you know (that)' 시작 제거 + 첫 글자 대문자 + 단어수 컷."""
+    h = (hook or "").strip()
+    h = re.sub(r"^\s*did you know\s*(that\s+)?", "", h, flags=re.I).strip()
+    h = re.sub(r"^\s*(wait until you see|watch this|this is why)\b[,:]?\s*", "", h, flags=re.I).strip()
+    if h:
+        h = h[0].upper() + h[1:]
+    words = h.split()
+    if len(words) > max_words:
+        words = words[:max_words]
+    out = " ".join(words)
+    return out or (hook or "").strip()
+
+
+def _enforce_hook_length(display, single, hook, max_words=12):
+    """(5) hook(=intro 나레이션) 코드 강제: ①≤max_words ②'Did you know' 시작 금지 — **분리 검사**.
+    문제 있으면 GPT rewrite 시도 → 실패/무키 시 결정적 제거(_strip_hook_deterministic)."""
+    h = (hook or "").strip()
+    too_long = len(h.split()) > max_words
+    banned_start = h.lower().startswith("did you know")
+    if not too_long and not banned_start:
+        return h
+    if OPENAI_API_KEY:
+        try:
+            from openai import OpenAI
+            client = OpenAI(api_key=OPENAI_API_KEY)
+            prompt = (f"Rewrite this opening hook for a 60-second Shorts about {display} to "
+                      f"{max_words} words or FEWER. Keep the key number or shocking comparison. "
+                      f"It MUST NOT start with \"Did you know\" (or \"Wait until you see\"/\"Watch this\"). "
+                      f"Return ONLY the hook line, no quotes.\n\nHook: {h}")
+            resp = client.chat.completions.create(
+                model=META_MODEL, messages=[{"role": "user", "content": prompt}],
+                temperature=0.3, max_tokens=40)
+            out = (resp.choices[0].message.content or "").strip().strip('"').splitlines()[0].strip()
+            if out and len(out.split()) <= max_words and not out.lower().startswith("did you know"):
+                log.info(f"hook 교정: len={len(h.split())}→{len(out.split())}, banned_start={banned_start}")
+                return out
+        except Exception as e:
+            log.warning(f"hook GPT 교정 실패 → 결정적 제거: {e}")
+    return _strip_hook_deterministic(h, max_words)
+
+
 def _apply_grounded_factcheck(meta: dict) -> dict:
     """SOURCE(위키, 도메인 맥락+category) 확보 → 적대적 팩트체크 → meta.intro/facts 갱신.
-    fact_keywords 확정은 여기서 하지 않고 파이프라인 최종 _finalize_fact_keywords에서 처리(F).
+    hook(intro)은 ≤12단어 코드 강제. fact_keywords 확정은 파이프라인 최종 _finalize_fact_keywords에서(F).
     실패 시 원본 유지."""
     if not OPENAI_API_KEY:
         return meta
@@ -290,6 +332,7 @@ def _apply_grounded_factcheck(meta: dict) -> dict:
         log.info("grounding: on-topic SOURCE 없음 → 보수 모드(established consensus) 팩트체크 진행")
     hook, facts = adversarial_factcheck(display, single, meta.get("intro", ""),
                                         meta.get("facts", []), src)
+    hook = _enforce_hook_length(display, single, hook)  # (5) ≤12단어 강제
     if hook:
         meta["intro"] = hook
     if facts:
