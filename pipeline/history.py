@@ -173,6 +173,129 @@ def recent_clip_ids(hist: dict, window_days: float, now: datetime = None) -> set
     return out
 
 
+def recent_facts(hist: dict, window_days: float, limit: int = 40,
+                 now: datetime = None) -> list:
+    """window_days 내에 **전 토픽에서** 사용된 fact 요약 리스트 (최신 우선, 최대 limit개).
+
+    기존 _differentiate_content는 같은 topic의 과거 facts만 봤다. 그래서 topic이 달라도
+    같은 사실을 반복하는 것(예: 목성 편과 토성 편이 둘 다 '고리 소멸')을 못 막았다.
+    """
+    now = now or _today()
+    cutoff = now - timedelta(days=float(window_days))
+    dated = []
+    for entries in (hist or {}).values():
+        for e in entries or []:
+            d = _parse_date(e.get("date", ""))
+            if d and d >= cutoff:
+                for f in e.get("facts", []) or []:
+                    if f:
+                        dated.append((d, f))
+    dated.sort(key=lambda x: x[0], reverse=True)
+    return [f for _, f in dated[:limit]]
+
+
+def recent_titles(hist: dict, count: int = 12, now: datetime = None) -> list:
+    """전역 직전 count편의 제목 (최신 우선). 제목 템플릿 반복 차단용."""
+    entries = _sorted_entries(hist)
+    titles = [e.get("title", "") for e in entries if e.get("title")]
+    return list(reversed(titles[-count:])) if count > 0 else []
+
+
+def recent_titled_topics(hist: dict, count: int = 12) -> list:
+    """전역 직전 count편의 (title, topic_key) 쌍 (최신 우선).
+
+    지문을 계산할 때 그 제목의 주제어를 빼야 '대상만 갈아끼운' 템플릿이 같은 지문이 된다.
+    """
+    rows = []
+    for topic, entries in (hist or {}).items():
+        for e in entries or []:
+            d = _parse_date(e.get("date", ""))
+            if d and e.get("title"):
+                rows.append((d, e["title"], topic))
+    rows.sort(key=lambda x: x[0], reverse=True)
+    return [(t, k) for _, t, k in rows[:count]]
+
+
+_TEMPLATE_STOP = {"a", "an", "the"}
+
+
+def _stem(w: str) -> str:
+    """아주 가벼운 복수→단수 어간화. fox/foxes, comet/comets, city/cities를 같은 어간으로."""
+    w = (w or "").lower()
+    if len(w) > 4 and w.endswith("ies"):
+        return w[:-3] + "y"
+    if len(w) > 3 and w.endswith("es"):
+        return w[:-2]
+    if len(w) > 2 and w.endswith("s"):
+        return w[:-1]
+    return w
+
+
+def _subject_stems(*subjects) -> set:
+    """주제어 어간 집합 (topic_key / display / single 에서 추출)."""
+    out = set()
+    for s in subjects:
+        for w in _WORD_RE.findall(str(s or "").replace("_", " ")):
+            out.add(_stem(w))
+    return out
+
+
+def title_template_sig(title: str, n: int = 3, subjects=()) -> str:
+    """제목의 템플릿 지문 = 주제어를 제거한 뒤 앞 n개 의미 단어(어간, 소문자).
+
+    "You Won't Believe What Foxes Do at Night" / "...What Comets Do at Night" 처럼
+    대상만 갈아끼운 양산 제목을 같은 지문으로 묶어 잡아낸다. 유튜브 2025-07
+    inauthentic content 정책(템플릿 양산)이 실제 수익화 리스크라 코드로 차단한다.
+
+    주제어를 빼는 이유(codex 지적, 2026-07-10): 앞 3단어만 보면
+    "What Foxes Actually Do" 와 "What Comets Actually Do" 의 지문이 달라져 미탐이 난다.
+    어간으로 비교해 fox/foxes 같은 불규칙 복수까지 주제어로 제거한다.
+    """
+    subj = _subject_stems(*subjects) if subjects else set()
+    sig = []
+    for w in _WORD_RE.findall(title or ""):
+        st = _stem(w)
+        if st in _TEMPLATE_STOP or st in subj:
+            continue
+        sig.append(st)
+    return " ".join(sig[:n])
+
+
+def title_template_repeats(title: str, prev_titles: list, n: int = 3,
+                           subjects=(), prev_subjects=None) -> bool:
+    """title의 템플릿 지문이 최근 제목 중 하나와 같으면 True.
+
+    prev_titles가 (title, topic_key) 튜플 리스트면 각 제목의 주제어를 자동으로 뺀다.
+    문자열 리스트면 prev_subjects(같은 길이)로 주제어를 넘길 수 있다.
+    """
+    s = title_template_sig(title, n, subjects)
+    if not s:
+        return False
+    for i, t in enumerate(prev_titles or []):
+        if isinstance(t, (tuple, list)):
+            pt, psub = t[0], (t[1],)
+        else:
+            pt = t
+            psub = (prev_subjects[i],) if prev_subjects and i < len(prev_subjects) else ()
+        if title_template_sig(pt, n, psub) == s:
+            return True
+    return False
+
+
+def facts_repeat_globally(new_facts: list, prev_facts: list,
+                          threshold: float = 0.45, shared_min: int = 4) -> list:
+    """새 facts 중 과거 전역 facts와 겹치는 인덱스 목록.
+
+    프롬프트로 "반복하지 마라"만 넣으면 모델이 무시할 때 막을 방법이 없다(codex 지적).
+    최종 facts를 코드로 대조해 겹치는 것을 잡아낸다.
+    """
+    hits = []
+    for i, nf in enumerate(new_facts or []):
+        if facts_too_similar([nf], prev_facts, threshold=threshold, shared_min=shared_min):
+            hits.append(i)
+    return hits
+
+
 def _sorted_entries(hist: dict) -> list:
     """모든 엔트리를 날짜 오름차순으로 (date 파싱 가능한 것만)."""
     all_e = []

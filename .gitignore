@@ -12,8 +12,10 @@ credentials/
 output/
 *.mp4
 
-# 동물 사용 기록 (서버에서만 의미 있음, 로컬 테스트시 누적 X)
-used_animals.json
+# 발행 이력은 리포가 정본이다 (2026-07-10).
+# 과거엔 .gitignore + Actions 캐시에만 뒀는데, 캐시가 날아가면 이력이 리셋돼
+# GPT가 인기 토픽(토성·목성·펭귄)을 반복 픽했다. 실측: 우주 60편이 26개 주제로 만들어짐.
+# used_animals.json / content_history.json / used_comments.json 은 커밋한다.
 
 # 빌드
 build/

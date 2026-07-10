@@ -11,6 +11,11 @@ import re
 
 from config import ANIMALS, META_MODEL, OPENAI_API_KEY
 
+try:  # 모델 3분할 (2026-07-10). 구버전 config 호환을 위해 폴백.
+    from config import SCRIPT_MODEL, FACTCHECK_MODEL
+except ImportError:  # pragma: no cover
+    SCRIPT_MODEL = FACTCHECK_MODEL = META_MODEL
+
 log = logging.getLogger("spacebot.topics")
 
 # === Angle 로테이션 (우주 도메인) — 같은 topic 재등장 시/전역 다양성 확보 ===
@@ -111,7 +116,16 @@ def adversarial_factcheck(display, single, hook, facts, source_text, max_rounds=
     각 항목을 supported / plausible / false_or_exaggerated로 판정하고 SOURCE와 대조.
     false_or_exaggerated 항목만 SOURCE 근거로 교정 재생성(최대 max_rounds회) 후,
     최종 판정 1회로 '그래도 false로 남는' fact만 안전 fact로 교체 → 과잉 교체 방지 + 허위 자막 차단.
-    (확신할 때만 false, 애매하면 plausible — SOURCE에 없어도 주류 과학이면 통과)
+
+    2026-07-10 강화 — 판정 기준을 SOURCE 유무로 분기한다.
+    - SOURCE 있음: **SOURCE에 없는 구체 수치·최상급·순위는 false로 판정**한다.
+      (기존 "애매하면 plausible"이 환각 수치의 통과 경로였다. 토성 고리 소멸 100M vs 300M년
+       모순이 이 구멍으로 나갔다.) false여도 교정 라운드에서 SOURCE 값으로 고쳐 쓰므로
+      발행이 막히지 않는다. 끝까지 남은 것만 안전 fact로 교체.
+    - SOURCE 없음: 근거가 없으니 과잉 탈락을 피해 기존 보수 모드 유지(확신할 때만 false).
+      단 SOURCE 없는 토픽은 애초에 pick 단계에서 재픽되므로 드문 경로다.
+
+    검증 모델은 FACTCHECK_MODEL — 생성(SCRIPT_MODEL)과 다른 계열이라 자기합치 편향이 준다.
     반환: (hook, facts). OPENAI 키 없으면 원본 그대로.
     """
     if not OPENAI_API_KEY:
@@ -126,6 +140,21 @@ def adversarial_factcheck(display, single, hook, facts, source_text, max_rounds=
         "(No source text available — rely ONLY on well-established, uncontroversial "
         "scientific consensus and be extra conservative.)"
     )
+    # 판정 기준: SOURCE가 있으면 엄격(근거 없는 수치 = false), 없으면 보수(확신할 때만 false).
+    if src:
+        rubric = """- "supported": the claim — INCLUDING every number in it — is directly verifiable in SOURCE.
+- "plausible": a QUALITATIVE claim (no specific number, no superlative, no ranking) that is uncontroversial textbook science and is not contradicted by SOURCE.
+- "false_or_exaggerated": mark whenever ANY of these hold:
+  (a) the claim contradicts SOURCE or scientific consensus;
+  (b) it states a SPECIFIC NUMBER, measurement, count, age, speed, or percentage that does NOT appear in SOURCE and that you cannot verify — an unverifiable precise number is the single most common way this channel has published false claims, so treat it as false, NOT plausible;
+  (c) it asserts a superlative or ranking ("the largest", "the only", "the smartest") that SOURCE does not state;
+  (d) it repeats a debunked myth;
+  (e) it uses empty hype ("scientists were shocked", "will blow your mind", "more interesting than people think").
+A believable-sounding number you cannot find in SOURCE is FALSE, not plausible. Do not give it the benefit of the doubt."""
+    else:
+        rubric = """- "supported": uncontroversial established consensus.
+- "plausible": reasonable mainstream science. USE THIS (not false) whenever a claim is believable — you have no SOURCE to check against, so do not over-reject.
+- "false_or_exaggerated": mark ONLY when you are CONFIDENT the claim is wrong — it contradicts consensus, cites a clearly wrong or outdated number, repeats a debunked myth, states a disputed ranking or superlative as settled fact, or uses empty hype ("scientists were shocked", "will blow your mind"). When in doubt here, choose "plausible"."""
 
     def _judge(cur_hook, cur_facts):
         """GPT 1회: 각 항목 판정 + false 항목 교정본 반환. (verdicts, hook, facts)."""
@@ -139,11 +168,10 @@ SOURCE TEXT (primary reference, from Wikipedia):
 {src_block}
 
 Judge EACH item below as exactly one of:
-- "supported": directly verifiable in SOURCE or uncontroversial established consensus.
-- "plausible": reasonable mainstream science that is NOT contradicted by SOURCE. USE THIS (not false) whenever a claim is believable but simply not mentioned in SOURCE.
-- "false_or_exaggerated": mark ONLY when you are CONFIDENT the claim is wrong — it contradicts SOURCE/consensus, cites a clearly wrong or outdated number, repeats a debunked myth, states a disputed ranking or superlative as settled fact, or uses empty hype ("scientists were shocked", "will blow your mind", "more interesting than people think"). When in doubt, choose "plausible", NEVER "false_or_exaggerated".
+{rubric}
 
 For EVERY item judged "false_or_exaggerated", REWRITE it to be accurate and supported while staying engaging:
+- Replace any unverifiable number with a value you can point to in SOURCE. If SOURCE has no number for that claim, drop the number and make a true qualitative statement instead.
 - Volatile counts that change with new discoveries (moon counts, confirmed exoplanets, population estimates, species counts, record holders): use conservative phrasing like "more than N" or "at least N" with the SOURCE value; never assert a precise disputed count as absolute.
 - Do NOT invent numbers you are unsure of; a true qualitative statement beats a false precise one.
 - Each fact MUST stay 28-36 words. The hook MUST be 12 words or fewer, punchy, and NEVER start with "Did you know".
@@ -155,7 +183,7 @@ ITEMS:
 Output STRICT JSON:
 {{"verdicts": {{{verdict_keys}}}, "hook": "<corrected or unchanged>", "facts": [{facts_slot}]}}"""
         resp = client.chat.completions.create(
-            model=META_MODEL,
+            model=FACTCHECK_MODEL,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"},
             temperature=0.0,
@@ -312,22 +340,229 @@ def _enforce_hook_length(display, single, hook, max_words=12):
     return _strip_hook_deterministic(h, max_words)
 
 
-def _apply_grounded_factcheck(meta: dict) -> dict:
+def _retitle_unique(display: str, single: str, bad_title: str, prev_titles: list,
+                    tries: int = 3) -> str:
+    """제목이 최근 템플릿의 복제본일 때 구조가 다른 제목으로 재생성.
+
+    prev_titles는 (title, topic_key) 튜플 리스트다 — 지문 계산 시 각 제목의 주제어를 뺀다.
+    GPT가 새 제목도 같은 템플릿을 쓰면 최대 tries회 재시도하고, 끝내 실패하면
+    결정적(deterministic) 대체 제목을 만든다 — 절대 양산 제목을 그대로 두지 않는다.
+    """
+    from pipeline import history as _hist
+    subj = (single, display)
+    prev_str = [(t[0] if isinstance(t, (tuple, list)) else t) for t in prev_titles]
+    # 후보 검사용: 기존 prev + (bad_title, 이번 주제) 를 튜플로
+    check_prev = list(prev_titles) + [(bad_title, single)]
+    if OPENAI_API_KEY:
+        from openai import OpenAI
+        client = OpenAI(api_key=OPENAI_API_KEY)
+        banned = "\n".join("- " + t for t in prev_str[:10])
+        for _ in range(tries):
+            try:
+                r = client.chat.completions.create(
+                    model=SCRIPT_MODEL,
+                    messages=[{"role": "user", "content": f"""Write ONE YouTube Shorts title about {display} ({single}).
+
+It must NOT reuse the sentence structure of any of these recent titles (only the subject was swapped in them — that is exactly what to avoid):
+{banned}
+Also rejected for reusing a template: "{bad_title}"
+
+Rules: max 70 characters, include "{single}" or "{display}", create a curiosity gap, no emoji, do not start with "You Won't Believe" or "Wait Until You See" or "Did You Know". Use a sentence structure that none of the titles above use.
+
+Output STRICT JSON: {{"title": "..."}}"""}],
+                    response_format={"type": "json_object"},
+                    temperature=1.0,
+                    max_tokens=120,
+                )
+                t = str(json.loads(r.choices[0].message.content).get("title", "")).strip()[:95]
+                if t and not _hist.title_template_repeats(t, check_prev, subjects=subj):
+                    return t
+            except Exception as e:
+                log.warning(f"제목 재생성 실패: {e}")
+                break
+    # 결정적 폴백 — 구조가 서로 다른 4종. 최근 지문과 안 겹치는 첫 번째 채택.
+    for cand in (f"{display}: The Part Nobody Mentions",
+                 f"What {display} Actually Do When No One Looks",
+                 f"The {single.title()} Fact That Changed My Mind",
+                 f"Nobody Talks About This {single.title()} Habit"):
+        if not _hist.title_template_repeats(cand, check_prev, subjects=subj):
+            return cand[:95]
+    return f"{display}: The Part Nobody Mentions"[:95]
+
+
+def fetch_source_for(display: str, single: str, category: str = "") -> str:
+    """토픽의 위키 SOURCE 확보. 실패 시 "" (호출 측이 재픽 판단)."""
+    context = _DOMAIN_CONTEXT.get(_content_domain(), "")
+    try:
+        from pipeline import grounding
+        return grounding.fetch_source(display, single, context=context, category=category)
+    except Exception as e:
+        log.warning(f"grounding fetch 예외: {e}")
+        return ""
+
+
+def reground_facts(meta: dict, source_text: str) -> dict:
+    """SOURCE를 근거로 facts/hook을 다시 쓴다 (생성 → 검증 사이의 새 단계).
+
+    기존 파이프라인은 GPT가 근거 없이 '충격적인 숫자'를 먼저 창작하고 나중에 팩트체크로
+    걸러내는 구조라, 팩트체커가 놓치면 환각 수치가 그대로 발행됐다. 여기서 SOURCE를 앞에
+    두고 "SOURCE에서 인용 가능한 사실만" 쓰게 해 창작 여지를 없앤다.
+
+    SOURCE가 없거나 호출 실패면 meta 원본 유지(발행 계속) — 뒤의 팩트체크가 여전히 방어한다.
+    """
+    src = (source_text or "").strip()
+    if not OPENAI_API_KEY or not src:
+        return meta
+    facts = [f for f in (meta.get("facts") or []) if str(f).strip()]
+    if not facts:
+        return meta
+    display, single = meta.get("display", ""), meta.get("single", "")
+    n = len(facts)
+    draft = "\n".join(f"{i+1}. {f}" for i, f in enumerate(facts))
+    prompt = f"""You are writing the script for a 60-second YouTube Shorts about {display} ({single}).
+
+SOURCE TEXT (Wikipedia — the ONLY place you may take facts and numbers from):
+{src}
+
+Below is a DRAFT written WITHOUT the source. It may contain invented numbers.
+DRAFT:
+{draft}
+
+Rewrite it into {n} final facts obeying ALL of these:
+- Every fact must be supported by SOURCE. **Every number, measurement, count, age, speed and percentage MUST appear in SOURCE.** If the draft has a number that is not in SOURCE, either replace it with the correct value from SOURCE or remove the number and state the true qualitative fact.
+- Do NOT invent superlatives ("the largest", "the only", "the smartest") or exclusivity claims ("only found in X", "the sole species") unless SOURCE states them in those words. If SOURCE hedges ("mostly", "predominantly"), you must hedge too.
+- Keep the facts genuinely interesting: pick the most surprising things SOURCE actually says. Prefer a true surprising fact over a fabricated shocking one.
+- **Each fact MUST be 28-36 words. Count the words before you answer.** If a SOURCE-backed fact is short, expand it with more true detail FROM SOURCE (context, comparison, consequence) — never pad with invented information.
+- All numeric claims across the {n} facts MUST agree with each other and with SOURCE.
+- For counts that change with new discoveries, use "more than N" / "at least N" with SOURCE's value.
+- No hype phrases ("will blow your mind", "scientists were shocked", "more interesting than people think").
+- hook: 12 words or fewer, a concrete SOURCE-backed number or comparison, never starts with "Did you know", and subject to the same no-superlative / no-exclusivity rule.
+
+Output STRICT JSON: {{"hook": "...", "facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=OPENAI_API_KEY)
+
+        def _call(extra: str = ""):
+            r = client.chat.completions.create(
+                model=SCRIPT_MODEL,
+                messages=[{"role": "user", "content": prompt + extra}],
+                response_format={"type": "json_object"},
+                temperature=0.4,  # 근거 재작성이라 창작보다 충실도 우선
+                max_tokens=1200,
+            )
+            d = json.loads(r.choices[0].message.content)
+            return d, [str(f).strip() for f in (d.get("facts") or []) if str(f).strip()]
+
+        d, nf = _call()
+        # 길이 보정: reground가 SOURCE에 충실해지면서 짧아지는 경향이 있다(실측 25~26단어).
+        # 짧으면 TTS가 줄어 영상이 50초 밑으로 떨어지므로 SOURCE 범위 안에서 1회 확장 요청.
+        if len(nf) == n and any(len(f.split()) < 27 for f in nf):
+            short = [i + 1 for i, f in enumerate(nf) if len(f.split()) < 27]
+            log.info(f"reground: fact {short} 단어수 미달 → SOURCE 범위 내 확장 재요청")
+            try:
+                d2, nf2 = _call(
+                    "\n\nYour previous answer had facts shorter than 28 words: "
+                    f"{', '.join('fact' + str(i) for i in short)}. "
+                    "Rewrite ALL facts so each is 28-36 words, adding only true detail found in SOURCE.")
+                if len(nf2) == n and sum(len(f.split()) for f in nf2) > sum(len(f.split()) for f in nf):
+                    d, nf = d2, nf2
+            except Exception as e:
+                log.warning(f"reground 확장 재요청 실패 — 1차 결과 사용: {e}")
+        if len(nf) == n:
+            meta["facts"] = nf
+            if d.get("hook"):
+                meta["intro"] = str(d["hook"]).strip()
+            log.info(f"reground: SOURCE 기반으로 {n} facts 재작성 완료 "
+                     f"(단어수 {[len(f.split()) for f in nf]})")
+        else:
+            log.warning(f"reground: facts 개수 불일치({len(nf)}/{n}) → 원본 유지")
+    except Exception as e:
+        log.warning(f"reground 실패 — 원본 유지: {e}")
+    return meta
+
+
+def _enforce_global_fact_novelty(meta: dict, prev_facts: list, source_text: str) -> dict:
+    """최종 facts를 과거 전역 facts와 코드로 대조 → 겹치면 SOURCE로 그 fact만 재작성.
+
+    프롬프트에 "반복하지 마라"만 넣던 것을 실제 검사로 승격(codex 지적). 재작성이 또
+    겹치거나 SOURCE/키가 없으면 원본 유지(발행 0 방지 — 겹치는 fact가 나가는 게
+    발행 스킵보다 낫다). 재작성 성공분만 교체한다.
+    """
+    if not prev_facts:
+        return meta
+    from pipeline import history as _hist
+    facts = [f for f in (meta.get("facts") or []) if str(f).strip()]
+    if not facts:
+        return meta
+    dup_idx = _hist.facts_repeat_globally(facts, prev_facts)
+    if not dup_idx:
+        return meta
+    log.warning(f"전역 fact 중복 감지: 인덱스 {dup_idx} → SOURCE로 재작성 시도")
+    src = (source_text or "").strip()
+    if not OPENAI_API_KEY or not src:
+        log.info("전역 fact 중복: SOURCE/키 없음 → 원본 유지(발행 우선)")
+        return meta
+    display, single = meta.get("display", ""), meta.get("single", "")
+    avoid = "\n".join("- " + f for f in prev_facts[:20])
+    keep = "\n".join(f"{i+1}. {f}" for i, f in enumerate(facts) if i not in dup_idx)
+    redo = "\n".join(f"{i+1}. {facts[i]}" for i in dup_idx)
+    prompt = f"""Some facts in a {display} ({single}) script repeat facts already used on this channel.
+
+SOURCE TEXT (Wikipedia — take all facts/numbers ONLY from here):
+{src}
+
+ALREADY-USED facts on the channel — the rewrites MUST NOT overlap with any of these:
+{avoid}
+
+FACTS TO KEEP (do not change, for context):
+{keep or '(none)'}
+
+REWRITE ONLY these facts to cover DIFFERENT true aspects from SOURCE, not overlapping the used facts above:
+{redo}
+
+Rules: each rewrite 28-36 words, supported by SOURCE, every number must appear in SOURCE, vary openers, no hype.
+Output STRICT JSON with the SAME 1-based indices you were asked to rewrite:
+{{"rewrites": {{{', '.join(f'"{i+1}": "..."' for i in dup_idx)}}}}}"""
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=OPENAI_API_KEY)
+        r = client.chat.completions.create(
+            model=SCRIPT_MODEL,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.5,
+            max_tokens=900,
+        )
+        rw = (json.loads(r.choices[0].message.content) or {}).get("rewrites") or {}
+        new_facts = list(facts)
+        replaced = 0
+        for i in dup_idx:
+            cand = str(rw.get(str(i + 1), "")).strip()
+            # 재작성이 여전히 겹치면 버린다(원본 유지). 새로 지어낸 중복은 넣지 않는다.
+            if cand and not _hist.facts_too_similar([cand], prev_facts):
+                new_facts[i] = cand
+                replaced += 1
+        if replaced:
+            meta["facts"] = new_facts
+            log.info(f"전역 fact 중복 재작성: {replaced}/{len(dup_idx)}건 교체")
+        else:
+            log.info("전역 fact 중복 재작성 실패(여전히 겹침) → 원본 유지")
+    except Exception as e:
+        log.warning(f"전역 fact 중복 재작성 예외 — 원본 유지: {e}")
+    return meta
+
+
+def _apply_grounded_factcheck(meta: dict, source_text: str = None) -> dict:
     """SOURCE(위키, 도메인 맥락+category) 확보 → 적대적 팩트체크 → meta.intro/facts 갱신.
     hook(intro)은 ≤12단어 코드 강제. fact_keywords 확정은 파이프라인 최종 _finalize_fact_keywords에서(F).
-    실패 시 원본 유지."""
+    source_text가 주어지면 재fetch하지 않는다(pick 단계에서 이미 확보). 실패 시 원본 유지."""
     if not OPENAI_API_KEY:
         return meta
     display = meta.get("display", "")
     single = meta.get("single", "")
-    context = _DOMAIN_CONTEXT.get(_content_domain(), "")
-    src = ""
-    try:
-        from pipeline import grounding
-        src = grounding.fetch_source(display, single, context=context,
-                                     category=meta.get("category", ""))
-    except Exception as e:
-        log.warning(f"grounding fetch 예외 — 보수 모드 팩트체크: {e}")
+    src = source_text if source_text is not None else fetch_source_for(
+        display, single, meta.get("category", ""))
     if not src:
         log.info("grounding: on-topic SOURCE 없음 → 보수 모드(established consensus) 팩트체크 진행")
     hook, facts = adversarial_factcheck(display, single, meta.get("intro", ""),
@@ -379,7 +614,7 @@ REQUIREMENTS:
 
 Output STRICT JSON: {{"intro":"...","facts":[{', '.join(['"..."'] * n)}],"fact_keywords":[{', '.join(['"..."'] * n)}],"angle":"...","format":"...","title_en":"...","description_en":"...","comment":"..."}}"""
         resp = client.chat.completions.create(
-            model=META_MODEL,
+            model=SCRIPT_MODEL,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"},
             temperature=0.95,
@@ -482,7 +717,7 @@ Output STRICT JSON: {{"facts": ["...", "...", "...", "..."], "comment": "...", "
         from openai import OpenAI
         client = OpenAI(api_key=OPENAI_API_KEY)
         resp = client.chat.completions.create(
-            model=META_MODEL,
+            model=FACTCHECK_MODEL,
             messages=[{"role": "user", "content": review_prompt}],
             response_format={"type": "json_object"},
             temperature=0.3,
@@ -526,8 +761,27 @@ def pick_random_animal(exclude_keys: list = None, history: dict = None,
         key = pick_animal(exclude=exclude_keys or [])
         return _legacy_meta(key)
 
-    exclude_str = ", ".join(exclude_keys[-30:]) if exclude_keys else "none"
+    exclude_str = ", ".join(exclude_keys[-45:]) if exclude_keys else "none"
     avoid_fmt_str = ", ".join(avoid_formats or []) or "none"
+
+    # 전역 중복 차단 (2026-07-10). 기존엔 '같은 topic 재등장' 시에만 과거 facts를 봤기 때문에
+    # topic이 달라도 같은 사실을 반복했고, 제목은 대상만 갈아끼운 양산 템플릿이 반복됐다.
+    prev_facts, prev_titles = [], []
+    if history:
+        try:
+            from pipeline import history as _hist
+            prev_facts = _hist.recent_facts(history, 120, limit=30)
+            prev_titles = _hist.recent_titled_topics(history, 12)  # (title, topic_key)
+        except Exception as e:
+            log.warning(f"전역 이력 조회 실패(무시): {e}")
+    prev_title_strs = [t[0] for t in prev_titles]
+    facts_block = ("\n\nALREADY-COVERED FACTS on this channel — do NOT repeat any of these, "
+                   "even for a different topic:\n"
+                   + "\n".join("- " + f for f in prev_facts)) if prev_facts else ""
+    titles_block = ("\n\nRECENT TITLES on this channel. Your title MUST NOT reuse these sentence "
+                    "templates with a different subject swapped in (YouTube demonetizes "
+                    "template-mass-produced content). Invent a genuinely different structure:\n"
+                    + "\n".join("- " + t for t in prev_title_strs)) if prev_title_strs else ""
 
     prompt = f"""You are a viral space scriptwriter for YouTube Shorts channel "Space Trivia 60s".
 Pick ONE surprising space topic RIGHT NOW and write a 55-second script (1-minute Shorts).
@@ -535,27 +789,30 @@ Pick ONE surprising space topic RIGHT NOW and write a 55-second script (1-minute
 CRITICAL CONSTRAINT: pexels_keywords MUST find PORTRAIT video on Pexels. So you must pick topics that are
 WELL-PHOTOGRAPHED on stock footage sites. Avoid extremely obscure phenomena with no usable visuals.
 
-GOOD SPACE TOPIC POOL (these have abundant Pexels portrait video — planet/galaxy/space/cosmos/stars):
+GOOD SPACE TOPIC POOL (these have abundant Pexels portrait video — planet/galaxy/space/cosmos/stars).
+The channel has over-covered the planets and the Sun. **Strongly prefer topics from the lower groups
+you have not used yet** — variety is now more valuable than familiarity:
 - Planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto (dwarf planet)
-- Moons: Earth's Moon, Europa, Titan, Io, Enceladus, Phobos
-- Stars/Phenomena: the Sun, supernova, neutron star, pulsar, black hole, white dwarf, red giant
-- Galaxies: Milky Way, Andromeda, spiral galaxy, elliptical galaxy
-- Cosmos: Big Bang, dark matter, dark energy, cosmic microwave background, gravitational waves
-- Objects: asteroids, comets, meteors, nebulae (Orion, Eagle, Crab, Carina), exoplanets
-- Spacecraft: ISS, Hubble, James Webb, Voyager, Apollo missions, SpaceX, Mars rovers
-- Constellations: Orion, Big Dipper, Cassiopeia, Southern Cross, Pleiades
+- Moons: Earth's Moon, Europa, Titan, Io, Enceladus, Phobos, Deimos, Ganymede, Callisto, Triton, Miranda, Iapetus, Mimas, Charon
+- Stars/Phenomena: the Sun, supernova, neutron star, pulsar, black hole, white dwarf, red giant, magnetar, brown dwarf, binary star, red dwarf, blue supergiant, solar flare, solar wind, aurora, sunspot, stellar nursery, star cluster, globular cluster
+- Galaxies: Milky Way, Andromeda, spiral galaxy, elliptical galaxy, irregular galaxy, quasar, active galactic nucleus, galaxy cluster, Magellanic Clouds, Sagittarius A*
+- Cosmos: Big Bang, dark matter, dark energy, cosmic microwave background, gravitational waves, cosmic rays, redshift, event horizon, wormhole (theoretical), time dilation, Fermi paradox, Drake equation, Great Attractor, cosmic web, vacuum of space
+- Objects: asteroids, comets, meteors, meteorites, nebulae (Orion, Eagle, Crab, Carina, Helix, Ring), exoplanets, hot Jupiters, rogue planets, Kuiper Belt, Oort Cloud, asteroid belt, Ceres, Vesta, Halley's Comet, Trappist-1, Proxima Centauri, Alpha Centauri, Betelgeuse, Sirius, Polaris, Vega, Kepler-186f
+- Spacecraft/Missions: ISS, Hubble, James Webb, Voyager 1, Voyager 2, Apollo 11, Apollo 13, SpaceX Starship, Mars rovers (Curiosity, Perseverance), Cassini, New Horizons, Juno, Parker Solar Probe, Chandrayaan, Artemis, Sputnik, Space Shuttle
+- Constellations: Orion, Big Dipper, Cassiopeia, Southern Cross, Pleiades, Ursa Major, Scorpius, Cygnus
+- Human spaceflight: spacesuits, zero gravity effects on the body, space debris, astronaut training, life support, Moon landing sites
 
-AVOID picking these topics (recently used): {exclude_str}
+AVOID picking these topics (recently used): {exclude_str}{facts_block}{titles_block}
 
 REQUIREMENTS:
-- The fact MUST be SURPRISING / counter-intuitive / mind-blowing with a specific number when possible.
+- The fact MUST be SURPRISING / counter-intuitive. **Use a specific number ONLY when you are certain it is real** — a true, verifiable fact beats an invented mind-blowing number. Every number you write will be checked against Wikipedia and rewritten if it is not there.
 - **Each fact MUST be 28-36 words. NOT LESS THAN 28. NOT MORE THAN 36.** Count the words. Three short facts = REJECT and rewrite.
 - Each fact = ONE rich sentence packed with a specific number + comparison/context + surprising consequence. Spoken at TTS rate +12% this gives ~12s per fact.
 - Provide EXACTLY 4 facts (not 3). Total spoken length target: intro ~3s + 4 facts × ~10s + outro ~3s ≈ 46s (실TTS는 보통 +5~10s 늘어남, 영상 60s 안에 안전).
 - **INTERNAL CONSISTENCY (CRITICAL — viewers WILL catch contradictions and call you out)**:
-  - All numeric claims across the 4 facts MUST agree. If fact 1 says "Saturn has 146 confirmed moons", fact 2/3/4 must NOT cite a different number for the same metric. Pick ONE number per metric and use it consistently.
+  - All numeric claims across the 4 facts MUST agree. If fact 1 cites a moon count, fact 2/3/4 must NOT cite a different number for the same metric. Pick ONE number per metric and use it consistently.
   - If you cite "X% of [thing]" or "Y times [thing]", any other fact about the SAME metric MUST use the SAME value.
-  - Use latest 2024 scientific consensus values (e.g., Saturn has 146 confirmed moons as of 2024, Jupiter has 95). Do not mix old and new numbers.
+  - Use current scientific consensus values. Do not mix old and new numbers. Never hardcode a moon/exoplanet count from memory — those change with new discoveries and are verified against the source text later.
   - title and description MUST be about the same topic as the facts (no Jupiter title on a Saturn script).
 - **Hook (intro narration) — CRITICAL**: 12 words or FEWER. Lead with a specific number or a shocking comparison. NEVER start with "Did you know". Examples: "A day on Venus lasts longer than its year." / "Light from the Sun takes eight minutes to reach us."
 - **FACT QUALITY**: across the 4 facts, include AT LEAST two concrete numbers/measurements AND at least one vivid comparison ("wide enough to swallow 1,300 Earths", "hotter than the Sun's surface").
@@ -571,7 +828,7 @@ REQUIREMENTS:
 - **Title (CRITICAL — single most important CTR factor)**: max 70 chars, MUST include the topic name + a CURIOSITY GAP hook. NEVER use "compilation", "best of", "top 10", "Amazing Facts About X" (too generic, kills CTR).
   Use ONE of these viral patterns (vary across topics):
   (a) Shocking number: "Saturn's Rings Will Vanish in 100 Million Years"
-  (b) Wait what: "Wait, Jupiter Has 95 Moons (And One Has Oceans)"
+  (b) Wait what: "Wait, One of Jupiter's Moons Hides an Ocean"
   (c) You'd never guess: "You Won't Believe What Mars Looks Like at Night"
   (d) Conditional twist: "If the Sun Vanished, We'd Have 8 Minutes To Live"
   (e) The truth: "The Truth About Why Black Holes Aren't Holes"
@@ -625,16 +882,26 @@ Output STRICT JSON only:
     client = OpenAI(api_key=OPENAI_API_KEY)
     d = None
     last_pick = None
+    source_text = ""
+    # 재시도 시 거부 목록을 누적한다. 직전 1건만 알려주면 모델이 같은 인기 토픽으로 계속
+    # 돌아온다 (실측: 4회 연속 saturn 픽). 누적 + 미사용 후보 양성 제시로 밀어낸다.
+    rejected = []
     for attempt in range(4):
         try_prompt = prompt
-        if attempt > 0 and last_pick:
+        if attempt > 0 and rejected:
+            unused = [k for k in ANIMALS.keys() if k.lower() not in exclude_set][:12]
+            hint = (f"\nPick one of these unused topics instead: {', '.join(unused)}.\n"
+                    if unused else "\n")
             try_prompt = (
-                f"REJECTED previous pick: '{last_pick}' is in exclude list. Pick a COMPLETELY DIFFERENT space topic.\n\n"
+                f"STOP. You already picked these and they are ALL REJECTED (already used on the "
+                f"channel): {', '.join(rejected)}.\n"
+                f"Do NOT pick any of them again. Pick a COMPLETELY DIFFERENT topic that is not in "
+                f"the exclude list below.{hint}\n"
                 + try_prompt
             )
         try:
             resp = client.chat.completions.create(
-                model=META_MODEL,
+                model=SCRIPT_MODEL,
                 messages=[{"role": "user", "content": try_prompt}],
                 response_format={"type": "json_object"},
                 temperature=1.0,
@@ -657,8 +924,21 @@ Output STRICT JSON only:
         )
         if is_excluded:
             last_pick = cand_key or cand_single
+            if last_pick and last_pick not in rejected:
+                rejected.append(last_pick)
             log.warning(f"[picker try {attempt+1}] GPT가 exclude된 '{last_pick}' 픽 → 재요청")
             continue
+        # 근거 선행: 위키 SOURCE를 못 구하는 토픽은 사실 검증이 불가능하다 → 다른 토픽으로 재픽.
+        # 마지막 시도에서는 SOURCE 없이도 진행해 발행 0을 피한다(보수 모드 팩트체크가 방어).
+        src = fetch_source_for(cand.get("display", ""), cand.get("single", ""),
+                               cand.get("category", ""))
+        if not src and attempt < 3:
+            last_pick = cand_key or cand_single
+            if last_pick and last_pick not in rejected:
+                rejected.append(last_pick)
+            log.warning(f"[picker try {attempt+1}] '{last_pick}' 위키 SOURCE 확보 실패 → 다른 토픽 재픽")
+            continue
+        source_text = src
         d = cand
         break
 
@@ -708,6 +988,18 @@ Output STRICT JSON only:
     if any(g in title_en.lower() for g in _generic):
         log.warning(f"generic title pattern → CTR-friendly fallback: {title_en}")
         title_en = f"Wait — {display} Does This?!"
+    # 템플릿 양산 차단 (2026-07-10): 최근 제목과 앞 3단어 지문이 같으면 대상만 바꾼 복제본이다.
+    # 실제 사고: "You Won't Believe What Foxes/Comets/Jupiter/the Big Bang Does at Night".
+    # 유튜브 2025-07 inauthentic content 정책의 수익화 리스크라 코드로 강제한다.
+    if prev_titles:
+        try:
+            from pipeline import history as _hist
+            if _hist.title_template_repeats(title_en, prev_titles, subjects=(single, display)):
+                alt = _retitle_unique(display, single, title_en, prev_titles)
+                log.warning(f"제목 템플릿 반복 차단: {title_en!r} → {alt!r}")
+                title_en = alt
+        except Exception as e:
+            log.warning(f"제목 템플릿 검사 실패(무시): {e}")
 
     facts = d.get("facts") or []
     if not isinstance(facts, list) or len(facts) < 3:
@@ -729,7 +1021,7 @@ Original {n} facts about {display}:
 
 Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
             r2 = client.chat.completions.create(
-                model=META_MODEL,
+                model=SCRIPT_MODEL,
                 messages=[{"role": "user", "content": expand_prompt}],
                 response_format={"type": "json_object"},
                 temperature=0.7,
@@ -792,11 +1084,26 @@ Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
         log.info(f"'{animal_key}' 과거 이력 {len(prev)}건 → 재등장 차별화 시도")
         meta = _differentiate_content(meta, prev, avoid_formats)
 
-    # 사실 근거(위키) + 적대적 팩트체크 (허위 자막 차단) → 내부 일관성 검증
-    meta = _apply_grounded_factcheck(meta)
+    # 근거 우선 재작성 → 적대적 팩트체크(허위 자막 차단) → 내부 일관성 검증.
+    # SOURCE는 pick 단계에서 이미 확보했으므로 재fetch하지 않는다.
+    meta = reground_facts(meta, source_text)
+    meta = _apply_grounded_factcheck(meta, source_text)
     meta = verify_consistency(meta)
+    # 전역 fact 중복 코드 강제 (codex 지적 2026-07-10): 프롬프트 주입만으론 GPT가 무시할 때
+    # 못 막는다. 최종 facts를 과거 전역 facts와 실제로 대조해 겹치면 SOURCE로 1회 재작성한다.
+    meta = _enforce_global_fact_novelty(meta, prev_facts, source_text)
     # (F) 모든 fact 변경 끝난 뒤 fact_keywords 최종 확정 (배경 fetch가 최종 facts와 정합)
     meta = _finalize_fact_keywords(meta, pexels_kw)
+    # 제목 템플릿 최종 검사 — _differentiate_content가 title을 덮어쓰므로 여기서 한 번 더 본다.
+    if prev_titles:
+        try:
+            from pipeline import history as _hist
+            if _hist.title_template_repeats(meta.get("title_en", ""), prev_titles,
+                                            subjects=(single, display)):
+                meta["title_en"] = _retitle_unique(display, single, meta["title_en"], prev_titles)
+                log.warning(f"제목 템플릿 반복(최종) 차단 → {meta['title_en']!r}")
+        except Exception as e:
+            log.warning(f"제목 템플릿 최종 검사 실패(무시): {e}")
     return meta
 
 
@@ -856,7 +1163,7 @@ Output STRICT JSON: {{
     for attempt in range(3):
         try:
             resp = client.chat.completions.create(
-                model=META_MODEL,
+                model=SCRIPT_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 response_format={"type": "json_object"},
                 temperature=0.9,
@@ -917,7 +1224,11 @@ Output STRICT JSON: {{
     # 사실 근거(위키) + 적대적 팩트체크 → 내부 일관성 검증 → (F) fact_keywords 최종 확정
     review_input = {**rich, "display": display, "single": single, "category": meta.get("category", ""),
                     "_kw_facts": list(facts)}
-    review_input = _apply_grounded_factcheck(review_input)
+    # fallback 경로도 SOURCE 기반 재작성을 태운다. 예전엔 이 경로만 reground를 건너뛰어
+    # 훅이 "behaves in a way that surprises most people" 같은 공허한 문장으로 나갔다.
+    _src = fetch_source_for(display, single, meta.get("category", ""))
+    review_input = reground_facts(review_input, _src)
+    review_input = _apply_grounded_factcheck(review_input, _src)
     review_input = verify_consistency(review_input)
     review_input = _finalize_fact_keywords(review_input, meta.get("pexels_keywords") or [])
     rich["intro"] = review_input.get("intro", rich["intro"])
@@ -1021,7 +1332,7 @@ Output STRICT JSON only:
         from openai import OpenAI
         client = OpenAI(api_key=OPENAI_API_KEY)
         resp = client.chat.completions.create(
-            model=META_MODEL,
+            model=SCRIPT_MODEL,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"},
             temperature=0.9,

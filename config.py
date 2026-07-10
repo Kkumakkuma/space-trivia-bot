@@ -53,7 +53,11 @@ VIDEO_THREADS = 8
 FONT_PATH = os.path.join(ASSETS_DIR, "fonts", "Roboto-Bold.ttf")
 
 # OpenAI
-META_MODEL = "gpt-4o-mini"
+# 2026-07-10: 사실 오류(토성 고리 소멸 100M vs 300M년 모순) 재발 방지로 모델 3분할.
+# 생성과 검증을 다른 계열로 두어 자기합치(self-agreement) 편향을 줄인다.
+META_MODEL = "gpt-4o-mini"      # 경량 호출(번역·키워드 등)
+SCRIPT_MODEL = "gpt-4o"         # 토픽 픽 + 스크립트 생성 (사실 정확도 우선)
+FACTCHECK_MODEL = "gpt-4.1"     # 적대적 검증 — 생성 모델과 다른 계열
 
 # edge-tts voice (영문)
 TTS_VOICE = "en-US-AriaNeural"  # 자연스러운 여성 보이스
