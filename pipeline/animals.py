@@ -60,6 +60,31 @@ def _has_bad(text: str, words) -> bool:
     return any(w.lower() in low for w in words)
 
 
+# 진부 양산 opener — 과거 이력에 없어도(신규 채널/prev_titles 누락) 무조건 차단.
+# title_template_repeats는 '과거 반복'만 보므로 첫 발생·이력 장애 시 이 opener가 샌다(codex 지적 2026-07-11).
+_BANNED_OPENERS = ("you won't believe", "you wont believe", "wait until you see",
+                   "wait til you see", "did you know", "you'll never guess",
+                   "youll never guess", "you won't guess")
+
+
+def _starts_with_banned_opener(title) -> bool:
+    t = (title or "").strip().lstrip("\"'“”‘’ ")
+    t = t.replace("’", "'").replace("‘", "'").lower()  # 스마트 아포스트로피 → ASCII 정규화
+    return any(t.startswith(b) for b in _BANNED_OPENERS)
+
+
+def _title_needs_fix(title, prev_titles, subjects) -> bool:
+    """제목이 (1) 금지 opener로 시작하거나 (2) 과거 템플릿 지문과 겹치면 True.
+    (1)은 prev_titles 유무와 무관 — deterministic 최종 방어."""
+    if _starts_with_banned_opener(title):
+        return True
+    if prev_titles:
+        from pipeline import history as _hist
+        if _hist.title_template_repeats(title, prev_titles, subjects=subjects):
+            return True
+    return False
+
+
 # === 2026-07-05 업그레이드 공통 로직 (동물봇/우주봇 동일 코드) ===
 FORMATS = ["classic_trivia", "myth_vs_fact", "top_records", "how_it_works"]
 
@@ -375,7 +400,7 @@ Output STRICT JSON: {{"title": "..."}}"""}],
                     max_tokens=120,
                 )
                 t = str(json.loads(r.choices[0].message.content).get("title", "")).strip()[:95]
-                if t and not _hist.title_template_repeats(t, check_prev, subjects=subj):
+                if t and not _starts_with_banned_opener(t) and not _hist.title_template_repeats(t, check_prev, subjects=subj):
                     return t
             except Exception as e:
                 log.warning(f"제목 재생성 실패: {e}")
@@ -385,7 +410,7 @@ Output STRICT JSON: {{"title": "..."}}"""}],
                  f"What {display} Actually Do When No One Looks",
                  f"The {single.title()} Fact That Changed My Mind",
                  f"Nobody Talks About This {single.title()} Habit"):
-        if not _hist.title_template_repeats(cand, check_prev, subjects=subj):
+        if not _starts_with_banned_opener(cand) and not _hist.title_template_repeats(cand, check_prev, subjects=subj):
             return cand[:95]
     return f"{display}: The Part Nobody Mentions"[:95]
 
@@ -829,7 +854,7 @@ REQUIREMENTS:
   Use ONE of these viral patterns (vary across topics):
   (a) Shocking number: "Saturn's Rings Will Vanish in 100 Million Years"
   (b) Wait what: "Wait, One of Jupiter's Moons Hides an Ocean"
-  (c) You'd never guess: "You Won't Believe What Mars Looks Like at Night"
+  (c) Counterintuitive: "The Mars Detail Most People Get Wrong"
   (d) Conditional twist: "If the Sun Vanished, We'd Have 8 Minutes To Live"
   (e) The truth: "The Truth About Why Black Holes Aren't Holes"
   (f) Stop scrolling: "Stop Scrolling — A Star Just Exploded Last Night"
@@ -954,6 +979,26 @@ Output STRICT JSON only:
             log.info(f"picker fallback → expand 완료 ({len(legacy['facts'])} facts)")
         except Exception as e:
             log.warning(f"picker fallback expand 실패 → placeholder facts 유지: {e}")
+        # legacy 경로는 정상 경로(아래 959~)의 최종 방어를 건너뛴다.
+        # 2026-07-11 사고: 이 경로로 "You Won't Believe What ... Does at Night" 진부
+        # 양산 제목이 무검사 발행됨. 정상 경로와 동일한 최종 검사를 여기서도 적용한다.
+        try:
+            _lsrc = fetch_source_for(legacy.get("display", ""), legacy.get("single", ""),
+                                     legacy.get("category", ""))
+            _res = _enforce_global_fact_novelty(legacy, prev_facts, _lsrc)
+            if isinstance(_res, dict) and _res.get("facts"):
+                legacy = _res
+        except Exception as e:
+            log.warning(f"legacy 전역 fact 중복 검사 실패(무시): {e}")
+        try:
+            if _title_needs_fix(legacy.get("title_en", ""), prev_titles,
+                                (legacy.get("single", ""), legacy.get("display", ""))):
+                legacy["title_en"] = _retitle_unique(legacy.get("display", ""),
+                                                     legacy.get("single", ""),
+                                                     legacy.get("title_en", ""), prev_titles)
+                log.warning(f"제목 양산/금지opener(legacy) 차단 → {legacy['title_en']!r}")
+        except Exception as e:
+            log.warning(f"제목 검사(legacy) 실패(무시): {e}")
         return legacy
 
     # 검증 + 정제
@@ -991,15 +1036,13 @@ Output STRICT JSON only:
     # 템플릿 양산 차단 (2026-07-10): 최근 제목과 앞 3단어 지문이 같으면 대상만 바꾼 복제본이다.
     # 실제 사고: "You Won't Believe What Foxes/Comets/Jupiter/the Big Bang Does at Night".
     # 유튜브 2025-07 inauthentic content 정책의 수익화 리스크라 코드로 강제한다.
-    if prev_titles:
-        try:
-            from pipeline import history as _hist
-            if _hist.title_template_repeats(title_en, prev_titles, subjects=(single, display)):
-                alt = _retitle_unique(display, single, title_en, prev_titles)
-                log.warning(f"제목 템플릿 반복 차단: {title_en!r} → {alt!r}")
-                title_en = alt
-        except Exception as e:
-            log.warning(f"제목 템플릿 검사 실패(무시): {e}")
+    try:
+        if _title_needs_fix(title_en, prev_titles, (single, display)):
+            alt = _retitle_unique(display, single, title_en, prev_titles)
+            log.warning(f"제목 양산/금지opener 차단: {title_en!r} → {alt!r}")
+            title_en = alt
+    except Exception as e:
+        log.warning(f"제목 검사 실패(무시): {e}")
 
     facts = d.get("facts") or []
     if not isinstance(facts, list) or len(facts) < 3:
@@ -1095,15 +1138,12 @@ Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
     # (F) 모든 fact 변경 끝난 뒤 fact_keywords 최종 확정 (배경 fetch가 최종 facts와 정합)
     meta = _finalize_fact_keywords(meta, pexels_kw)
     # 제목 템플릿 최종 검사 — _differentiate_content가 title을 덮어쓰므로 여기서 한 번 더 본다.
-    if prev_titles:
-        try:
-            from pipeline import history as _hist
-            if _hist.title_template_repeats(meta.get("title_en", ""), prev_titles,
-                                            subjects=(single, display)):
-                meta["title_en"] = _retitle_unique(display, single, meta["title_en"], prev_titles)
-                log.warning(f"제목 템플릿 반복(최종) 차단 → {meta['title_en']!r}")
-        except Exception as e:
-            log.warning(f"제목 템플릿 최종 검사 실패(무시): {e}")
+    try:
+        if _title_needs_fix(meta.get("title_en", ""), prev_titles, (single, display)):
+            meta["title_en"] = _retitle_unique(display, single, meta["title_en"], prev_titles)
+            log.warning(f"제목 양산/금지opener(최종) 차단 → {meta['title_en']!r}")
+    except Exception as e:
+        log.warning(f"제목 최종 검사 실패(무시): {e}")
     return meta
 
 
@@ -1132,11 +1172,12 @@ REQUIREMENTS:
 - **Title (CRITICAL CTR — pick ONE viral pattern, max 70 chars, must include "{single}" or "{display}", NO emoji)**:
   (a) Shocking number: "{display} Has ___ ?! Here's Why"
   (b) Wait what: "Wait, {display} ___ A Year"
-  (c) You won't believe: "You Won't Believe What {display} Does at Night"
+  (c) Counterintuitive: "The {single} Detail Most People Get Wrong"
   (d) Conditional twist: "If {display} ___, We'd Be in Trouble"
   (e) Stop scrolling: "Stop Scrolling — {display} Just ___"
   (f) Question hook: "How Does {display} Survive ___?"
-  NEVER use "Amazing Facts About", "Wild Facts About", "Facts You Didn't Know" — generic patterns kill CTR. Hype ok, but no false claim.
+  NEVER use "Amazing Facts About", "Wild Facts About", "Facts You Didn't Know" — generic patterns kill CTR.
+  Do NOT start the title with "You Won't Believe", "Wait Until You See", or "Did You Know" — these are overused template openers that hurt reach. Match the verb to the subject ("Comets DO / orbit", "A Comet DOES / orbits"). Hype ok, but no false claim.
 - Description: 2 sentences + 3-5 hashtags (no emoji).
 - **comment** (reply-magnet, 8-20 words): hot take / forced choice WITHIN {display} only / what-if / personal challenge / confession bait / fill-in-the-blank.
   **TOPIC LOCK**: comment MUST be about {display} ONLY. NEVER mention any OTHER cosmic object (no "Saturn or Jupiter?" type cross-topic comments). 0-1 emoji max. NEVER "Which fact surprised you most?" or "Tag a friend".
