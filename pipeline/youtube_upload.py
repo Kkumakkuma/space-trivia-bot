@@ -12,6 +12,30 @@ from config import (
 )
 
 log = logging.getLogger("spacebot.youtube")
+
+# 업로드 직전 채널 결속 재검증 기준 (auth.py와 동일 판정 — feedback_oauth_channel_verify)
+_FOREIGN_CHANNEL_WORDS = ["animal", "lofi"]
+
+
+def _verify_channel(svc):
+    """업로드 직전 토큰이 Space Trivia 60s 채널에 결속됐는지 재검증 (fail-closed).
+
+    auth.py는 발급 시점만 검증한다 — 잘못된 토큰이 CI secret으로 유입되는 경로를
+    업로드 시점에서 최종 차단한다. 불일치면 RuntimeError로 업로드 자체를 중단."""
+    resp = svc.channels().list(part="snippet", mine=True).execute()
+    items = resp.get("items", [])
+    if not items:
+        raise RuntimeError("channel verify 실패: 채널 조회 결과 없음 — 업로드 중단 (fail-closed)")
+    title = items[0]["snippet"]["title"]
+    low = title.lower()
+    # auth.py와 동일 기준: space/trivia 60s/spacetrivia 포함 + animal/lofi 미포함
+    if any(w in low for w in _FOREIGN_CHANNEL_WORDS):
+        raise RuntimeError(f"channel verify 실패: 토큰이 다른 봇 채널('{title}')에 결속 — 업로드 중단")
+    if not ("space" in low or "trivia 60s" in low or "spacetrivia" in low.replace(" ", "")):
+        raise RuntimeError(f"channel verify 실패: '{title}'는 Space Trivia 60s 채널 아님 — 업로드 중단")
+    log.info(f"channel verify OK: {title}")
+
+
 SCOPES = [
     "https://www.googleapis.com/auth/youtube.upload",
     "https://www.googleapis.com/auth/youtube.force-ssl",
@@ -88,6 +112,10 @@ def get_service():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
+            # CI(GitHub Actions)에서는 브라우저 대화형 OAuth가 불가능 — run_local_server로
+            # 들어가면 무한 대기로 워크플로가 timeout까지 매달린다. 즉시 실패시킨다.
+            if os.environ.get("GITHUB_ACTIONS"):
+                raise RuntimeError("CI에서 대화형 OAuth 불가 — 토큰 시크릿 확인")
             flow = InstalledAppFlow.from_client_secrets_file(YOUTUBE_CLIENT_SECRET, SCOPES)
             creds = flow.run_local_server(port=0)
         os.makedirs(os.path.dirname(YOUTUBE_TOKEN), exist_ok=True)
@@ -122,6 +150,7 @@ def upload(video_path: str, title: str, description: str, tags: list,
     from googleapiclient.http import MediaFileUpload
 
     svc = get_service()
+    _verify_channel(svc)
     snippet = {
         "title": title[:95],
         "description": description[:4900],

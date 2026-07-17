@@ -282,6 +282,14 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     from pipeline import animals, pexels, tts, composer, translator
     from pipeline import history as hist_mod
 
+    # 2026-07-17: 필수 API 키 fail-fast — 시크릿 누락/오타 상태로 vision 0회 검증 발행이
+    # 조용히 성공하는 것을 차단(verify_visual도 무키 reject하지만 여기서 시작 자체를 막아
+    # GPT/Pexels 호출 낭비 없이 명확한 에러로 실패시킨다).
+    _missing = [k for k in ("OPENAI_API_KEY", "PEXELS_API_KEY")
+                if not (getattr(_cfg, k, "") or "").strip()]
+    if _missing:
+        raise RuntimeError(f"필수 API 키 누락: {', '.join(_missing)} — fail-fast (무검증 발행 차단)")
+
     used = _load_used()
     used_pexels = _load_used_pexels()
 
@@ -412,9 +420,10 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     tts_texts = [meta["intro"]] + list(meta["facts"]) + [meta["outro"]]
     tts_lines = tts.synth_lines(tts_texts, work_dir, prefix="tts")
 
-    # 3) BGM — 동물 카테고리 기반 음악쇼츠 GDrive read-only 다운로드
+    # 3) BGM — 우주 카테고리 기반 음악쇼츠 GDrive read-only 다운로드
+    #    (path, file_id) 튜플 — 사용 기록은 발행 성공 시에만 mark_bgm_used (2026-07-17)
     from pipeline import bgm as bgm_mod
-    bgm_path = bgm_mod.fetch_bgm_by_category(meta["category"], work_dir)
+    bgm_path, bgm_file_id = bgm_mod.fetch_bgm_by_category(meta["category"], work_dir)
     if bgm_path:
         log.info(f"bgm: {os.path.basename(bgm_path)}")
     else:
@@ -453,33 +462,42 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
             custom_comment=meta.get("comment"),
         )
 
-    # 7) 사용 기록 (GPT 회피용)
-    used.append(animal_key)
-    _save_used(used)
-
-    # 7-1) Pexels 풋티지 사용 기록 (다음 영상부터 같은 풋티지 안 뜨도록)
+    # 7) 사용 기록 — 실제로 발행된 경우에만. (2026-07-17 fix: --no-upload 테스트 런이
+    #    used_animals/used_pexels/content_history/used_bgm을 '발행됨'으로 오염시키던 문제)
     used_clip_ids = [c for c in (bg_clip_ids or []) if c]
-    new_pexels_ids = [int(c) for c in used_clip_ids if str(c).isdigit()]
-    if new_pexels_ids:
-        used_pexels.extend(new_pexels_ids)
-        _save_used_pexels(used_pexels)
-        log.info(f"used_pexels.json 갱신: +{new_pexels_ids} (전체 {len(used_pexels)}개 추적)")
+    if no_upload:
+        log.info("--no-upload → 사용 기록(used_animals/used_pexels/content_history/used_bgm) 저장 스킵 (상태 오염 방지)")
+    else:
+        used.append(animal_key)
+        _save_used(used)
 
-    # 7-2) content_history.json 기록 (시간 기반 재등장 차단 + 클립 dedup + angle/format 로테이션)
-    try:
-        entry = hist_mod.build_entry(
-            animal_key,
-            angle=meta.get("angle", ""),
-            fmt=meta.get("format", ""),
-            facts=meta.get("facts", []),
-            title=meta.get("title_en", ""),
-            clip_ids=used_clip_ids,
-        )
-        hist_mod.add_entry(hist, animal_key, entry)
-        hist_mod.save_history(CONTENT_HISTORY_PATH, hist)
-        log.info(f"content_history.json 기록: {animal_key} (angle={entry['angle']}, format={entry['format']}, clips={len(used_clip_ids)})")
-    except Exception as e:
-        log.warning(f"content_history 기록 실패: {e}")
+        # 7-1) Pexels 풋티지 사용 기록 (다음 영상부터 같은 풋티지 안 뜨도록)
+        new_pexels_ids = [int(c) for c in used_clip_ids if str(c).isdigit()]
+        if new_pexels_ids:
+            used_pexels.extend(new_pexels_ids)
+            _save_used_pexels(used_pexels)
+            log.info(f"used_pexels.json 갱신: +{new_pexels_ids} (전체 {len(used_pexels)}개 추적)")
+
+        # 7-2) content_history.json 기록 (시간 기반 재등장 차단 + 클립 dedup + angle/format 로테이션)
+        try:
+            entry = hist_mod.build_entry(
+                animal_key,
+                angle=meta.get("angle", ""),
+                fmt=meta.get("format", ""),
+                facts=meta.get("facts", []),
+                title=meta.get("title_en", ""),
+                clip_ids=used_clip_ids,
+            )
+            hist_mod.add_entry(hist, animal_key, entry)
+            hist_mod.save_history(CONTENT_HISTORY_PATH, hist)
+            log.info(f"content_history.json 기록: {animal_key} (angle={entry['angle']}, format={entry['format']}, clips={len(used_clip_ids)})")
+        except Exception as e:
+            log.warning(f"content_history 기록 실패: {e}")
+
+        # 7-3) BGM 사용 기록 — 테마 풀 소진 전 중복 방지 (발행 성공 시에만)
+        if bgm_file_id:
+            bgm_mod.mark_bgm_used(bgm_file_id)
+            log.info(f"used_bgm.json 갱신: +{bgm_file_id}")
 
     # 8) CC 자막 트랙 (en + 7개국) — 기록(used/history) 저장을 먼저 끝낸 뒤 수행.
     #    **fail-soft**: 자막 실패가 영상 발행/기록을 실패시키지 않음. CC 전체 예산 180s.
@@ -490,9 +508,16 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
             from pipeline import captions
             cc_deadline = _time.monotonic() + 180.0  # CC 단계 전체 예산(초)
             video_id = url.rstrip("/").split("/")[-1].split("?")[0]
+            # 적응형 길이(composer v4)라 실제 렌더 길이를 실측해 자막 총길이로 사용
+            try:
+                from moviepy.editor import VideoFileClip as _VFC
+                with _VFC(out_video) as _vc:
+                    _actual_dur = float(_vc.duration)
+            except Exception:
+                _actual_dur = composer.final_video_duration()
             srts = captions.generate_all(
                 tts_lines, work_dir,
-                total_dur=composer.final_video_duration(), deadline=cc_deadline,
+                total_dur=_actual_dur, deadline=cc_deadline,
             )
             cap_ok = captions.upload_captions(video_id, srts, deadline=cc_deadline)
             n_ok = sum(1 for v in cap_ok.values() if v)

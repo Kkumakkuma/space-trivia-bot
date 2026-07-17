@@ -104,6 +104,19 @@ def _has_banned(text: str) -> bool:
     return any(p in low for p in BANNED_PHRASES)
 
 
+def _sweep_deterministic(display: str, facts: list, flagged=()) -> list:
+    """금지문구/최종 false fact를 안전 템플릿으로 교체하는 결정적 최종 방어.
+
+    (여행봇 이식 2026-07-17 — 변동정보 regex는 여행 전용이라 제외, banned+flagged만.)
+    GPT 팩트체크 호출이 실패해도 이 sweep은 항상 적용된다."""
+    out = list(facts)
+    for i in range(len(out)):
+        if i in flagged or _has_banned(out[i]):
+            log.warning(f"factcheck: fact{i+1} false/금지문구 → 안전 fact 교체: {out[i][:60]!r}")
+            out[i] = _safe_fact(display, i)
+    return out
+
+
 def _count_numbers(texts) -> int:
     return sum(len(re.findall(r"\d[\d,\.]*", t or "")) for t in texts)
 
@@ -233,7 +246,8 @@ Output STRICT JSON:
             verdicts, nh, nf = _judge(cur_hook, cur_facts)
         except Exception as e:
             log.warning(f"adversarial factcheck 호출 실패 (round {rnd+1}) — 현재 버전 유지: {e}")
-            return cur_hook, cur_facts
+            # GPT 판정이 불가해도 결정적 백스톱(금지문구 sweep)은 적용하고 반환
+            return cur_hook, _sweep_deterministic(display, cur_facts)
         flagged = [i for i in range(len(cur_facts))
                    if str(verdicts.get(f"fact{i+1}", "")).lower().startswith("false")]
         hook_flagged = str(verdicts.get("hook", "")).lower().startswith("false")
@@ -250,10 +264,7 @@ Output STRICT JSON:
         # 교정 라운드: 교정본 반영 후 다음 라운드 재판정
         cur_hook, cur_facts = nh, nf
     # 잔존 false + 금지문구 fact는 안전 fact로 교체 (허위 자막 차단)
-    for i in range(len(cur_facts)):
-        if i in final_flagged or _has_banned(cur_facts[i]):
-            cur_facts[i] = _safe_fact(display, i)
-            log.warning(f"factcheck: fact{i+1} 최종 판정 false/금지문구 → 안전 fact 교체")
+    cur_facts = _sweep_deterministic(display, cur_facts, final_flagged)
     return cur_hook, cur_facts
 
 

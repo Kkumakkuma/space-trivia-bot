@@ -47,6 +47,9 @@ from config import (
     VIDEO_WIDTH,
 )
 
+# 적응형 길이 하한 (구버전 config 폴백 안전)
+import config as _cfg
+
 log = logging.getLogger("spacebot.composer")
 
 # 쇼츠 재생 UI 안전영역: 우측 ~15%(좋아요/댓글 버튼열)·하단 ~20%(제목/채널/음악) 회피.
@@ -587,13 +590,16 @@ def compose(
         cursor = end + pad_between
 
     raw_total = cursor - pad_between + end_pad
-    # v3: 항상 60s 가까이 강제 (CTA 자리 보장 + Shorts retention 안정).
-    # 음성 짧으면 BGM/배경으로 채움. 음성 길면 outro 잘림 (prompt에서 facts 단어수 제한).
-    target_dur = final_video_duration()
-    total_dur = target_dur
-    if raw_total > target_dur:
-        log.warning(f"음성 {raw_total:.2f}s > 영상 {target_dur:.2f}s — outro 일부 잘림 가능")
-    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (강제 60s) lines={len(timeline)}")
+    # 2026-07-17 v4 (여행봇 검증분 이식): 적응형 길이. v3의 '항상 59.7s 강제'는 내레이션이
+    # 짧게 나온 회차에서 마지막 클립 루프 + 무자막 데드타임을 만들었다(리텐션 붕괴).
+    # tail 3.5s — 7.0이면 cta_start=max(outro시작, total-7)이 outro 종료 후로 밀려 CTA-outro 음성 동기(v5)가 깨진다. 3.5면 CTA가 outro 발화 시작과 동시에 뜨고 노출 = outro(~2-3s)+3.5s.
+    # 우주 내레이션 실측 ~46.6s → 보통 total ~53s+, 하한은 config.MIN_VIDEO_DURATION_SEC.
+    cap_dur = final_video_duration()
+    min_dur = float(getattr(_cfg, "MIN_VIDEO_DURATION_SEC", 40))
+    total_dur = min(cap_dur, max(raw_total + 3.5, min_dur))
+    if raw_total > cap_dur:
+        log.warning(f"음성 {raw_total:.2f}s > 영상 {cap_dur:.2f}s — outro 일부 잘림 가능")
+    log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (적응형, cap={cap_dur:.1f}s min={min_dur:.0f}s) lines={len(timeline)}")
 
     # 라인이 잘리는 경우, 마지막 라인 끝을 total_dur로 클램프
     for w in timeline:
@@ -759,6 +765,11 @@ def compose(
             ac.close()
         return saved
 
+    # temp_audiofile 명시 — 미지정 시 MoviePy가 CWD(리포 루트)에 temp를 만들고
+    # 렌더 크래시 때 잔존한다(2026-07-17 fix: output_path와 같은 디렉터리에 생성).
+    _tmp_snd = os.path.join(
+        os.path.dirname(os.path.abspath(output_path)),
+        os.path.splitext(os.path.basename(output_path))[0] + "_TEMP_snd.mp4")
     final.write_videofile(
         output_path,
         fps=VIDEO_FPS,
@@ -767,6 +778,7 @@ def compose(
         bitrate=VIDEO_BITRATE,
         preset=VIDEO_PRESET,
         threads=VIDEO_THREADS,
+        temp_audiofile=_tmp_snd,
         verbose=False,
         logger=None,
     )
