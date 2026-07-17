@@ -1,10 +1,10 @@
 name: Space Trivia Auto Upload
 
 on:
-  # 3일 간격 1편 (매월 2,5,8,…,29일 — 월 ~10회) — KST 12:00 = UTC 03:00.
+  # 주 2회: 화·금 각 1편 — KST 12:00 = UTC 03:00 (2026-07-17 쿠마님 지시: 동물 월목 / 우주 화금 / 여행 수토)
   # NOTE: 발행 주기를 바꿀 땐 cron 값과 이 주석을 반드시 함께 수정할 것 (주석만 고치고 cron 방치 금지).
   schedule:
-    - cron: '0 3 2-30/3 * *'
+    - cron: '0 3 * * 2,5'
   workflow_dispatch:
 
 permissions:
