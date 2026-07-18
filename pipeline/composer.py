@@ -674,18 +674,25 @@ def compose(
     # 시각 jolt (첫 0.5초 화이트 플래시 — 스크롤 멈춤 유도)
     layers.append(_make_jolt_flash(0.5))
 
-    # 첫 2.4초 BIG HOOK — 화면 중앙 가득 punch(제목/facts 핵심 숫자 "9 BRAINS!") + 토픽명
+    # 첫 2.4초 BIG HOOK — 화면 중앙 가득 punch + 토픽명. 상단 상시 hook과 워터마크는 인트로
+    # 종료 후 노출 → 상단 hook과 중앙 big hook이 같은 문구로 겹치던 이중표기/클러터 제거
+    # (2026-07-18 여행봇에서 발견·검증된 BLOCKER 수정을 fork 동기화).
+    BIG_HOOK_END = 2.4
     big_hook_text = hook.split("•")[0].strip() if "•" in hook else hook
     _fact_texts = [ln.get("text", "") for ln in timeline[1:-1]] if len(timeline) >= 3 else []
-    layers.extend(_make_big_hook_intro(big_hook_text, duration=2.4, title=title, facts=_fact_texts))
+    layers.extend(_make_big_hook_intro(big_hook_text, duration=BIG_HOOK_END, title=title, facts=_fact_texts))
 
-    hook_clip = _make_hook_clip(hook, total_dur)
+    # 상단 상시 hook — 인트로(BIG HOOK) 종료 후부터 표시(중복 제거)
+    hook_clip = _make_hook_clip(hook, max(0.1, total_dur - BIG_HOOK_END))
     if hook_clip is not None:
+        hook_clip = hook_clip.set_start(BIG_HOOK_END)
         layers.append(hook_clip)
 
-    # 브랜드 워터마크(상단) — 자막/CTA보다 **먼저** 그려서 자막이 항상 위로 오게 (겹침 시 자막 우선)
-    brand = _make_brand_clip(total_dur)
+    # 브랜드 워터마크 — 인트로 종료 후 표시(인트로 중앙 텍스트와 겹침 방지). 자막/CTA보다
+    # **먼저** 그려서 자막이 항상 위로 오게 (겹침 시 자막 우선)
+    brand = _make_brand_clip(max(0.1, total_dur - BIG_HOOK_END))
     if brand is not None:
+        brand = brand.set_start(BIG_HOOK_END)
         layers.append(brand)
 
     # CTA 카드 시각 — v5: 음성 outro 시작과 동시에 CTA 글자 표시 (사용자 신고: 자막 음성 싱크 맞춰).
