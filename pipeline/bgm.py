@@ -44,8 +44,10 @@ CATEGORY_TO_MUSIC = {
     "phenomenon": ["space"],
     "spacecraft": ["space"],
     "object": ["space"],
+    "mission": ["space"],        # _VALID_CATEGORIES 에 있는데 미매핑 → lo-fi 유출되던 것(2026-07-20)
+    "constellation": ["space"],
 }
-DEFAULT_MUSIC_THEMES = ["space", "comfort", "study"]  # space 비어있으면 ambient lo-fi로 fallback
+DEFAULT_MUSIC_THEMES = ["space"]  # 미매핑 폴백도 space 만 — 우주 영상에 comfort/study lo-fi 유출 금지(2026-07-20)
 
 # 사용 이력 — repo 루트(used_animals.json과 나란히), 워크플로 persist 대상.
 USED_BGM_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "used_bgm.json")

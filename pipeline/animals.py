@@ -198,7 +198,7 @@ A believable-sounding number you cannot find in SOURCE is FALSE, not plausible. 
         """GPT 1회: 각 항목 판정 + false 항목 교정본 반환. (verdicts, hook, facts)."""
         item_lines = [f"hook: {cur_hook}"] + [f"fact{i+1}: {f}" for i, f in enumerate(cur_facts)]
         verdict_keys = '"hook": "...", ' + ", ".join(f'"fact{i+1}": "..."' for i in range(len(cur_facts)))
-        facts_slot = ", ".join(['"<fact 28-36 words>"'] * len(cur_facts))
+        facts_slot = ", ".join(['"<fact 28-33 words>"'] * len(cur_facts))
         prompt = f"""You are a SKEPTICAL science fact-checker for a 60-second YouTube Shorts about {display} ({single}).
 Viewers actively fact-check and leave angry comments when a claim is wrong, so catch every FALSE or EXAGGERATED statement before it airs.
 
@@ -212,7 +212,7 @@ For EVERY item judged "false_or_exaggerated", REWRITE it to be accurate and supp
 - Replace any unverifiable number with a value you can point to in SOURCE. If SOURCE has no number for that claim, drop the number and make a true qualitative statement instead.
 - Volatile counts that change with new discoveries (moon counts, confirmed exoplanets, population estimates, species counts, record holders): use conservative phrasing like "more than N" or "at least N" with the SOURCE value; never assert a precise disputed count as absolute.
 - Do NOT invent numbers you are unsure of; a true qualitative statement beats a false precise one.
-- Each fact MUST stay 28-36 words. The hook MUST be 12 words or fewer, punchy, and NEVER start with "Did you know".
+- Each fact MUST stay 28-33 words. The hook MUST be 12 words or fewer, punchy, and NEVER start with "Did you know".
 - Keep every "supported"/"plausible" item EXACTLY as written.
 
 ITEMS:
@@ -468,13 +468,13 @@ Rewrite it into {n} final facts obeying ALL of these:
 - Every fact must be supported by SOURCE. **Every number, measurement, count, age, speed and percentage MUST appear in SOURCE.** If the draft has a number that is not in SOURCE, either replace it with the correct value from SOURCE or remove the number and state the true qualitative fact.
 - Do NOT invent superlatives ("the largest", "the only", "the smartest") or exclusivity claims ("only found in X", "the sole species") unless SOURCE states them in those words. If SOURCE hedges ("mostly", "predominantly"), you must hedge too.
 - Keep the facts genuinely interesting: pick the most surprising things SOURCE actually says. Prefer a true surprising fact over a fabricated shocking one.
-- **Each fact MUST be 28-36 words. Count the words before you answer.** If a SOURCE-backed fact is short, expand it with more true detail FROM SOURCE (context, comparison, consequence) — never pad with invented information.
+- **Each fact MUST be 28-33 words. Count the words before you answer.** If a SOURCE-backed fact is short, expand it with more true detail FROM SOURCE (context, comparison, consequence) — never pad with invented information.
 - All numeric claims across the {n} facts MUST agree with each other and with SOURCE.
 - For counts that change with new discoveries, use "more than N" / "at least N" with SOURCE's value.
 - No hype phrases ("will blow your mind", "scientists were shocked", "more interesting than people think").
 - hook: 12 words or fewer, a concrete SOURCE-backed number or comparison, never starts with "Did you know", and subject to the same no-superlative / no-exclusivity rule.
 
-Output STRICT JSON: {{"hook": "...", "facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
+Output STRICT JSON: {{"hook": "...", "facts": [{', '.join(['"fact (28-33 words)"'] * n)}]}}"""
     try:
         from openai import OpenAI
         client = OpenAI(api_key=OPENAI_API_KEY)
@@ -500,7 +500,7 @@ Output STRICT JSON: {{"hook": "...", "facts": [{', '.join(['"fact (28-36 words)"
                 d2, nf2 = _call(
                     "\n\nYour previous answer had facts shorter than 28 words: "
                     f"{', '.join('fact' + str(i) for i in short)}. "
-                    "Rewrite ALL facts so each is 28-36 words, adding only true detail found in SOURCE.")
+                    "Rewrite ALL facts so each is 28-33 words, adding only true detail found in SOURCE.")
                 if len(nf2) == n and sum(len(f.split()) for f in nf2) > sum(len(f.split()) for f in nf):
                     d, nf = d2, nf2
             except Exception as e:
@@ -557,7 +557,7 @@ FACTS TO KEEP (do not change, for context):
 REWRITE ONLY these facts to cover DIFFERENT true aspects from SOURCE, not overlapping the used facts above:
 {redo}
 
-Rules: each rewrite 28-36 words, supported by SOURCE, every number must appear in SOURCE, vary openers, no hype.
+Rules: each rewrite 28-33 words, supported by SOURCE, every number must appear in SOURCE, vary openers, no hype.
 Output STRICT JSON with the SAME 1-based indices you were asked to rewrite:
 {{"rewrites": {{{', '.join(f'"{i+1}": "..."' for i in dup_idx)}}}}}"""
     try:
@@ -640,7 +640,7 @@ Already-used angles for this topic: {', '.join(past_angles) or 'none'}
 Recently used formats to avoid: {avoid_fmt}
 
 REQUIREMENTS:
-- {n} NEW facts, each 28-36 words, each about a DIFFERENT aspect than the previously covered ones above. Across the facts include at least two concrete numbers and at least one vivid comparison.
+- {n} NEW facts, each 28-33 words, each about a DIFFERENT aspect than the previously covered ones above. Across the facts include at least two concrete numbers and at least one vivid comparison.
 - Hook (intro narration): 12 words or fewer, a concrete number or shocking comparison, NEVER start with "Did you know".
 - Do NOT use empty hype ("will blow your mind", "scientists were shocked", "more interesting than people think").
 - Conservative phrasing for volatile counts: "more than N" / "at least N".
@@ -740,9 +740,9 @@ Comment: {comment}
 INSTRUCTIONS:
 - If 2+ facts cite different numbers for the SAME metric (e.g. moons of {display}, age in years, distance in km, percentage),
   pick ONE accurate value (use latest 2024 consensus) and rewrite ALL contradicting facts to use THAT value.
-  Keep facts at 28-36 words. Only modify the contradicting numeric claim, keep the rest of the sentence.
+  Keep facts at 28-33 words. Only modify the contradicting numeric claim, keep the rest of the sentence.
 - If any fact is factually FALSE per 2024 scientific consensus, correct it to an accurate, equally
-  surprising fact (keep 28-36 words). Do NOT invent numbers you are not confident about.
+  surprising fact (keep 28-33 words). Do NOT invent numbers you are not confident about.
 - If comment mentions any planet/object other than {display}, rewrite the comment to be about {display} ONLY,
   in 8-20 words, using one of: hot take / forced choice within {display} / what-if / personal challenge / confession bait / fill-in-the-blank.
 - If everything is fine, return original facts and comment unchanged.
@@ -842,7 +842,7 @@ AVOID picking these topics (recently used): {exclude_str}{facts_block}{titles_bl
 
 REQUIREMENTS:
 - The fact MUST be SURPRISING / counter-intuitive. **Use a specific number ONLY when you are certain it is real** — a true, verifiable fact beats an invented mind-blowing number. Every number you write will be checked against Wikipedia and rewritten if it is not there.
-- **Each fact MUST be 28-36 words. NOT LESS THAN 28. NOT MORE THAN 36.** Count the words. Three short facts = REJECT and rewrite.
+- **Each fact MUST be 28-33 words. NOT LESS THAN 28. NOT MORE THAN 33.** Count the words. Three short facts = REJECT and rewrite.
 - Each fact = ONE rich sentence packed with a specific number + comparison/context + surprising consequence. Spoken at TTS rate +12% this gives ~12s per fact.
 - Provide EXACTLY 4 facts (not 3). Total spoken length target: intro ~3s + 4 facts × ~10s + outro ~3s ≈ 46s (실TTS는 보통 +5~10s 늘어남, 영상 60s 안에 안전).
 - **INTERNAL CONSISTENCY (CRITICAL — viewers WILL catch contradictions and call you out)**:
@@ -904,7 +904,7 @@ Output STRICT JSON only:
   "description_en": "... #shorts #space #astronomy #saturn",
   "hook": "Saturn • Trivia",
   "intro": "Saturn is so light it would float in water.",
-  "facts": ["fact1 (28-36 words)", "fact2 (28-36 words)", "fact3 (28-36 words)", "fact4 (28-36 words)"],
+  "facts": ["fact1 (28-33 words)", "fact2 (28-33 words)", "fact3 (28-33 words)", "fact4 (28-33 words)"],
   "outro": "Follow for more space facts.",
   "comment": "Saturn is the only planet less dense than water — would it really float?",
   "tags": ["shorts","space","astronomy","cosmos","trivia","did you know","saturn","planet","nasa"]
@@ -983,7 +983,7 @@ Output STRICT JSON only:
         key = pick_animal(exclude=exclude_keys or [])
         legacy = _legacy_meta(key)
         # 2026-05-08 fix: 기존엔 placeholder facts ("Saturn hides phenomena that defy...")
-        # 그대로 발행 직전까지 갔음. expand로 진짜 28-36단어 facts 강제 생성.
+        # 그대로 발행 직전까지 갔음. expand로 진짜 28-33단어 facts 강제 생성.
         try:
             rich = expand_legacy_to_rich(legacy)
             legacy.update(rich)
@@ -1061,19 +1061,19 @@ Output STRICT JSON only:
     facts = [str(f).strip() for f in facts[:5] if str(f).strip()]
     if len(facts) < 3:
         facts = facts + [_safe_fact(display, i) for i in range(3 - len(facts))]
-    if any(len(f.split()) < 26 for f in facts):
-        log.warning(f"facts too short ({[len(f.split()) for f in facts]}), expanding to 28-36 words each...")
+    if any(len(f.split()) < 26 or len(f.split()) > 33 for f in facts):
+        log.warning(f"facts out of range ({[len(f.split()) for f in facts]}), rewriting to 28-33 words each...")
         try:
             from openai import OpenAI
             client = OpenAI(api_key=OPENAI_API_KEY)
             n = len(facts)
             joined = "\n".join(f"{i+1}. {f}" for i, f in enumerate(facts))
-            expand_prompt = f"""Rewrite each fact to EXACTLY 28-36 words. Add a specific number, a comparison or context, and a surprising consequence. Keep them TRUE. Vary the sentence openers.
+            expand_prompt = f"""Rewrite each fact to EXACTLY 28-33 words. Add a specific number, a comparison or context, and a surprising consequence. Keep them TRUE. Vary the sentence openers.
 
 Original {n} facts about {display}:
 {joined}
 
-Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-36 words)"'] * n)}]}}"""
+Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-33 words)"'] * n)}]}}"""
             r2 = client.chat.completions.create(
                 model=SCRIPT_MODEL,
                 messages=[{"role": "user", "content": expand_prompt}],
@@ -1171,7 +1171,7 @@ def expand_legacy_to_rich(meta: dict) -> dict:
     prompt = f"""Write a 55-second YouTube Shorts script about {display} ({single}).
 
 REQUIREMENTS:
-- 4 facts, each EXACTLY 28-36 words. Across the 4 facts include AT LEAST two concrete numbers AND at least one vivid comparison.
+- 4 facts, each EXACTLY 28-33 words. Across the 4 facts include AT LEAST two concrete numbers AND at least one vivid comparison.
 - Each fact opens DIFFERENTLY. NEVER use empty hype: "more interesting than people think", "scientists were shocked", "will blow your mind", "hides cosmic secrets".
 - **CONSERVATIVE on volatile numbers**: for counts that change with new discoveries (moon counts, confirmed exoplanets), write "more than N confirmed" or "at least N" with current 2024 consensus values; do NOT state disputed figures as settled fact.
 - **INTERNAL CONSISTENCY (CRITICAL)**: All numeric claims across the 4 facts MUST agree. If fact 1 says "{display} has more than 140 moons", fact 2/3/4 must NOT cite a different number. Use latest 2024 scientific consensus values. No contradictions between facts, title, and comment.
@@ -1198,7 +1198,7 @@ Output STRICT JSON: {{
   "description_en": "... #shorts #space #astronomy #{single.lower().replace(' ', '')}",
   "hook": "{display} • Trivia",
   "intro": "{display} behaves in a way that surprises most people.",
-  "facts": ["fact1 (28-36 words)", "fact2", "fact3", "fact4"],
+  "facts": ["fact1 (28-33 words)", "fact2", "fact3", "fact4"],
   "fact_keywords": ["{single} visual1", "{single} visual2", "{single} visual3", "{single} visual4"],
   "angle": "one_of_the_angle_labels",
   "format": "one_of_the_format_labels",
@@ -1356,11 +1356,11 @@ Benchmark: PBS Space Time, Kurzgesagt, NASA, Astrum — punchy hook, surprising 
 
 Generate a ~55-second script about {display} ({single}). Structure:
 - 0~3s: hook line (must START with "Did you know" / "Wait until you see" / "This is why" — proven viral templates)
-- 3~50s: four RICH facts, each ~10s spoken (TTS 실속도 고려 안전선) (about 28-36 words each)
+- 3~50s: four RICH facts, each ~10s spoken (TTS 실속도 고려 안전선) (about 28-33 words each)
 - 50~55s: outro CTA
 
 HARD RULES:
-- Each fact MUST be EXACTLY 28-36 words. Count the words.
+- Each fact MUST be EXACTLY 28-33 words. Count the words.
 - Each fact = ONE long sentence. Pack a specific number + concrete comparison/extra detail.
 - Always include a specific number/measurement. Always add a comparison or surprising consequence.
 - Plain spoken English, no jargon, no emoji.
@@ -1376,7 +1376,7 @@ Output STRICT JSON only:
   "description_en": "...",
   "hook": "...",
   "intro": "...",
-  "facts": ["fact1 (28-36 words)", "fact2", "fact3", "fact4"],
+  "facts": ["fact1 (28-33 words)", "fact2", "fact3", "fact4"],
   "outro": "..."
 }}"""
 

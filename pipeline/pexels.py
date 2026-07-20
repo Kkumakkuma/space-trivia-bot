@@ -6,6 +6,8 @@
 """
 import logging
 import os
+import shutil
+import subprocess
 import random
 
 import requests
@@ -43,6 +45,31 @@ _SPACE_TOPIC_TOKENS = {
     "earth", "exoplanet",
     "rocket", "spaceship", "voyager",
 }
+
+
+def _media_ok(path: str, min_bytes: int = 30_000) -> bool:
+    """다운로드 클립 무결성 검증 — 잘린/손상 파일이 MoviePy/ffmpeg 인코딩을 깨뜨리는 것 방지.
+    ffmpeg로 전체 디코드(-xerror)해 스트림 중간 truncation('0 bytes read at frame N')을 잡는다.
+    도구(ffmpeg)가 없으면 크기만 검사해 통과 — 인프라 fault로 발행을 막지 않는다(fail-open on tooling).
+    (여행봇 pexels.py 원본 이식 — 3봇 동기, 2026-07-20)"""
+    try:
+        if not os.path.exists(path) or os.path.getsize(path) < min_bytes:
+            return False
+    except OSError:
+        return False
+    ff = shutil.which("ffmpeg")
+    if not ff:
+        return True
+    try:
+        r = subprocess.run(
+            [ff, "-v", "error", "-xerror", "-i", path, "-f", "null", "-"],
+            capture_output=True, text=True, timeout=90,
+        )
+        return r.returncode == 0 and not (r.stderr or "").strip()
+    except subprocess.TimeoutExpired:
+        return False
+    except Exception:
+        return True
 
 
 def _slug_tokens(url: str) -> set:
@@ -239,6 +266,13 @@ def fetch_backgrounds(keywords: list, output_dir: str, n: int = 3,
                         with open(out, "wb") as fh:
                             for chunk in resp.iter_content(chunk_size=1 << 20):
                                 fh.write(chunk)
+                    if not _media_ok(out):
+                        log.warning(f"pexels 손상/잘린 클립 폐기: id={v['id']}")
+                        try:
+                            os.remove(out)
+                        except OSError:
+                            pass
+                        continue
                     paths.append(out)
                     used_ids.add(v["id"])
                     log.info(f"pexels bg[{len(paths)}]: kw={kw} id={v['id']} dur={v.get('duration')}s")
