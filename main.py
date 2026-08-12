@@ -436,6 +436,25 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
     composer.compose(bg_paths, tts_lines, meta["hook"], out_video, bgm_path=bgm_path, title=meta.get("title_en"))
     log.info(f"video: {out_video} ({os.path.getsize(out_video) / 1024 / 1024:.1f}MB)")
 
+    # 4-1) 썸네일 — 완성 영상 프레임 + 펀치 텍스트 (fail-soft: 실패해도 발행 진행)
+    thumbnail_path = None
+    if getattr(_cfg, "ENABLE_THUMBNAIL", False):
+        try:
+            from pipeline.thumbnail import generate_thumbnail
+            punch = None
+            try:
+                punch = composer._extract_punch(meta.get("title_en"), meta.get("facts"))
+            except Exception:
+                punch = None
+            if not punch:
+                # 숫자 후크가 없으면 제목 앞 4단어 대문자
+                punch = " ".join((meta.get("title_en") or "").split()[:4]).upper()
+            tp = os.path.join(work_dir, "thumbnail.jpg")
+            if punch and generate_thumbnail(out_video, tp, text=punch):
+                thumbnail_path = tp
+        except Exception as e:
+            log.warning(f"썸네일 생성 실패(영상은 정상 진행): {e}")
+
     # 5) 7개국 localizations
     locs = translator.translate_for_youtube(meta["title_en"], meta["description_en"])
 
@@ -457,6 +476,7 @@ def run_once(forced_animal: str = None, dry_run: bool = False, no_upload: bool =
             title=meta["title_en"],
             description=meta["description_en"],
             tags=meta["tags"],
+            thumbnail_path=thumbnail_path,
             localizations=locs,
             default_language="en",
             custom_comment=meta.get("comment"),
