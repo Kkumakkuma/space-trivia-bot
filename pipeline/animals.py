@@ -62,21 +62,89 @@ def _has_bad(text: str, words) -> bool:
 
 # 진부 양산 opener — 과거 이력에 없어도(신규 채널/prev_titles 누락) 무조건 차단.
 # title_template_repeats는 '과거 반복'만 보므로 첫 발생·이력 장애 시 이 opener가 샌다(codex 지적 2026-07-11).
+#
+# 2026-08-16 "Wait" 계열 추가 — 발행분 실측(YouTube Data API, 2026-06 이후 동물+우주 72편):
+#   "Wait…" 로 시작한 23편 → 조회수 중앙값 221회, 100회 미만 30%
+#   그 외        49편 → 조회수 중앙값 326회, 100회 미만 22%
+# 이미 막아둔 "You Won't Believe" 와 같은 클릭베이트 계열이고, 그걸 막은 뒤 "Wait," 가
+# 그 자리를 그대로 물려받아 현행 엔진 구간 오프너 중 최저 성과를 냈다. 같은 기준으로 차단한다.
+# ("wait," / "wait " 두 형태만 — "Waiting"·"Waits" 같은 정상 단어는 건드리지 않는다.)
 _BANNED_OPENERS = ("you won't believe", "you wont believe", "wait until you see",
                    "wait til you see", "did you know", "you'll never guess",
                    "youll never guess", "you won't guess")
+
+# "Wait" 계열은 뒤에 붙는 구두점이 제각각이라(Wait, / Wait  / Wait… / Wait! / Wait: / Wait—)
+# 문자열 prefix 목록으로는 다 못 막는다(codex 지적 2026-08-16). \b 로 한 번에 잡되,
+# "Waiting"·"Waits"·"Waited" 같은 정상 단어는 단어 경계가 없어 걸리지 않는다.
+_BANNED_OPENER_RE = re.compile(r"wait\b")
+
+# GPT 재생성 지시문에 넣는 사람이 읽는 형태. _BANNED_OPENERS 와 같은 자리에 두어 드리프트를 막는다
+# (과거엔 지시문에 3종만 하드코딩돼 실제 차단 목록과 어긋나 있었다).
+_BANNED_OPENER_HINT = ('"You Won\'t Believe", "You\'ll Never Guess", "Did You Know", '
+                       '"Wait", "Wait Until You See"')
+
+# 단수 동사 — 복수형 display 가 이 뒤에 오면 주어-동사 수 불일치다.
+_SINGULAR_VERBS = ("does", "is", "was", "has")
 
 
 def _starts_with_banned_opener(title) -> bool:
     t = (title or "").strip().lstrip("\"'“”‘’ ")
     t = t.replace("’", "'").replace("‘", "'").lower()  # 스마트 아포스트로피 → ASCII 정규화
+    if _BANNED_OPENER_RE.match(t):
+        return True
     return any(t.startswith(b) for b in _BANNED_OPENERS)
 
 
+def _title_has_agreement_error(title, display="", single="") -> bool:
+    """제목의 주어-동사 수 불일치를 결정적으로 검출.
+
+    실측 사고: 2026-07-21 우주 채널에 "How Does Exoplanets Survive Such Extreme
+    Conditions?" 가 발행됐다. 원인은 expand_legacy_to_rich 프롬프트 예시가
+    "How Does {display} Survive ___?" 였던 것 — display 는 복수형("Exoplanets")이라
+    예시 자체가 비문이었다. 예시는 고쳤고 이 함수는 그다음 방어선이다.
+
+    오탐을 피하려고 **복수형 display + 단수 동사** 한 방향만 본다("Does Exoplanets" 는
+    뒤에 무엇이 오든 비문). display 가 단수와 같거나(Saturn/Mars) 복수형이 아니면 검사하지 않는다."""
+    t = (title or "").replace("’", "'")
+    disp = (display or "").strip()
+    sing = (single or "").strip()
+    if not disp or disp.lower() == sing.lower():
+        return False
+    low = disp.lower()
+    if not low.endswith("s") or low.endswith("ss"):
+        return False  # 복수형이 확실할 때만 (Auroras/Exoplanets O, Mars/Glass X)
+    pat = r"\b(?:%s)\s+%s\b" % ("|".join(_SINGULAR_VERBS), re.escape(disp))
+    return bool(re.search(pat, t, re.I))
+
+
+def _fix_topic_case(title, display="", single="") -> str:
+    """제목에 소문자로 박힌 주제어를 올바른 표기로 되돌린다.
+
+    실측 사고: 2026-07-14 우주 채널 "The aurora Detail Most People Get Wrong".
+    프롬프트 예시가 "The {single} Detail ..." 이라 소문자 single("aurora")이 그대로 들어갔다.
+    단어 경계가 맞는 주제어만 교체하므로 sunset/aurorae 같은 다른 단어는 건드리지 않는다."""
+    t = title or ""
+    if not t:
+        return t
+    for term in (display, single):
+        term = (term or "").strip()
+        if not term:
+            continue
+        proper = term if not term.islower() else term.title()
+        if proper == term.lower():
+            continue  # 올바른 표기 자체가 소문자면 고칠 것이 없다
+        t = re.sub(r"(?<![A-Za-z])%s(?![A-Za-z])" % re.escape(term.lower()), proper, t)
+    return t[:1].upper() + t[1:]
+
+
 def _title_needs_fix(title, prev_titles, subjects) -> bool:
-    """제목이 (1) 금지 opener로 시작하거나 (2) 과거 템플릿 지문과 겹치면 True.
-    (1)은 prev_titles 유무와 무관 — deterministic 최종 방어."""
+    """제목이 (1) 금지 opener로 시작하거나 (2) 주어-동사 수가 안 맞거나
+    (3) 과거 템플릿 지문과 겹치면 True.
+    (1)(2)는 prev_titles 유무와 무관 — deterministic 최종 방어."""
     if _starts_with_banned_opener(title):
+        return True
+    subj = (list(subjects) if subjects else []) + ["", ""]
+    if _title_has_agreement_error(title, display=subj[1], single=subj[0]):
         return True
     if prev_titles:
         from pipeline import history as _hist
@@ -403,7 +471,7 @@ It must NOT reuse the sentence structure of any of these recent titles (only the
 {banned}
 Also rejected for reusing a template: "{bad_title}"
 
-Rules: max 70 characters, include "{single}" or "{display}", create a curiosity gap, no emoji, do not start with "You Won't Believe" or "Wait Until You See" or "Did You Know". Use a sentence structure that none of the titles above use.
+Rules: max 70 characters, include "{single}" or "{display}", create a curiosity gap, no emoji, do NOT start with any of {_BANNED_OPENER_HINT}. Match the verb to the subject (plural subject takes do/are, singular takes does/is). Capitalize the topic name. Use a sentence structure that none of the titles above use.
 
 Output STRICT JSON: {{"title": "..."}}"""}],
                     response_format={"type": "json_object"},
@@ -411,18 +479,27 @@ Output STRICT JSON: {{"title": "..."}}"""}],
                     max_tokens=120,
                 )
                 t = str(json.loads(r.choices[0].message.content).get("title", "")).strip()[:95]
-                if t and not _starts_with_banned_opener(t) and not _hist.title_template_repeats(t, check_prev, subjects=subj):
+                t = _fix_topic_case(t, display, single)
+                if (t and not _starts_with_banned_opener(t)
+                        and not _title_has_agreement_error(t, display, single)
+                        and not _hist.title_template_repeats(t, check_prev, subjects=subj)):
                     return t
             except Exception as e:
                 log.warning(f"제목 재생성 실패: {e}")
                 break
     # 결정적 폴백 — 구조가 서로 다른 4종. 최근 지문과 안 겹치는 첫 번째 채택.
-    for cand in (f"{display}: The Part Nobody Mentions",
-                 f"What {display} Actually Do When No One Looks",
+    # 후보는 전부 단수/복수 display 양쪽에서 성립하는 문형이어야 한다 — 주어에 동사를 직접
+    # 붙이는 문형("What {display} Actually Do ...")은 단수 주제(Saturn)에서 비문이 된다.
+    for cand in (f"The Truth About {display} Nobody Explains",
+                 f"{display}: The Part Nobody Mentions",
+                 f"What Nobody Tells You About {display}",
                  f"The {single.title()} Fact That Changed My Mind",
-                 f"Nobody Talks About This {single.title()} Habit"):
-        if not _starts_with_banned_opener(cand) and not _hist.title_template_repeats(cand, check_prev, subjects=subj):
+                 f"Nobody Talks About This Side of {display}"):
+        if (not _starts_with_banned_opener(cand)
+                and not _title_has_agreement_error(cand, display, single)
+                and not _hist.title_template_repeats(cand, check_prev, subjects=subj)):
             return cand[:95]
+    # 최종 폴백 — 콜론 문형이라 동사가 없어 단수/복수 무관하게 항상 문법적으로 안전하다.
     return f"{display}: The Part Nobody Mentions"[:95]
 
 
@@ -862,16 +939,26 @@ REQUIREMENTS:
 - **fact_keywords**: EXACTLY 4 background-video search keywords, ONE per fact IN ORDER, each containing the topic name and describing that fact's visual (e.g. fact about the rings -> "saturn rings"; fact about storms -> "saturn atmosphere clouds").
 - category: one of {sorted(_VALID_CATEGORIES)}.
 - **Title (CRITICAL — single most important CTR factor)**: max 70 chars, MUST include the topic name + a CURIOSITY GAP hook. NEVER use "compilation", "best of", "top 10", "Amazing Facts About X" (too generic, kills CTR).
-  Use ONE of these viral patterns (vary across topics):
-  (a) Shocking number: "Saturn's Rings Will Vanish in 100 Million Years"
-  (b) Wait what: "Wait, One of Jupiter's Moons Hides an Ocean"
-  (c) Counterintuitive: "The Mars Detail Most People Get Wrong"
-  (d) Conditional twist: "If the Sun Vanished, We'd Have 8 Minutes To Live"
-  (e) The truth: "The Truth About Why Black Holes Aren't Holes"
-  (f) Stop scrolling: "Stop Scrolling — A Star Just Exploded Last Night"
-  (g) Question hook: "How Loud Is the Sun? You'd Be Shocked"
-  Keep it punchy. Lowercase or Title Case both fine. NO emoji in title. Hype is allowed in the title, but it must NOT state anything factually false.
+  **Write the title for YOUR picked topic from scratch. The patterns below are SHAPES with
+  [placeholders] — NEVER output a placeholder, and NEVER copy a shape's wording verbatim.**
+  Ordered by MEASURED performance on this channel (2026-08 audit of published videos, YouTube Data API):
+  (a) The truth (HIGHEST measured views): "The Truth About [topic]'s [specific feature]"
+  (b) Subject-first concrete claim (2nd): "[Topic]'s [feature] Is [surprising comparison]"
+  (c) Shocking number: "[Topic] [verb] [concrete number] [unit]"
+  (d) Stop scrolling: "Stop Scrolling — [topic] [surprising action]"
+  (e) Conditional twist: "If [topic] [hypothetical], [consequence]"
+  (f) Question hook: "[How/Why] [do/does] [topic] [surprising behaviour]?"
+  **Put a concrete number in the title whenever a fact supports one** — titles containing a number
+  measured a higher median view count than titles without.
+  **NEVER start the title with "Wait" or "Wait until"** — measured the lowest median views of any
+  opener on this channel. **NEVER end the title with "Here's Why" or "Most People Get Wrong"** —
+  both measured in the bottom group.
+  Subject-verb agreement is mandatory: a plural subject takes "do/are", a singular subject takes "does/is".
+  Capitalize the topic name in the title — never write it lowercase mid-sentence.
+  Keep it punchy. Title Case. NO emoji in title. Hype is allowed in the title, but it must NOT state anything factually false.
   Vary the pattern from the last few videos (do not reuse the same template repeatedly).
+- **tags**: 8-9 plain search phrases a real person would type. Words separated by SPACES, NEVER
+  underscores (never "black_hole" — write "black hole"). No two tags that differ only in letter case.
 - Description: 2 sentences + 3-5 hashtags (no emoji).
 - Hook (on-screen overlay text): 2-4 words like "Saturn • Trivia" or "Black Hole Facts".
 - **comment** (auto-pinned reply-magnet comment under the video): ONE line, 8-20 words.
@@ -1002,6 +1089,9 @@ Output STRICT JSON only:
         except Exception as e:
             log.warning(f"legacy 전역 fact 중복 검사 실패(무시): {e}")
         try:
+            legacy["title_en"] = _fix_topic_case(legacy.get("title_en", ""),
+                                                 legacy.get("display", ""),
+                                                 legacy.get("single", ""))
             if _title_needs_fix(legacy.get("title_en", ""), prev_titles,
                                 (legacy.get("single", ""), legacy.get("display", ""))):
                 legacy["title_en"] = _retitle_unique(legacy.get("display", ""),
@@ -1048,6 +1138,7 @@ Output STRICT JSON only:
     # 실제 사고: "You Won't Believe What Foxes/Comets/Jupiter/the Big Bang Does at Night".
     # 유튜브 2025-07 inauthentic content 정책의 수익화 리스크라 코드로 강제한다.
     try:
+        title_en = _fix_topic_case(title_en, display, single)
         if _title_needs_fix(title_en, prev_titles, (single, display)):
             alt = _retitle_unique(display, single, title_en, prev_titles)
             log.warning(f"제목 양산/금지opener 차단: {title_en!r} → {alt!r}")
@@ -1150,6 +1241,7 @@ Output STRICT JSON: {{"facts": [{', '.join(['"fact (28-33 words)"'] * n)}]}}"""
     meta = _finalize_fact_keywords(meta, pexels_kw)
     # 제목 템플릿 최종 검사 — _differentiate_content가 title을 덮어쓰므로 여기서 한 번 더 본다.
     try:
+        meta["title_en"] = _fix_topic_case(meta.get("title_en", ""), display, single)
         if _title_needs_fix(meta.get("title_en", ""), prev_titles, (single, display)):
             meta["title_en"] = _retitle_unique(display, single, meta["title_en"], prev_titles)
             log.warning(f"제목 양산/금지opener(최종) 차단 → {meta['title_en']!r}")
@@ -1181,14 +1273,19 @@ REQUIREMENTS:
 - **angle**: one of {ANGLES}. **format**: one of {FORMATS}.
 - **fact_keywords**: 4 background-video search keywords, ONE per fact IN ORDER, each containing "{single}".
 - **Title (CRITICAL CTR — pick ONE viral pattern, max 70 chars, must include "{single}" or "{display}", NO emoji)**:
-  (a) Shocking number: "{display} Has ___ ?! Here's Why"
-  (b) Wait what: "Wait, {display} ___ A Year"
-  (c) Counterintuitive: "The {single} Detail Most People Get Wrong"
-  (d) Conditional twist: "If {display} ___, We'd Be in Trouble"
-  (e) Stop scrolling: "Stop Scrolling — {display} Just ___"
-  (f) Question hook: "How Does {display} Survive ___?"
+  Patterns are SHAPES, not text to copy — write the words yourself, ordered by MEASURED views:
+  (a) The truth (HIGHEST measured): start with "The Truth About {display}" then the specific feature
+  (b) Subject-first concrete claim: start with "{display}" then a surprising, specific comparison
+  (c) Shocking number: "{display}" + verb + a concrete number with its unit
+  (d) Conditional twist: start with "If {display}" then the consequence
+  (e) Stop scrolling: start with "Stop Scrolling —" then the single most surprising fact
+  (f) Question hook: a Why/How question about {display} — conjugate the verb to match the subject
   NEVER use "Amazing Facts About", "Wild Facts About", "Facts You Didn't Know" — generic patterns kill CTR.
-  Do NOT start the title with "You Won't Believe", "Wait Until You See", or "Did You Know" — these are overused template openers that hurt reach. Match the verb to the subject ("Comets DO / orbit", "A Comet DOES / orbits"). Hype ok, but no false claim.
+  Do NOT start the title with {_BANNED_OPENER_HINT} — overused template openers, measured lowest reach.
+  Do NOT end the title with "Here's Why" or "Most People Get Wrong" — both measured in the bottom group.
+  Put a concrete number in the title when a fact supports one (measured higher median views).
+  Write "{display}" with its capital letters exactly as given — never lowercase the topic name.
+  Match the verb to the subject ("Comets DO / orbit", "A Comet DOES / orbits"). Hype ok, but no false claim.
 - Description: 2 sentences + 3-5 hashtags (no emoji).
 - **comment** (reply-magnet, 8-20 words): hot take / forced choice WITHIN {display} only / what-if / personal challenge / confession bait / fill-in-the-blank.
   **TOPIC LOCK**: comment MUST be about {display} ONLY. NEVER mention any OTHER cosmic object (no "Saturn or Jupiter?" type cross-topic comments). 0-1 emoji max. NEVER "Which fact surprised you most?" or "Tag a friend".
