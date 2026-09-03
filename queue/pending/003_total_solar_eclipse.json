@@ -1,0 +1,54 @@
+{
+  "author": "claude",
+  "animal_key": "total_solar_eclipse",
+  "display": "Total Solar Eclipses",
+  "single": "total solar eclipse",
+  "category": "phenomenon",
+  "angle": "weird_physics",
+  "format": "how_it_works",
+  "hook_line": "Total solar eclipses only exist because of a cosmic coincidence, and it is slowly ending.",
+  "hook": "A COSMIC COINCIDENCE",
+  "intro": "Total solar eclipses only exist because of a cosmic coincidence, and it is slowly ending.",
+  "facts": [
+    "The Sun is about 400 times wider than the Moon, but it is also about 400 times farther away, so the two look almost exactly the same size in our sky.",
+    "During totality the Moon's shadow sweeps across the ground at thousands of kilometers per hour, and the longest possible totality lasts only about seven and a half minutes.",
+    "The sky darkens enough for planets and bright stars to appear, temperatures drop several degrees, and many animals behave as if night has fallen.",
+    "The Moon drifts nearly 4 centimeters farther from Earth every year, so models suggest that in roughly 600 million years it will look too small to cover the Sun."
+  ],
+  "outro": "Catch one while our planet still has them.",
+  "title_en": "Total Eclipses Are a Cosmic Accident and They're Running Out",
+  "title_ko": "개기일식은 우주적 우연, 그리고 지금 서서히 사라지는 중",
+  "description_en": "A total solar eclipse happens only because the Sun and Moon look the same size from Earth, and the Moon is slowly drifting away. Here is the science behind the coincidence. #solareclipse #eclipse #moon #sun #space #astronomy",
+  "description_ko": "개기일식은 지구에서 태양과 달이 같은 크기로 보이는 우연 덕분에 일어나고, 달은 매년 조금씩 멀어지고 있습니다. 그 우연의 과학을 정리했습니다. #개기일식 #일식 #달 #태양 #우주",
+  "comment": "Have you ever seen totality with your own eyes?",
+  "tags": [
+    "shorts",
+    "space",
+    "solar eclipse",
+    "eclipse",
+    "moon",
+    "sun",
+    "astronomy",
+    "science",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "total solar eclipse",
+    "total solar eclipse solar eclipse corona",
+    "total solar eclipse moon covering sun",
+    "total solar eclipse eclipse shadow timelapse",
+    "total solar eclipse sun and moon sky",
+    "total solar eclipse eclipse crowd watching",
+    "total solar eclipse solar eclipse diamond ring",
+    "total solar eclipse moon surface close up",
+    "total solar eclipse sun corona space",
+    "total solar eclipse dark sky eclipse"
+  ],
+  "fact_keywords": [
+    "total solar eclipse sun and moon size comparison",
+    "total solar eclipse eclipse shadow moving timelapse",
+    "total solar eclipse dark sky during eclipse",
+    "total solar eclipse moon orbit earth animation"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "author": "claude",
+  "animal_key": "ceres",
+  "display": "Ceres",
+  "single": "Ceres",
+  "category": "planet",
+  "angle": "discovery_story",
+  "format": "classic_trivia",
+  "hook_line": "There is a dwarf planet hiding in the asteroid belt, and it has salt water.",
+  "hook": "SALT WATER IN THE BELT",
+  "intro": "There is a dwarf planet hiding in the asteroid belt, and it has salt water.",
+  "facts": [
+    "Ceres is the largest object in the asteroid belt, about 940 kilometers wide, and it alone holds roughly a third of the belt's entire mass.",
+    "It was discovered on the first night of 1801 and was called a planet for decades before being demoted to an asteroid, then promoted to a dwarf planet in 2006.",
+    "The mysterious bright spots inside Occator crater turned out to be salt deposits left behind when briny water seeped up from below and evaporated.",
+    "NASA's Dawn spacecraft orbited Ceres from 2015 to 2018 and found signs of a slushy reservoir of salty water still lingering beneath its crust."
+  ],
+  "outro": "A tiny world with a salty secret.",
+  "title_en": "The Dwarf Planet With Salt Water Hiding in the Asteroid Belt",
+  "title_ko": "소행성대에 숨어 있는 왜소행성, 그 안에 소금물이 있다",
+  "description_en": "Ceres is the largest object in the asteroid belt and a dwarf planet with bright salt spots and signs of briny water beneath its surface. Here is its strange story. #ceres #dwarfplanet #asteroidbelt #nasa #space #astronomy",
+  "description_ko": "세레스는 소행성대에서 가장 큰 천체이자 왜소행성으로, 밝은 소금 자국과 지하 소금물의 흔적을 지녔습니다. 그 이상한 이야기를 정리했습니다. #세레스 #왜소행성 #소행성대 #우주",
+  "comment": "Planet, asteroid, or dwarf planet, which name fits Ceres best?",
+  "tags": [
+    "shorts",
+    "space",
+    "ceres",
+    "dwarf planet",
+    "asteroid belt",
+    "nasa dawn",
+    "astronomy",
+    "solar system",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "Ceres dwarf planet",
+    "Ceres asteroid belt space",
+    "Ceres Occator crater bright spots",
+    "Dawn spacecraft Ceres",
+    "Ceres asteroid surface craters",
+    "Ceres dwarf planet space",
+    "Ceres salt crystals close up",
+    "Ceres spacecraft orbit planet",
+    "Ceres rocky asteroid rotating",
+    "Ceres solar system planets"
+  ],
+  "fact_keywords": [
+    "Ceres asteroid belt rocks space",
+    "Ceres old telescope observatory night",
+    "Ceres bright salt spots crater",
+    "Ceres spacecraft orbiting planet"
+  ]
+}

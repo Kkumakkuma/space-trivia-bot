@@ -57,6 +57,35 @@ log = logging.getLogger("spacebot.composer")
 SAFE_WIDTH_RATIO = 0.72
 CAPTION_MAX_W = int(VIDEO_WIDTH * SAFE_WIDTH_RATIO)
 
+# 첫 화면 BIG HOOK 노출 구간(초). 여기저기 중복 선언돼 있던 값을 상수 하나로 통합(2026-09-03).
+# 이 구간에는 하단 phrase 자막을 띄우지 않는다(글자 충돌 방지).
+BIG_HOOK_END = 2.5
+
+# 자막 외곽선 두께 — 2026-09-03 가독성 강화(3 → 5). 그림자는 _make_text_image가 항상 얹는다.
+CAPTION_STROKE_W = 5
+
+# 쇼츠 최대 길이 방어선(초). 합성/자막이 공유하는 단일 출처.
+MAX_TOTAL_DURATION = 59.5
+
+# 내레이션이 방어선을 넘어 '음성이 잘린 채' 발행되는 것을 허용하지 않기 위한 판정 여유(초).
+# end_pad(끝 무음)만 잘리는 건 문제가 아니라 실제 발화 종료 시각으로만 판정한다.
+NARRATION_CUT_TOLERANCE = 0.05
+
+
+class NarrationTooLongError(RuntimeError):
+    """내레이션이 길어 음성이 잘리는 대본 — 발행 금지(fail-closed).
+
+    호출부(main)가 이 예외를 잡아 해당 대기열 대본을 queue/failed 로 빼고 다음 대본을
+    시도한다. 잘린 음성으로 영상이 나가는 것보다 그 회차를 다른 대본으로 채우는 게 낫다.
+    """
+
+    def __init__(self, cut_sec: float, voice_end: float, limit: float):
+        self.cut_sec = float(cut_sec)
+        self.voice_end = float(voice_end)
+        self.limit = float(limit)
+        super().__init__(
+            f"내레이션 {voice_end:.2f}s > 영상 {limit:.2f}s — {cut_sec:.2f}s 잘림(발행 금지)")
+
 # 진단 전용 훅: {"path": <wav>} 설정 시 compose가 비디오 인코딩 없이 최종 오디오만 저장하고 반환.
 # 프로덕션 경로에선 항상 None (동작 불변). 음성 끊김 분석용.
 _AUDIO_PROBE_OUT = {"path": None}
@@ -188,35 +217,36 @@ def _make_text_image(text: str, font_size: int, max_width: int,
     tmp_draw = ImageDraw.Draw(tmp_img)
     lines = _wrap_text(tmp_draw, text, font, max_width - 80)
     line_h = font_size + 10
-    total_h = line_h * len(lines) + 60
+    # 외곽선이 두꺼울수록 위아래 여백을 더 준다 — 두꺼운 stroke가 캔버스 밖으로 잘리는 것 방지.
+    margin = 30 + stroke_width * 2
+    total_h = line_h * len(lines) + margin * 2
 
     img = Image.new("RGBA", (max_width, total_h), (0, 0, 0, 0))
 
     if shadow:
+        # 드롭 섀도 — 밝은 배경에서도 글자가 배경에서 떠 보이게 (외곽선과 별개 레이어)
         shadow_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
         sd = ImageDraw.Draw(shadow_layer)
-        y = 30
+        y = margin
         for line in lines:
             w = tmp_draw.textlength(line, font=font)
             x = (max_width - w) // 2
-            sd.text((x + 4, y + 4), line, font=font, fill=(0, 0, 0, 180))
+            sd.text((x + 5, y + 6), line, font=font, fill=(0, 0, 0, 200),
+                    stroke_width=stroke_width, stroke_fill=(0, 0, 0, 200))
             y += line_h
-        shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(radius=5))
+        shadow_layer = shadow_layer.filter(ImageFilter.GaussianBlur(radius=6))
         img = Image.alpha_composite(img, shadow_layer)
 
     text_layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
     td = ImageDraw.Draw(text_layer)
-    y = 30
+    y = margin
     for line in lines:
         w = tmp_draw.textlength(line, font=font)
         x = (max_width - w) // 2
-        if stroke_width > 0:
-            for dx in range(-stroke_width, stroke_width + 1):
-                for dy in range(-stroke_width, stroke_width + 1):
-                    if dx == 0 and dy == 0:
-                        continue
-                    td.text((x + dx, y + dy), line, font=font, fill=stroke_color)
-        td.text((x, y), line, font=font, fill=fg)
+        # Pillow 네이티브 stroke — 예전 dx/dy 중첩 루프는 stroke_width가 커질수록
+        # 드로우 횟수가 제곱으로 늘어(8px면 288회/줄) 렌더가 느려졌다.
+        td.text((x, y), line, font=font, fill=fg,
+                stroke_width=max(0, stroke_width), stroke_fill=stroke_color)
         y += line_h
 
     img = Image.alpha_composite(img, text_layer)
@@ -238,7 +268,8 @@ def _fit_caption_image(text: str, base_size: int, max_width: int, max_lines: int
         if len(lines) <= max_lines:
             break
         size -= 4
-    return _make_text_image(text, size, max_width, fg=(255, 255, 255, 255), stroke_width=3)
+    return _make_text_image(text, size, max_width, fg=(255, 255, 255, 255),
+                            stroke_width=CAPTION_STROKE_W)
 
 
 def _make_static_clip(arr: np.ndarray, duration: float, position, fade_in=0.3, fade_out=0.3):
@@ -300,7 +331,8 @@ def _make_phrase_clip(phrase_text: str, start: float, end: float, base_size=None
         if len(lines) <= 2 and all(td.textlength(ln, font=font) <= CAPTION_WRAP_W for ln in lines):
             break
         size -= 4
-    arr = _make_text_image(phrase_text, size, CAPTION_MAX_W, fg=fg, stroke_width=3)
+    arr = _make_text_image(phrase_text, size, CAPTION_MAX_W, fg=fg,
+                           stroke_width=CAPTION_STROKE_W)
     arr = _add_caption_box(arr)  # 가독성: 반투명 다크 박스 배경
     if arr.shape[0] <= 1:
         return None
@@ -343,7 +375,10 @@ def _make_caption_window(text: str, start: float, end: float, base_size=80):
 
 
 def _make_hook_clip(text: str, duration: float):
-    """상단 hook 박스 — 전체 영상 동안 표시 (상단 y=0.10, 안전영역 폭)."""
+    """상단 토픽 라벨 — BIG HOOK 이후 영상 내내 표시 (상단 y=0.10, 안전영역 폭).
+
+    2026-09-03부터 여기에 들어가는 건 펀치 훅이 아니라 토픽명(display)이다.
+    펀치 문구를 50초 내내 띄우면 같은 문장이 계속 반복돼 화면이 지저분해진다."""
     arr = _make_text_image(text, font_size=72, max_width=CAPTION_MAX_W)
     if arr.shape[0] <= 1:
         return None
@@ -374,58 +409,85 @@ def _extract_punch(title: str = None, facts=None):
     return None
 
 
-def _make_big_hook_intro(topic_text: str, duration: float = 2.4, title: str = None, facts=None):
-    """첫 2~3초 화면 가득 BIG HOOK — 스크롤 멈춤 유도.
+_LEGACY_HOOK_RE = re.compile(r"[•·|]\s*trivia\s*$", re.IGNORECASE)
+
+
+def is_legacy_hook_label(hook: str) -> bool:
+    """구 스키마 훅("Saturn • Trivia" 라벨)인지 판정.
+
+    새 대기열 스키마의 hook은 영어 대문자 펀치 문구(2~5단어)다. 구 GPT 갈래가 만드는
+    라벨 형식이 들어오면 BIG HOOK에 "SATURN • TRIVIA"가 크게 뜨는 촌스러운 화면이 되므로
+    토픽명만 남겨 렌더한다(경고 로그 1줄).
+    """
+    return bool(_LEGACY_HOOK_RE.search((hook or "").strip()))
+
+
+def _fit_font_size(text: str, start: int, floor: int, step: int, max_lines: int = 1):
+    """max_lines 안에 안전폭(CAPTION_WRAP_W)으로 들어가는 최대 폰트 크기 탐색."""
+    font_path = _find_font(bold=True)
+    size = start
+    while size >= floor:
+        font = ImageFont.truetype(font_path, size) if font_path else ImageFont.load_default()
+        tmp = Image.new("RGBA", (CAPTION_MAX_W, 100), (0, 0, 0, 0))
+        td = ImageDraw.Draw(tmp)
+        lines = _wrap_text(td, text, font, CAPTION_WRAP_W)
+        if len(lines) <= max_lines and all(
+                td.textlength(ln, font=font) <= CAPTION_WRAP_W for ln in lines):
+            return size
+        size -= step
+    return floor
+
+
+def _make_big_hook_intro(hook_text: str, display_label: str = "",
+                         duration: float = BIG_HOOK_END):
+    """첫 0~duration초 화면 가득 BIG HOOK — 스크롤 멈춤 유도 (2026-09-03 개편).
 
     구성:
-    - punch 0~0.7s (화면 중앙 y=0.30, 노랑): 제목→facts에서 핵심 숫자 추출. 숫자 없으면 스킵.
-    - 토픽명 BIG (자동축소, 줌인 pop) 0.3~duration, y=0.42. 폭은 안전영역(CAPTION_MAX_W) 이내.
-    hook 자막은 호출 측에서 BIG_HOOK_END(=duration) 이후에 시작 → 펀치/자막 겹침 없음.
+    - 펀치 문구(hook, 대문자·최대 2줄·흰 글자+검은 외곽선) 0~duration, y=0.32, 줌인 pop.
+    - 토픽 라벨(display)은 그 아래 y=0.56에 작게 0.35~duration.
+    구 스키마 훅("Topic • Trivia")이면 토픽명만 크게 띄우고 아래 라벨은 생략(중복 표기 방지).
+    하단 phrase 자막은 호출 측에서 BIG_HOOK_END 이후에 시작 → 글자 겹침 없음.
     """
     layers = []
-    # punch: 제목/facts의 숫자+명사. 근거 없으면 스킵(빈 펀치 금지, 견고화)
-    punch_text = _extract_punch(title, facts)
-    if punch_text:
-        _psize = 200
-        _fp = _find_font(bold=True)
-        while _psize >= 80:
-            _pf = ImageFont.truetype(_fp, _psize) if _fp else ImageFont.load_default()
-            _tmp = Image.new("RGBA", (10, 10), (0, 0, 0, 0))
-            if ImageDraw.Draw(_tmp).textlength(punch_text, font=_pf) <= CAPTION_WRAP_W:
-                break
-            _psize -= 12
-        punch_arr = _make_text_image(
-            punch_text, font_size=_psize, max_width=CAPTION_MAX_W,
-            fg=(255, 220, 0, 255), stroke_color=(0, 0, 0, 255), stroke_width=8,
-        )
-        if punch_arr.shape[0] > 1:
-            punch = ImageClip(punch_arr, transparent=True).set_duration(0.7).set_start(0)
-            punch = punch.set_position(("center", int(VIDEO_HEIGHT * 0.30)))
-            punch = punch.crossfadein(0.05).crossfadeout(0.25)
-            layers.append(punch)
+    hook_clean = _strip_emoji(hook_text or "").strip()
+    if not hook_clean:
+        return layers
 
-    topic_clean = _strip_emoji(topic_text or "")
-    if topic_clean:
-        # 1줄에 들어가게 폰트 자동축소. 폭은 안전영역 이내.
-        size = 200
-        font_path = _find_font(bold=True)
-        while size >= 64:
-            font = ImageFont.truetype(font_path, size) if font_path else ImageFont.load_default()
-            tmp = Image.new("RGBA", (CAPTION_MAX_W, 100), (0, 0, 0, 0))
-            td = ImageDraw.Draw(tmp)
-            if td.textlength(topic_clean, font=font) <= CAPTION_WRAP_W:
-                break
-            size -= 12
-        topic_arr = _make_text_image(
-            topic_clean, font_size=size, max_width=CAPTION_MAX_W,
-            fg=(255, 255, 255, 255), stroke_color=(0, 0, 0, 255), stroke_width=8,
+    legacy = is_legacy_hook_label(hook_clean)
+    if legacy:
+        log.warning(f"[hook] 레거시 라벨 형식 감지 — 펀치 문구 아님: {hook_clean!r}")
+        big_text = _LEGACY_HOOK_RE.sub("", hook_clean).strip(" •·|") or hook_clean
+        sub_text = ""
+    else:
+        big_text = hook_clean.upper()
+        sub_text = _strip_emoji(display_label or "").strip()
+
+    # 펀치 — 최대 2줄. 2줄이면 글자를 조금 줄여 화면을 덜 잡아먹게 한다.
+    size = _fit_font_size(big_text, start=170, floor=64, step=8, max_lines=2)
+    big_arr = _make_text_image(
+        big_text, font_size=size, max_width=CAPTION_MAX_W,
+        fg=(255, 255, 255, 255), stroke_color=(0, 0, 0, 255), stroke_width=8,
+    )
+    if big_arr.shape[0] > 1:
+        big_clip = ImageClip(big_arr, transparent=True).set_duration(duration).set_start(0)
+        big_clip = big_clip.set_position(("center", int(VIDEO_HEIGHT * 0.32)))
+        big_clip = big_clip.resize(lambda t: 1.25 - 0.25 * min(1.0, t / 0.25))
+        big_clip = big_clip.crossfadein(0.08).crossfadeout(0.35)
+        layers.append(big_clip)
+
+    # 토픽 라벨 — 펀치 아래 작게
+    if sub_text:
+        sub_size = _fit_font_size(sub_text, start=64, floor=36, step=4, max_lines=1)
+        sub_arr = _make_text_image(
+            sub_text, font_size=sub_size, max_width=CAPTION_MAX_W,
+            fg=(255, 255, 255, 235), stroke_color=(0, 0, 0, 255), stroke_width=4,
         )
-        if topic_arr.shape[0] > 1:
-            topic_clip = ImageClip(topic_arr, transparent=True).set_duration(duration - 0.3).set_start(0.3)
-            topic_clip = topic_clip.set_position(("center", int(VIDEO_HEIGHT * 0.42)))
-            topic_clip = topic_clip.resize(lambda t: 1.4 - 0.4 * min(1.0, t / 0.25))
-            topic_clip = topic_clip.crossfadein(0.1).crossfadeout(0.4)
-            layers.append(topic_clip)
+        if sub_arr.shape[0] > 1:
+            sub_clip = ImageClip(sub_arr, transparent=True)
+            sub_clip = sub_clip.set_duration(max(0.1, duration - 0.35)).set_start(0.35)
+            sub_clip = sub_clip.set_position(("center", int(VIDEO_HEIGHT * 0.56)))
+            sub_clip = sub_clip.crossfadein(0.15).crossfadeout(0.3)
+            layers.append(sub_clip)
 
     return layers
 
@@ -508,10 +570,37 @@ def _pick_bgm():
     return random.choice(files)
 
 
+def normalize_bg_groups(bg) -> list:
+    """배경 입력을 [[path, ...], ...] (fact 슬롯별 클립 묶음)로 정규화.
+
+    받는 형태 2가지 — 둘 다 지원해야 기존 호출부(tests/render_qa.py 등)가 안 깨진다.
+      1) 신규 계약: backgrounds_by_fact = [[(path, clip_id), ...], ...]  (fact당 1~N개)
+      2) 구 계약  : bg_paths = [path, ...]                               (fact당 1개)
+    """
+    groups = []
+    for item in (bg or []):
+        if isinstance(item, str):
+            groups.append([item])
+            continue
+        if isinstance(item, (list, tuple)):
+            grp = []
+            for c in item:
+                if isinstance(c, str):
+                    grp.append(c)
+                elif isinstance(c, (list, tuple)) and c and isinstance(c[0], str):
+                    grp.append(c[0])  # (path, clip_id)
+            if grp:
+                groups.append(grp)
+            continue
+        raise ValueError(f"compose: 알 수 없는 배경 항목 타입 {type(item)!r}")
+    return groups
+
+
 def _build_background(bg_paths: list, segment_durations: list, total_dur: float):
-    """배경 영상들을 segment_durations 길이로 잘라 concatenate.
+    """배경 영상들을 segment_durations 길이로 잘라 concatenate (세그먼트 사이는 하드컷).
 
     bg_paths가 부족하면 처음 영상 재사용. 각 세그먼트는 fit_portrait + Ken Burns.
+    세그먼트 간 크로스페이드는 쓰지 않는다 — Actions 러너 메모리 보호(2026-09-03 확정).
     """
     n_seg = len(segment_durations)
     paths = list(bg_paths)
@@ -534,8 +623,10 @@ def _build_background(bg_paths: list, segment_durations: list, total_dur: float)
 
 def final_video_duration() -> float:
     """compose가 강제하는 최종 영상 길이(초). 자막(captions) 등 외부 모듈이 참조하는 단일 출처.
-    compose 내부 target_dur과 동일해야 자막이 잘린 영상 뒤로 삐져나오지 않는다."""
-    return float(VIDEO_DURATION_SEC) - 0.3
+    compose 내부 target_dur과 동일해야 자막이 잘린 영상 뒤로 삐져나오지 않는다.
+
+    2026-09-03: 59.7 → 59.5 (MAX_TOTAL_DURATION). 쇼츠 60초 경계에 여유를 더 둔다."""
+    return min(float(VIDEO_DURATION_SEC) - 0.5, MAX_TOTAL_DURATION)
 
 
 def _mix_bgm(bgm_file: str, voice_audio, total_dur: float):
@@ -561,14 +652,23 @@ def compose(
     bgm_path: str = None,
     title: str = None,
     qa_frame_times: list = None,
+    topic_label: str = None,
 ):
-    """tts_lines: [{"text", "path", "duration"}] (intro + fact x3 + outro 순서)
-    bg_paths: Pexels mp4 경로 리스트 (3개 권장)
+    """tts_lines: [{"text", "path", "duration"}] (intro + fact x4 + outro 순서)
+
+    bg_paths: 배경 입력. 신규 계약은 fact 슬롯별 묶음 [[(path, clip_id), ...], ...]
+      (config.CLIPS_PER_FACT개까지, 수집 부족 시 1개). 구 계약인 평면 [path, ...]도 그대로 받는다.
+    hook: 첫 화면 BIG HOOK에 크게 띄울 영어 펀치 문구.
+    topic_label: BIG HOOK 아래/상단에 작게 띄울 토픽명(meta["display"]). 없으면 hook에서 유추.
 
     리턴: output_path (일반). qa_frame_times 주면 전체 인코딩 없이 그 시점 프레임 PNG만
     저장하고 [(t, png), ...]를 반환(렌더 QA 전용, 프로덕션 동작 불변).
     """
-    if not bg_paths:
+    import time as _time
+    _t_compose0 = _time.monotonic()
+
+    bg_groups = normalize_bg_groups(bg_paths)
+    if not bg_groups:
         raise ValueError("compose: bg_paths가 비었음 — 검증 통과 배경 0개(발행 불가)")
 
     # 1) 오디오 timeline 계산
@@ -596,9 +696,32 @@ def compose(
     # 우주 내레이션 실측 ~46.6s → 보통 total ~53s+, 하한은 config.MIN_VIDEO_DURATION_SEC.
     cap_dur = final_video_duration()
     min_dur = float(getattr(_cfg, "MIN_VIDEO_DURATION_SEC", 40))
-    total_dur = min(cap_dur, max(raw_total + 3.5, min_dur))
+    tail = 3.5  # 음성이 끝난 뒤 BGM/CTA가 남는 아웃트로 길이
+    target = raw_total + tail
+    if target > cap_dur:
+        # 60초 방어: 넘치면 아웃트로(BGM 꼬리)를 줄여서 cap 안으로 넣는다.
+        log.warning(
+            f"길이 방어: 음성 {raw_total:.2f}s + 아웃트로 {tail:.1f}s = {target:.2f}s > {cap_dur:.1f}s "
+            f"→ 아웃트로 {max(0.0, cap_dur - raw_total):.2f}s로 축소")
+        target = cap_dur
+    total_dur = min(cap_dur, max(target, min_dur))
+    # 내레이션 자체가 잘리는지(= 마지막 라인 종료가 방어선을 넘는지)는 ERROR 로 남긴다.
+    # raw_total 에는 end_pad(무음)가 포함돼 있어 raw_total 초과 ≠ 음성 잘림이다.
+    voice_end = timeline[-1]["end"] if timeline else 0.0
+    if voice_end > total_dur + NARRATION_CUT_TOLERANCE:
+        # fail-closed: 잘린 음성으로는 발행하지 않는다. 호출부가 이 대본을 failed 로 빼고
+        # 다음 대기열 대본을 시도한다. 인코딩(16분) 전에 끊어 러너 시간도 아낀다.
+        cut = voice_end - total_dur
+        log.error(f"음성 잘림 판정: 내레이션 종료 {voice_end:.2f}s > 영상 {total_dur:.2f}s "
+                  f"({cut:.2f}s 잘림) — 발행 금지, 대본 교체 필요")
+        for ac in audio_clips:
+            try:
+                ac.close()
+            except Exception:
+                pass
+        raise NarrationTooLongError(cut, voice_end, total_dur)
     if raw_total > cap_dur:
-        log.warning(f"음성 {raw_total:.2f}s > 영상 {cap_dur:.2f}s — outro 일부 잘림 가능")
+        log.warning(f"음성+패딩 {raw_total:.2f}s > 영상 {cap_dur:.2f}s — 끝 무음만 잘림")
     log.info(f"timeline: raw={raw_total:.2f}s → total={total_dur:.2f}s (적응형, cap={cap_dur:.1f}s min={min_dur:.0f}s) lines={len(timeline)}")
 
     # 라인이 잘리는 경우, 마지막 라인 끝을 total_dur로 클램프
@@ -647,24 +770,36 @@ def compose(
     # timeline = [intro, fact1..factk, outro]. fact 라인 = timeline[1:-1].
     # 배경 클립 수가 fact 수와 같으면: seg0=[0, fact2.start)(intro 포함) ... 마지막 seg는 outro 포함.
     # 아니면(부족 등) 기존 균등 분할로 폴백.
+    # fact 구간 안에서 클립이 2개 이상이면 그 구간을 클립 수만큼 균등 분할해 하드컷으로 잇는다.
     fact_lines = timeline[1:-1] if len(timeline) >= 3 else timeline
     k = len(fact_lines)
-    if k >= 1 and len(bg_paths) >= k:
+    if k >= 1 and len(bg_groups) >= k:
         starts = [0.0]
         for j in range(1, k):
             s = min(max(float(fact_lines[j]["start"]), starts[-1] + 0.5), total_dur)
             starts.append(s)
-        seg_durs = []
+        bg_for_seg, seg_durs = [], []
         for j in range(k):
             s = starts[j]
             e = starts[j + 1] if j + 1 < k else total_dur
-            seg_durs.append(max(0.5, e - s))
-        bg_for_seg = bg_paths[:k]
-        log.info(f"배경 세그먼트(fact 시작 기준) durs={[round(x,1) for x in seg_durs]}")
+            span = max(0.5, e - s)
+            grp = bg_groups[j] or []
+            # 클립 하나가 0.9초 미만이 될 만큼 잘게 쪼개지 않는다(깜빡임 방지).
+            m = max(1, min(len(grp), int(span // 0.9) or 1))
+            each = span / m
+            for c in range(m):
+                bg_for_seg.append(grp[c])
+                seg_durs.append(each)
+        # 부동소수 누적 오차로 배경이 오디오보다 짧아지지 않게 마지막 세그먼트가 잔여를 흡수
+        drift = total_dur - sum(seg_durs)
+        if abs(drift) > 1e-6:
+            seg_durs[-1] = max(0.5, seg_durs[-1] + drift)
+        log.info(f"배경 세그먼트(fact 시작 기준, 컷 {len(seg_durs)}개) durs={[round(x, 1) for x in seg_durs]}")
     else:
-        n_bg = max(1, min(len(bg_paths), 4))
+        flat = [p for grp in bg_groups for p in grp]
+        n_bg = max(1, min(len(flat), 4))
         seg_durs = [total_dur / n_bg] * n_bg
-        bg_for_seg = bg_paths[:n_bg]
+        bg_for_seg = flat[:n_bg]
         log.info(f"배경 세그먼트(균등 폴백) n={n_bg}")
     bg_clip = _build_background(bg_for_seg, seg_durs, total_dur)
 
@@ -677,13 +812,14 @@ def compose(
     # 첫 2.4초 BIG HOOK — 화면 중앙 가득 punch + 토픽명. 상단 상시 hook과 워터마크는 인트로
     # 종료 후 노출 → 상단 hook과 중앙 big hook이 같은 문구로 겹치던 이중표기/클러터 제거
     # (2026-07-18 여행봇에서 발견·검증된 BLOCKER 수정을 fork 동기화).
-    BIG_HOOK_END = 2.4
-    big_hook_text = hook.split("•")[0].strip() if "•" in hook else hook
-    _fact_texts = [ln.get("text", "") for ln in timeline[1:-1]] if len(timeline) >= 3 else []
-    layers.extend(_make_big_hook_intro(big_hook_text, duration=BIG_HOOK_END, title=title, facts=_fact_texts))
+    # topic_label 미지정이면 구 스키마 훅("Topic • Trivia")에서 토픽명을 유추한다.
+    label = (topic_label or "").strip()
+    if not label:
+        label = hook.split("•")[0].strip() if "•" in hook else hook
+    layers.extend(_make_big_hook_intro(hook, display_label=label, duration=BIG_HOOK_END))
 
-    # 상단 상시 hook — 인트로(BIG HOOK) 종료 후부터 표시(중복 제거)
-    hook_clip = _make_hook_clip(hook, max(0.1, total_dur - BIG_HOOK_END))
+    # 상단 상시 라벨 — 인트로(BIG HOOK) 종료 후부터 토픽명 표시(펀치 문구 반복 노출 방지)
+    hook_clip = _make_hook_clip(label, max(0.1, total_dur - BIG_HOOK_END))
     if hook_clip is not None:
         hook_clip = hook_clip.set_start(BIG_HOOK_END)
         layers.append(hook_clip)
@@ -710,9 +846,8 @@ def compose(
 
     # phrase 단위 자막 (TikTok karaoke 스타일)
     # 마지막 라인(outro)은 CTA 카드와 겹치니 자막에서 제외.
-    # 첫 2.4초는 BIG HOOK이 화면 가운데 점령 — phrase 자막 같이 띄우면 글자 겹침
-    # (2026-05-07 사용자 신고). BIG HOOK 끝난 뒤(2.4s+)부터 자막 시작.
-    BIG_HOOK_END = 2.4
+    # 첫 BIG_HOOK_END초는 BIG HOOK이 화면 가운데 점령 — phrase 자막 같이 띄우면 글자 겹침
+    # (2026-05-07 사용자 신고). BIG HOOK 끝난 뒤부터 자막 시작. 상수는 모듈 상단 단일 선언.
     for i, w in enumerate(timeline):
         if i == len(timeline) - 1:
             continue
@@ -777,20 +912,35 @@ def compose(
     _tmp_snd = os.path.join(
         os.path.dirname(os.path.abspath(output_path)),
         os.path.splitext(os.path.basename(output_path))[0] + "_TEMP_snd.mp4")
+    log.info(f"[timing] compose={_time.monotonic() - _t_compose0:.1f}")
+    _t_enc0 = _time.monotonic()
     final.write_videofile(
         output_path,
         fps=VIDEO_FPS,
         codec="libx264",
         audio_codec="aac",
         bitrate=VIDEO_BITRATE,
+        audio_bitrate="192k",
         preset=VIDEO_PRESET,
         threads=VIDEO_THREADS,
         temp_audiofile=_tmp_snd,
         verbose=False,
         logger=None,
     )
+    log.info(f"[timing] encode={_time.monotonic() - _t_enc0:.1f}")
     final.close()
     bg_clip.close()
     for ac in audio_clips:
         ac.close()
+
+    # 60초 방어 실측 — 인코딩 결과가 방어선을 넘으면 경고(다음 회차 대본 길이 조정 신호)
+    try:
+        with VideoFileClip(output_path) as _chk:
+            _dur = float(_chk.duration)
+        if _dur > MAX_TOTAL_DURATION:
+            log.warning(f"길이 방어 초과: 최종 {_dur:.2f}s > {MAX_TOTAL_DURATION}s — 대본 단어 수 축소 필요")
+        else:
+            log.info(f"최종 길이 {_dur:.2f}s (방어선 {MAX_TOTAL_DURATION}s 이내)")
+    except Exception as e:
+        log.warning(f"최종 길이 측정 실패: {e}")
     return output_path

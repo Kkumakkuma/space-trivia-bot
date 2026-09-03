@@ -45,8 +45,8 @@ VIDEO_HEIGHT = 1920
 VIDEO_FPS = 30
 VIDEO_DURATION_SEC = 60
 MIN_VIDEO_DURATION_SEC = 40  # 적응형 길이 하한 (composer v4). 우주 내레이션 실측 ~46.6s라 보통 53s+ — 하한은 안전망
-VIDEO_BITRATE = "4500k"
-VIDEO_PRESET = "veryfast"
+VIDEO_BITRATE = "7000k"   # 2026-09-03 화질 강화: 4500k → 7000k (쇼츠 재인코딩 여유)
+VIDEO_PRESET = "fast"     # veryfast → fast (같은 비트레이트에서 디테일 보존)
 VIDEO_THREADS = 8
 
 # 영문 채널이라 영문 sans-serif 굵은 폰트 우선
@@ -60,8 +60,8 @@ SCRIPT_MODEL = "gpt-4o"         # 토픽 픽 + 스크립트 생성 (사실 정�
 FACTCHECK_MODEL = "gpt-4.1"     # 적대적 검증 — 생성 모델과 다른 계열
 
 # edge-tts voice (영문)
-TTS_VOICE = "en-US-AriaNeural"  # 자연스러운 여성 보이스
-TTS_RATE = "+12%"  # 인기 트리비아 채널 페이스에 맞춤
+TTS_VOICE = "en-US-AndrewMultilingualNeural"  # 2026-09-03: 남성 내레이션(다큐 톤)으로 교체
+TTS_RATE = "+5%"   # +12% → +5% (숨 쉴 틈 확보, 사실 전달 명료도 우선)
 TTS_PITCH = "+0Hz"
 
 # 자막 스타일
@@ -70,7 +70,11 @@ CAPTION_Y_RATIO = 0.60  # 하단 1/3 (피사체 가림 해소 + 인스타 UI 버
 CAPTION_PHRASE_SIZE = 4  # 한 자막에 3-4 단어 묶음 (TikTok 스타일)
 CAPTION_HIGHLIGHT_NUMBERS = True  # 숫자는 옐로우 강조
 
-# 썸네일 — 완성 영상 프레임 + 대형 후크 텍스트 (pipeline/thumbnail.py, fail-soft: 실패해도 발행 진행)
+# 컷 페이싱 — 사실 1개당 배경 클립 수 (2026-09-03). 수집이 모자라면 자동으로 1개로 폴백.
+# 클립 사이는 하드컷(크로스페이드 금지 — Actions 러너 메모리 보호).
+CLIPS_PER_FACT = 2
+
+# 썸네일 — 첫 배경 클립 1.0초 프레임 + 상단 후크 (pipeline/thumbnail.py, fail-soft: 실패해도 발행 진행)
 ENABLE_THUMBNAIL = True
 THUMBNAIL_FONT_SIZE = 190  # 시작 크기 — 폭 초과 시 14씩 자동 축소 (하한 80)
 
