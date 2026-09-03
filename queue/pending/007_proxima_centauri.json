@@ -10,10 +10,10 @@
   "hook": "OUR NEAREST NEIGHBOR",
   "intro": "The closest star to us has a planet, and you still cannot see the star at night.",
   "facts": [
-    "Proxima Centauri is the nearest star to the Sun, just over four light years away, yet it is a small red dwarf so dim that you cannot spot it without a telescope.",
-    "In 2016 astronomers found a planet there about the mass of Earth, Proxima b, circling in the zone where liquid water could exist, and its whole year lasts only eleven days.",
-    "The star is a violent flarer, and in 2017 one superflare made it roughly a thousand times brighter within minutes, the kind of blast that could strip a planet's air away.",
-    "Even so it is our best hope for a first visit, because a probe at Voyager's speed would need about 73,000 years, but a laser-pushed sail at a fifth of light speed could arrive in about twenty."
+    "Proxima Centauri is the nearest star to the Sun, just over four light years away, yet it is a red dwarf so dim that you cannot see it without a telescope.",
+    "In 2016 astronomers found a planet there about the mass of Earth, Proxima b, sitting where liquid water could exist, and its whole year lasts only eleven days.",
+    "The star is a violent flarer, and in 2017 one superflare made it roughly a thousand times brighter within minutes, a blast that could strip a planet's air away.",
+    "Still, it is our best hope for a first visit, because a laser-pushed sail at a fifth of light speed could get there in about twenty years."
   ],
   "outro": "Next door, and still a lifetime away.",
   "title_en": "Our Nearest Star Has a Planet, and You Still Can't See It",
@@ -21,7 +21,34 @@
   "description_en": "Proxima Centauri is the closest star to the Sun, has an Earth-sized planet, and throws superflares a thousand times brighter than normal. Here is why it is both our best hope and a nightmare for life. #proximacentauri #exoplanet #space #astronomy #stars",
   "description_ko": "프록시마 센타우리는 태양에서 가장 가까운 별로, 지구만 한 행성을 거느리고, 평소보다 천 배 밝은 초대형 플레어를 뿜습니다. 왜 우리의 최고 희망이자 생명에겐 악몽인지 정리했습니다. #프록시마센타우리 #외계행성 #우주 #천문학",
   "comment": "Would you sign up for a 20-year one-way trip to Proxima b?",
-  "tags": ["shorts", "space", "proxima centauri", "exoplanet", "proxima b", "red dwarf", "astronomy", "stars", "did you know", "trivia"],
-  "pexels_keywords": ["Proxima Centauri star", "Proxima Centauri red dwarf star space", "Proxima Centauri exoplanet", "Proxima Centauri night sky stars", "Proxima Centauri solar flare", "Proxima Centauri telescope", "Proxima Centauri planet orbit", "Proxima Centauri spacecraft", "Proxima Centauri galaxy", "Proxima Centauri deep space"],
-  "fact_keywords": ["Proxima Centauri red dwarf star glowing", "Proxima Centauri exoplanet orbit animation", "Proxima Centauri solar flare eruption", "Proxima Centauri spacecraft sail space"]
+  "tags": [
+    "shorts",
+    "space",
+    "proxima centauri",
+    "exoplanet",
+    "proxima b",
+    "red dwarf",
+    "astronomy",
+    "stars",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "Proxima Centauri star",
+    "Proxima Centauri red dwarf star space",
+    "Proxima Centauri exoplanet",
+    "Proxima Centauri night sky stars",
+    "Proxima Centauri solar flare",
+    "Proxima Centauri telescope",
+    "Proxima Centauri planet orbit",
+    "Proxima Centauri spacecraft",
+    "Proxima Centauri galaxy",
+    "Proxima Centauri deep space"
+  ],
+  "fact_keywords": [
+    "Proxima Centauri red dwarf star glowing",
+    "Proxima Centauri exoplanet orbit animation",
+    "Proxima Centauri solar flare eruption",
+    "Proxima Centauri spacecraft sail space"
+  ]
 }

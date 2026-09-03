@@ -21,7 +21,140 @@
   "description_en": "The far side of the Moon gets as much sunlight as the near side, hides one of the biggest craters in the solar system, and was not seen by anyone until 1959. Here is the truth behind the myth. #moon #farside #space #astronomy #nasa",
   "description_ko": "달의 뒷면은 앞면만큼 햇빛을 받고, 태양계에서 가장 큰 충돌 분지 하나를 숨기고 있으며, 1959년까지 아무도 본 적이 없습니다. 어두운 면이라는 오해의 진실을 정리했습니다. #달 #달의뒷면 #우주 #천문학",
   "comment": "Did you think the far side of the Moon was always dark?",
-  "tags": ["shorts", "space", "moon", "far side of the moon", "dark side of the moon", "astronomy", "chang'e 4", "lunar", "did you know", "trivia"],
-  "pexels_keywords": ["moon surface close up", "moon craters", "moon rotating space", "moon phases timelapse", "moon rising night sky", "moon orbit earth animation", "moon full detail", "moon dark side space", "moon lunar landscape", "moon and stars"],
-  "fact_keywords": ["moon rotating earth orbit animation", "moon surface craters close up", "moon giant crater lunar landscape", "moon spacecraft landing surface"]
+  "tags": [
+    "shorts",
+    "space",
+    "moon",
+    "far side of the moon",
+    "dark side of the moon",
+    "astronomy",
+    "chang'e 4",
+    "lunar",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "moon surface close up",
+    "moon craters",
+    "moon rotating space",
+    "moon phases timelapse",
+    "moon rising night sky",
+    "moon orbit earth animation",
+    "moon full detail",
+    "moon dark side space",
+    "moon lunar landscape",
+    "moon and stars"
+  ],
+  "fact_keywords": [
+    "moon rotating earth orbit animation",
+    "moon surface craters close up",
+    "moon giant crater lunar landscape",
+    "moon spacecraft landing surface"
+  ],
+  "clips": [
+    [
+      38690857,
+      11455219
+    ],
+    [
+      37001814,
+      37002377
+    ],
+    [
+      37001328,
+      37005709
+    ],
+    [
+      37021118,
+      36964023
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "달의 어두운 면은 어둡지 않다, 그곳에 진짜 있는 것",
+      "description": "달의 뒷면은 앞면만큼 햇빛을 받고, 태양계에서 가장 큰 충돌 분지 하나를 숨기고 있으며, 1959년까지 아무도 본 적이 없습니다. 어두운 면이라는 오해의 진실을 정리했습니다. #달 #달의뒷면 #우주 #천문학"
+    },
+    "ja": {
+      "title": "月の裏側は暗くない。そこに本当にあるもの",
+      "description": "月の裏側は表側と同じだけ日光を浴び、太陽系最大級のクレーターを隠し、1959年まで誰も見たことがありませんでした。暗い側という誤解の真実をまとめました。#月 #月の裏側 #宇宙 #天文学"
+    },
+    "es": {
+      "title": "El lado oscuro de la Luna no es oscuro. Esto es lo que hay allí.",
+      "description": "La cara oculta de la Luna recibe tanta luz solar como la visible, esconde uno de los cráteres más grandes del sistema solar y nadie la vio hasta 1959. Esta es la verdad detrás del mito. #luna #caraoculta #espacio #astronomia"
+    },
+    "pt": {
+      "title": "O lado escuro da Lua não é escuro. Veja o que há lá de verdade.",
+      "description": "O lado oculto da Lua recebe tanta luz solar quanto o lado visível, esconde uma das maiores crateras do sistema solar e ninguém o viu até 1959. Veja a verdade por trás do mito. #lua #ladooculto #espaco #astronomia"
+    },
+    "de": {
+      "title": "Die dunkle Seite des Mondes ist nicht dunkel. Das ist wirklich dort.",
+      "description": "Die Rückseite des Mondes bekommt genauso viel Sonnenlicht wie die Vorderseite, verbirgt einen der größten Krater des Sonnensystems und wurde bis 1959 von niemandem gesehen. Das ist die Wahrheit hinter dem Mythos. #mond #mondrueckseite #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "La face cachée de la Lune n'est pas sombre. Voici ce qui s'y trouve.",
+      "description": "La face cachée de la Lune reçoit autant de soleil que la face visible, abrite l'un des plus grands cratères du système solaire et personne ne l'avait vue avant 1959. Voici la vérité derrière le mythe. #lune #facecachee #espace #astronomie"
+    },
+    "hi": {
+      "title": "चांद का अंधेरा हिस्सा अंधेरा नहीं है, वहां असल में क्या है",
+      "description": "चांद का दूर वाला हिस्सा सामने वाले हिस्से जितनी ही धूप पाता है, सौरमंडल के सबसे बड़े गड्ढों में से एक छिपाए है, और 1959 तक इसे किसी ने नहीं देखा था। जानिए इस मिथक के पीछे की सच्चाई। #moon #farside #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "달의 어두운 면은 어둡지 않고, 1959년까지는 아무도 본 적이 없습니다.",
+      "달은 지구를 한 바퀴 도는 동안 정확히 한 번 자전해서 늘 같은 면이 우리를 향하고, 1959년 소련 탐사선이 촬영하기 전까지 뒷면을 본 사람은 아무도 없었습니다.",
+      "어두운 면이라 불리지만 우리가 보는 면과 똑같이 햇빛을 받고, 달라 보이는 이유는 지각이 더 두껍고 어두운 용암 평원이 거의 없기 때문입니다.",
+      "그곳에는 지름 약 2,500킬로미터의 남극 에이트켄 분지도 있는데, 태양계 어디를 봐도 손꼽히는 거대한 충돌 흔적입니다.",
+      "2019년 중국의 창어 4호가 착륙하기 전까지 어떤 탐사선도 그곳에 내리지 못했고, 사진을 지구로 보내기 위해서만도 달 너머에 중계 위성을 띄워야 했습니다.",
+      "어두운 게 아니라, 숨어 있을 뿐입니다."
+    ],
+    "ja": [
+      "月の裏側は暗くありません。そして1959年まで、誰もそれを見たことがありませんでした。",
+      "月は地球を1周する間にちょうど1回自転するので、いつも同じ面がこちらを向いていて、1959年にソ連の探査機が撮影するまで裏側を見た人は誰もいませんでした。",
+      "暗い側と呼ばれますが、私たちが見る側と同じだけ日光を浴びています。違って見えるのは地殻が厚く、暗い溶岩の平原がほとんどないからです。",
+      "そこには直径約2,500キロの南極エイトケン盆地もあり、太陽系全体でも最大級の衝突の痕跡です。",
+      "2019年に中国の嫦娥4号が着陸するまで、どの探査機もそこに降りたことがなく、写真を地球に送るためだけに月の向こうに中継衛星を置く必要がありました。",
+      "暗いのではなく、隠れているだけ。"
+    ],
+    "es": [
+      "El lado oscuro de la Luna no es oscuro, y nadie lo vio hasta 1959.",
+      "La Luna gira exactamente una vez por cada vuelta a la Tierra, así que siempre nos muestra la misma cara, y ningún humano había visto la cara oculta hasta que una sonda soviética la fotografió en 1959.",
+      "Lo llaman el lado oscuro, pero recibe tanta luz solar como el lado que vemos, solo se ve distinto porque su corteza es más gruesa y casi no tiene llanuras oscuras de lava.",
+      "También alberga la cuenca Aitken del Polo Sur, un cráter de unos 2.500 kilómetros de ancho, una de las mayores cicatrices de impacto de todo el sistema solar.",
+      "Ninguna nave aterrizó allí hasta que la china Chang'e 4 se posó en 2019, y necesitó un satélite de relevo aparcado más allá de la Luna solo para enviar sus fotos a casa.",
+      "No es oscuro, solo está escondido."
+    ],
+    "pt": [
+      "O lado escuro da Lua não é escuro, e ninguém o viu até 1959.",
+      "A Lua gira exatamente uma vez a cada volta em torno da Terra, então a mesma face sempre aponta para nós, e nenhum humano tinha visto o lado oculto até uma sonda soviética fotografá-lo em 1959.",
+      "Chamam de lado escuro, mas ele recebe tanta luz solar quanto o lado que vemos, só parece diferente porque a crosta é mais espessa e quase não tem as planícies escuras de lava.",
+      "Lá também fica a bacia Aitken do Polo Sul, uma cratera com cerca de 2.500 quilômetros de largura, uma das maiores cicatrizes de impacto de todo o sistema solar.",
+      "Nenhuma nave pousou lá até a chinesa Chang'e 4 descer em 2019, e ela precisou de um satélite de retransmissão estacionado além da Lua só para mandar as fotos para casa.",
+      "Não é escuro, só está escondido."
+    ],
+    "de": [
+      "Die dunkle Seite des Mondes ist nicht dunkel, und niemand hat sie vor 1959 gesehen.",
+      "Der Mond dreht sich genau einmal pro Umlauf um die Erde, deshalb zeigt immer dieselbe Seite zu uns, und kein Mensch hatte die Rückseite je gesehen, bis eine sowjetische Sonde sie 1959 fotografierte.",
+      "Man nennt sie die dunkle Seite, aber sie bekommt genauso viel Sonnenlicht wie die Seite, die wir sehen, sie wirkt nur anders, weil ihre Kruste dicker ist und ihr die dunklen Lavaebenen fast völlig fehlen.",
+      "Dort liegt auch das Südpol-Aitken-Becken, ein Krater von rund 2.500 Kilometern Durchmesser, eine der größten Einschlagsnarben im ganzen Sonnensystem.",
+      "Kein Raumfahrzeug landete dort, bis Chinas Chang'e 4 im Jahr 2019 aufsetzte, und es brauchte einen Relaissatelliten hinter dem Mond, nur um seine Bilder nach Hause zu schicken.",
+      "Nicht dunkel, nur verborgen."
+    ],
+    "fr": [
+      "La face cachée de la Lune n'est pas sombre, et personne ne l'avait vue avant 1959.",
+      "La Lune tourne exactement une fois sur elle-même à chaque tour de la Terre, donc la même face nous fait toujours face, et aucun humain n'avait vu la face cachée avant qu'une sonde soviétique ne la photographie en 1959.",
+      "On l'appelle la face sombre, mais elle reçoit autant de soleil que la face que nous voyons, elle paraît seulement différente parce que sa croûte est plus épaisse et qu'elle n'a presque aucune plaine de lave sombre.",
+      "On y trouve aussi le bassin Pôle Sud-Aitken, un cratère d'environ 2 500 kilomètres de large, l'une des plus grandes cicatrices d'impact de tout le système solaire.",
+      "Aucun engin ne s'y est posé avant Chang'e 4 de la Chine en 2019, et il a fallu un satellite relais stationné au-delà de la Lune rien que pour envoyer ses photos sur Terre.",
+      "Pas sombre, juste cachée."
+    ],
+    "hi": [
+      "चांद का अंधेरा हिस्सा अंधेरा नहीं है, और 1959 तक इसे किसी ने नहीं देखा था।",
+      "चांद धरती के हर एक चक्कर में ठीक एक बार घूमता है, इसलिए हमेशा एक ही चेहरा हमारी ओर रहता है, और 1959 में एक सोवियत यान की तस्वीर से पहले किसी इंसान ने दूर वाला हिस्सा नहीं देखा था।",
+      "इसे अंधेरा हिस्सा कहते हैं, लेकिन इसे उतनी ही धूप मिलती है जितनी हमारे दिखने वाले हिस्से को, यह बस इसलिए अलग दिखता है क्योंकि इसकी परत मोटी है और गहरे लावा के मैदान लगभग नहीं हैं।",
+      "यहीं दक्षिणी ध्रुव एटकेन बेसिन भी है, करीब 2,500 किलोमीटर चौड़ा गड्ढा, जो पूरे सौरमंडल के सबसे बड़े टक्कर के निशानों में से एक है।",
+      "2019 में चीन के चांग'ए 4 के उतरने तक कोई यान वहां नहीं उतरा था, और उसे सिर्फ तस्वीरें घर भेजने के लिए चांद के पार एक रिले उपग्रह खड़ा करना पड़ा।",
+      "अंधेरा नहीं, बस छिपा हुआ।"
+    ]
+  }
 }
