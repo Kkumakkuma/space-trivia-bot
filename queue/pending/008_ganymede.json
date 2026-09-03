@@ -50,5 +50,111 @@
     "Ganymede aurora magnetic field",
     "Ganymede ice ocean underwater",
     "Ganymede spacecraft orbit"
-  ]
+  ],
+  "clips": [
+    [
+      36118144,
+      14618955
+    ],
+    [
+      35206733,
+      16724757
+    ],
+    [
+      37545504,
+      31870253
+    ],
+    [
+      7649294,
+      36964023
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "수성보다 큰 위성, 얼음 밑에 바다를 숨긴 가니메데",
+      "description": "가니메데는 태양계에서 가장 큰 위성으로 수성보다 크고, 자체 자기장과 지구보다 많은 물을 품었을지 모를 숨은 바다가 있습니다. 왜 탐사선이 그곳으로 가고 있는지 정리했습니다. #가니메데 #목성 #위성 #우주"
+    },
+    "ja": {
+      "title": "水星より大きな衛星、氷の下に海を隠すガニメデ",
+      "description": "ガニメデは太陽系最大の衛星で水星より大きく、独自の磁場と、地球より多くの水を蓄えているかもしれない隠れた海を持っています。なぜ探査機がそこへ向かっているのかをまとめました。#ガニメデ #木星 #衛星 #宇宙"
+    },
+    "es": {
+      "title": "La luna más grande que Mercurio con un océano bajo el hielo",
+      "description": "Ganímedes es la luna más grande del sistema solar, mayor que Mercurio, con su propio campo magnético y un océano oculto que podría tener más agua que la Tierra. Por eso una nave va hacia allí. #ganimedes #jupiter #luna #espacio #astronomia"
+    },
+    "pt": {
+      "title": "A lua maior que Mercúrio com um oceano sob o gelo",
+      "description": "Ganimedes é a maior lua do sistema solar, maior que Mercúrio, com campo magnético próprio e um oceano escondido que pode ter mais água que a Terra. Veja por que uma sonda está a caminho. #ganimedes #jupiter #lua #espaco #astronomia"
+    },
+    "de": {
+      "title": "Der Mond, der größer als Merkur ist und einen Ozean unter dem Eis hat",
+      "description": "Ganymed ist der größte Mond des Sonnensystems, größer als Merkur, mit eigenem Magnetfeld und einem verborgenen Ozean, der mehr Wasser enthalten könnte als die Erde. Darum ist eine Sonde unterwegs. #ganymed #jupiter #mond #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "La lune plus grande que Mercure avec un océan sous la glace",
+      "description": "Ganymède est la plus grande lune du système solaire, plus grande que Mercure, avec son propre champ magnétique et un océan caché qui pourrait contenir plus d'eau que la Terre. Voici pourquoi une sonde est en route. #ganymede #jupiter #lune #espace #astronomie"
+    },
+    "hi": {
+      "title": "बुध ग्रह से बड़ा चांद, जिसकी बर्फ के नीचे समुद्र छिपा है",
+      "description": "गैनीमीड सौरमंडल का सबसे बड़ा चांद है, बुध से भी बड़ा, जिसका अपना चुंबकीय क्षेत्र है और एक छिपा समुद्र जिसमें धरती से ज्यादा पानी हो सकता है। जानिए एक यान वहां क्यों जा रहा है। #ganymede #jupiter #moon #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "수성이라는 행성보다 큰 위성이 있는데, 얼음 밑에 바다를 숨기고 있습니다.",
+      "목성의 위성 가니메데는 태양계에서 가장 큰 위성으로 수성보다 넓고, 목성 대신 태양을 돌았다면 우리는 그냥 행성이라고 불렀을 겁니다.",
+      "자체 자기장을 가진 것으로 알려진 유일한 위성인데, 1996년 갈릴레오 탐사선이 발견했고, 그래서 극지방 근처에서 희미한 오로라가 춤춥니다.",
+      "약 150킬로미터의 얼음 아래에는 지구의 모든 바다를 합친 것보다 많은 물을 품었을지 모를 짠 바다가 있어서, 외계 생명 후보 목록에 올라 있습니다.",
+      "유럽의 주스 탐사선은 2023년에 발사돼 2030년대에 가니메데 궤도에 진입할 예정인데, 우리 달이 아닌 위성을 도는 첫 탐사선이 됩니다.",
+      "행성이 될 수도 있었던 위성입니다."
+    ],
+    "ja": [
+      "惑星の水星より大きな衛星があり、氷の下に海を隠しています。",
+      "木星の衛星ガニメデは太陽系最大の衛星で水星より大きく、木星ではなく太陽を回っていたら、私たちはただ惑星と呼んでいたでしょう。",
+      "独自の磁場を持つことが知られている唯一の衛星で、1996年に探査機ガリレオが発見し、極付近では淡いオーロラが揺れています。",
+      "約150キロの氷の下には、地球のすべての海を合わせたより多くの水を蓄えているかもしれない塩の海があり、地球外生命の候補リストに載っています。",
+      "欧州の探査機JUICEは2023年に打ち上げられ、2030年代にガニメデの周回軌道に入る予定で、私たちの月以外の衛星を周回する初の探査機になります。",
+      "惑星になれたかもしれない衛星。"
+    ],
+    "es": [
+      "Hay una luna más grande que el planeta Mercurio, y esconde un océano bajo el hielo.",
+      "Ganímedes, una de las lunas de Júpiter, es la luna más grande del sistema solar, más ancha que Mercurio, y si girara alrededor del Sol en vez de Júpiter simplemente la llamaríamos planeta.",
+      "Es la única luna que conocemos con campo magnético propio, un hallazgo de la sonda Galileo en 1996, así que tiene tenues auroras bailando cerca de sus polos.",
+      "Bajo unos 150 kilómetros de hielo hay un océano salado que podría contener más agua que todos los océanos de la Tierra juntos, por eso está en la lista corta para vida extraterrestre.",
+      "La sonda europea JUICE despegó en 2023 y debería empezar a orbitar Ganímedes en la década de 2030, la primera sonda en orbitar una luna que no sea la nuestra.",
+      "Una luna que pudo haber sido un planeta."
+    ],
+    "pt": [
+      "Existe uma lua maior que o planeta Mercúrio, e ela esconde um oceano sob o gelo.",
+      "Ganimedes, uma das luas de Júpiter, é a maior lua do sistema solar, mais larga que Mercúrio, e se girasse em torno do Sol em vez de Júpiter nós simplesmente a chamaríamos de planeta.",
+      "É a única lua que conhecemos com campo magnético próprio, uma descoberta da sonda Galileo em 1996, então ela tem auroras fracas dançando perto dos polos.",
+      "Sob cerca de 150 quilômetros de gelo há um oceano salgado que pode ter mais água que todos os oceanos da Terra juntos, por isso ela está na lista de candidatas a vida alienígena.",
+      "A sonda europeia JUICE foi lançada em 2023 e deve começar a orbitar Ganimedes na década de 2030, a primeira sonda a orbitar uma lua que não seja a nossa.",
+      "Uma lua que poderia ter sido um planeta."
+    ],
+    "de": [
+      "Es gibt einen Mond, der größer ist als der Planet Merkur, und er verbirgt einen Ozean unter dem Eis.",
+      "Ganymed, einer der Jupitermonde, ist der größte Mond des Sonnensystems, breiter als Merkur, und würde er statt Jupiter die Sonne umkreisen, nennten wir ihn einfach einen Planeten.",
+      "Er ist der einzige bekannte Mond mit eigenem Magnetfeld, entdeckt von der Sonde Galileo im Jahr 1996, deshalb tanzen schwache Polarlichter nahe seinen Polen.",
+      "Unter etwa 150 Kilometern Eis liegt ein salziger Ozean, der mehr Wasser enthalten könnte als alle Ozeane der Erde zusammen, darum steht er ganz oben auf der Liste für außerirdisches Leben.",
+      "Europas Sonde JUICE startete 2023 und soll in den 2030ern in eine Umlaufbahn um Ganymed gehen, als erste Sonde überhaupt, die einen fremden Mond umkreist.",
+      "Ein Mond, der ein Planet hätte sein können."
+    ],
+    "fr": [
+      "Il existe une lune plus grande que la planète Mercure, et elle cache un océan sous la glace.",
+      "Ganymède, l'une des lunes de Jupiter, est la plus grande lune du système solaire, plus large que Mercure, et si elle tournait autour du Soleil plutôt que de Jupiter, on l'appellerait simplement une planète.",
+      "C'est la seule lune connue à posséder son propre champ magnétique, découvert par la sonde Galileo en 1996, si bien que de faibles aurores dansent près de ses pôles.",
+      "Sous environ 150 kilomètres de glace se trouve un océan salé qui pourrait contenir plus d'eau que tous les océans de la Terre réunis, ce qui la place sur la liste des candidates à la vie extraterrestre.",
+      "La sonde européenne JUICE a décollé en 2023 et devrait se mettre en orbite autour de Ganymède dans les années 2030, la première sonde à orbiter autour d'une lune autre que la nôtre.",
+      "Une lune qui aurait pu être une planète."
+    ],
+    "hi": [
+      "एक ऐसा चांद है जो बुध ग्रह से भी बड़ा है, और वह बर्फ के नीचे एक समुद्र छिपाए है।",
+      "बृहस्पति का चांद गैनीमीड सौरमंडल का सबसे बड़ा चांद है, बुध से भी चौड़ा, और अगर यह बृहस्पति की जगह सूर्य की परिक्रमा करता तो हम इसे बस ग्रह कहते।",
+      "यह हमारी जानकारी में अपना चुंबकीय क्षेत्र रखने वाला इकलौता चांद है, जिसे 1996 में गैलीलियो यान ने खोजा, इसलिए इसके ध्रुवों के पास हल्की ध्रुवीय रोशनी नाचती है।",
+      "करीब 150 किलोमीटर बर्फ के नीचे एक खारा समुद्र है जिसमें धरती के सारे समुद्रों से ज्यादा पानी हो सकता है, इसीलिए यह परग्रही जीवन की सूची में शामिल है।",
+      "यूरोप का जूस यान 2023 में रवाना हुआ और 2030 के दशक में गैनीमीड की परिक्रमा शुरू करेगा, जो हमारे चांद के अलावा किसी और चांद की परिक्रमा करने वाला पहला यान होगा।",
+      "एक चांद जो ग्रह हो सकता था।"
+    ]
+  }
 }
