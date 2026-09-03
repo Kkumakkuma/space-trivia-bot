@@ -1,0 +1,27 @@
+{
+  "author": "claude",
+  "animal_key": "moon_far_side",
+  "display": "The Far Side of the Moon",
+  "single": "moon",
+  "category": "moon",
+  "angle": "myth_busting",
+  "format": "myth_vs_fact",
+  "hook_line": "The dark side of the Moon is not dark, and nobody saw it until 1959.",
+  "hook": "THE DARK SIDE ISN'T DARK",
+  "intro": "The dark side of the Moon is not dark, and nobody saw it until 1959.",
+  "facts": [
+    "The Moon spins exactly once for every trip around Earth, so the same face always points at us, and no human had ever seen the far side until a Soviet probe photographed it in 1959.",
+    "It is called the dark side, but it gets just as much sunlight as the side we see, it only looks different because its crust is thicker and it has almost none of the dark lava plains.",
+    "It is also home to the South Pole Aitken basin, a crater about 2,500 kilometers across, one of the biggest impact scars anywhere in the solar system.",
+    "No spacecraft landed there until China's Chang'e 4 touched down in 2019, and it needed a relay satellite parked beyond the Moon just to send its pictures home."
+  ],
+  "outro": "Not dark, just hidden.",
+  "title_en": "The Dark Side of the Moon Isn't Dark. Here's What's Really There.",
+  "title_ko": "달의 어두운 면은 어둡지 않다, 그곳에 진짜 있는 것",
+  "description_en": "The far side of the Moon gets as much sunlight as the near side, hides one of the biggest craters in the solar system, and was not seen by anyone until 1959. Here is the truth behind the myth. #moon #farside #space #astronomy #nasa",
+  "description_ko": "달의 뒷면은 앞면만큼 햇빛을 받고, 태양계에서 가장 큰 충돌 분지 하나를 숨기고 있으며, 1959년까지 아무도 본 적이 없습니다. 어두운 면이라는 오해의 진실을 정리했습니다. #달 #달의뒷면 #우주 #천문학",
+  "comment": "Did you think the far side of the Moon was always dark?",
+  "tags": ["shorts", "space", "moon", "far side of the moon", "dark side of the moon", "astronomy", "chang'e 4", "lunar", "did you know", "trivia"],
+  "pexels_keywords": ["moon surface close up", "moon craters", "moon rotating space", "moon phases timelapse", "moon rising night sky", "moon orbit earth animation", "moon full detail", "moon dark side space", "moon lunar landscape", "moon and stars"],
+  "fact_keywords": ["moon rotating earth orbit animation", "moon surface craters close up", "moon giant crater lunar landscape", "moon spacecraft landing surface"]
+}
