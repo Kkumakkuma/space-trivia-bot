@@ -50,5 +50,111 @@
     "Proxima Centauri exoplanet orbit animation",
     "Proxima Centauri solar flare eruption",
     "Proxima Centauri spacecraft sail space"
-  ]
+  ],
+  "clips": [
+    [
+      38636586,
+      37988519
+    ],
+    [
+      29749379,
+      20766726
+    ],
+    [
+      34908543,
+      27852390
+    ],
+    [
+      31004692,
+      35403186
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "가장 가까운 별에 행성이 있다, 그런데 그 별은 맨눈에 안 보인다",
+      "description": "프록시마 센타우리는 태양에서 가장 가까운 별로, 지구만 한 행성을 거느리고, 평소보다 천 배 밝은 초대형 플레어를 뿜습니다. 왜 우리의 최고 희망이자 생명에겐 악몽인지 정리했습니다. #프록시마센타우리 #외계행성 #우주 #천문학"
+    },
+    "ja": {
+      "title": "一番近い星に惑星がある。でもその星は肉眼で見えない",
+      "description": "プロキシマ・ケンタウリは太陽に最も近い星で、地球サイズの惑星を持ち、通常の千倍も明るいスーパーフレアを放ちます。なぜ私たちの最大の希望であり、生命にとっては悪夢なのかをまとめました。#プロキシマケンタウリ #系外惑星 #宇宙 #天文学"
+    },
+    "es": {
+      "title": "Nuestra estrella más cercana tiene un planeta, y aun así no puedes verla",
+      "description": "Próxima Centauri es la estrella más cercana al Sol, tiene un planeta del tamaño de la Tierra y lanza superllamaradas mil veces más brillantes de lo normal. Por eso es nuestra mayor esperanza y una pesadilla para la vida. #proximacentauri #exoplaneta #espacio #astronomia"
+    },
+    "pt": {
+      "title": "Nossa estrela mais próxima tem um planeta, e mesmo assim você não consegue vê-la",
+      "description": "Proxima Centauri é a estrela mais próxima do Sol, tem um planeta do tamanho da Terra e solta superexplosões mil vezes mais brilhantes que o normal. Veja por que ela é nossa maior esperança e um pesadelo para a vida. #proximacentauri #exoplaneta #espaco #astronomia"
+    },
+    "de": {
+      "title": "Unser nächster Stern hat einen Planeten, und du kannst ihn trotzdem nicht sehen",
+      "description": "Proxima Centauri ist der sonnennächste Stern, hat einen erdgroßen Planeten und schleudert Superflares aus, die tausendmal heller sind als normal. Darum ist er unsere größte Hoffnung und ein Albtraum für Leben. #proximacentauri #exoplanet #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "L'étoile la plus proche a une planète, et vous ne pouvez toujours pas la voir",
+      "description": "Proxima Centauri est l'étoile la plus proche du Soleil, possède une planète de la taille de la Terre et lance des super-éruptions mille fois plus brillantes que la normale. Voici pourquoi elle est notre meilleur espoir et un cauchemar pour la vie. #proximacentauri #exoplanete #espace #astronomie"
+    },
+    "hi": {
+      "title": "हमारे सबसे करीबी तारे के पास एक ग्रह है, फिर भी आप उसे देख नहीं सकते",
+      "description": "प्रॉक्सिमा सेंटॉरी सूर्य का सबसे करीबी तारा है, इसके पास धरती के आकार का ग्रह है, और यह सामान्य से हजार गुना चमकीली सुपरफ्लेयर छोड़ता है। जानिए यह क्यों हमारी सबसे बड़ी उम्मीद और जीवन के लिए दुःस्वप्न दोनों है। #proximacentauri #exoplanet #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "우리와 가장 가까운 별에는 행성이 있는데, 그 별은 여전히 밤에 맨눈으로 볼 수 없습니다.",
+      "프록시마 센타우리는 태양에서 가장 가까운 별로 4광년 남짓 떨어져 있지만, 너무 어두운 작은 적색왜성이라 망원경 없이는 보이지 않습니다.",
+      "2016년 천문학자들은 그곳에서 지구 질량쯤 되는 행성 프록시마 b를 찾았는데, 액체 물이 있을 수 있는 구역을 돌고, 1년이 고작 11일입니다.",
+      "이 별은 난폭한 플레어 별이라 2017년의 초대형 플레어 한 번은 몇 분 만에 밝기를 약 천 배로 키웠는데, 행성의 대기를 벗겨낼 수 있는 폭발입니다.",
+      "그래도 첫 방문의 가장 큰 희망인데, 레이저로 미는 돛을 빛 속도의 5분의 1로 날리면 약 20년 만에 도착할 수 있기 때문입니다.",
+      "옆집인데, 여전히 평생 걸리는 거리입니다."
+    ],
+    "ja": [
+      "私たちに一番近い星には惑星があります。でもその星は、今も夜空で肉眼では見えません。",
+      "プロキシマ・ケンタウリは太陽に最も近い星で4光年あまりの距離ですが、あまりに暗い小さな赤色矮星なので、望遠鏡なしでは見つけられません。",
+      "2016年、天文学者はそこに地球ほどの質量の惑星プロキシマbを発見しました。液体の水が存在しうる領域を回り、1年はわずか11日です。",
+      "この星は激しいフレア星で、2017年のスーパーフレアは数分でおよそ千倍の明るさになりました。惑星の大気を剥ぎ取れるほどの爆発です。",
+      "それでも初訪問の最大の希望です。レーザーで押す帆を光速の5分の1で飛ばせば、約20年で到着できるからです。",
+      "お隣なのに、まだ一生分の距離。"
+    ],
+    "es": [
+      "La estrella más cercana a nosotros tiene un planeta, y aun así no puedes ver la estrella de noche.",
+      "Próxima Centauri es la estrella más cercana al Sol, a poco más de cuatro años luz, pero es una enana roja tan tenue que no puedes verla sin telescopio.",
+      "En 2016 los astrónomos hallaron allí un planeta de la masa de la Tierra, Próxima b, en la zona donde podría existir agua líquida, y su año entero dura solo once días.",
+      "La estrella lanza llamaradas violentas, y en 2017 una superllamarada la hizo unas mil veces más brillante en minutos, una explosión capaz de arrancarle la atmósfera a un planeta.",
+      "Aun así es nuestra mejor esperanza para una primera visita, porque una vela empujada por láser a un quinto de la velocidad de la luz podría llegar en unos veinte años.",
+      "Al lado, y aun así a una vida de distancia."
+    ],
+    "pt": [
+      "A estrela mais próxima de nós tem um planeta, e mesmo assim você não consegue ver a estrela à noite.",
+      "Proxima Centauri é a estrela mais próxima do Sol, a pouco mais de quatro anos-luz, mas é uma anã vermelha tão fraca que não dá para vê-la sem telescópio.",
+      "Em 2016 os astrônomos acharam lá um planeta com a massa da Terra, Proxima b, na zona onde pode existir água líquida, e o ano inteiro dele dura só onze dias.",
+      "A estrela solta explosões violentas, e em 2017 uma superexplosão a deixou cerca de mil vezes mais brilhante em minutos, um estouro capaz de arrancar a atmosfera de um planeta.",
+      "Mesmo assim é nossa melhor esperança para uma primeira visita, porque uma vela empurrada por laser a um quinto da velocidade da luz poderia chegar lá em uns vinte anos.",
+      "Vizinha, e ainda assim a uma vida de distância."
+    ],
+    "de": [
+      "Der uns nächste Stern hat einen Planeten, und du kannst den Stern nachts trotzdem nicht sehen.",
+      "Proxima Centauri ist der sonnennächste Stern, gut vier Lichtjahre entfernt, aber ein so schwacher kleiner roter Zwerg, dass du ihn ohne Teleskop nicht findest.",
+      "2016 fanden Astronomen dort einen Planeten von etwa Erdmasse, Proxima b, in der Zone, in der flüssiges Wasser möglich wäre, und sein ganzes Jahr dauert nur elf Tage.",
+      "Der Stern ist ein heftiger Flare-Stern, und 2017 machte ihn ein Superflare in Minuten rund tausendmal heller, eine Explosion, die einem Planeten die Atmosphäre wegreißen könnte.",
+      "Trotzdem ist er unsere beste Hoffnung auf einen ersten Besuch, denn ein lasergetriebenes Segel mit einem Fünftel der Lichtgeschwindigkeit könnte in etwa zwanzig Jahren ankommen.",
+      "Nebenan, und doch ein ganzes Leben entfernt."
+    ],
+    "fr": [
+      "L'étoile la plus proche de nous a une planète, et vous ne pouvez toujours pas voir l'étoile la nuit.",
+      "Proxima Centauri est l'étoile la plus proche du Soleil, à un peu plus de quatre années-lumière, mais c'est une naine rouge si faible qu'on ne la voit pas sans télescope.",
+      "En 2016, les astronomes y ont trouvé une planète de la masse de la Terre, Proxima b, dans la zone où l'eau liquide pourrait exister, et son année entière ne dure que onze jours.",
+      "L'étoile est une éruptive violente, et en 2017 une super-éruption l'a rendue environ mille fois plus brillante en quelques minutes, un souffle capable d'arracher l'atmosphère d'une planète.",
+      "C'est pourtant notre meilleur espoir pour une première visite, car une voile poussée par laser à un cinquième de la vitesse de la lumière pourrait y arriver en une vingtaine d'années.",
+      "Juste à côté, et pourtant à une vie de distance."
+    ],
+    "hi": [
+      "हमारे सबसे करीबी तारे के पास एक ग्रह है, फिर भी आप रात में उस तारे को नहीं देख सकते।",
+      "प्रॉक्सिमा सेंटॉरी सूर्य का सबसे करीबी तारा है, चार प्रकाश वर्ष से थोड़ा ज्यादा दूर, फिर भी यह इतना धुंधला लाल बौना तारा है कि दूरबीन के बिना दिखता ही नहीं।",
+      "2016 में खगोलविदों ने वहां धरती जितने द्रव्यमान का ग्रह प्रॉक्सिमा बी खोजा, जो उस क्षेत्र में है जहां तरल पानी हो सकता है, और उसका पूरा साल सिर्फ ग्यारह दिन का है।",
+      "यह तारा हिंसक फ्लेयर छोड़ता है, और 2017 में एक सुपरफ्लेयर ने इसे मिनटों में करीब हजार गुना चमकीला कर दिया, ऐसा धमाका जो किसी ग्रह का वायुमंडल उड़ा सकता है।",
+      "फिर भी पहली यात्रा के लिए यह हमारी सबसे बड़ी उम्मीद है, क्योंकि लेजर से धकेला गया पाल प्रकाश की गति के पांचवें हिस्से पर करीब बीस साल में वहां पहुंच सकता है।",
+      "पड़ोस में, फिर भी एक पूरी जिंदगी की दूरी पर।"
+    ]
+  }
 }

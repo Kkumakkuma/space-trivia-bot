@@ -10,10 +10,10 @@
   "hook": "BIGGER THAN A PLANET",
   "intro": "There is a moon bigger than the planet Mercury, and it hides an ocean under the ice.",
   "facts": [
-    "Ganymede, one of Jupiter's moons, is the largest moon in the solar system, wider than the planet Mercury, and if it orbited the Sun instead of Jupiter we would simply call it a planet.",
+    "Ganymede, one of Jupiter's moons, is the largest moon in the solar system, wider than Mercury, and if it circled the Sun instead of Jupiter we would simply call it a planet.",
     "It is the only moon we know of with its own magnetic field, a discovery made by the Galileo spacecraft in 1996, so it has faint auroras dancing near its poles.",
     "Beneath about 150 kilometers of ice lies a salty ocean that may hold more water than every ocean on Earth combined, which is why it is on the shortlist for alien life.",
-    "Europe's JUICE spacecraft launched in 2023 and is scheduled to start orbiting Ganymede in the 2030s, the first time any probe will orbit a moon other than our own."
+    "Europe's JUICE spacecraft launched in 2023 and should start orbiting Ganymede in the 2030s, the first probe ever to orbit a moon other than our own."
   ],
   "outro": "A moon that could have been a planet.",
   "title_en": "The Moon Bigger Than Mercury With an Ocean Under the Ice",
@@ -21,7 +21,34 @@
   "description_en": "Ganymede is the biggest moon in the solar system, larger than Mercury, with its own magnetic field and a hidden ocean that may hold more water than Earth. Here is why a spacecraft is on its way. #ganymede #jupiter #moon #space #astronomy",
   "description_ko": "가니메데는 태양계에서 가장 큰 위성으로 수성보다 크고, 자체 자기장과 지구보다 많은 물을 품었을지 모를 숨은 바다가 있습니다. 왜 탐사선이 그곳으로 가고 있는지 정리했습니다. #가니메데 #목성 #위성 #우주",
   "comment": "If Ganymede has an ocean, do you think something lives in it?",
-  "tags": ["shorts", "space", "ganymede", "jupiter", "moons", "juice mission", "astronomy", "solar system", "did you know", "trivia"],
-  "pexels_keywords": ["Ganymede moon space", "Ganymede Jupiter moon", "Ganymede icy moon surface", "Ganymede planet Jupiter orbit", "Ganymede spacecraft", "Ganymede aurora", "Ganymede ocean ice", "Ganymede solar system", "Ganymede deep space", "Ganymede moon craters"],
-  "fact_keywords": ["Ganymede Jupiter moon size comparison", "Ganymede aurora magnetic field", "Ganymede ice ocean underwater", "Ganymede spacecraft orbit"]
+  "tags": [
+    "shorts",
+    "space",
+    "ganymede",
+    "jupiter",
+    "moons",
+    "juice mission",
+    "astronomy",
+    "solar system",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "Ganymede moon space",
+    "Ganymede Jupiter moon",
+    "Ganymede icy moon surface",
+    "Ganymede planet Jupiter orbit",
+    "Ganymede spacecraft",
+    "Ganymede aurora",
+    "Ganymede ocean ice",
+    "Ganymede solar system",
+    "Ganymede deep space",
+    "Ganymede moon craters"
+  ],
+  "fact_keywords": [
+    "Ganymede Jupiter moon size comparison",
+    "Ganymede aurora magnetic field",
+    "Ganymede ice ocean underwater",
+    "Ganymede spacecraft orbit"
+  ]
 }
