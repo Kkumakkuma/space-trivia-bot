@@ -50,5 +50,111 @@
     "total solar eclipse eclipse shadow moving timelapse",
     "total solar eclipse dark sky during eclipse",
     "total solar eclipse moon orbit earth animation"
-  ]
+  ],
+  "clips": [
+    [
+      39149890,
+      35816567
+    ],
+    [
+      39005014,
+      36376317
+    ],
+    [
+      35187590,
+      20766726
+    ],
+    [
+      36964023,
+      39244252
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "개기일식은 우주적 우연, 그리고 지금 서서히 사라지는 중",
+      "description": "개기일식은 지구에서 태양과 달이 같은 크기로 보이는 우연 덕분에 일어나고, 달은 매년 조금씩 멀어지고 있습니다. 그 우연의 과학을 정리했습니다. #개기일식 #일식 #달 #태양 #우주"
+    },
+    "ja": {
+      "title": "皆既日食は宇宙の偶然、そして今ゆっくり消えつつある",
+      "description": "皆既日食は、地球から見て太陽と月がほぼ同じ大きさに見えるという偶然のおかげで起き、月は毎年少しずつ遠ざかっています。その偶然の科学をまとめました。#皆既日食 #日食 #月 #太陽 #宇宙"
+    },
+    "es": {
+      "title": "Los eclipses totales son un accidente cósmico y se están acabando",
+      "description": "Un eclipse solar total solo ocurre porque el Sol y la Luna parecen del mismo tamaño desde la Tierra, y la Luna se aleja poco a poco. Esta es la ciencia detrás de la coincidencia. #eclipsesolar #eclipse #luna #sol #espacio #astronomia"
+    },
+    "pt": {
+      "title": "Eclipses totais são um acaso cósmico e estão acabando",
+      "description": "Um eclipse solar total só acontece porque o Sol e a Lua parecem do mesmo tamanho vistos da Terra, e a Lua está se afastando devagar. Veja a ciência por trás dessa coincidência. #eclipsesolar #eclipse #lua #sol #espaco #astronomia"
+    },
+    "de": {
+      "title": "Totale Sonnenfinsternisse sind ein kosmischer Zufall, und sie gehen zu Ende",
+      "description": "Eine totale Sonnenfinsternis gibt es nur, weil Sonne und Mond von der Erde aus gleich groß wirken, und der Mond entfernt sich langsam. Das ist die Wissenschaft hinter dem Zufall. #sonnenfinsternis #eclipse #mond #sonne #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "Les éclipses totales sont un hasard cosmique, et elles vont disparaître",
+      "description": "Une éclipse solaire totale n'existe que parce que le Soleil et la Lune semblent de la même taille depuis la Terre, et la Lune s'éloigne lentement. Voici la science derrière cette coïncidence. #eclipsesolaire #eclipse #lune #soleil #espace #astronomie"
+    },
+    "hi": {
+      "title": "पूर्ण सूर्यग्रहण एक ब्रह्मांडीय संयोग है, और यह खत्म होता जा रहा है",
+      "description": "पूर्ण सूर्यग्रहण सिर्फ इसलिए होता है क्योंकि धरती से सूर्य और चंद्रमा एक ही आकार के दिखते हैं, और चंद्रमा धीरे-धीरे दूर जा रहा है। जानिए इस संयोग के पीछे का विज्ञान। #solareclipse #eclipse #moon #sun #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "개기일식은 오직 우주적 우연 덕분에 존재하고, 그 우연은 천천히 끝나가고 있습니다.",
+      "태양은 달보다 약 400배 넓지만, 거리도 약 400배 멀어서, 우리 하늘에서는 둘이 거의 똑같은 크기로 보입니다.",
+      "개기 순간에 달의 그림자는 시속 수천 킬로미터로 땅 위를 훑고 지나가며, 가장 길어도 개기 시간은 7분 30초 정도뿐입니다.",
+      "하늘은 행성과 밝은 별이 보일 만큼 어두워지고, 기온은 몇 도 떨어지며, 많은 동물이 밤이 온 것처럼 행동합니다.",
+      "달은 매년 4센티미터 가까이 지구에서 멀어지고 있어서, 계산에 따르면 약 6억 년 뒤에는 태양을 다 가리기엔 너무 작아 보이게 됩니다.",
+      "지구에 아직 개기일식이 있을 때 한 번은 꼭 보세요."
+    ],
+    "ja": [
+      "皆既日食は宇宙の偶然があって初めて起こり、その偶然はゆっくり終わりに向かっています。",
+      "太陽は月の約400倍の大きさですが、距離も約400倍遠いので、私たちの空では二つがほぼ同じ大きさに見えます。",
+      "皆既の間、月の影は時速数千キロで地上を駆け抜け、最も長い皆既でも約7分30秒しか続きません。",
+      "空は惑星や明るい星が見えるほど暗くなり、気温は数度下がり、多くの動物が夜が来たかのように振る舞います。",
+      "月は毎年4センチ近く地球から遠ざかっていて、モデルによれば約6億年後には太陽を覆うには小さすぎて見えるようになります。",
+      "地球にまだ皆既日食があるうちに、一度は見てください。"
+    ],
+    "es": [
+      "Los eclipses solares totales solo existen por una coincidencia cósmica, y se está acabando poco a poco.",
+      "El Sol es unas 400 veces más ancho que la Luna, pero también está unas 400 veces más lejos, así que los dos parecen casi del mismo tamaño en nuestro cielo.",
+      "Durante la totalidad, la sombra de la Luna barre el suelo a miles de kilómetros por hora, y la totalidad más larga posible dura solo unos siete minutos y medio.",
+      "El cielo se oscurece lo suficiente para que aparezcan planetas y estrellas brillantes, la temperatura baja varios grados y muchos animales actúan como si fuera de noche.",
+      "La Luna se aleja casi 4 centímetros de la Tierra cada año, así que los modelos indican que en unos 600 millones de años se verá demasiado pequeña para cubrir el Sol.",
+      "Ve uno mientras nuestro planeta todavía los tiene."
+    ],
+    "pt": [
+      "Eclipses solares totais só existem por uma coincidência cósmica, e ela está acabando aos poucos.",
+      "O Sol é cerca de 400 vezes mais largo que a Lua, mas também está cerca de 400 vezes mais longe, então os dois parecem quase do mesmo tamanho no nosso céu.",
+      "Durante a totalidade, a sombra da Lua varre o chão a milhares de quilômetros por hora, e a totalidade mais longa possível dura só uns sete minutos e meio.",
+      "O céu escurece o bastante para planetas e estrelas brilhantes aparecerem, a temperatura cai vários graus e muitos animais agem como se a noite tivesse chegado.",
+      "A Lua se afasta quase 4 centímetros da Terra por ano, então os modelos indicam que em cerca de 600 milhões de anos ela parecerá pequena demais para cobrir o Sol.",
+      "Veja um enquanto nosso planeta ainda os tem."
+    ],
+    "de": [
+      "Totale Sonnenfinsternisse gibt es nur wegen eines kosmischen Zufalls, und der geht langsam zu Ende.",
+      "Die Sonne ist etwa 400-mal breiter als der Mond, aber auch etwa 400-mal weiter entfernt, deshalb wirken beide an unserem Himmel fast genau gleich groß.",
+      "Während der Totalität rast der Mondschatten mit Tausenden Kilometern pro Stunde über den Boden, und die längstmögliche Totalität dauert nur etwa siebeneinhalb Minuten.",
+      "Der Himmel wird so dunkel, dass Planeten und helle Sterne erscheinen, die Temperatur fällt um mehrere Grad, und viele Tiere verhalten sich, als wäre die Nacht angebrochen.",
+      "Der Mond entfernt sich jedes Jahr fast 4 Zentimeter von der Erde, laut Modellen wirkt er in rund 600 Millionen Jahren zu klein, um die Sonne zu bedecken.",
+      "Erlebe eine, solange unser Planet sie noch hat."
+    ],
+    "fr": [
+      "Les éclipses solaires totales n'existent que grâce à une coïncidence cosmique, et elle touche lentement à sa fin.",
+      "Le Soleil est environ 400 fois plus large que la Lune, mais il est aussi environ 400 fois plus loin, alors les deux paraissent presque exactement de la même taille dans notre ciel.",
+      "Pendant la totalité, l'ombre de la Lune balaie le sol à des milliers de kilomètres par heure, et la totalité la plus longue possible ne dure qu'environ sept minutes et demie.",
+      "Le ciel s'assombrit assez pour que les planètes et les étoiles brillantes apparaissent, la température chute de plusieurs degrés, et beaucoup d'animaux agissent comme si la nuit était tombée.",
+      "La Lune s'éloigne de la Terre de près de 4 centimètres par an, et selon les modèles, dans environ 600 millions d'années elle paraîtra trop petite pour couvrir le Soleil.",
+      "Allez en voir une tant que notre planète en a encore."
+    ],
+    "hi": [
+      "पूर्ण सूर्यग्रहण सिर्फ एक ब्रह्मांडीय संयोग की वजह से होते हैं, और यह संयोग धीरे-धीरे खत्म हो रहा है।",
+      "सूर्य चंद्रमा से लगभग 400 गुना चौड़ा है, लेकिन वह लगभग 400 गुना दूर भी है, इसलिए हमारे आसमान में दोनों लगभग एक ही आकार के दिखते हैं।",
+      "पूर्णता के दौरान चंद्रमा की छाया हजारों किलोमीटर प्रति घंटे की रफ्तार से जमीन पर दौड़ती है, और सबसे लंबी पूर्णता भी सिर्फ करीब साढ़े सात मिनट चलती है।",
+      "आसमान इतना अंधेरा हो जाता है कि ग्रह और चमकीले तारे दिखने लगते हैं, तापमान कई डिग्री गिर जाता है, और कई जानवर ऐसे बर्ताव करते हैं जैसे रात हो गई हो।",
+      "चंद्रमा हर साल धरती से लगभग 4 सेंटीमीटर दूर जा रहा है, इसलिए मॉडल बताते हैं कि करीब 60 करोड़ साल बाद वह सूर्य को ढकने के लिए बहुत छोटा दिखेगा।",
+      "जब तक हमारे ग्रह पर ये होते हैं, एक बार जरूर देखिए।"
+    ]
+  }
 }

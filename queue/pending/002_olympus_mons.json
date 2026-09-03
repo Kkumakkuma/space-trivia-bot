@@ -50,5 +50,111 @@
     "Olympus Mons Mount Everest peak aerial",
     "Olympus Mons tall cliff face aerial",
     "Olympus Mons lava flow volcano"
-  ]
+  ],
+  "clips": [
+    [
+      17060702,
+      11309944
+    ],
+    [
+      38169671,
+      28838004
+    ],
+    [
+      18788369,
+      25463016
+    ],
+    [
+      29171249,
+      36540054
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "너무 커서 올라가도 산인 줄 모른다는 화성의 올림푸스산",
+      "description": "화성의 올림푸스산은 높이 약 22km, 폭 약 600km로 태양계에서 가장 높은 화산입니다. 에베레스트를 압도하는 크기와 그렇게 커진 이유를 정리했습니다. #올림푸스산 #화성 #화산 #우주"
+    },
+    "ja": {
+      "title": "大きすぎて登っても山だと気づかない、火星のオリンポス山",
+      "description": "火星のオリンポス山は高さ約22km、幅約600kmで、太陽系で最も高い火山です。エベレストを圧倒する大きさと、ここまで巨大になった理由をまとめました。#オリンポス山 #火星 #火山 #宇宙"
+    },
+    "es": {
+      "title": "Una montaña tan grande que podrías estar encima sin darte cuenta",
+      "description": "El monte Olimpo de Marte es el volcán más alto del sistema solar, con unos 22 km de altura y 600 km de ancho. Así empequeñece al Everest y así llegó a ser tan enorme. #monteolimpo #marte #volcan #espacio #astronomia"
+    },
+    "pt": {
+      "title": "Uma montanha tão grande que você poderia estar em cima sem perceber",
+      "description": "O Monte Olimpo, em Marte, é o vulcão mais alto do sistema solar, com cerca de 22 km de altura e 600 km de largura. Veja como ele supera o Everest e como ficou tão grande. #monteolimpo #marte #vulcao #espaco #astronomia"
+    },
+    "de": {
+      "title": "Ein Berg so groß, dass du draufstehen könntest, ohne es zu merken",
+      "description": "Olympus Mons auf dem Mars ist der höchste Vulkan des Sonnensystems, etwa 22 km hoch und 600 km breit. So stellt er den Everest in den Schatten, und so wurde er so riesig. #olympusmons #mars #vulkan #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "Une montagne si grande qu'on pourrait être dessus sans s'en rendre compte",
+      "description": "Olympus Mons, sur Mars, est le plus haut volcan du système solaire, environ 22 km de haut et 600 km de large. Voici pourquoi il écrase l'Everest et comment il est devenu si énorme. #olympusmons #mars #volcan #espace #astronomie"
+    },
+    "hi": {
+      "title": "इतना बड़ा पहाड़ कि आप उस पर खड़े हों और पता भी न चले",
+      "description": "मंगल का ओलंपस मॉन्स सौरमंडल का सबसे ऊंचा ज्वालामुखी है, लगभग 22 किमी ऊंचा और 600 किमी चौड़ा। जानिए यह एवरेस्ट को कैसे बौना बनाता है और इतना विशाल कैसे बना। #olympusmons #mars #volcano #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "태양계에서 가장 높은 산은 너무 넓어서, 그 위에 서 있어도 산인 줄 모릅니다.",
+      "화성의 올림푸스산은 행성 기준면에서 약 22km 솟아 있는데, 에베레스트 높이의 대략 2.5배입니다.",
+      "밑면 지름은 약 600km로 프랑스 크기쯤 되고, 경사는 몇 도밖에 안 돼서 올라가는 줄도 모르고 걸을 수 있습니다.",
+      "곳곳이 최대 8km 높이의 절벽으로 둘러싸여 있는데, 지구의 어떤 절벽보다 높고, 어떻게 생겼는지는 과학자들도 아직 논쟁 중입니다.",
+      "이렇게 거대해진 이유는 화성의 중력이 약하고 움직이는 판이 없어서, 수억 년 동안 같은 자리에 용암이 계속 쌓였기 때문입니다.",
+      "이제 태양계에서 가장 큰 산이 어디 숨어 있는지 아셨죠."
+    ],
+    "ja": [
+      "太陽系で一番高い山はあまりに広く、その上に立っていても山だと気づきません。",
+      "火星のオリンポス山は基準面から約22km盛り上がっていて、エベレストのおよそ2.5倍の高さです。",
+      "裾野は直径約600kmでフランスほどの大きさ、斜面はわずか数度なので、気づかないまま登れてしまいます。",
+      "ところどころ高さ最大8kmの崖に囲まれていて、地球のどの崖よりも高く、どうできたのかは今も科学者が議論しています。",
+      "ここまで巨大になったのは、火星は重力が弱く動くプレートもないため、何億年も同じ場所に溶岩が積み重なり続けたからです。",
+      "太陽系最大の山がどこに隠れているか、これで分かりましたね。"
+    ],
+    "es": [
+      "La montaña más alta del sistema solar es tan ancha que podrías estar encima sin saberlo.",
+      "El monte Olimpo de Marte se eleva unos 22 kilómetros sobre el nivel de referencia del planeta, unas dos veces y media la altura del Everest.",
+      "Su base mide unos 600 kilómetros, casi el tamaño de Francia, y las pendientes son de solo unos grados, así que podrías subirla sin darte cuenta.",
+      "En algunos tramos la rodean acantilados de hasta 8 kilómetros, más altos que cualquiera de la Tierra, y los científicos aún debaten cómo se formaron.",
+      "Creció tanto porque Marte tiene poca gravedad y no tiene placas en movimiento, así que la lava se acumuló en el mismo sitio durante cientos de millones de años.",
+      "Ahora ya sabes dónde se esconde la montaña más grande del sistema solar."
+    ],
+    "pt": [
+      "A montanha mais alta do sistema solar é tão larga que você poderia estar em cima dela sem saber.",
+      "O Monte Olimpo, em Marte, sobe cerca de 22 quilômetros acima do nível de referência do planeta, umas duas vezes e meia a altura do Everest.",
+      "A base tem uns 600 quilômetros de largura, quase o tamanho da França, e as encostas têm só alguns graus, então dá para subir sem perceber.",
+      "Em alguns trechos a montanha é cercada por penhascos de até 8 quilômetros, mais altos que qualquer um da Terra, e os cientistas ainda debatem como se formaram.",
+      "Ela ficou tão grande porque Marte tem gravidade fraca e não tem placas em movimento, então a lava foi se acumulando no mesmo lugar por centenas de milhões de anos.",
+      "Agora você sabe onde se esconde a maior montanha do sistema solar."
+    ],
+    "de": [
+      "Der höchste Berg des Sonnensystems ist so breit, dass du draufstehen könntest, ohne es zu merken.",
+      "Olympus Mons auf dem Mars ragt etwa 22 Kilometer über das Bezugsniveau des Planeten, rund zweieinhalb Mal so hoch wie der Mount Everest.",
+      "Sein Fuß misst rund 600 Kilometer, etwa so groß wie Frankreich, und die Hänge haben nur wenige Grad Neigung, du könntest also hinaufgehen, ohne es zu bemerken.",
+      "Stellenweise umgeben ihn bis zu 8 Kilometer hohe Klippen, höher als jede Klippe auf der Erde, und Forscher streiten noch darüber, wie sie entstanden sind.",
+      "So riesig wurde er, weil der Mars schwache Schwerkraft und keine wandernden Platten hat, sodass sich Lava Hunderte Millionen Jahre an derselben Stelle auftürmte.",
+      "Jetzt weißt du, wo sich der größte Berg des Sonnensystems versteckt."
+    ],
+    "fr": [
+      "La plus haute montagne du système solaire est si large qu'on pourrait être dessus sans le savoir.",
+      "Olympus Mons, sur Mars, s'élève à environ 22 kilomètres au-dessus du niveau de référence de la planète, soit environ deux fois et demie l'Everest.",
+      "Sa base fait environ 600 kilomètres, presque la taille de la France, et ses pentes ne font que quelques degrés, on pourrait donc la gravir sans s'en apercevoir.",
+      "Par endroits, la montagne est bordée de falaises pouvant atteindre 8 kilomètres, plus hautes que toutes celles de la Terre, et les scientifiques débattent encore de leur origine.",
+      "Elle est devenue si énorme parce que Mars a une faible gravité et pas de plaques mobiles, la lave s'est donc empilée au même endroit pendant des centaines de millions d'années.",
+      "Vous savez maintenant où se cache la plus grande montagne du système solaire."
+    ],
+    "hi": [
+      "सौरमंडल का सबसे ऊंचा पहाड़ इतना चौड़ा है कि आप उस पर खड़े होकर भी नहीं जान पाएंगे।",
+      "मंगल का ओलंपस मॉन्स ग्रह के संदर्भ स्तर से लगभग 22 किलोमीटर ऊपर उठता है, यानी माउंट एवरेस्ट से करीब ढाई गुना ऊंचा।",
+      "इसका आधार करीब 600 किलोमीटर चौड़ा है, लगभग फ्रांस जितना, और ढलान सिर्फ कुछ डिग्री की है, इसलिए आप बिना जाने इस पर चढ़ सकते हैं।",
+      "कई जगहों पर यह पहाड़ 8 किलोमीटर तक ऊंची खड़ी चट्टानों से घिरा है, जो धरती की किसी भी चट्टान से ऊंची हैं, और वैज्ञानिक आज भी बहस करते हैं कि वे कैसे बनीं।",
+      "यह इतना विशाल इसलिए बना क्योंकि मंगल का गुरुत्वाकर्षण कमजोर है और उसकी प्लेटें हिलती नहीं, इसलिए लावा करोड़ों सालों तक एक ही जगह जमा होता रहा।",
+      "अब आप जानते हैं कि सौरमंडल का सबसे बड़ा पहाड़ कहां छिपा है।"
+    ]
+  }
 }

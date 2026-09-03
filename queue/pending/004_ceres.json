@@ -50,5 +50,111 @@
     "Ceres old telescope observatory night",
     "Ceres bright salt spots crater",
     "Ceres spacecraft orbiting planet"
-  ]
+  ],
+  "clips": [
+    [
+      36964618,
+      37029441
+    ],
+    [
+      37723924,
+      30591307
+    ],
+    [
+      34842060,
+      37003414
+    ],
+    [
+      37003916,
+      37005109
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "소행성대에 숨어 있는 왜소행성, 그 안에 소금물이 있다",
+      "description": "세레스는 소행성대에서 가장 큰 천체이자 왜소행성으로, 밝은 소금 자국과 지하 소금물의 흔적을 지녔습니다. 그 이상한 이야기를 정리했습니다. #세레스 #왜소행성 #소행성대 #우주"
+    },
+    "ja": {
+      "title": "小惑星帯に隠れた準惑星、その中には塩水がある",
+      "description": "ケレスは小惑星帯で最大の天体であり準惑星で、明るい塩の斑点と地下の塩水の痕跡を持っています。その不思議な物語をまとめました。#ケレス #準惑星 #小惑星帯 #宇宙"
+    },
+    "es": {
+      "title": "El planeta enano con agua salada escondido en el cinturón de asteroides",
+      "description": "Ceres es el objeto más grande del cinturón de asteroides y un planeta enano con manchas brillantes de sal y señales de agua salada bajo su superficie. Esta es su extraña historia. #ceres #planetaenano #cinturondeasteroides #nasa #espacio #astronomia"
+    },
+    "pt": {
+      "title": "O planeta anão com água salgada escondido no cinturão de asteroides",
+      "description": "Ceres é o maior objeto do cinturão de asteroides e um planeta anão com manchas brilhantes de sal e sinais de água salgada sob a superfície. Veja essa história estranha. #ceres #planetaanao #cinturaodeasteroides #nasa #espaco #astronomia"
+    },
+    "de": {
+      "title": "Der Zwergplanet mit Salzwasser, der sich im Asteroidengürtel versteckt",
+      "description": "Ceres ist das größte Objekt im Asteroidengürtel und ein Zwergplanet mit hellen Salzflecken und Hinweisen auf Salzwasser unter seiner Oberfläche. Das ist seine seltsame Geschichte. #ceres #zwergplanet #asteroidenguertel #nasa #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "La planète naine à l'eau salée cachée dans la ceinture d'astéroïdes",
+      "description": "Cérès est le plus gros objet de la ceinture d'astéroïdes et une planète naine aux taches de sel brillantes, avec des signes d'eau salée sous sa surface. Voici son étrange histoire. #ceres #planetenaine #ceintureasteroides #nasa #espace #astronomie"
+    },
+    "hi": {
+      "title": "क्षुद्रग्रह पट्टी में छिपा बौना ग्रह, जिसके अंदर खारा पानी है",
+      "description": "सेरेस क्षुद्रग्रह पट्टी की सबसे बड़ी वस्तु और एक बौना ग्रह है, जिस पर चमकीले नमक के धब्बे हैं और सतह के नीचे खारे पानी के संकेत मिले हैं। जानिए इसकी अजीब कहानी। #ceres #dwarfplanet #asteroidbelt #nasa #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "소행성대에 숨어 있는 왜소행성이 하나 있는데, 그 안에는 소금물이 있습니다.",
+      "세레스는 소행성대에서 가장 큰 천체로 지름이 약 940킬로미터이고, 혼자서 소행성대 전체 질량의 대략 3분의 1을 차지합니다.",
+      "1801년 첫날 밤에 발견됐고, 수십 년 동안 행성으로 불리다가 소행성으로 강등됐고, 2006년에 다시 왜소행성으로 승격됐습니다.",
+      "오카토르 분화구 안의 수수께끼 같은 밝은 점들은, 아래에서 스며 올라온 소금물이 증발하면서 남긴 소금 퇴적물로 밝혀졌습니다.",
+      "NASA의 던 탐사선은 2015년부터 2018년까지 세레스를 돌면서, 지각 아래에 아직 남아 있는 질척한 소금물 저장층의 흔적을 찾아냈습니다.",
+      "짭짤한 비밀을 품은 작은 세계입니다."
+    ],
+    "ja": [
+      "小惑星帯に隠れている準惑星があり、その中には塩水があります。",
+      "ケレスは小惑星帯で最大の天体で、直径は約940キロメートル、これひとつで小惑星帯全体の質量のおよそ3分の1を占めます。",
+      "1801年の最初の夜に発見され、数十年間は惑星と呼ばれた後に小惑星へ格下げされ、2006年に準惑星へ格上げされました。",
+      "オッカトル・クレーターの中にある謎の明るい斑点は、地下から染み出した塩水が蒸発して残した塩の堆積物だと分かりました。",
+      "NASAの探査機ドーンは2015年から2018年までケレスを周回し、地殻の下に今も残るシャーベット状の塩水の貯留層の兆候を見つけました。",
+      "塩の秘密を抱えた小さな世界です。"
+    ],
+    "es": [
+      "Hay un planeta enano escondido en el cinturón de asteroides, y tiene agua salada.",
+      "Ceres es el objeto más grande del cinturón de asteroides, de unos 940 kilómetros de ancho, y él solo concentra cerca de un tercio de toda la masa del cinturón.",
+      "Fue descubierto la primera noche de 1801 y se le llamó planeta durante décadas, luego lo degradaron a asteroide y en 2006 lo ascendieron a planeta enano.",
+      "Las misteriosas manchas brillantes dentro del cráter Occator resultaron ser depósitos de sal que quedaron cuando el agua salada subió desde abajo y se evaporó.",
+      "La sonda Dawn de la NASA orbitó Ceres de 2015 a 2018 y halló señales de un depósito fangoso de agua salada que aún persiste bajo su corteza.",
+      "Un mundo diminuto con un secreto salado."
+    ],
+    "pt": [
+      "Existe um planeta anão escondido no cinturão de asteroides, e ele tem água salgada.",
+      "Ceres é o maior objeto do cinturão de asteroides, com cerca de 940 quilômetros de largura, e sozinho concentra quase um terço de toda a massa do cinturão.",
+      "Foi descoberto na primeira noite de 1801 e chamado de planeta por décadas, depois rebaixado a asteroide e, em 2006, promovido a planeta anão.",
+      "As misteriosas manchas brilhantes dentro da cratera Occator se revelaram depósitos de sal deixados quando água salgada subiu de baixo e evaporou.",
+      "A sonda Dawn da NASA orbitou Ceres de 2015 a 2018 e encontrou sinais de um reservatório pastoso de água salgada que ainda persiste sob a crosta.",
+      "Um mundinho com um segredo salgado."
+    ],
+    "de": [
+      "Im Asteroidengürtel versteckt sich ein Zwergplanet, und er hat Salzwasser.",
+      "Ceres ist das größte Objekt im Asteroidengürtel, etwa 940 Kilometer breit, und allein auf ihn entfällt rund ein Drittel der gesamten Masse des Gürtels.",
+      "Er wurde in der ersten Nacht des Jahres 1801 entdeckt, galt jahrzehntelang als Planet, wurde dann zum Asteroiden herabgestuft und 2006 zum Zwergplaneten erhoben.",
+      "Die rätselhaften hellen Flecken im Occator-Krater entpuppten sich als Salzablagerungen, die zurückblieben, als salziges Wasser von unten aufstieg und verdunstete.",
+      "Die NASA-Sonde Dawn umkreiste Ceres von 2015 bis 2018 und fand Hinweise auf ein matschiges Salzwasserreservoir, das noch immer unter der Kruste liegt.",
+      "Eine winzige Welt mit einem salzigen Geheimnis."
+    ],
+    "fr": [
+      "Une planète naine se cache dans la ceinture d'astéroïdes, et elle contient de l'eau salée.",
+      "Cérès est le plus gros objet de la ceinture d'astéroïdes, environ 940 kilomètres de large, et elle concentre à elle seule près d'un tiers de toute la masse de la ceinture.",
+      "Découverte la première nuit de 1801, elle fut appelée planète pendant des décennies, puis rétrogradée en astéroïde, avant d'être promue planète naine en 2006.",
+      "Les mystérieuses taches brillantes du cratère Occator se sont révélées être des dépôts de sel laissés par de l'eau saumâtre remontée des profondeurs puis évaporée.",
+      "La sonde Dawn de la NASA a orbité autour de Cérès de 2015 à 2018 et a trouvé les signes d'un réservoir boueux d'eau salée toujours présent sous sa croûte.",
+      "Un tout petit monde au secret salé."
+    ],
+    "hi": [
+      "क्षुद्रग्रह पट्टी में एक बौना ग्रह छिपा है, और उसमें खारा पानी है।",
+      "सेरेस क्षुद्रग्रह पट्टी की सबसे बड़ी वस्तु है, लगभग 940 किलोमीटर चौड़ी, और अकेले यही पूरी पट्टी के द्रव्यमान का करीब एक तिहाई है।",
+      "इसे 1801 की पहली रात खोजा गया, दशकों तक ग्रह कहा गया, फिर क्षुद्रग्रह बना दिया गया, और 2006 में बौने ग्रह का दर्जा मिला।",
+      "ओकेटर क्रेटर के अंदर रहस्यमय चमकीले धब्बे असल में नमक की परतें निकलीं, जो नीचे से रिसकर आए खारे पानी के भाप बनने पर पीछे रह गईं।",
+      "नासा के डॉन यान ने 2015 से 2018 तक सेरेस की परिक्रमा की और उसकी परत के नीचे अब भी मौजूद खारे पानी के गाढ़े भंडार के संकेत पाए।",
+      "एक नन्ही दुनिया, जिसका राज़ नमकीन है।"
+    ]
+  }
 }
