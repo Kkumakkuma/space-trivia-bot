@@ -50,5 +50,111 @@
     "Betelgeuse star dust cloud dimming",
     "Betelgeuse Orion constellation night sky",
     "Betelgeuse supernova explosion animation"
-  ]
+  ],
+  "clips": [
+    [
+      37944582,
+      14618955
+    ],
+    [
+      39012690,
+      39266727
+    ],
+    [
+      27893808,
+      19182136
+    ],
+    [
+      35288066,
+      34767728
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "오늘 밤 터져도 이상하지 않은 별, 낮에도 보인다는 베텔게우스",
+      "description": "오리온자리의 붉은 초거성 베텔게우스는 앞으로 10만 년 안에 초신성으로 폭발할 수 있는 별입니다. 밤하늘에서 가장 이상한 별로 꼽히는 이유를 정리했습니다. #베텔게우스 #초신성 #오리온자리 #우주"
+    },
+    "ja": {
+      "title": "今夜爆発してもおかしくない星、昼間でも見えるベテルギウス",
+      "description": "オリオン座の赤色超巨星ベテルギウスは、今後10万年以内に超新星爆発を起こす可能性があります。夜空で最も奇妙な星と言われる理由をまとめました。#ベテルギウス #超新星 #オリオン座 #宇宙"
+    },
+    "es": {
+      "title": "La estrella que podría explotar esta noche y verse a pleno día",
+      "description": "Betelgeuse es una supergigante roja moribunda en Orión que podría explotar como supernova en los próximos cien mil años. Esto es lo que la convierte en una de las estrellas más extrañas del cielo. #betelgeuse #supernova #orion #espacio #astronomia"
+    },
+    "pt": {
+      "title": "A estrela que pode explodir hoje à noite e ser vista em plena luz do dia",
+      "description": "Betelgeuse é uma supergigante vermelha moribunda em Órion que pode explodir como supernova nos próximos cem mil anos. Veja o que faz dela uma das estrelas mais estranhas do céu. #betelgeuse #supernova #orion #espaco #astronomia"
+    },
+    "de": {
+      "title": "Dieser Stern könnte heute Nacht explodieren, und du würdest es am Tag sehen",
+      "description": "Betelgeuse ist ein sterbender roter Überriese im Orion, der in den nächsten hunderttausend Jahren als Supernova explodieren könnte. Das macht ihn zu einem der seltsamsten Sterne am Himmel. #betelgeuse #supernova #orion #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "Cette étoile pourrait exploser ce soir et vous la verriez en plein jour",
+      "description": "Bételgeuse est une supergéante rouge mourante d'Orion qui pourrait exploser en supernova d'ici cent mille ans. Voici ce qui en fait l'une des étoiles les plus étranges du ciel. #betelgeuse #supernova #orion #espace #astronomie"
+    },
+    "hi": {
+      "title": "यह तारा आज रात फट सकता है और आप इसे दिन में भी देख पाएंगे",
+      "description": "बेटेलज्यूस ओरायन तारामंडल का एक मरता हुआ लाल महादानव तारा है जो अगले एक लाख सालों में सुपरनोवा बन सकता है। जानिए क्यों यह आसमान के सबसे अजीब तारों में से एक है। #betelgeuse #supernova #orion #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "이 별은 오늘 밤에라도 터질 수 있고, 그러면 대낮에도 보일 겁니다.",
+      "베텔게우스는 너무 거대한 적색 초거성이라, 태양 자리에 놓으면 흐릿한 바깥 표면이 화성을 지나 목성 궤도 근처까지 닿습니다.",
+      "2019년 말에는 평소 밝기의 3분의 1 정도로 어두워졌는데, 별이 뿜어낸 거대한 먼지 구름이 빛을 가렸을 가능성이 가장 큽니다.",
+      "약 600에서 700광년 떨어져 있어서, 오늘 밤 눈에 닿는 빛은 망원경이 발명되기도 전, 수백 년 전에 별을 떠난 빛입니다.",
+      "마침내 초신성이 되면 몇 주 동안 반달만큼 밝게, 어쩌면 낮에도 빛날 수 있고, 그 일은 앞으로 10만 년 안에 언제든 일어날 수 있습니다.",
+      "오늘 밤 오리온자리의 붉은 어깨를 찾아보세요."
+    ],
+    "ja": [
+      "この星は今夜にも爆発するかもしれず、そうなれば真っ昼間でも見えます。",
+      "ベテルギウスはあまりに巨大な赤色超巨星で、太陽の位置に置けば、ぼんやりした外層が火星を越えて木星軌道の近くまで届きます。",
+      "2019年末には通常の約3分の1の明るさまで暗くなりましたが、星が放出した巨大な塵の雲が光を遮った可能性が最も高いです。",
+      "距離はおよそ600から700光年なので、今夜あなたの目に届く光は、望遠鏡が発明される前、何世紀も前に星を出発した光です。",
+      "ついに超新星になると、数週間にわたり半月ほどの明るさで、昼間でも輝くかもしれず、それは今後10万年以内にいつ起きてもおかしくありません。",
+      "今夜、オリオン座の赤い肩を探してみてください。"
+    ],
+    "es": [
+      "Esta estrella podría explotar cualquier noche, y la verías a plena luz del día.",
+      "Betelgeuse es una supergigante roja tan enorme que, si estuviera donde está nuestro Sol, su difusa superficie exterior pasaría Marte y llegaría cerca de la órbita de Júpiter.",
+      "A finales de 2019 se atenuó hasta un tercio de su brillo normal, muy probablemente porque una nube gigante de polvo que había expulsado bloqueó su luz.",
+      "Está a unos 600 o 700 años luz, así que la luz que llega a tus ojos esta noche salió de la estrella hace siglos, antes de que se inventaran los telescopios.",
+      "Cuando finalmente estalle como supernova, podría brillar como media luna durante semanas, quizá incluso de día, y eso puede ocurrir en cualquier momento de los próximos cien mil años.",
+      "Busca el hombro rojo de Orión esta noche."
+    ],
+    "pt": [
+      "Esta estrela pode explodir qualquer noite dessas, e você a veria em plena luz do dia.",
+      "Betelgeuse é uma supergigante vermelha tão enorme que, se estivesse no lugar do nosso Sol, sua superfície externa difusa passaria de Marte e chegaria perto da órbita de Júpiter.",
+      "No fim de 2019 ela escureceu até cerca de um terço do brilho normal, muito provavelmente porque uma nuvem gigante de poeira que ela expulsou bloqueou sua luz.",
+      "Ela fica a uns 600 a 700 anos-luz, então a luz que chega aos seus olhos hoje saiu da estrela há séculos, antes da invenção dos telescópios.",
+      "Quando finalmente virar supernova, pode brilhar como meia lua por semanas, talvez até de dia, e isso pode acontecer a qualquer momento nos próximos cem mil anos.",
+      "Procure o ombro vermelho de Órion hoje à noite."
+    ],
+    "de": [
+      "Dieser Stern könnte jede Nacht explodieren, und du würdest es am helllichten Tag sehen.",
+      "Betelgeuse ist ein so riesiger roter Überriese, dass seine diffuse äußere Oberfläche an der Stelle unserer Sonne über den Mars hinaus bis fast zur Jupiterbahn reichen würde.",
+      "Ende 2019 wurde er auf etwa ein Drittel seiner normalen Helligkeit dunkler, höchstwahrscheinlich weil eine riesige Staubwolke, die er abgestoßen hatte, sein Licht blockierte.",
+      "Er ist etwa 600 bis 700 Lichtjahre entfernt, das Licht in deinen Augen heute Nacht verließ den Stern also vor Jahrhunderten, noch bevor Teleskope erfunden wurden.",
+      "Wenn er schließlich als Supernova explodiert, könnte er wochenlang so hell wie ein Halbmond leuchten, vielleicht sogar am Tag, und das kann jederzeit in den nächsten hunderttausend Jahren passieren.",
+      "Such heute Nacht die rote Schulter des Orion."
+    ],
+    "fr": [
+      "Cette étoile pourrait exploser n'importe quelle nuit, et vous la verriez en plein jour.",
+      "Bételgeuse est une supergéante rouge si énorme qu'à la place de notre Soleil, sa surface externe diffuse dépasserait Mars et s'étendrait presque jusqu'à l'orbite de Jupiter.",
+      "Fin 2019, elle a perdu près des deux tiers de son éclat habituel, très probablement parce qu'un gigantesque nuage de poussière qu'elle avait rejeté a bloqué sa lumière.",
+      "Elle se trouve à environ 600 à 700 années-lumière, donc la lumière qui atteint vos yeux ce soir a quitté l'étoile il y a des siècles, avant l'invention des télescopes.",
+      "Quand elle finira en supernova, elle pourrait briller comme une demi-lune pendant des semaines, peut-être même en plein jour, et cela peut arriver n'importe quand dans les cent mille prochaines années.",
+      "Cherchez l'épaule rouge d'Orion ce soir."
+    ],
+    "hi": [
+      "यह तारा किसी भी रात फट सकता है, और आप इसे दिन के उजाले में भी देख पाएंगे।",
+      "बेटेलज्यूस इतना विशाल लाल महादानव तारा है कि अगर यह हमारे सूर्य की जगह होता, तो इसकी धुंधली बाहरी सतह मंगल को पार कर बृहस्पति की कक्षा के पास तक पहुंच जाती।",
+      "2019 के अंत में यह अपनी सामान्य चमक के लगभग एक तिहाई तक मंद पड़ गया, शायद इसलिए कि इसके द्वारा छोड़े गए धूल के विशाल बादल ने इसकी रोशनी रोक दी।",
+      "यह लगभग 600 से 700 प्रकाश वर्ष दूर है, इसलिए आज रात आपकी आंखों तक पहुंचने वाली रोशनी सदियों पहले, दूरबीन के आविष्कार से भी पहले तारे से निकली थी।",
+      "जब यह आखिरकार सुपरनोवा बनेगा, तो हफ्तों तक आधे चांद जितना चमक सकता है, शायद दिन में भी, और यह अगले एक लाख सालों में कभी भी हो सकता है।",
+      "आज रात ओरायन के लाल कंधे को ढूंढिए।"
+    ]
+  }
 }
