@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "twinkling_stars",
+  "display": "Twinkling Stars",
+  "single": "Twinkling Star",
+  "category": "phenomenon",
+  "angle": "weird_physics",
+  "format": "myth_vs_fact",
+  "hook_line": "Stars do not actually twinkle; it is the air above you that is shaking.",
+  "hook": "STARS DON'T TWINKLE",
+  "intro": "Stars do not actually twinkle; it is the air above you that is shaking.",
+  "facts": [
+    "Astronomers call it scintillation: swirling pockets of warm and cool air act like moving lenses, bending a star's light side to side many times a second, so the pinpoint flickers.",
+    "Planets like Jupiter and Venus barely twinkle because they are close enough to show tiny disks, and the flickers from many points across each disk average each other out.",
+    "At the horizon, starlight crosses about 38 times as much air as straight overhead, so low stars twinkle hardest, even planets can flicker, and bright Sirius flashes many colors.",
+    "Big observatories fight back: the Very Large Telescope in Chile fires four lasers to make artificial stars 90 kilometers up, guiding a mirror that reshapes 1,000 times a second to sharpen the view."
+  ],
+  "outro": "The twinkle is ours, not the star's.",
+  "title_en": "Stars Don't Actually Twinkle. It's the Air Above You",
+  "title_ko": "별은 사실 반짝이지 않는다, 흔들리는 건 머리 위 공기",
+  "description_en": "Stars do not twinkle on their own: swirling air bends their light many times a second. Here is why planets barely twinkle, why low stars twinkle hardest and bright ones flash colors, and how a giant telescope uses lasers to sharpen the view. #stars #twinkle #astronomy #nightsky #space",
+  "description_ko": "별이 반짝이는 건 별 때문이 아니라 지구 대기 때문입니다. 온도가 다른 공기 덩어리가 렌즈처럼 움직이며 별빛을 1초에도 여러 번 이리저리 꺾습니다. 행성이 덜 반짝이는 이유, 지평선 근처 별이 더 심하게 깜빡이는 이유, 대형 망원경이 레이저로 이 흔들림을 바로잡는 방법까지 정리했습니다. #별 #밤하늘 #천문학 #우주",
+  "comment": "Have you ever spotted a planet just because it was not twinkling?",
+  "tags": [
+    "shorts",
+    "space",
+    "twinkling stars",
+    "why do stars twinkle",
+    "scintillation",
+    "night sky",
+    "adaptive optics",
+    "astronomy",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "twinkling stars night sky",
+    "twinkling stars timelapse",
+    "twinkling stars starry sky",
+    "twinkling stars milky way",
+    "twinkling stars over mountains",
+    "twinkling stars over horizon",
+    "twinkling stars observatory",
+    "twinkling stars telescope",
+    "twinkling stars bright planet",
+    "twinkling stars dark sky"
+  ],
+  "fact_keywords": [
+    "twinkling stars shimmering night sky",
+    "twinkling stars bright planet night sky",
+    "twinkling stars low over horizon",
+    "twinkling stars observatory telescope night"
+  ],
+  "clips": [
+    [
+      14209304,
+      30022034
+    ],
+    [
+      12640160,
+      37723911
+    ],
+    [
+      38957094,
+      30182682
+    ],
+    [
+      29487819,
+      37723918
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "별은 사실 반짝이지 않는다, 흔들리는 건 머리 위 공기",
+      "description": "별이 반짝이는 건 별 때문이 아니라 지구 대기 때문입니다. 온도가 다른 공기 덩어리가 렌즈처럼 움직이며 별빛을 1초에도 여러 번 이리저리 꺾습니다. 행성이 덜 반짝이는 이유, 지평선 근처 별이 더 심하게 깜빡이는 이유, 대형 망원경이 레이저로 이 흔들림을 바로잡는 방법까지 정리했습니다. #별 #밤하늘 #천문학 #우주"
+    },
+    "ja": {
+      "title": "星は実はまたたかない。揺れているのは頭上の空気",
+      "description": "星がまたたくのは星のせいではなく、地球の大気のせいです。温度の違う空気の塊がレンズのように動き、星の光を1秒間に何度も曲げています。惑星があまりまたたかない理由、低い星ほど激しくまたたき、明るい星が色とりどりにきらめく理由、そして巨大望遠鏡がレーザーで像をくっきりさせる方法をまとめました。 #星 #星空 #天文学 #宇宙"
+    },
+    "es": {
+      "title": "Las estrellas en realidad no titilan: es el aire que tienes encima",
+      "description": "Las estrellas no titilan por sí solas: el aire turbulento desvía su luz muchas veces por segundo. Te contamos por qué los planetas apenas titilan, por qué las estrellas bajas titilan más y las brillantes destellan en colores, y cómo un telescopio gigante usa láseres para ver con nitidez. #estrellas #astronomia #cielonocturno #espacio"
+    },
+    "pt": {
+      "title": "As estrelas não piscam de verdade: é o ar acima de você",
+      "description": "As estrelas não piscam sozinhas: o ar turbulento desvia a luz delas muitas vezes por segundo. Veja por que os planetas quase não piscam, por que as estrelas baixas piscam mais e as mais brilhantes cintilam em várias cores, e como um telescópio gigante usa lasers para deixar a imagem nítida. #estrelas #astronomia #ceunoturno #espaco"
+    },
+    "de": {
+      "title": "Sterne funkeln eigentlich nicht. Es ist die Luft über dir",
+      "description": "Sterne funkeln nicht von selbst: Wirbelnde Luft lenkt ihr Licht viele Male pro Sekunde ab. Hier siehst du, warum Planeten kaum funkeln, warum tief stehende Sterne am stärksten funkeln und helle in Farben blitzen und wie ein Riesenteleskop mit Lasern das Bild schärft. #sterne #astronomie #nachthimmel #weltraum"
+    },
+    "fr": {
+      "title": "Les étoiles ne scintillent pas vraiment : c'est l'air au-dessus de vous",
+      "description": "Les étoiles ne scintillent pas d'elles-mêmes : l'air turbulent dévie leur lumière de nombreuses fois par seconde. Découvrez pourquoi les planètes scintillent à peine, pourquoi les étoiles basses scintillent le plus et les plus brillantes lancent des éclats colorés, et comment un télescope géant utilise des lasers pour obtenir une image nette. #etoiles #astronomie #cielnocturne #espace"
+    },
+    "hi": {
+      "title": "तारे असल में टिमटिमाते नहीं, कांपती तो आपके ऊपर की हवा है",
+      "description": "तारे खुद नहीं टिमटिमाते: घूमती हवा उनकी रोशनी को एक सेकंड में कई बार मोड़ देती है। जानिए ग्रह बहुत कम क्यों टिमटिमाते हैं, नीचे दिखने वाले तारे सबसे ज्यादा क्यों टिमटिमाते हैं और चमकीले तारे रंग-बिरंगे क्यों चमकते हैं, और एक विशाल टेलीस्कोप लेजर से तस्वीर कैसे साफ करता है। #तारे #खगोलविज्ञान #अंतरिक्ष #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "별은 사실 반짝이지 않습니다. 흔들리는 건 우리 머리 위의 공기입니다.",
+      "천문학자들은 이걸 신틸레이션이라고 부릅니다. 따뜻한 공기와 찬 공기 덩어리가 소용돌이치며 움직이는 렌즈 노릇을 하는데, 별빛을 1초에도 여러 번 이리저리 꺾어서 점 같은 별이 깜빡이는 겁니다.",
+      "목성이나 금성 같은 행성은 거의 반짝이지 않습니다. 가까이 있어서 작은 원반으로 보이고, 원반 곳곳 여러 지점에서 오는 깜빡임이 서로 섞여 고르게 평균이 되기 때문입니다.",
+      "별빛이 지평선에서 올 때는 바로 머리 위에서 올 때보다 약 38배 많은 공기를 지나옵니다. 그래서 낮게 뜬 별이 가장 심하게 반짝이고, 행성도 깜빡일 수 있으며, 밝은 시리우스는 여러 색으로 번쩍입니다.",
+      "대형 천문대들은 반격에 나섭니다. 칠레의 초거대 망원경 VLT는 레이저 4개를 쏘아 올려 90킬로미터 상공에 인공 별을 만들고, 이 별을 길잡이 삼아 1초에 1,000번 모양을 바꾸는 거울로 상을 또렷하게 만듭니다.",
+      "반짝임은 우리 쪽에서 생기는 거지, 별 때문이 아닙니다."
+    ],
+    "ja": [
+      "星は実はまたたいていません。揺れているのは、頭上の空気のほうです。",
+      "天文学者はこれをシンチレーションと呼びます。暖かい空気と冷たい空気の塊が渦を巻いて動くレンズのように働き、星の光を1秒間に何度も左右に曲げるため、点のような星がちらつくのです。",
+      "木星や金星のような惑星がほとんどまたたかないのは、近いため小さな円盤に見えるからです。円盤上の多くの点から届くちらつきが平均され、目立たなくなるのです。",
+      "地平線から届く星の光は、真上から届く光に比べて約38倍の空気を通り抜けてきます。だから低い星ほど激しくまたたき、惑星でさえちらつくことがあり、明るいシリウスはさまざまな色にきらめきます。",
+      "大きな天文台は反撃に出ます。チリの超大型望遠鏡VLTは4本のレーザーを放って高度90キロに人工の星をつくり、それを目印に毎秒1000回形を変える鏡を動かして、像をくっきりさせます。",
+      "またたきは星のものではなく、私たちのもの。"
+    ],
+    "es": [
+      "Las estrellas en realidad no titilan; lo que tiembla es el aire que tienes encima.",
+      "Los astrónomos lo llaman centelleo: remolinos de aire cálido y frío actúan como lentes en movimiento, desviando la luz de la estrella de un lado a otro muchas veces por segundo, y por eso ese punto de luz parpadea.",
+      "Planetas como Júpiter y Venus apenas titilan porque están lo bastante cerca para verse como pequeños discos, y los parpadeos de muchos puntos de cada disco se compensan entre sí.",
+      "En el horizonte, la luz de una estrella atraviesa unas 38 veces más aire que la que nos llega desde justo encima, así que las estrellas bajas son las que más titilan, hasta los planetas pueden parpadear y Sirio, muy brillante, destella en muchos colores.",
+      "Los grandes observatorios contraatacan: el Very Large Telescope, en Chile, dispara cuatro láseres para crear estrellas artificiales a 90 kilómetros de altura, y con ellas guía un espejo que cambia de forma 1000 veces por segundo para afinar la imagen.",
+      "El titileo es nuestro, no de la estrella."
+    ],
+    "pt": [
+      "As estrelas não piscam de verdade; o que treme é o ar acima de você.",
+      "Os astrônomos chamam isso de cintilação: bolsões de ar quente e frio rodopiam e agem como lentes em movimento, desviando a luz da estrela de um lado para o outro muitas vezes por segundo, e por isso o ponto de luz pisca.",
+      "Planetas como Júpiter e Vênus quase não piscam porque estão perto o bastante para aparecer como pequenos discos, e as oscilações vindas de muitos pontos de cada disco se compensam entre si.",
+      "No horizonte, a luz das estrelas atravessa cerca de 38 vezes mais ar do que a que vem bem de cima, então as estrelas baixas são as que mais piscam, até planetas podem tremeluzir, e Sírius, muito brilhante, pisca em várias cores.",
+      "Os grandes observatórios contra-atacam: o Very Large Telescope, no Chile, dispara quatro lasers para criar estrelas artificiais a 90 quilômetros de altura, e elas guiam um espelho que muda de forma 1.000 vezes por segundo para deixar a imagem nítida.",
+      "A cintilação é nossa, não da estrela."
+    ],
+    "de": [
+      "Sterne funkeln eigentlich gar nicht; es ist die Luft über dir, die zittert.",
+      "Astronomen nennen das Szintillation: Wirbelnde warme und kühle Luftpakete wirken wie bewegte Linsen, die das Licht eines Sterns viele Male pro Sekunde hin und her lenken, sodass der Lichtpunkt flackert.",
+      "Planeten wie Jupiter und Venus funkeln kaum, weil sie nah genug sind, um als winzige Scheiben zu erscheinen, und das Flackern vieler Punkte auf jeder Scheibe gleicht sich gegenseitig aus.",
+      "Am Horizont durchquert Sternenlicht rund 38-mal so viel Luft wie bei einem Stern direkt über uns, deshalb funkeln tief stehende Sterne am stärksten, selbst Planeten können flackern, und der helle Sirius blitzt in vielen Farben.",
+      "Große Sternwarten schlagen zurück: Das Very Large Telescope in Chile feuert vier Laser ab und erzeugt so künstliche Sterne in 90 Kilometern Höhe, die einen Spiegel steuern, der sich 1000-mal pro Sekunde verformt, um das Bild zu schärfen.",
+      "Das Funkeln gehört uns, nicht dem Stern."
+    ],
+    "fr": [
+      "Les étoiles ne scintillent pas vraiment ; c'est l'air au-dessus de vous qui tremble.",
+      "Les astronomes appellent cela la scintillation : des poches d'air chaud et frais tourbillonnent et agissent comme des lentilles mobiles, déviant la lumière de l'étoile d'un côté à l'autre de nombreuses fois par seconde, si bien que ce point de lumière vacille.",
+      "Les planètes comme Jupiter et Vénus scintillent à peine, car elles sont assez proches pour apparaître comme de minuscules disques, et les vacillements venus des nombreux points de chaque disque se compensent.",
+      "À l'horizon, la lumière d'une étoile traverse environ 38 fois plus d'air que lorsqu'elle arrive tout droit d'en haut, donc les étoiles basses scintillent le plus, même les planètes peuvent vaciller, et la brillante étoile Sirius lance des éclats de multiples couleurs.",
+      "Les grands observatoires ripostent : le Very Large Telescope, au Chili, tire quatre lasers pour créer des étoiles artificielles à 90 kilomètres d'altitude, qui guident un miroir changeant de forme 1000 fois par seconde pour rendre l'image nette.",
+      "Le scintillement est à nous, pas à l'étoile."
+    ],
+    "hi": [
+      "तारे असल में टिमटिमाते नहीं हैं, कांपती तो आपके ऊपर की हवा है।",
+      "खगोलविद इसे सिंटिलेशन कहते हैं: गर्म और ठंडी हवा के घूमते भंवर चलते-फिरते लेंसों की तरह काम करते हैं, जो तारे की रोशनी को एक सेकंड में कई बार इधर-उधर मोड़ते हैं, इसलिए रोशनी का वह बिंदु झिलमिलाता है।",
+      "बृहस्पति और शुक्र जैसे ग्रह बहुत कम टिमटिमाते हैं, क्योंकि वे इतने करीब हैं कि छोटी डिस्क जैसे दिखते हैं, और हर डिस्क के कई बिंदुओं से आती झिलमिलाहट आपस में मिलकर औसत हो जाती है।",
+      "क्षितिज पर तारों की रोशनी ठीक सिर के ऊपर की तुलना में करीब 38 गुना ज्यादा हवा पार करती है, इसलिए नीचे दिखने वाले तारे सबसे ज्यादा टिमटिमाते हैं, ग्रह भी झिलमिला सकते हैं, और चमकीला सिरियस कई रंगों में चमकता है।",
+      "बड़ी वेधशालाएं इसका मुकाबला करती हैं: चिली का वेरी लार्ज टेलीस्कोप चार लेजर किरणें छोड़कर 90 किलोमीटर ऊपर कृत्रिम तारे बनाता है, जो एक ऐसे दर्पण को दिशा देते हैं जो एक सेकंड में 1,000 बार आकार बदलकर तस्वीर साफ कर देता है।",
+      "टिमटिमाहट हमारी है, तारे की नहीं।"
+    ]
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "north_star",
+  "display": "The North Star",
+  "single": "North Star",
+  "category": "star",
+  "angle": "myth_busting",
+  "format": "myth_vs_fact",
+  "hook_line": "The North Star is not the brightest star, and it is not even one star.",
+  "hook": "NOT THE BRIGHTEST STAR",
+  "intro": "The North Star is not the brightest star, and it is not even one star.",
+  "facts": [
+    "Its proper name is Polaris, a supergiant, yet it is only about the 47th brightest star in the sky, far behind Sirius, because it sits over 400 light-years away.",
+    "It matters because it sits within one degree of the spot straight above Earth's North Pole, so its height above the horizon roughly equals your latitude, a trick sailors used for centuries.",
+    "That one point of light is really three stars: the supergiant, a partner that a small telescope can split, and a much closer one first seen by Hubble in 2005.",
+    "It will not stay the North Star either, because Earth's axis wobbles like a spinning top over about 26,000 years, so stars take turns, and Vega's turn comes in about 12,000 years."
+  ],
+  "outro": "Not the brightest, just in the right place.",
+  "title_en": "The North Star Isn't the Brightest Star, and It Isn't Even One Star",
+  "title_ko": "북극성은 가장 밝은 별이 아니다, 별 세 개가 하나로 보일 뿐",
+  "description_en": "The North Star, Polaris, is only about the 47th brightest star in the sky, yet sailors relied on it because its height above the horizon roughly equals their latitude. It is also three stars in one, and in about 12,000 years Vega will be the North Star. #northstar #polaris #stars #space #astronomy",
+  "description_ko": "북극성 폴라리스는 밤하늘에서 47번째쯤 밝은 별이지만, 지평선 위 높이가 그 자리의 위도와 거의 같아 오랫동안 뱃사람의 길잡이가 됐습니다. 실은 별 세 개가 모인 삼중성이고, 약 1만 2천 년 뒤에는 직녀성이 북극성이 됩니다. #북극성 #별 #우주 #천문학",
+  "comment": "Did you think the North Star was the brightest star in the sky?",
+  "tags": [
+    "shorts",
+    "space",
+    "north star",
+    "polaris",
+    "stars",
+    "astronomy",
+    "night sky",
+    "celestial navigation",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "North Star star trails",
+    "North Star night sky",
+    "North Star night sky time lapse",
+    "North Star star trails time lapse",
+    "North Star starry sky",
+    "North Star star trails over trees",
+    "North Star circling stars night",
+    "North Star northern night sky",
+    "North Star stars over mountains",
+    "North Star astrophotography"
+  ],
+  "fact_keywords": [
+    "North Star milky way stars",
+    "North Star star trails over sea",
+    "North Star telescope night sky",
+    "North Star spinning top dark"
+  ],
+  "clips": [
+    [
+      32349013,
+      16998437
+    ],
+    [
+      29644226,
+      32097578
+    ],
+    [
+      9127884,
+      37723948
+    ],
+    [
+      5213591,
+      28265425
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "북극성은 가장 밝은 별이 아니다, 별 세 개가 하나로 보일 뿐",
+      "description": "북극성 폴라리스는 밤하늘에서 47번째쯤 밝은 별이지만, 지평선 위 높이가 그 자리의 위도와 거의 같아 오랫동안 뱃사람의 길잡이가 됐습니다. 실은 별 세 개가 모인 삼중성이고, 약 1만 2천 년 뒤에는 직녀성이 북극성이 됩니다. #북극성 #별 #우주 #천문학"
+    },
+    "ja": {
+      "title": "北極星は一番明るい星じゃない。実は3つの星が1つに見えているだけ",
+      "description": "北極星ポラリスは夜空で47番目ほどの明るさしかありませんが、地平線からの高さがその場所の緯度とほぼ同じなので、長いあいだ船乗りの道しるべになってきました。実は3つの星からなる三重星で、約1万2000年後にはベガが北極星になります。#北極星 #ポラリス #星空 #宇宙 #天文学"
+    },
+    "es": {
+      "title": "La Estrella Polar no es la más brillante, y ni siquiera es una sola estrella",
+      "description": "La Estrella Polar, Polaris, solo ocupa más o menos el puesto 47 entre las estrellas más brillantes del cielo, pero los marineros se guiaban por ella porque su altura sobre el horizonte equivale más o menos a la latitud en la que están. Además, son tres estrellas en una, y dentro de unos 12 mil años Vega será la estrella polar. #estrellapolar #polaris #estrellas #espacio #astronomia"
+    },
+    "pt": {
+      "title": "A Estrela Polar não é a mais brilhante, e nem sequer é uma estrela só",
+      "description": "A Estrela Polar, Polaris, é só mais ou menos a 47ª estrela mais brilhante do céu, mas os marinheiros se guiavam por ela porque a altura dela acima do horizonte é quase igual à latitude de quem observa. Na verdade, são três estrelas em uma, e daqui a uns 12 mil anos Vega será a estrela polar. #estrelapolar #polaris #estrelas #espaco #astronomia"
+    },
+    "de": {
+      "title": "Der Polarstern ist nicht der hellste Stern und nicht einmal ein einzelner Stern",
+      "description": "Der Polarstern, Polaris, liegt bei der Helligkeit nur etwa auf Platz 47 am Nachthimmel, doch Seeleute verließen sich auf ihn, weil seine Höhe über dem Horizont ungefähr ihrem Breitengrad entspricht. Außerdem besteht er aus drei Sternen, und in etwa 12.000 Jahren wird Wega der Polarstern sein. #polarstern #polaris #sterne #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "L'étoile Polaire n'est pas la plus brillante, et ce n'est même pas une seule étoile",
+      "description": "L'étoile Polaire, Polaris, n'est qu'environ la 47e étoile la plus brillante du ciel, pourtant les marins s'y fiaient, car sa hauteur au-dessus de l'horizon correspond à peu près à leur latitude. En réalité, ce sont trois étoiles en une, et dans environ 12 000 ans, Véga deviendra l'étoile polaire. #etoilepolaire #polaris #etoiles #espace #astronomie"
+    },
+    "hi": {
+      "title": "ध्रुव तारा सबसे चमकीला तारा नहीं है, और यह एक अकेला तारा भी नहीं है",
+      "description": "ध्रुव तारा यानी पोलारिस आसमान का सिर्फ लगभग 47वां सबसे चमकीला तारा है, फिर भी नाविक इसी के सहारे रास्ता ढूंढते थे, क्योंकि क्षितिज से इसकी ऊंचाई लगभग उनके अक्षांश के बराबर होती है। असल में यह तीन तारों का समूह है, और करीब 12,000 साल बाद वेगा ध्रुव तारा बनेगा। #ध्रुवतारा #polaris #northstar #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "북극성은 가장 밝은 별도 아니고, 심지어 별 한 개도 아닙니다.",
+      "정식 이름은 폴라리스, 초거성인데도 밤하늘 밝기로는 고작 47번째쯤이라 시리우스에 한참 못 미칩니다. 400광년 넘게 떨어져 있기 때문입니다.",
+      "이 별이 중요한 건 지구 북극 바로 위 하늘의 한 점에서 1도도 안 떨어져 있어서입니다. 그래서 지평선 위 높이가 지금 있는 곳의 위도와 거의 같고, 뱃사람들은 수백 년 동안 이 요령을 써 왔습니다.",
+      "그 빛 한 점은 사실 별 세 개입니다. 초거성, 작은 망원경으로도 따로 보이는 동반성, 그리고 2005년 허블이 처음 포착한, 훨씬 바짝 붙은 별입니다.",
+      "게다가 북극성 자리를 계속 지키지도 못합니다. 지구 자전축이 약 2만 6천 년 주기로 팽이처럼 흔들려서, 별들이 돌아가며 북극성이 되는데, 직녀성 차례는 약 1만 2천 년 뒤에 옵니다.",
+      "가장 밝은 게 아니라, 그저 자리를 잘 잡았을 뿐입니다."
+    ],
+    "ja": [
+      "北極星は一番明るい星ではなく、そもそも1つの星ですらありません。",
+      "正式名はポラリス。超巨星なのに、夜空での明るさは47番目ほどで、シリウスには遠く及びません。400光年以上も離れているからです。",
+      "この星が重要なのは、地球の北極の真上にあたる点から1度以内にあるからで、地平線からの高さがその場所の緯度とほぼ同じになります。船乗りが何世紀も使ってきた技です。",
+      "その1つの光は、実は3つの星です。超巨星と、小さな望遠鏡でも見分けられる伴星、そして2005年にハッブルが初めてとらえた、ずっと近くに寄り添う星です。",
+      "しかも、ずっと北極星でいるわけでもありません。地球の自転軸はコマのように約2万6000年かけて首を振るので、星が交代で北極星になり、ベガの番は約1万2000年後に来ます。",
+      "一番明るいわけじゃない、ちょうどいい場所にいるだけ。"
+    ],
+    "es": [
+      "La Estrella Polar no es la estrella más brillante, y ni siquiera es una sola estrella.",
+      "Su nombre oficial es Polaris, una supergigante, pero solo ocupa más o menos el puesto 47 entre las estrellas más brillantes del cielo, muy por detrás de Sirio, porque está a más de 400 años luz.",
+      "Es importante porque está a menos de un grado del punto justo encima del Polo Norte de la Tierra, así que su altura sobre el horizonte es más o menos tu latitud, un truco que los marineros usaron durante siglos.",
+      "Ese punto de luz esconde en realidad tres estrellas: la supergigante, una compañera que un telescopio pequeño puede separar y otra mucho más pegada a ella, que el Hubble vio por primera vez en 2005.",
+      "Y tampoco será siempre la estrella polar, porque el eje de la Tierra se bambolea como un trompo en un ciclo de unos 26 mil años, así que las estrellas se turnan, y a Vega le toca dentro de unos 12 mil años.",
+      "No es la más brillante, solo está en el lugar justo."
+    ],
+    "pt": [
+      "A Estrela Polar não é a estrela mais brilhante, e nem sequer é uma estrela só.",
+      "O nome oficial dela é Polaris, uma supergigante, mas ela é só mais ou menos a 47ª estrela mais brilhante do céu, bem atrás de Sírius, porque fica a mais de 400 anos-luz.",
+      "Ela é importante porque fica a menos de um grau do ponto bem acima do Polo Norte da Terra, então a altura dela acima do horizonte é quase igual à sua latitude, um truque que os marinheiros usaram por séculos.",
+      "Esse ponto de luz esconde, na verdade, três estrelas: a supergigante, uma companheira que um telescópio pequeno consegue separar e outra bem mais colada nela, vista pela primeira vez pelo Hubble em 2005.",
+      "E ela também não será a estrela polar para sempre, porque o eixo da Terra oscila como um pião num ciclo de uns 26 mil anos, então as estrelas se revezam, e a vez de Vega chega daqui a uns 12 mil anos.",
+      "Não é a mais brilhante, só está no lugar certo."
+    ],
+    "de": [
+      "Der Polarstern ist nicht der hellste Stern, und er ist nicht einmal ein einzelner Stern.",
+      "Sein offizieller Name ist Polaris, ein Überriese, und doch steht er nur etwa auf Platz 47 der hellsten Sterne am Himmel, weit hinter Sirius, denn er ist über 400 Lichtjahre entfernt.",
+      "Wichtig ist er, weil er keinen Grad vom Punkt direkt über dem Nordpol der Erde entfernt steht, deshalb entspricht seine Höhe über dem Horizont etwa deinem Breitengrad, ein Trick, den Seeleute jahrhundertelang nutzten.",
+      "Hinter diesem einen Lichtpunkt stecken in Wahrheit drei Sterne: der Überriese, ein Begleiter, den schon ein kleines Teleskop trennt, und ein viel engerer Begleiter, den Hubble 2005 zum ersten Mal sah.",
+      "Polarstern bleibt er auch nicht, denn die Erdachse taumelt wie ein Kreisel, einmal in etwa 26.000 Jahren, also wechseln sich die Sterne ab, und Wega ist in etwa 12.000 Jahren an der Reihe.",
+      "Nicht der hellste, nur am richtigen Platz."
+    ],
+    "fr": [
+      "L'étoile Polaire n'est pas l'étoile la plus brillante, et ce n'est même pas une seule étoile.",
+      "Son nom officiel est Polaris, une supergéante, et pourtant elle n'est qu'environ la 47e étoile la plus brillante du ciel, loin derrière Sirius, car elle se trouve à plus de 400 années-lumière.",
+      "Si elle compte, c'est qu'elle est à moins d'un degré du point situé juste au-dessus du pôle Nord terrestre, si bien que sa hauteur sur l'horizon donne à peu près votre latitude, une astuce utilisée par les marins pendant des siècles.",
+      "Ce point lumineux cache en réalité trois étoiles : la supergéante, une compagne qu'un petit télescope peut séparer, et une troisième bien plus proche d'elle, vue pour la première fois par Hubble en 2005.",
+      "Et elle ne restera pas non plus l'étoile polaire, car l'axe de la Terre oscille comme une toupie sur un cycle d'environ 26 000 ans, si bien que les étoiles se relaient, et le tour de Véga viendra dans environ 12 000 ans.",
+      "Pas la plus brillante, juste au bon endroit."
+    ],
+    "hi": [
+      "ध्रुव तारा सबसे चमकीला तारा नहीं है, और यह एक अकेला तारा भी नहीं है।",
+      "इसका आधिकारिक नाम पोलारिस है और यह एक महादानव तारा है, फिर भी यह आसमान का सिर्फ लगभग 47वां सबसे चमकीला तारा है, सीरियस से बहुत पीछे, क्योंकि यह 400 से ज्यादा प्रकाश वर्ष दूर है।",
+      "यह अहम इसलिए है क्योंकि यह धरती के उत्तरी ध्रुव के ठीक ऊपर वाले बिंदु से एक डिग्री के भीतर रहता है, तो क्षितिज से इसकी ऊंचाई लगभग आपके अक्षांश के बराबर होती है, और सदियों तक नाविकों ने यही तरकीब अपनाई।",
+      "रोशनी का वह एक बिंदु असल में तीन तारे हैं: महादानव तारा, एक साथी तारा जिसे छोटी दूरबीन से भी अलग देखा जा सकता है, और महादानव से कहीं ज्यादा सटा एक तीसरा तारा, जिसे हबल ने 2005 में पहली बार देखा।",
+      "और यह हमेशा ध्रुव तारा भी नहीं रहेगा, क्योंकि धरती की धुरी लट्टू की तरह करीब 26,000 साल के चक्र में डोलती है, इसलिए तारे बारी-बारी से ध्रुव तारा बनते हैं, और वेगा की बारी करीब 12,000 साल बाद आएगी।",
+      "सबसे चमकीला नहीं, बस सही जगह पर।"
+    ]
+  }
+}

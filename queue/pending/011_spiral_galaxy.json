@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "spiral_galaxy",
+  "display": "Spiral Galaxies",
+  "single": "Spiral Galaxy",
+  "category": "galaxy",
+  "angle": "discovery_story",
+  "format": "how_it_works",
+  "hook_line": "The first galaxy ever seen as a spiral hid its arms for over 70 years.",
+  "hook": "HIDDEN FOR OVER 70 YEARS",
+  "intro": "The first galaxy ever seen as a spiral hid its arms for over 70 years.",
+  "facts": [
+    "On October 13, 1773, comet hunter Charles Messier spotted a faint, fuzzy patch near the Big Dipper's handle and later listed it as M51, now called the Whirlpool Galaxy.",
+    "In 1845, Lord Rosse aimed his new 72-inch telescope in Ireland, then the world's largest, at that patch and finally saw its curving arms, which he sketched by hand.",
+    "Those arms are not fixed rows of stars but density waves, zones where stars and gas crowd together and then move on, like cars passing through a traffic jam.",
+    "Gas squeezed in those zones forms hot young stars that shine blue, and the biggest burn out within a few million years, before they can leave, so the blue stays in the arms."
+  ],
+  "outro": "The spiral stays, but the stars keep moving.",
+  "title_en": "The Galaxy That Hid Its Spiral for Over 70 Years, and Why Its Arms Act Like Traffic Jams",
+  "title_ko": "70년 넘게 숨어 있던 은하의 나선팔, 알고 보면 별들의 교통체증",
+  "description_en": "On October 13, 1773, Charles Messier found the Whirlpool Galaxy, but its spiral arms stayed hidden until Lord Rosse's giant telescope revealed them in 1845. Here is how those arms work and why they glow blue. #spiralgalaxy #whirlpoolgalaxy #galaxy #space #astronomy",
+  "description_ko": "1773년 10월 13일 샤를 메시에가 찾은 소용돌이은하는 1845년에야 로스 경의 대형 망원경으로 나선팔이 확인됐습니다. 나선팔이 늘 같은 별들로 이뤄진 구조가 아니라 별과 가스가 지나가는 밀도파라는 점과, 팔이 파랗게 빛나는 이유를 정리했습니다. #나선은하 #소용돌이은하 #우주 #천문학",
+  "comment": "Did you think a spiral galaxy's arms were made of the same stars?",
+  "tags": [
+    "shorts",
+    "space",
+    "spiral galaxy",
+    "whirlpool galaxy",
+    "m51",
+    "galaxies",
+    "density wave",
+    "astronomy",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "Spiral galaxy space",
+    "Spiral galaxy animation",
+    "Spiral galaxy rotating",
+    "Spiral galaxy stars",
+    "Spiral galaxy deep space",
+    "Spiral galaxy cosmos",
+    "Spiral galaxy universe",
+    "Spiral galaxy nebula",
+    "Spiral galaxy telescope",
+    "Spiral galaxy night sky"
+  ],
+  "fact_keywords": [
+    "Spiral galaxy stargazers night sky",
+    "Spiral galaxy telescope man",
+    "Spiral galaxy traffic jam",
+    "Spiral galaxy blue stars"
+  ],
+  "clips": [
+    [
+      39576850,
+      3779849
+    ],
+    [
+      9127875,
+      39576931
+    ],
+    [
+      39576806,
+      35114237
+    ],
+    [
+      35288809,
+      39576734
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "70년 넘게 숨어 있던 은하의 나선팔, 알고 보면 별들의 교통체증",
+      "description": "1773년 10월 13일 샤를 메시에가 찾은 소용돌이은하는 1845년에야 로스 경의 대형 망원경으로 나선팔이 확인됐습니다. 나선팔이 늘 같은 별들로 이뤄진 구조가 아니라 별과 가스가 지나가는 밀도파라는 점과, 팔이 파랗게 빛나는 이유를 정리했습니다. #나선은하 #소용돌이은하 #우주 #천문학"
+    },
+    "ja": {
+      "title": "70年以上も渦巻きを隠していた銀河、その腕の正体は星の渋滞",
+      "description": "1773年10月13日にシャルル・メシエが見つけた子持ち銀河（M51）は、1845年になってようやくロス卿の巨大望遠鏡で渦巻きの腕が確認されました。腕はいつも同じ星でできた構造ではなく、星やガスが通り過ぎていく密度波だということと、腕が青く光る理由をまとめました。#渦巻銀河 #子持ち銀河 #宇宙 #天文学"
+    },
+    "es": {
+      "title": "La galaxia que escondió su espiral más de 70 años y por qué sus brazos son como un atasco",
+      "description": "El 13 de octubre de 1773, Charles Messier encontró la galaxia del Remolino, pero sus brazos espirales no se vieron hasta 1845, con el enorme telescopio de Lord Rosse. Te contamos por qué esos brazos no están hechos siempre de las mismas estrellas, sino que son ondas de densidad por las que pasan estrellas y gas, y por qué brillan en azul. #galaxiaespiral #galaxiadelremolino #espacio #astronomia"
+    },
+    "pt": {
+      "title": "A galáxia que escondeu a espiral mais de 70 anos e por que seus braços são um engarrafamento",
+      "description": "Em 13 de outubro de 1773, Charles Messier encontrou a Galáxia do Redemoinho, mas os braços espirais dela só foram vistos em 1845, com o enorme telescópio de Lorde Rosse. Veja por que esses braços não são feitos sempre das mesmas estrelas, e sim ondas de densidade por onde passam estrelas e gás, e por que eles brilham em azul. #galaxiaespiral #galaxiadoredemoinho #espaco #astronomia"
+    },
+    "de": {
+      "title": "Die Galaxie, die ihre Spirale über 70 Jahre versteckte, und warum ihre Arme wie ein Stau sind",
+      "description": "Am 13. Oktober 1773 fand Charles Messier die Whirlpool-Galaxie, doch ihre Spiralarme wurden erst 1845 mit dem riesigen Teleskop von Lord Rosse sichtbar. Hier erfährst du, warum diese Arme nicht immer aus denselben Sternen bestehen, sondern Dichtewellen sind, durch die Sterne und Gas hindurchziehen, und warum sie blau leuchten. #spiralgalaxie #whirlpoolgalaxie #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "La galaxie qui a caché sa spirale plus de 70 ans, et pourquoi ses bras sont des embouteillages",
+      "description": "Le 13 octobre 1773, Charles Messier découvre la galaxie du Tourbillon, mais ses bras spiraux ne sont révélés qu'en 1845 par le télescope géant de Lord Rosse. On vous explique pourquoi ces bras ne sont pas toujours faits des mêmes étoiles, mais sont des ondes de densité que traversent étoiles et gaz, et pourquoi ils brillent en bleu. #galaxiespirale #galaxiedutourbillon #espace #astronomie"
+    },
+    "hi": {
+      "title": "70 साल से ज्यादा सर्पिल आकार छिपाने वाली गैलेक्सी, और क्यों उसकी भुजाएं ट्रैफिक जाम जैसी हैं",
+      "description": "13 अक्टूबर 1773 को चार्ल्स मेसियर ने भंवर गैलेक्सी खोजी, लेकिन इसकी सर्पिल भुजाएं 1845 में जाकर लॉर्ड रॉस की विशाल दूरबीन से दिखीं। जानिए कि ये भुजाएं हमेशा उन्हीं तारों से नहीं बनतीं, बल्कि घनत्व तरंगें हैं जिनसे होकर तारे और गैस गुजरते हैं, और ये नीली क्यों चमकती हैं। #सर्पिलगैलेक्सी #गैलेक्सी #अंतरिक्ष #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "처음으로 나선 모양이 관측된 은하는, 70년 넘게 나선팔을 숨기고 있었습니다.",
+      "1773년 10월 13일, 혜성 사냥꾼 샤를 메시에가 북두칠성 손잡이 근처에서 희미하고 뿌연 얼룩을 발견했고, 나중에 M51로 목록에 올렸는데, 지금은 소용돌이은하라고 부릅니다.",
+      "1845년, 로스 경은 아일랜드에 새로 만든, 당시 세계 최대의 72인치 망원경을 그 얼룩에 겨눴고, 마침내 휘어진 팔을 보고 손으로 직접 스케치했습니다.",
+      "이 팔은 늘 같은 별들이 줄지어 선 게 아니라 밀도파입니다. 별과 가스가 몰려들었다가 다시 빠져나가는 구역인데, 차들이 교통체증 구간을 지나가는 것과 같습니다.",
+      "그 구역에서 압축된 가스는 파랗게 빛나는 뜨겁고 젊은 별을 만드는데, 가장 큰 별들은 그곳을 벗어나기도 전에 수백만 년 안에 다 타 버려서, 파란빛이 팔에 남는 겁니다.",
+      "나선은 그대로 남지만, 별들은 계속 움직입니다."
+    ],
+    "ja": [
+      "史上初めて渦巻きの姿が見えた銀河は、70年以上もその腕を隠していました。",
+      "1773年10月13日、彗星ハンターのシャルル・メシエが北斗七星の柄の近くで、かすかにぼやけた光のしみを見つけ、のちにM51として目録に載せました。今でいう子持ち銀河です。",
+      "1845年、ロス卿はアイルランドで完成したばかりの、当時世界最大の72インチ望遠鏡をその光のしみに向け、ついに渦を巻く腕をとらえて、手描きでスケッチしました。",
+      "この腕は、同じ星がずっと並んでいる列ではなく密度波です。星やガスが混み合っては先へ進んでいく領域で、渋滞を通り抜けていく車のようなものです。",
+      "そこで圧縮されたガスからは青く輝く高温の若い星が生まれますが、最も大きな星は抜け出す前に数百万年で燃え尽きるので、青い光は腕に残ります。",
+      "渦巻きは残り、星は動き続ける。"
+    ],
+    "es": [
+      "La primera galaxia que se vio en forma de espiral escondió sus brazos durante más de 70 años.",
+      "El 13 de octubre de 1773, el cazador de cometas Charles Messier vio una mancha tenue y borrosa cerca de la cola de la Osa Mayor y más tarde la catalogó como M51, hoy llamada galaxia del Remolino.",
+      "En 1845, Lord Rosse apuntó hacia esa mancha su nuevo telescopio de 72 pulgadas en Irlanda, entonces el más grande del mundo, y por fin vio sus brazos curvos, que dibujó a mano.",
+      "Esos brazos no son filas fijas de estrellas, sino ondas de densidad, zonas donde las estrellas y el gas se amontonan y luego siguen su camino, como coches que atraviesan un atasco.",
+      "El gas comprimido en esas zonas forma estrellas jóvenes y calientes que brillan en azul, y las más grandes se consumen en unos pocos millones de años, antes de poder salir, así que el azul se queda en los brazos.",
+      "La espiral permanece, pero las estrellas no dejan de moverse."
+    ],
+    "pt": [
+      "A primeira galáxia vista em forma de espiral escondeu seus braços por mais de 70 anos.",
+      "Em 13 de outubro de 1773, o caçador de cometas Charles Messier viu uma mancha fraca e difusa perto da cauda da Ursa Maior e depois a catalogou como M51, hoje chamada de Galáxia do Redemoinho.",
+      "Em 1845, Lorde Rosse apontou para essa mancha seu novo telescópio de 72 polegadas na Irlanda, o maior do mundo na época, e finalmente viu seus braços curvos, que desenhou à mão.",
+      "Esses braços não são fileiras fixas de estrelas, mas ondas de densidade, zonas onde estrelas e gás se amontoam e depois seguem em frente, como carros passando por um engarrafamento.",
+      "O gás comprimido nessas zonas forma estrelas jovens e quentes que brilham em azul, e as maiores se apagam em poucos milhões de anos, antes de conseguirem sair, então o azul fica nos braços.",
+      "A espiral fica, mas as estrelas continuam se movendo."
+    ],
+    "de": [
+      "Die erste Galaxie, die je als Spirale gesehen wurde, versteckte ihre Arme über 70 Jahre lang.",
+      "Am 13. Oktober 1773 entdeckte der Kometenjäger Charles Messier nahe der Deichsel des Großen Wagens einen lichtschwachen Nebelfleck, den er später als M51 katalogisierte und der heute Whirlpool-Galaxie heißt.",
+      "1845 richtete Lord Rosse sein neues 72-Zoll-Teleskop in Irland, damals das größte der Welt, auf diesen Nebelfleck und sah endlich die geschwungenen Arme, die er von Hand zeichnete.",
+      "Diese Arme sind keine festen Sternreihen, sondern Dichtewellen, in denen sich Sterne und Gas drängen und dann weiterziehen, wie Autos, die durch einen Stau fahren.",
+      "Das dort verdichtete Gas bildet heiße junge Sterne, die blau leuchten, und die größten brennen in wenigen Millionen Jahren aus, bevor sie die Welle verlassen können, deshalb bleibt das Blau in den Armen.",
+      "Die Spirale bleibt, aber die Sterne ziehen weiter."
+    ],
+    "fr": [
+      "La première galaxie jamais vue en spirale a caché ses bras pendant plus de 70 ans.",
+      "Le 13 octobre 1773, le chasseur de comètes Charles Messier a repéré une tache faible et floue près du manche de la Grande Casserole, qu'il a ensuite cataloguée sous le nom de M51, l'actuelle galaxie du Tourbillon.",
+      "En 1845, en Irlande, Lord Rosse a pointé sur cette tache son nouveau télescope de 72 pouces, alors le plus grand du monde, et a enfin vu ses bras courbes, qu'il a dessinés à la main.",
+      "Ces bras ne sont pas des rangées fixes d'étoiles mais des ondes de densité, des zones où étoiles et gaz s'entassent puis repartent, comme des voitures qui traversent un embouteillage.",
+      "Le gaz comprimé dans ces zones forme des étoiles jeunes et chaudes qui brillent en bleu, et les plus grosses s'éteignent en quelques millions d'années, avant de pouvoir en sortir, si bien que le bleu reste dans les bras.",
+      "La spirale reste, mais les étoiles continuent d'avancer."
+    ],
+    "hi": [
+      "जिस गैलेक्सी का सर्पिल रूप सबसे पहले देखा गया, उसने 70 साल से ज्यादा समय तक अपनी भुजाएं छिपाए रखीं।",
+      "13 अक्टूबर 1773 को धूमकेतु खोजी चार्ल्स मेसियर ने सप्तर्षि मंडल की पूंछ के पास एक हल्का धुंधला-सा धब्बा देखा, और बाद में उसे M51 नाम से अपनी सूची में दर्ज किया, जिसे आज भंवर गैलेक्सी कहा जाता है।",
+      "1845 में लॉर्ड रॉस ने आयरलैंड में बनी अपनी नई 72 इंच की दूरबीन, जो उस समय दुनिया की सबसे बड़ी थी, उस धब्बे की ओर घुमाई और आखिरकार उसकी घुमावदार भुजाएं देखीं, जिनका उन्होंने हाथ से चित्र बनाया।",
+      "ये भुजाएं तारों की स्थिर कतारें नहीं, बल्कि घनत्व तरंगें हैं, यानी ऐसे इलाके जहां तारे और गैस जमा होते हैं और फिर आगे बढ़ जाते हैं, जैसे ट्रैफिक जाम से गुजरती गाड़ियां।",
+      "उन इलाकों में दबकर घनी हुई गैस से गर्म और युवा तारे बनते हैं, जो नीले रंग में चमकते हैं, और सबसे बड़े तारे वहां से निकलने से पहले ही कुछ मिलियन साल में जलकर खत्म हो जाते हैं, इसलिए नीला रंग भुजाओं में ही रहता है।",
+      "सर्पिल आकार बना रहता है, पर तारे चलते रहते हैं।"
+    ]
+  }
+}
