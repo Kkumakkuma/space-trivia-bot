@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "earth_atmosphere",
+  "display": "Earth's Atmosphere",
+  "single": "atmosphere",
+  "category": "planet",
+  "angle": "scale_comparison",
+  "format": "how_it_works",
+  "hook_line": "Earth's atmosphere doesn't stop where space begins; it reaches past the Moon.",
+  "hook": "ATMOSPHERE PAST THE MOON",
+  "intro": "Earth's atmosphere doesn't stop where space begins; it reaches past the Moon.",
+  "facts": [
+    "Most scientists put the edge of space at the Karman line, 100 kilometers up, so a car driving straight up at 100 kilometers an hour would get there in one hour.",
+    "Yet the air is packed low, with about three quarters of its mass squeezed into the troposphere, roughly the lowest 11 kilometers, where almost all of our weather happens.",
+    "Even the space station, about 415 kilometers up, still flies through thin air, and NASA says that without regular engine boosts, drag would bring it down in roughly one to two years.",
+    "In 2019, scientists re-examining 1990s data from the SOHO spacecraft showed that the geocorona, a faint hydrogen cloud, reaches 630,000 kilometers out, far beyond the Moon's orbit at about 384,000 kilometers."
+  ],
+  "outro": "The Moon has been flying through our atmosphere all along.",
+  "title_en": "Earth's Atmosphere Reaches Past the Moon, but Space Starts Only 100 km Up",
+  "title_ko": "지구 대기는 달 너머까지 뻗는데, 우주의 경계는 고작 100km 위다",
+  "description_en": "Most scientists put the start of space at the Karman line, 100 km up, yet about three quarters of the air's mass sits in the lowest 11 km or so. The space station still feels drag at about 415 km, and in 2019, old SOHO data showed Earth's hydrogen geocorona reaching 630,000 km, far past the Moon. #atmosphere #earth #karmanline #space #astronomy",
+  "description_ko": "과학자 대부분은 지상 100km의 카르만 선을 우주의 시작으로 보지만, 공기 질량의 약 4분의 3은 아래쪽 11km 안팎의 대류권에 몰려 있습니다. 약 415km 높이를 도는 국제우주정거장도 옅은 공기의 저항을 받아 정기적으로 고도를 다시 올려야 합니다. 2019년에는 1990년대 SOHO 관측 자료를 다시 분석해, 지구를 감싼 수소 구름인 지구코로나가 63만 km까지 뻗어 달 궤도 너머에 이른다는 사실을 밝혀냈습니다. #지구대기 #대기권 #카르만선 #우주 #천문학",
+  "comment": "Before today, where did you think Earth's atmosphere ended?",
+  "tags": [
+    "shorts",
+    "space",
+    "earth atmosphere",
+    "atmosphere",
+    "karman line",
+    "troposphere",
+    "geocorona",
+    "astronomy",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "Earth atmosphere clouds from above",
+    "Earth atmosphere aerial clouds",
+    "Earth atmosphere sky horizon",
+    "Earth atmosphere airplane window clouds",
+    "Earth atmosphere cloudscape",
+    "Earth atmosphere from space",
+    "Earth atmosphere blue sky",
+    "Earth atmosphere sunrise horizon",
+    "Earth atmosphere clouds ocean horizon",
+    "Earth atmosphere storm clouds"
+  ],
+  "fact_keywords": [
+    "Earth atmosphere edge of space horizon",
+    "Earth atmosphere clouds weather aerial",
+    "Earth atmosphere from space orbit",
+    "Earth atmosphere moon night sky"
+  ],
+  "clips": [
+    [
+      38845657,
+      34845235
+    ],
+    [
+      33684665,
+      37062154
+    ],
+    [
+      39062382,
+      39788419
+    ],
+    [
+      39582953,
+      39829877
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "지구 대기는 달 너머까지 뻗는데, 우주의 경계는 고작 100km 위다",
+      "description": "과학자 대부분은 지상 100km의 카르만 선을 우주의 시작으로 보지만, 공기 질량의 약 4분의 3은 아래쪽 11km 안팎의 대류권에 몰려 있습니다. 약 415km 높이를 도는 국제우주정거장도 옅은 공기의 저항을 받아 정기적으로 고도를 다시 올려야 합니다. 2019년에는 1990년대 SOHO 관측 자료를 다시 분석해, 지구를 감싼 수소 구름인 지구코로나가 63만 km까지 뻗어 달 궤도 너머에 이른다는 사실을 밝혀냈습니다. #지구대기 #대기권 #카르만선 #우주 #천문학"
+    },
+    "ja": {
+      "title": "地球の大気は月の先まで届くのに、宇宙の境界はたった100km上",
+      "description": "多くの科学者は高度100kmのカーマン・ラインを宇宙の始まりとしていますが、空気の質量の約4分の3は地上からおよそ11kmまでの対流圏に集まっています。高度約415kmを回る国際宇宙ステーションも薄い空気の抵抗を受けるため、定期的に高度を上げ直しています。2019年には1990年代の探査機SOHOの観測データを見直した結果、地球を包む水素の雲ジオコロナが63万kmまで広がり、月の軌道の外まで届いていることがわかりました。 #地球の大気 #大気圏 #カーマンライン #宇宙 #天文学"
+    },
+    "es": {
+      "title": "La atmósfera de la Tierra llega más allá de la Luna, pero el espacio empieza a solo 100 km",
+      "description": "La mayoría de los científicos sitúa el inicio del espacio en la línea de Kármán, a 100 km de altura, pero cerca de tres cuartas partes de la masa del aire están en los 11 km más bajos. La estación espacial todavía nota el rozamiento del aire a unos 415 km, y en 2019 datos antiguos de la sonda SOHO mostraron que la geocorona de hidrógeno de la Tierra llega a 630.000 km, más allá de la Luna. #atmosfera #tierra #lineadekarman #espacio #astronomia"
+    },
+    "pt": {
+      "title": "A atmosfera da Terra vai além da Lua, mas o espaço começa a só 100 km de altura",
+      "description": "A maioria dos cientistas coloca o início do espaço na linha de Kármán, a 100 km de altura, mas cerca de três quartos da massa do ar ficam nos 11 km mais baixos. A estação espacial ainda sente o arrasto do ar a uns 415 km, e em 2019 dados antigos da sonda SOHO mostraram que a geocorona de hidrogênio da Terra chega a 630.000 km, além da Lua. #atmosfera #terra #linhadekarman #espaco #astronomia"
+    },
+    "de": {
+      "title": "Die Erdatmosphäre reicht über den Mond hinaus, doch der Weltraum beginnt schon nach 100 km",
+      "description": "Die meisten Wissenschaftler lassen den Weltraum an der Kármán-Linie in 100 km Höhe beginnen, doch rund drei Viertel der Luftmasse stecken in den untersten etwa 11 km. Die Raumstation spürt in rund 415 km Höhe noch Luftwiderstand, und 2019 zeigten alte SOHO-Daten, dass die Wasserstoff-Geokorona der Erde bis 630.000 km reicht, weit über den Mond hinaus. #erdatmosphäre #atmosphäre #karmanlinie #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "L'atmosphère terrestre s'étend au-delà de la Lune, mais l'espace commence à 100 km",
+      "description": "La plupart des scientifiques font commencer l'espace à la ligne de Kármán, à 100 km d'altitude, alors qu'environ trois quarts de la masse de l'air se trouvent dans les quelque 11 premiers kilomètres. La station spatiale subit encore la traînée de l'air vers 415 km, et en 2019, d'anciennes données de la sonde SOHO ont montré que la géocouronne d'hydrogène de la Terre s'étend jusqu'à 630 000 km, bien au-delà de la Lune. #atmosphere #terre #lignedekarman #espace #astronomie"
+    },
+    "hi": {
+      "title": "धरती का वायुमंडल चांद से आगे तक फैला है, पर अंतरिक्ष सिर्फ 100 किमी ऊपर शुरू होता है",
+      "description": "ज़्यादातर वैज्ञानिक 100 किमी ऊंचाई पर कारमन रेखा को अंतरिक्ष की शुरुआत मानते हैं, फिर भी हवा का करीब तीन-चौथाई द्रव्यमान सबसे निचले लगभग 11 किमी में है। करीब 415 किमी ऊपर अंतरिक्ष स्टेशन को भी हवा का प्रतिरोध झेलना पड़ता है, और 2019 में सोहो यान के पुराने आंकड़ों से पता चला कि धरती का हाइड्रोजन जियोकोरोना 6.3 लाख किमी तक फैला है, यानी चांद से भी आगे। #वायुमंडल #अंतरिक्ष #धरती #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "지구의 대기는 우주가 시작되는 곳에서 끝나지 않고, 달 너머까지 뻗어 있습니다.",
+      "과학자 대부분은 지상 100킬로미터의 카르만 선을 우주의 경계로 보는데, 시속 100킬로미터로 곧장 위로 달리는 자동차라면 한 시간 만에 닿는 높이입니다.",
+      "그런데 공기는 아래쪽에 몰려 있어서, 질량의 약 4분의 3이 지상 11킬로미터 안팎까지인 대류권에 들어차 있고, 날씨도 거의 다 여기서 일어납니다.",
+      "약 415킬로미터 높이의 우주정거장도 여전히 옅은 공기 속을 날고 있어서, NASA에 따르면 엔진으로 고도를 꾸준히 올려 주지 않으면 공기 저항 때문에 1~2년 안에 떨어집니다.",
+      "2019년 과학자들이 1990년대 SOHO 탐사선 자료를 다시 살펴보니, 희미한 수소 구름인 지구코로나가 63만 킬로미터까지 뻗어 있었는데, 약 38만 4천 킬로미터인 달 궤도를 훌쩍 넘는 거리입니다.",
+      "달은 처음부터 줄곧 우리 대기 속을 날고 있었던 겁니다."
+    ],
+    "ja": [
+      "地球の大気は宇宙が始まる所で終わらず、月の向こうまで広がっています。",
+      "多くの科学者は高度100キロのカーマン・ラインを宇宙の境界としていて、時速100キロでまっすぐ上へ走る車なら1時間で着く高さです。",
+      "ところが空気は低い所に集まっていて、質量の約4分の3が地上からおよそ11キロまでの対流圏に詰まっており、天気のほぼすべてはここで起きます。",
+      "高度約415キロの宇宙ステーションでさえ薄い空気の中を飛んでいて、NASAによると定期的にエンジンで高度を上げなければ、空気抵抗で1〜2年ほどで落ちてしまいます。",
+      "2019年、1990年代の探査機SOHOのデータを見直した科学者たちは、淡い水素の雲ジオコロナが63万キロまで広がり、約38万4000キロ先を回る月の軌道をはるかに超えていることを示しました。",
+      "月はずっと、私たちの大気の中を飛んでいたのです。"
+    ],
+    "es": [
+      "La atmósfera de la Tierra no termina donde empieza el espacio; llega más allá de la Luna.",
+      "La mayoría de los científicos sitúa el borde del espacio en la línea de Kármán, a 100 kilómetros de altura, así que un coche que subiera en línea recta a 100 kilómetros por hora llegaría en una hora.",
+      "Pero el aire se concentra abajo: cerca de tres cuartas partes de su masa están en la troposfera, más o menos los 11 kilómetros más bajos, donde ocurren casi todos los fenómenos meteorológicos.",
+      "Incluso la estación espacial, a unos 415 kilómetros de altura, sigue volando entre aire muy tenue, y la NASA dice que sin impulsos regulares de sus motores, el rozamiento la haría caer en uno o dos años.",
+      "En 2019, científicos que volvieron a analizar datos de los años 90 de la sonda SOHO mostraron que la geocorona, una tenue nube de hidrógeno, llega a 630.000 kilómetros, mucho más allá de la órbita de la Luna, a unos 384.000 kilómetros.",
+      "La Luna lleva todo este tiempo volando dentro de nuestra atmósfera."
+    ],
+    "pt": [
+      "A atmosfera da Terra não termina onde o espaço começa; ela vai além da Lua.",
+      "A maioria dos cientistas coloca o limite do espaço na linha de Kármán, a 100 quilômetros de altura, então um carro subindo em linha reta a 100 quilômetros por hora chegaria lá em uma hora.",
+      "Mas o ar fica concentrado embaixo: cerca de três quartos da sua massa estão na troposfera, mais ou menos os 11 quilômetros mais baixos, onde acontecem quase todos os fenômenos do tempo.",
+      "Até a estação espacial, a cerca de 415 quilômetros de altura, ainda voa através de ar rarefeito, e a NASA diz que, sem impulsos regulares dos motores, o arrasto a derrubaria em um ou dois anos.",
+      "Em 2019, cientistas que reanalisaram dados dos anos 1990 da sonda SOHO mostraram que a geocorona, uma nuvem tênue de hidrogênio, chega a 630.000 quilômetros, muito além da órbita da Lua, a cerca de 384.000 quilômetros.",
+      "A Lua sempre esteve voando dentro da nossa atmosfera."
+    ],
+    "de": [
+      "Die Erdatmosphäre hört nicht dort auf, wo der Weltraum beginnt; sie reicht bis über den Mond hinaus.",
+      "Die meisten Wissenschaftler legen die Grenze zum Weltraum an die Kármán-Linie in 100 Kilometern Höhe, ein Auto, das mit 100 Kilometern pro Stunde senkrecht nach oben fährt, wäre also in einer Stunde dort.",
+      "Doch die Luft drängt sich unten: Etwa drei Viertel ihrer Masse stecken in der Troposphäre, ungefähr den untersten 11 Kilometern, wo fast unser gesamtes Wetter stattfindet.",
+      "Selbst die Raumstation in etwa 415 Kilometern Höhe fliegt noch durch dünne Luft, und laut NASA würde der Luftwiderstand sie ohne regelmäßige Triebwerksschübe in etwa ein bis zwei Jahren zum Absturz bringen.",
+      "2019 zeigten Forscher, die Daten der Sonde SOHO aus den 1990ern neu auswerteten, dass die Geokorona, eine schwache Wasserstoffwolke, bis 630.000 Kilometer hinausreicht, weit über die Mondbahn in etwa 384.000 Kilometern hinaus.",
+      "Der Mond fliegt schon die ganze Zeit durch unsere Atmosphäre."
+    ],
+    "fr": [
+      "L'atmosphère de la Terre ne s'arrête pas là où commence l'espace, elle s'étend au-delà de la Lune.",
+      "La plupart des scientifiques placent la limite de l'espace à la ligne de Kármán, à 100 kilomètres d'altitude, donc une voiture roulant tout droit vers le haut à 100 kilomètres à l'heure y arriverait en une heure.",
+      "Pourtant, l'air est tassé en bas : environ trois quarts de sa masse se trouvent dans la troposphère, à peu près les 11 premiers kilomètres, là où se joue presque toute notre météo.",
+      "Même la station spatiale, à environ 415 kilomètres d'altitude, vole encore dans un air ténu, et selon la NASA, sans poussées régulières de ses moteurs, la traînée la ferait retomber en un à deux ans environ.",
+      "En 2019, des scientifiques ont réexaminé des données des années 1990 de la sonde SOHO et montré que la géocouronne, un faible nuage d'hydrogène, s'étend jusqu'à 630 000 kilomètres, bien au-delà de l'orbite lunaire, à environ 384 000 kilomètres.",
+      "La Lune vole dans notre atmosphère depuis toujours."
+    ],
+    "hi": [
+      "धरती का वायुमंडल वहां खत्म नहीं होता जहां अंतरिक्ष शुरू होता है, यह चांद से भी आगे तक फैला है।",
+      "ज़्यादातर वैज्ञानिक 100 किलोमीटर ऊंचाई पर कारमन रेखा को अंतरिक्ष की सीमा मानते हैं, यानी 100 किलोमीटर प्रति घंटे की रफ्तार से सीधे ऊपर चलने वाली कार वहां एक घंटे में पहुंच जाएगी।",
+      "फिर भी हवा नीचे ही ठसाठस भरी है, इसका करीब तीन-चौथाई द्रव्यमान क्षोभमंडल में है, यानी लगभग सबसे निचले 11 किलोमीटर में, जहां हमारा लगभग सारा मौसम बनता है।",
+      "करीब 415 किलोमीटर ऊपर उड़ने वाला अंतरिक्ष स्टेशन भी अब तक पतली हवा से होकर गुजरता है, और नासा के मुताबिक अगर इंजन से नियमित धक्का न मिले तो हवा का प्रतिरोध इसे करीब एक से दो साल में नीचे गिरा देगा।",
+      "2019 में वैज्ञानिकों ने 1990 के दशक के सोहो यान के आंकड़ों को दोबारा जांचकर दिखाया कि जियोकोरोना, यानी हाइड्रोजन का एक हल्का बादल, 6.3 लाख किलोमीटर तक फैला है, जो करीब 3.84 लाख किलोमीटर दूर चांद की कक्षा से कहीं आगे है।",
+      "चांद शुरू से ही हमारे वायुमंडल के बीच से उड़ता आ रहा है।"
+    ]
+  }
+}

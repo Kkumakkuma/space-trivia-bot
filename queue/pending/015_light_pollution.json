@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "light_pollution",
+  "display": "Light Pollution",
+  "single": "Light Pollution",
+  "category": "phenomenon",
+  "angle": "future_events",
+  "format": "how_it_works",
+  "hook_line": "More than a third of humanity can no longer see the Milky Way.",
+  "hook": "THE STARS ARE VANISHING",
+  "intro": "More than a third of humanity can no longer see the Milky Way.",
+  "facts": [
+    "That figure comes from a 2016 world atlas of night sky brightness, which also found the Milky Way hidden from 60 percent of Europeans and nearly 80 percent of North Americans.",
+    "The cause is skyglow: light from streetlights and buildings escapes upward, scatters off air molecules and dust, and brightens the night sky until faint stars lose contrast and vanish.",
+    "The glow carries far: the National Park Service photographed Los Angeles skyglow from Mount Whitney, about 175 miles away, and clouds can make city skies almost 18 times brighter than clear nights.",
+    "A 2023 Science study of over 50,000 citizen observations found skies brightening about 9.6 percent a year, so a child born under 250 visible stars would see around 100 by age 18."
+  ],
+  "outro": "Count the stars you can see tonight.",
+  "title_en": "A Third of Humanity Can't See the Milky Way, and the Night Sky Keeps Getting Brighter",
+  "title_ko": "인류 3분의 1은 은하수를 못 본다, 밤하늘은 해마다 밝아지는 중",
+  "description_en": "Light pollution hides the Milky Way from more than a third of humanity, including nearly 80% of North Americans. Here is how city lights brighten the whole sky through skyglow, how far that glow reaches, and why a 2023 study found the night sky getting about 9.6% brighter every year. #lightpollution #nightsky #milkyway #space #astronomy",
+  "description_ko": "2016년에 나온 세계 빛공해 지도를 보면 인류의 3분의 1 이상은 사는 곳에서 은하수를 볼 수 없습니다. 북미는 그 비율이 80%에 가깝습니다. 가로등과 건물에서 위로 새어 나간 빛이 공기 분자와 먼지에 부딪혀 흩어지면서 밤하늘 전체를 밝히고, 희미한 별부터 배경에 묻혀 사라집니다. 이 불빛은 멀리까지 번져서 미국 국립공원관리청은 약 280km 떨어진 휘트니산 정상에서 로스앤젤레스의 불빛을 사진에 담았고, 구름이 낀 밤에는 도시 하늘이 맑은 밤보다 18배 가까이 밝아지기도 합니다. 2023년 사이언스에 실린 연구에 따르면 2011년부터 2022년까지 밤하늘은 해마다 약 9.6%씩 밝아졌습니다. 이 속도가 이어지면 별 250개가 보이던 곳에서 태어난 아이는 18살이 될 때 100개 정도만 보게 됩니다. #빛공해 #밤하늘 #은하수 #천문학 #우주",
+  "comment": "How many stars can you count from your window tonight?",
+  "tags": [
+    "shorts",
+    "space",
+    "light pollution",
+    "skyglow",
+    "milky way",
+    "night sky",
+    "dark sky",
+    "astronomy",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "light pollution city night",
+    "light pollution city lights aerial",
+    "light pollution night sky",
+    "light pollution city skyline",
+    "light pollution starry sky",
+    "light pollution milky way",
+    "light pollution street lights",
+    "light pollution night clouds city",
+    "light pollution urban glow",
+    "light pollution stars night"
+  ],
+  "fact_keywords": [
+    "light pollution milky way starry sky",
+    "light pollution city lights night aerial",
+    "light pollution city skyline night clouds",
+    "light pollution stars night sky timelapse"
+  ],
+  "clips": [
+    [
+      27638338,
+      16829181
+    ],
+    [
+      35464536,
+      35424384
+    ],
+    [
+      32410944,
+      32410697
+    ],
+    [
+      30436806,
+      36049530
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "인류 3분의 1은 은하수를 못 본다, 밤하늘은 해마다 밝아지는 중",
+      "description": "2016년에 나온 세계 빛공해 지도를 보면 인류의 3분의 1 이상은 사는 곳에서 은하수를 볼 수 없습니다. 북미는 그 비율이 80%에 가깝습니다. 가로등과 건물에서 위로 새어 나간 빛이 공기 분자와 먼지에 부딪혀 흩어지면서 밤하늘 전체를 밝히고, 희미한 별부터 배경에 묻혀 사라집니다. 이 불빛은 멀리까지 번져서 미국 국립공원관리청은 약 280km 떨어진 휘트니산 정상에서 로스앤젤레스의 불빛을 사진에 담았고, 구름이 낀 밤에는 도시 하늘이 맑은 밤보다 18배 가까이 밝아지기도 합니다. 2023년 사이언스에 실린 연구에 따르면 2011년부터 2022년까지 밤하늘은 해마다 약 9.6%씩 밝아졌습니다. 이 속도가 이어지면 별 250개가 보이던 곳에서 태어난 아이는 18살이 될 때 100개 정도만 보게 됩니다. #빛공해 #밤하늘 #은하수 #천문학 #우주"
+    },
+    "ja": {
+      "title": "人類の3分の1は天の川が見えない、夜空は年々明るくなっている",
+      "description": "2016年に発表された夜空の明るさの世界地図によると、人類の3分の1以上は住んでいる場所から天の川が見えず、北米ではその割合が80%近くに達します。街灯や建物の光が空気中で散乱して夜空全体を明るくするスカイグローの仕組み、その光がどこまで届くのか、そして2023年の研究で夜空が毎年約9.6%ずつ明るくなっていたことをまとめました。#光害 #夜空 #天の川 #天文 #宇宙"
+    },
+    "es": {
+      "title": "Un tercio de la humanidad ya no ve la Vía Láctea y el cielo nocturno brilla cada año más",
+      "description": "Según un atlas mundial de 2016, la contaminación lumínica oculta la Vía Láctea a más de un tercio de la humanidad, incluido casi el 80% de los norteamericanos. Aquí verás cómo las luces de las ciudades iluminan todo el cielo, hasta dónde llega ese resplandor y por qué un estudio de 2023 halló que el cielo nocturno se aclaraba cerca de un 9,6% al año. #contaminacionluminica #cielonocturno #vialactea #astronomia #espacio"
+    },
+    "pt": {
+      "title": "Um terço da humanidade não vê mais a Via Láctea, e o céu noturno fica mais claro a cada ano",
+      "description": "Segundo um atlas mundial de 2016, a poluição luminosa esconde a Via Láctea de mais de um terço da humanidade, incluindo quase 80% dos norte-americanos. Veja como as luzes das cidades clareiam o céu inteiro, até onde esse brilho chega e por que um estudo de 2023 mostrou o céu noturno ficando cerca de 9,6% mais claro por ano. #poluicaoluminosa #ceunoturno #vialactea #astronomia #espaco"
+    },
+    "de": {
+      "title": "Ein Drittel der Menschheit sieht die Milchstraße nicht mehr, der Nachthimmel wird immer heller",
+      "description": "Laut einem Weltatlas von 2016 verbirgt die Lichtverschmutzung die Milchstraße vor mehr als einem Drittel der Menschheit, darunter fast 80 Prozent der Nordamerikaner. Hier erfährst du, wie Stadtlicht den ganzen Himmel aufhellt, wie weit dieses Leuchten reicht und warum eine Studie von 2023 ergab, dass der Nachthimmel jedes Jahr um etwa 9,6 Prozent heller wurde. #lichtverschmutzung #nachthimmel #milchstrasse #astronomie #weltraum"
+    },
+    "fr": {
+      "title": "Un tiers de l'humanité ne voit plus la Voie lactée, et le ciel nocturne s'éclaire chaque année",
+      "description": "D'après un atlas mondial de 2016, la pollution lumineuse cache la Voie lactée à plus d'un tiers de l'humanité, dont près de 80 % des Nord-Américains. Voici comment les lumières des villes éclairent tout le ciel, jusqu'où porte ce halo et pourquoi une étude de 2023 a constaté que le ciel nocturne devenait environ 9,6 % plus lumineux chaque année. #pollutionlumineuse #cielnocturne #voielactee #astronomie #espace"
+    },
+    "hi": {
+      "title": "दुनिया के एक तिहाई लोग आकाशगंगा नहीं देख पाते, और रात का आसमान हर साल ज़्यादा चमक रहा है",
+      "description": "2016 के एक विश्व एटलस के मुताबिक प्रकाश प्रदूषण की वजह से दुनिया के एक तिहाई से ज़्यादा लोग आकाशगंगा नहीं देख पाते, उत्तरी अमेरिका में तो करीब 80 प्रतिशत लोग। जानिए शहर की रोशनी पूरे आसमान को कैसे चमका देती है, यह चमक कितनी दूर तक जाती है, और 2023 के एक अध्ययन में क्या सामने आया: रात का आसमान हर साल करीब 9.6 प्रतिशत ज़्यादा चमकीला हो रहा था। #प्रकाशप्रदूषण #आकाशगंगा #अंतरिक्ष #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "인류의 3분의 1 이상은 이제 은하수를 볼 수 없습니다.",
+      "이 수치는 2016년에 나온 세계 밤하늘 밝기 지도에서 나왔고, 이 지도에 따르면 유럽 사람의 60%, 북미 사람은 80% 가까이가 은하수를 보지 못합니다.",
+      "원인은 스카이글로입니다. 가로등과 건물에서 위로 새어 나간 빛이 공기 분자와 먼지에 부딪혀 흩어지면서 밤하늘 전체가 밝아지고, 희미한 별은 대비를 잃어 보이지 않게 됩니다.",
+      "이 불빛은 멀리까지 번집니다. 미국 국립공원관리청은 약 280킬로미터 떨어진 휘트니산에서 로스앤젤레스의 불빛을 사진에 담았고, 구름이 끼면 도시 하늘이 맑은 밤보다 18배 가까이 밝아지기도 합니다.",
+      "2023년 사이언스에 실린 연구는 시민 관측 5만 건 이상을 분석해 밤하늘이 해마다 약 9.6%씩 밝아졌다는 결과를 냈습니다. 이 속도라면 별 250개가 보이던 곳에서 태어난 아이는 18살이 될 때 100개 정도만 보게 됩니다.",
+      "오늘 밤 보이는 별을 한번 세어 보세요."
+    ],
+    "ja": [
+      "人類の3分の1以上が、もう天の川を見ることができません。",
+      "この数字は2016年に発表された夜空の明るさの世界地図によるもので、ヨーロッパの人の60%、北米の人の80%近くも天の川が見えないことが分かりました。",
+      "原因はスカイグローです。街灯や建物から上に漏れた光が空気の分子やちりで散乱して夜空を明るくし、かすかな星はコントラストを失って消えてしまいます。",
+      "この光は遠くまで届きます。米国立公園局は約280キロ離れたホイットニー山からロサンゼルスの夜空の光を撮影し、曇りの夜には都市の空が晴れた夜の18倍近く明るくなることもあります。",
+      "2023年にサイエンス誌に載った研究は5万件以上の市民の観測をもとに、夜空が毎年約9.6%ずつ明るくなっていたと報告しました。250個の星が見える場所で生まれた子どもは、18歳になる頃には約100個しか見えなくなる計算です。",
+      "今夜、見える星を数えてみてください。"
+    ],
+    "es": [
+      "Más de un tercio de la humanidad ya no puede ver la Vía Láctea.",
+      "Esa cifra viene de un atlas mundial del brillo del cielo nocturno publicado en 2016, que también halló que la Vía Láctea está oculta para el 60% de los europeos y casi el 80% de los norteamericanos.",
+      "La causa es el resplandor del cielo: la luz de farolas y edificios escapa hacia arriba, se dispersa en las moléculas del aire y el polvo, e ilumina el cielo nocturno hasta que las estrellas débiles pierden contraste y desaparecen.",
+      "Ese resplandor llega lejos: el Servicio de Parques Nacionales de EE. UU. fotografió el de Los Ángeles desde el monte Whitney, a unos 280 kilómetros, y las nubes pueden hacer que el cielo de una ciudad brille casi 18 veces más que en noches despejadas.",
+      "Un estudio de 2023 en la revista Science, con más de 50.000 observaciones ciudadanas, halló que el cielo se aclaraba cerca de un 9,6% al año, así que un niño nacido bajo 250 estrellas visibles vería unas 100 a los 18 años.",
+      "Cuenta las estrellas que puedes ver esta noche."
+    ],
+    "pt": [
+      "Mais de um terço da humanidade já não consegue ver a Via Láctea.",
+      "Esse número vem de um atlas mundial do brilho do céu noturno de 2016, que também mostrou a Via Láctea escondida para 60% dos europeus e quase 80% dos norte-americanos.",
+      "A causa é o brilho do céu: a luz de postes e prédios escapa para cima, se espalha nas moléculas do ar e na poeira e clareia o céu noturno até as estrelas fracas perderem contraste e sumirem.",
+      "Esse brilho vai longe: o Serviço Nacional de Parques dos EUA fotografou o de Los Angeles a partir do Monte Whitney, a cerca de 280 quilômetros, e as nuvens podem deixar o céu de uma cidade quase 18 vezes mais claro que em noites limpas.",
+      "Um estudo de 2023 na revista Science, com mais de 50 mil observações de cidadãos, mostrou o céu clareando cerca de 9,6% ao ano, então uma criança nascida sob 250 estrelas visíveis veria só umas 100 aos 18 anos.",
+      "Conte as estrelas que você consegue ver hoje à noite."
+    ],
+    "de": [
+      "Mehr als ein Drittel der Menschheit kann die Milchstraße nicht mehr sehen.",
+      "Die Zahl stammt aus einem Weltatlas der Nachthimmelshelligkeit von 2016, laut dem die Milchstraße auch für 60 Prozent der Europäer und fast 80 Prozent der Nordamerikaner verborgen ist.",
+      "Die Ursache ist die Himmelsaufhellung: Licht von Straßenlaternen und Gebäuden entweicht nach oben, wird an Luftmolekülen und Staub gestreut und hellt den Nachthimmel auf, bis schwache Sterne ihren Kontrast verlieren und verschwinden.",
+      "Das Leuchten reicht weit: Der US-Nationalparkdienst fotografierte die Himmelsaufhellung von Los Angeles vom Mount Whitney aus, rund 280 Kilometer entfernt, und Wolken können den Himmel über Städten fast 18-mal heller machen als in klaren Nächten.",
+      "Eine Studie in Science von 2023 mit über 50.000 Beobachtungen von Bürgern ergab, dass der Himmel jährlich um etwa 9,6 Prozent heller wurde, ein Kind, das unter 250 sichtbaren Sternen geboren wird, sähe mit 18 also nur noch rund 100.",
+      "Zähl heute Nacht die Sterne, die du sehen kannst."
+    ],
+    "fr": [
+      "Plus d'un tiers de l'humanité ne peut plus voir la Voie lactée.",
+      "Ce chiffre vient d'un atlas mondial de la luminosité du ciel nocturne publié en 2016, qui montre aussi que la Voie lactée est cachée pour 60 % des Européens et près de 80 % des Nord-Américains.",
+      "En cause, le halo lumineux : la lumière des lampadaires et des bâtiments s'échappe vers le haut, se diffuse sur les molécules d'air et les poussières, et éclaire le ciel nocturne jusqu'à ce que les étoiles faibles perdent leur contraste et disparaissent.",
+      "Ce halo porte loin : le Service des parcs nationaux américain a photographié celui de Los Angeles depuis le mont Whitney, à environ 280 kilomètres, et les nuages peuvent rendre le ciel d'une ville près de 18 fois plus lumineux qu'une nuit dégagée.",
+      "Une étude parue dans Science en 2023, fondée sur plus de 50 000 observations citoyennes, a constaté que le ciel devenait environ 9,6 % plus lumineux chaque année : un enfant né sous 250 étoiles visibles n'en verrait plus qu'environ 100 à 18 ans.",
+      "Comptez les étoiles que vous voyez ce soir."
+    ],
+    "hi": [
+      "दुनिया के एक तिहाई से ज़्यादा लोग अब आकाशगंगा नहीं देख पाते।",
+      "यह आंकड़ा 2016 के रात के आसमान की चमक के विश्व एटलस से आया है, जिसमें यह भी पता चला कि 60 प्रतिशत यूरोपीय और करीब 80 प्रतिशत उत्तर अमेरिकी लोगों से आकाशगंगा छिपी हुई है।",
+      "इसकी वजह है स्काईग्लो: स्ट्रीटलाइट और इमारतों की रोशनी ऊपर निकलती है, हवा के अणुओं और धूल से टकराकर बिखरती है, और रात के आसमान को इतना चमका देती है कि धुंधले तारे अपना कंट्रास्ट खोकर गायब हो जाते हैं।",
+      "यह चमक बहुत दूर तक जाती है: अमेरिका की नेशनल पार्क सर्विस ने करीब 280 किलोमीटर दूर माउंट व्हिटनी से लॉस एंजिल्स की चमक की तस्वीर ली, और बादल शहर के आसमान को साफ रातों से करीब 18 गुना ज़्यादा चमकीला बना सकते हैं।",
+      "2023 में साइंस पत्रिका में छपे एक अध्ययन ने 50,000 से ज़्यादा नागरिक अवलोकनों से पाया कि आसमान हर साल करीब 9.6 प्रतिशत ज़्यादा चमकीला हो रहा था, यानी 250 दिखने वाले तारों के नीचे पैदा हुआ बच्चा 18 साल की उम्र तक करीब 100 ही देख पाएगा।",
+      "आज रात आपको जितने तारे दिखें, उन्हें गिनिए।"
+    ]
+  }
+}

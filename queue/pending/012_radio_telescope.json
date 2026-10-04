@@ -58,15 +58,15 @@
     ],
     [
       28846365,
-      28760952
+      28846361
     ],
     [
       29450501,
       29450498
     ],
     [
-      18308551,
-      7821856
+      7821856,
+      18308551
     ]
   ],
   "localizations": {
@@ -104,8 +104,8 @@
       "전파망원경은 지구에서 가장 큰 귀인데, 그중 하나는 다시는 들려오지 않은 신호를 들었습니다.",
       "1932년 벨 연구소 엔지니어 칼 잰스키는 회전하는 안테나로 잡음의 원인을 쫓다가, 은하수에서 오는 희미한 쉬익 소리를 잡아냈습니다. 우주에서 온 전파가 처음으로 검출된 순간입니다.",
       "지금 접시 하나로 된 전파망원경 중 가장 큰 건 중국의 FAST입니다. 지름 500미터로 석회암 분지에 들어앉아 2016년에 완공됐는데, 면적이 축구장 30개와 맞먹습니다.",
-      "FAST에게 1위 자리를 내준 건 푸에르토리코의 아레시보 접시인데, 1974년 성단 M13을 향해 그림 메시지를 보냈고, 2020년에는 위에 매달린 플랫폼이 떨어지면서 무너졌습니다.",
-      "1977년 오하이오 주립대의 빅이어 전파망원경이 72초 동안 이어진 강한 신호를 잡았고, 자원봉사자 제리 이먼이 기록 옆에 'Wow!'라고 적었는데, 그 신호는 다시는 들리지 않았습니다.",
+      "FAST 이전에 이 기록을 갖고 있던 건 푸에르토리코의 아레시보 전파망원경인데, 1974년 성단 M13을 향해 그림 메시지를 보냈고, 2020년에는 위에 매달린 플랫폼이 떨어지면서 무너졌습니다.",
+      "1977년 오하이오 주립대의 빅 이어 전파망원경이 72초 동안 이어진 강한 신호를 잡았고, 자원봉사자 제리 이만이 기록 옆에 'Wow!'라고 적었는데, 그 신호는 다시는 들리지 않았습니다.",
       "그리고 지구에서 가장 큰 귀들은 지금도 듣고 있습니다."
     ],
     "ja": [
@@ -118,10 +118,10 @@
     ],
     "es": [
       "Los radiotelescopios son los oídos más grandes de la Tierra, y uno de ellos escuchó una señal que nunca volvió.",
-      "En 1932, Karl Jansky, ingeniero de los Laboratorios Bell, buscaba con una antena giratoria el origen de la estática, y captó un débil siseo de la Vía Láctea: las primeras ondas de radio del espacio jamás detectadas.",
+      "En 1932, Karl Jansky, ingeniero de los Laboratorios Bell, buscaba con una antena giratoria el origen de la estática, cuando captó un débil siseo de la Vía Láctea: las primeras ondas de radio del espacio jamás detectadas.",
       "Hoy el radiotelescopio de un solo plato más grande es el FAST de China, de 500 metros de diámetro, construido en una hondonada de piedra caliza y terminado en 2016, con una superficie equivalente a 30 campos de fútbol.",
       "El FAST le quitó el título al radiotelescopio de Arecibo, en Puerto Rico, que en 1974 envió un mensaje en forma de imagen al cúmulo estelar M13 y se derrumbó en 2020, cuando cayó su plataforma.",
-      "En 1977, el telescopio Big Ear de la Universidad Estatal de Ohio captó una señal intensa que duró 72 segundos; el voluntario Jerry Ehman escribió 'Wow!' a su lado, y nunca se ha vuelto a escuchar.",
+      "En 1977, el telescopio Big Ear de la Universidad Estatal de Ohio captó una señal intensa que duró 72 segundos; el voluntario Jerry Ehman escribió 'Wow!' a su lado, y la señal nunca se ha vuelto a escuchar.",
       "Y los oídos más grandes de la Tierra siguen escuchando."
     ],
     "pt": [

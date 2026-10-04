@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "solar_system",
+  "display": "The Solar System",
+  "single": "Solar System",
+  "category": "planet",
+  "angle": "scale_comparison",
+  "format": "top_records",
+  "hook_line": "One planet is so heavy it drags the Sun into a wobble.",
+  "hook": "ONE PLANET MOVES THE SUN",
+  "intro": "One planet is so heavy it drags the Sun into a wobble.",
+  "facts": [
+    "All eight planets orbit the Sun in the same direction and nearly in one flat plane, because they formed from one spinning disk; Mercury, the most tilted, is just 7 degrees off.",
+    "Jupiter is the heavyweight by far, with about 318 times Earth's mass, which is roughly two and a half times the mass of all seven other planets put together.",
+    "That mass even moves the Sun: Jupiter and the Sun circle a shared balance point, the barycenter, just outside the Sun's surface, so the Sun wobbles around it about every 12 years.",
+    "Sunlight reaches Earth in about 8 minutes, but Neptune, the farthest planet, orbits 4.5 billion kilometers out, roughly 30 times farther, so the trip takes light about 4 hours."
+  ],
+  "outro": "Four hours at light speed, and still in our backyard.",
+  "title_en": "One Planet Outweighs the Other 7 Combined, and It Makes the Sun Wobble",
+  "title_ko": "나머지 행성 7개를 합친 것보다 무거운 행성, 태양까지 흔든다",
+  "description_en": "All eight planets circle the Sun the same way on a nearly flat plane, a leftover of the spinning disk they formed from. Jupiter has about two and a half times the mass of the other seven planets combined, enough to swing the Sun around a point just outside its surface, and sunlight needs about 4 hours to reach Neptune. #solarsystem #space #astronomy #jupiter #planets",
+  "description_ko": "태양계의 여덟 행성은 모두 같은 방향으로, 거의 한 평면 위에서 태양을 돕니다. 회전하던 원반 하나에서 생겨났기 때문입니다. 목성 하나의 질량은 나머지 일곱 행성을 다 합친 것의 약 2.5배입니다. 이렇게 무거운 목성과 태양이 함께 도는 질량중심은 태양 표면 바로 바깥에 있습니다. 지구까지 8분이면 오는 햇빛도 해왕성까지는 약 4시간이 걸립니다. #태양계 #우주 #목성 #천문학",
+  "comment": "Before today, did you picture the Sun sitting perfectly still at the center?",
+  "tags": [
+    "shorts",
+    "space",
+    "solar system",
+    "planets",
+    "jupiter",
+    "neptune",
+    "barycenter",
+    "astronomy",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "solar system planets",
+    "solar system planets orbit",
+    "solar system animation",
+    "solar system sun",
+    "solar system Jupiter",
+    "solar system Neptune",
+    "solar system planet rotating",
+    "solar system gas giant",
+    "solar system space",
+    "solar system deep space"
+  ],
+  "fact_keywords": [
+    "solar system planets orbiting sun animation",
+    "solar system Earth planet from space",
+    "solar system sun surface glowing",
+    "solar system sunlight over clouds"
+  ],
+  "clips": [
+    [
+      7605272,
+      39431106
+    ],
+    [
+      20349276,
+      20349219
+    ],
+    [
+      37944582,
+      11784745
+    ],
+    [
+      12139638,
+      12114126
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "나머지 행성 7개를 합친 것보다 무거운 행성, 태양까지 흔든다",
+      "description": "태양계의 여덟 행성은 모두 같은 방향으로, 거의 한 평면 위에서 태양을 돕니다. 회전하던 원반 하나에서 생겨났기 때문입니다. 목성 하나의 질량은 나머지 일곱 행성을 다 합친 것의 약 2.5배입니다. 이렇게 무거운 목성과 태양이 함께 도는 질량중심은 태양 표면 바로 바깥에 있습니다. 지구까지 8분이면 오는 햇빛도 해왕성까지는 약 4시간이 걸립니다. #태양계 #우주 #목성 #천문학"
+    },
+    "ja": {
+      "title": "他の惑星7つを合わせたより重い惑星は、太陽まで揺らしている",
+      "description": "太陽系の8つの惑星は、すべて同じ向きに、ほぼ同じ平面の上で太陽を回っています。回転する一枚の円盤から生まれたなごりです。木星の質量は他の7つの惑星を合わせた約2.5倍。その重さで、太陽は表面のすぐ外にある共通重心のまわりを回っています。地球まで約8分で届く太陽の光も、海王星までは約4時間かかります。 #太陽系 #宇宙 #木星 #天文学"
+    },
+    "es": {
+      "title": "Un planeta pesa más que los otros 7 juntos y hace tambalear al Sol",
+      "description": "Los ocho planetas giran alrededor del Sol en el mismo sentido y casi en un mismo plano, herencia del disco giratorio en el que se formaron. Júpiter tiene unas dos veces y media la masa de los otros siete planetas juntos, suficiente para hacer girar al Sol alrededor de un punto justo fuera de su superficie, y la luz del Sol tarda unas 4 horas en llegar a Neptuno. #sistemasolar #espacio #astronomia #jupiter #planetas"
+    },
+    "pt": {
+      "title": "Um planeta pesa mais que os outros 7 juntos e faz o Sol balançar",
+      "description": "Os oito planetas giram em torno do Sol no mesmo sentido e quase no mesmo plano, herança do disco giratório onde se formaram. Júpiter tem cerca de duas vezes e meia a massa dos outros sete planetas juntos, o suficiente para fazer o Sol girar em torno de um ponto logo além da sua superfície, e a luz do Sol leva cerca de 4 horas para chegar a Netuno. #sistemasolar #espaco #astronomia #jupiter #planetas"
+    },
+    "de": {
+      "title": "Ein Planet wiegt mehr als die anderen 7 zusammen und bringt die Sonne ins Wanken",
+      "description": "Alle acht Planeten umkreisen die Sonne in derselben Richtung und fast in einer Ebene, ein Erbe der rotierenden Scheibe, aus der sie entstanden sind. Jupiter hat etwa zweieinhalbmal so viel Masse wie die sieben anderen Planeten zusammen, genug, um die Sonne um einen Punkt knapp außerhalb ihrer Oberfläche kreisen zu lassen, und Sonnenlicht braucht rund 4 Stunden bis zum Neptun. #sonnensystem #weltraum #astronomie #jupiter #planeten"
+    },
+    "fr": {
+      "title": "Une planète pèse plus que les 7 autres réunies et fait vaciller le Soleil",
+      "description": "Les huit planètes tournent autour du Soleil dans le même sens et presque dans un même plan, héritage du disque en rotation où elles sont nées. Jupiter a environ deux fois et demie la masse des sept autres planètes réunies, assez pour faire tourner le Soleil autour d'un point situé juste au-delà de sa surface, et la lumière du Soleil met environ 4 heures pour atteindre Neptune. #systemesolaire #espace #astronomie #jupiter #planetes"
+    },
+    "hi": {
+      "title": "बाकी 7 ग्रह मिलकर भी इससे हल्के हैं, यह ग्रह सूर्य तक को डगमगा देता है",
+      "description": "सौरमंडल के आठों ग्रह एक ही दिशा में और लगभग एक ही समतल में सूर्य की परिक्रमा करते हैं, क्योंकि वे एक ही घूमती डिस्क से बने थे। बृहस्पति का द्रव्यमान बाकी सातों ग्रहों के कुल द्रव्यमान का करीब ढाई गुना है, इतना कि सूर्य अपनी सतह के ठीक बाहर के एक बिंदु के चारों ओर घूमता है, और सूर्य की रोशनी को नेपच्यून तक पहुंचने में करीब 4 घंटे लगते हैं। #सौरमंडल #बृहस्पति #अंतरिक्ष #space #astronomy"
+    }
+  },
+  "captions": {
+    "ko": [
+      "행성 하나가 너무 무거워서 태양까지 흔들리게 만듭니다.",
+      "여덟 행성은 모두 같은 방향으로, 거의 하나의 평평한 면 위에서 태양을 돕니다. 회전하던 원반 하나에서 생겨났기 때문인데, 가장 많이 기울어진 수성도 겨우 7도 벗어나 있습니다.",
+      "단연 가장 무거운 건 목성입니다. 질량이 지구의 약 318배로, 나머지 일곱 행성을 다 합친 것의 약 2.5배입니다.",
+      "이 질량은 태양까지 움직입니다. 목성과 태양은 태양 표면 바로 바깥에 있는 공동의 균형점, 질량중심을 함께 도는데, 그래서 태양은 약 12년에 한 번씩 그 점 주위를 흔들리며 돕니다.",
+      "햇빛은 약 8분이면 지구에 닿지만, 가장 먼 행성인 해왕성은 45억 킬로미터 밖, 약 30배 먼 곳을 돌아서 빛으로도 약 4시간이 걸립니다.",
+      "빛의 속도로 4시간을 가도 아직 우리 동네 안입니다."
+    ],
+    "ja": [
+      "ある惑星は重すぎて、太陽まで揺らしてしまいます。",
+      "8つの惑星はすべて同じ向きに、ほぼ一枚の平らな面の上で太陽を回っています。回転する一つの円盤から生まれたためで、いちばん傾いている水星でもずれはわずか7度です。",
+      "ずば抜けて重いのが木星で、質量は地球の約318倍。これは他の7つの惑星を全部合わせた質量の約2.5倍にあたります。",
+      "その質量は太陽さえ動かします。木星と太陽は、太陽の表面のすぐ外にある共通のつり合いの点、共通重心のまわりを回っていて、太陽は約12年ごとにその周りを揺れるように回ります。",
+      "太陽の光は約8分で地球に届きますが、いちばん遠い惑星の海王星は45億キロ先、約30倍も遠くを回っているので、光でも約4時間かかります。",
+      "光の速さで4時間。それでもまだ、私たちのご近所です。"
+    ],
+    "es": [
+      "Un planeta es tan pesado que hace que el Sol se tambalee.",
+      "Los ocho planetas giran alrededor del Sol en el mismo sentido y casi en un mismo plano, porque se formaron a partir de un único disco giratorio; Mercurio, el más inclinado, se desvía apenas 7 grados.",
+      "Júpiter es, con diferencia, el peso pesado, con unas 318 veces la masa de la Tierra, aproximadamente dos veces y media la masa de los otros siete planetas juntos.",
+      "Esa masa mueve incluso al Sol: Júpiter y el Sol giran alrededor de un punto de equilibrio común, el baricentro, situado justo fuera de la superficie solar, así que el Sol se bambolea a su alrededor cada 12 años aproximadamente.",
+      "La luz del Sol llega a la Tierra en unos 8 minutos, pero Neptuno, el planeta más lejano, orbita a 4500 millones de kilómetros, unas 30 veces más lejos, así que a la luz le toma unas 4 horas llegar.",
+      "Cuatro horas a la velocidad de la luz, y seguimos en el patio de casa."
+    ],
+    "pt": [
+      "Um planeta é tão pesado que faz o Sol balançar.",
+      "Os oito planetas giram em torno do Sol no mesmo sentido e quase em um único plano, porque se formaram a partir de um mesmo disco giratório; Mercúrio, o mais inclinado, desvia só 7 graus.",
+      "Júpiter é de longe o peso-pesado, com cerca de 318 vezes a massa da Terra, o que equivale a umas duas vezes e meia a massa dos outros sete planetas juntos.",
+      "Essa massa move até o Sol: Júpiter e o Sol giram em torno de um ponto de equilíbrio comum, o baricentro, logo além da superfície solar, então o Sol balança em volta dele a cada 12 anos, mais ou menos.",
+      "A luz do Sol chega à Terra em cerca de 8 minutos, mas Netuno, o planeta mais distante, orbita a 4,5 bilhões de quilômetros, umas 30 vezes mais longe, então a luz leva cerca de 4 horas para chegar lá.",
+      "Quatro horas na velocidade da luz, e ainda estamos no quintal de casa."
+    ],
+    "de": [
+      "Ein Planet ist so schwer, dass er die Sonne ins Wanken bringt.",
+      "Alle acht Planeten umkreisen die Sonne in derselben Richtung und fast in einer flachen Ebene, weil sie aus einer einzigen rotierenden Scheibe entstanden sind; Merkur, der am stärksten geneigte, weicht nur 7 Grad ab.",
+      "Jupiter ist mit Abstand das Schwergewicht: Er hat rund 318-mal so viel Masse wie die Erde, etwa zweieinhalbmal so viel wie alle sieben anderen Planeten zusammen.",
+      "Diese Masse bewegt sogar die Sonne: Jupiter und Sonne kreisen um einen gemeinsamen Schwerpunkt, das Baryzentrum, knapp außerhalb der Sonnenoberfläche, deshalb schlingert die Sonne etwa alle 12 Jahre einmal darum herum.",
+      "Sonnenlicht erreicht die Erde in etwa 8 Minuten, doch Neptun, der fernste Planet, kreist 4,5 Milliarden Kilometer draußen, rund 30-mal weiter weg, deshalb braucht das Licht etwa 4 Stunden.",
+      "Vier Stunden mit Lichtgeschwindigkeit, und wir sind immer noch im eigenen Garten."
+    ],
+    "fr": [
+      "Une planète est si lourde qu'elle fait vaciller le Soleil.",
+      "Les huit planètes tournent autour du Soleil dans le même sens et presque dans un même plan, car elles sont nées d'un seul disque en rotation ; Mercure, la plus inclinée, ne s'en écarte que de 7 degrés.",
+      "Jupiter est de loin le poids lourd, avec environ 318 fois la masse de la Terre, soit à peu près deux fois et demie la masse des sept autres planètes réunies.",
+      "Cette masse fait même bouger le Soleil : Jupiter et le Soleil tournent autour d'un point d'équilibre commun, le barycentre, situé juste au-delà de la surface solaire, si bien que le Soleil oscille autour de lui environ tous les 12 ans.",
+      "La lumière du Soleil atteint la Terre en 8 minutes environ, mais Neptune, la planète la plus lointaine, orbite à 4,5 milliards de kilomètres, environ 30 fois plus loin, si bien que la lumière met environ 4 heures pour y arriver.",
+      "Quatre heures à la vitesse de la lumière, et on est toujours dans notre jardin."
+    ],
+    "hi": [
+      "एक ग्रह इतना भारी है कि वह सूर्य को भी डगमगा देता है।",
+      "आठों ग्रह एक ही दिशा में और लगभग एक ही सपाट समतल में सूर्य की परिक्रमा करते हैं, क्योंकि वे एक ही घूमती डिस्क से बने थे; सबसे ज्यादा झुका बुध भी सिर्फ 7 डिग्री हटा हुआ है।",
+      "बृहस्पति सबसे भारी है, और बहुत आगे है: उसका द्रव्यमान धरती का करीब 318 गुना है, जो बाकी सातों ग्रहों के कुल द्रव्यमान का लगभग ढाई गुना है।",
+      "यह द्रव्यमान सूर्य को भी हिला देता है: बृहस्पति और सूर्य एक साझा संतुलन बिंदु, बैरीसेंटर, की परिक्रमा करते हैं, जो सूर्य की सतह के ठीक बाहर है, इसलिए सूर्य लगभग हर 12 साल में उसके चारों ओर डगमगाते हुए एक चक्कर लगाता है।",
+      "सूर्य की रोशनी धरती तक करीब 8 मिनट में पहुंचती है, लेकिन सबसे दूर का ग्रह नेपच्यून 4.5 अरब किलोमीटर दूर परिक्रमा करता है, यानी करीब 30 गुना दूर, इसलिए रोशनी को वहां पहुंचने में करीब 4 घंटे लगते हैं।",
+      "रोशनी की रफ्तार से 4 घंटे, फिर भी हम अपने ही आंगन में हैं।"
+    ]
+  }
+}
