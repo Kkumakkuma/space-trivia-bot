@@ -16,9 +16,9 @@
     "In 1977, Ohio State's Big Ear telescope caught a strong signal throughout its 72-second view of that spot; volunteer Jerry Ehman wrote 'Wow!' beside it, and it has never been heard again."
   ],
   "outro": "And Earth's biggest ears are still listening.",
-  "title_en": "Radio Telescopes: Earth's Biggest Ears and the 72-Second Signal That Never Came Back",
-  "title_ko": "우주에 귀 기울이는 전파망원경, 다시 잡히지 않은 72초 신호",
-  "description_en": "In 1932 Karl Jansky caught the first radio waves from space. Today China's 500-meter FAST is the biggest single dish, Arecibo collapsed in 2020, and the 72-second Wow! signal from 1977 has never been detected again. #radiotelescope #space #astronomy #wowsignal #seti",
+  "title_en": "Radio Telescopes: Earth's Biggest Ears and the Wow! Signal That Never Came Back",
+  "title_ko": "우주에 귀 기울이는 전파망원경, 다시 잡히지 않은 Wow! 신호",
+  "description_en": "In 1932 Karl Jansky caught the first radio waves from space. Today China's 500-meter FAST is the biggest single dish, Arecibo collapsed in 2020, and the Wow! signal, caught in 1977 during a 72-second observation window, has never been detected again. #radiotelescope #space #astronomy #wowsignal #seti",
   "description_ko": "1932년 칼 잰스키가 우주에서 오는 전파를 처음 잡아낸 뒤로 전파망원경은 점점 커졌습니다. 지금 가장 큰 단일 접시는 지름 500m인 중국 FAST이고, 그 전 기록을 갖고 있던 아레시보는 2020년에 무너졌습니다. 1977년 72초 동안 포착된 'Wow!' 신호는 그 뒤로 다시 잡히지 않았습니다. #전파망원경 #우주 #천문학 #와우신호",
   "comment": "What do you think the Wow! signal really was?",
   "tags": [
@@ -71,32 +71,32 @@
   ],
   "localizations": {
     "ko": {
-      "title": "우주에 귀 기울이는 전파망원경, 다시 잡히지 않은 72초 신호",
+      "title": "우주에 귀 기울이는 전파망원경, 다시 잡히지 않은 Wow! 신호",
       "description": "1932년 칼 잰스키가 우주에서 오는 전파를 처음 잡아낸 뒤로 전파망원경은 점점 커졌습니다. 지금 가장 큰 단일 접시는 지름 500m인 중국 FAST이고, 그 전 기록을 갖고 있던 아레시보는 2020년에 무너졌습니다. 1977년 72초 동안 포착된 'Wow!' 신호는 그 뒤로 다시 잡히지 않았습니다. #전파망원경 #우주 #천문학 #와우신호"
     },
     "ja": {
-      "title": "宇宙に耳を澄ます電波望遠鏡と、二度と届かなかった72秒の「Wow!シグナル」",
+      "title": "宇宙に耳を澄ます電波望遠鏡と、二度と届かなかった「Wow!シグナル」",
       "description": "1932年にカール・ジャンスキーが宇宙からの電波を初めてとらえてから、電波望遠鏡は大型化を続けてきました。いま最大の単一口径望遠鏡は直径500メートルの中国FASTで、それまで記録を持っていたアレシボは2020年に崩壊しました。1977年に72秒間とらえられた「Wow!シグナル」は、その後一度も観測されていません。#電波望遠鏡 #宇宙 #天文学 #Wowシグナル"
     },
     "es": {
-      "title": "Radiotelescopios: los mayores oídos de la Tierra y la señal de 72 segundos que nunca volvió",
-      "description": "En 1932, Karl Jansky captó las primeras ondas de radio del espacio. Hoy el FAST chino, de 500 metros, es el radiotelescopio de un solo plato más grande, Arecibo se derrumbó en 2020 y la señal Wow! de 72 segundos, captada en 1977, nunca se ha vuelto a detectar. #radiotelescopio #espacio #astronomia #seti"
+      "title": "Radiotelescopios: los mayores oídos de la Tierra y la señal Wow! que nunca volvió",
+      "description": "En 1932, Karl Jansky captó las primeras ondas de radio del espacio. Hoy el FAST chino, de 500 metros, es el radiotelescopio de un solo plato más grande, Arecibo se derrumbó en 2020 y la señal Wow!, captada en 1977 durante una ventana de observación de 72 segundos, nunca se ha vuelto a detectar. #radiotelescopio #espacio #astronomia #seti"
     },
     "pt": {
-      "title": "Radiotelescópios: os maiores ouvidos da Terra e o sinal de 72 segundos que nunca mais voltou",
-      "description": "Em 1932, Karl Jansky captou as primeiras ondas de rádio vindas do espaço. Hoje o FAST, da China, com 500 metros, é o maior radiotelescópio de prato único, Arecibo desabou em 2020, e o sinal Wow!, de 72 segundos, captado em 1977, nunca mais foi detectado. #radiotelescopio #espaco #astronomia #seti"
+      "title": "Radiotelescópios: os maiores ouvidos da Terra e o sinal Wow! que nunca mais voltou",
+      "description": "Em 1932, Karl Jansky captou as primeiras ondas de rádio vindas do espaço. Hoje o FAST, da China, com 500 metros, é o maior radiotelescópio de prato único, Arecibo desabou em 2020, e o sinal Wow!, captado em 1977 durante uma janela de observação de 72 segundos, nunca mais foi detectado. #radiotelescopio #espaco #astronomia #seti"
     },
     "de": {
-      "title": "Radioteleskope: die größten Ohren der Erde und das 72-Sekunden-Signal, das nie wiederkam",
-      "description": "1932 fing Karl Jansky die ersten Radiowellen aus dem All auf. Heute ist Chinas 500 Meter breites FAST die größte einzelne Radioschüssel, Arecibo stürzte 2020 ein, und das 72 Sekunden lange Wow!-Signal von 1977 wurde nie wieder empfangen. #radioteleskop #weltraum #astronomie #wowsignal #seti"
+      "title": "Radioteleskope: die größten Ohren der Erde und das Wow!-Signal, das nie wiederkam",
+      "description": "1932 fing Karl Jansky die ersten Radiowellen aus dem All auf. Heute ist Chinas 500 Meter breites FAST die größte einzelne Radioschüssel, Arecibo stürzte 2020 ein, und das Wow!-Signal, das 1977 während eines 72-sekündigen Beobachtungsfensters registriert wurde, wurde nie wieder empfangen. #radioteleskop #weltraum #astronomie #wowsignal #seti"
     },
     "fr": {
-      "title": "Les plus grandes oreilles de la Terre et le signal de 72 secondes qui n'est jamais revenu",
-      "description": "En 1932, Karl Jansky a capté les premières ondes radio venues de l'espace. Aujourd'hui, le FAST chinois, large de 500 mètres, est le plus grand radiotélescope à antenne unique, Arecibo s'est effondré en 2020, et le signal Wow! de 72 secondes, capté en 1977, n'a jamais été détecté de nouveau. #radiotelescope #espace #astronomie #seti"
+      "title": "Les plus grandes oreilles de la Terre et le signal Wow! qui n'est jamais revenu",
+      "description": "En 1932, Karl Jansky a capté les premières ondes radio venues de l'espace. Aujourd'hui, le FAST chinois, large de 500 mètres, est le plus grand radiotélescope à antenne unique, Arecibo s'est effondré en 2020, et le signal Wow!, capté en 1977 pendant une fenêtre d'observation de 72 secondes, n'a jamais été détecté de nouveau. #radiotelescope #espace #astronomie #seti"
     },
     "hi": {
-      "title": "रेडियो टेलीस्कोप: धरती के सबसे बड़े कान और 72 सेकंड का वह सिग्नल जो फिर कभी नहीं लौटा",
-      "description": "1932 में कार्ल जांस्की ने अंतरिक्ष से आई पहली रेडियो तरंगें पकड़ीं। आज चीन का 500 मीटर चौड़ा FAST सबसे बड़ा सिंगल डिश रेडियो टेलीस्कोप है, अरेसिबो 2020 में ढह गया, और 1977 में पकड़ा गया 72 सेकंड का Wow! सिग्नल फिर कभी नहीं मिला। #रेडियोटेलीस्कोप #अंतरिक्ष #खगोलविज्ञान #space #astronomy"
+      "title": "रेडियो टेलीस्कोप: धरती के सबसे बड़े कान और वह Wow! सिग्नल जो फिर कभी नहीं लौटा",
+      "description": "1932 में कार्ल जांस्की ने अंतरिक्ष से आई पहली रेडियो तरंगें पकड़ीं। आज चीन का 500 मीटर चौड़ा FAST सबसे बड़ा सिंगल डिश रेडियो टेलीस्कोप है, अरेसिबो 2020 में ढह गया, और 1977 में 72 सेकंड के अवलोकन के दौरान पकड़ा गया Wow! सिग्नल फिर कभी नहीं मिला। #रेडियोटेलीस्कोप #अंतरिक्ष #खगोलविज्ञान #space #astronomy"
     }
   },
   "captions": {
