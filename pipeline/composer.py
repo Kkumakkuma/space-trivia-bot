@@ -787,6 +787,14 @@ def compose(
             grp = bg_groups[j] or []
             # 클립 하나가 0.9초 미만이 될 만큼 잘게 쪼개지 않는다(깜빡임 방지).
             m = max(1, min(len(grp), int(span // 0.9) or 1))
+            if m < len(grp):
+                # 2026-10-18: 컷을 줄여야 하면 대본 그림(img:)을 먼저 남기고 남은 자리를 원래 순서의 영상으로 채운다
+                # (필수 그림이 뒤에 있다가 잘려 나가지 않게 — codex 검토).
+                def _is_img(g):
+                    return isinstance(g, (list, tuple)) and len(g) > 1 and str(g[1]).startswith("img:")
+                keep = [i for i, g in enumerate(grp) if _is_img(g)][:m]
+                rest = [i for i in range(len(grp)) if i not in keep][:m - len(keep)]
+                grp = [grp[i] for i in sorted(keep + rest)]
             each = span / m
             for c in range(m):
                 bg_for_seg.append(grp[c])
