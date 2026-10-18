@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "moon_drift",
+  "display": "Moon",
+  "single": "Moon",
+  "category": "object",
+  "angle": "future_events",
+  "format": "classic_trivia",
+  "hook_line": "The Moon is drifting away from us, about as fast as your fingernails grow.",
+  "hook": "THE MOON IS DRIFTING AWAY",
+  "intro": "The Moon is drifting away from us, about as fast as your fingernails grow.",
+  "facts": [
+    "Apollo astronauts left mirrors on the Moon starting in 1969, and by timing laser pulses bounced off them, scientists found it moves about 3.8 centimeters farther away every year.",
+    "The cause is tides: the Moon raises a bulge in Earth's oceans, Earth's spin carries that bulge slightly ahead, and the bulge tugs the Moon forward, slowly widening its orbit.",
+    "That same drag slows Earth's spin, so days keep getting longer: growth lines in fossil corals about 390 million years old show a year then had about 400 days.",
+    "And when the Moon formed about 4.5 billion years ago, models suggest it was many times closer than today, looming far larger in the sky over a young, fast-spinning Earth."
+  ],
+  "outro": "Goodbye, one fingernail at a time.",
+  "title_en": "The Moon Is Drifting Away From Earth, About as Fast as Your Fingernails Grow",
+  "title_ko": "달은 지금도 지구에서 멀어지는 중, 손톱이 자라는 속도로",
+  "description_en": "Laser pulses bounced off mirrors that Apollo astronauts left on the Moon show it drifts about 3.8 centimeters farther from Earth every year. Tides are behind it, they are slowly making our days longer, and fossil corals record years of about 400 days. #moon #space #astronomy #apollo #tides",
+  "description_ko": "아폴로 우주인들이 달에 두고 온 거울에 레이저를 쏴 보면, 달은 해마다 약 3.8센티미터씩 지구에서 멀어지고 있습니다. 원인은 조석이고, 그 때문에 하루도 조금씩 길어져 산호 화석에는 1년이 약 400일이던 때가 남아 있습니다. #달 #우주 #천문학 #아폴로 #조석",
+  "comment": "Did you know the Moon was slowly moving away from us?",
+  "tags": [
+    "shorts",
+    "space",
+    "moon",
+    "apollo",
+    "lunar laser ranging",
+    "tides",
+    "astronomy",
+    "did you know",
+    "trivia",
+    "earth"
+  ],
+  "pexels_keywords": [
+    "Moon",
+    "Moon night sky",
+    "Moon close up",
+    "Moon surface craters",
+    "Moon rising",
+    "Moon over ocean",
+    "Moon and Earth from space",
+    "Moon full moon",
+    "Moon telescope view",
+    "Moon time lapse"
+  ],
+  "fact_keywords": [
+    "Moon surface close up",
+    "Moon over ocean waves",
+    "Moon rising time lapse",
+    "Moon and Earth from space"
+  ],
+  "clips": [
+    [
+      36961921,
+      37029016
+    ],
+    [
+      6924608,
+      9974588
+    ],
+    [
+      39660819,
+      12172194
+    ],
+    [
+      39431915,
+      36991202
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "달은 지금도 지구에서 멀어지는 중, 손톱이 자라는 속도로",
+      "description": "아폴로 우주인들이 달에 두고 온 거울에 레이저를 쏴 보면, 달은 해마다 약 3.8센티미터씩 지구에서 멀어지고 있습니다. 원인은 조석이고, 그 때문에 하루도 조금씩 길어져 산호 화석에는 1년이 약 400일이던 때가 남아 있습니다. #달 #우주 #천문학 #아폴로 #조석"
+    },
+    "ja": {
+      "title": "月は今も地球から遠ざかっている、爪が伸びるのと同じくらいの速さで",
+      "description": "アポロの宇宙飛行士が月に置いた鏡にレーザーを当てて測ると、月は毎年約3.8センチずつ地球から遠ざかっています。原因は潮汐で、そのせいで1日も少しずつ長くなり、サンゴの化石には1年が約400日だった時代が残っています。 #月 #宇宙 #天文学 #アポロ #潮汐"
+    },
+    "es": {
+      "title": "La Luna se aleja de la Tierra, más o menos a la velocidad a la que crecen tus uñas",
+      "description": "Los pulsos láser que rebotan en los espejos que dejaron los astronautas del Apolo muestran que la Luna se aleja unos 3,8 centímetros de la Tierra cada año. La culpa es de las mareas, que además alargan poco a poco nuestros días, y los corales fósiles registran años de unos 400 días. #luna #espacio #astronomia #apolo #mareas"
+    },
+    "pt": {
+      "title": "A Lua está se afastando da Terra, mais ou menos na velocidade em que suas unhas crescem",
+      "description": "Pulsos de laser refletidos nos espelhos que os astronautas da Apollo deixaram na Lua mostram que ela se afasta cerca de 3,8 centímetros da Terra por ano. A culpa é das marés, que também deixam nossos dias mais longos aos poucos, e corais fósseis registram anos de uns 400 dias. #lua #espaco #astronomia #apollo #mares"
+    },
+    "de": {
+      "title": "Der Mond entfernt sich von der Erde, ungefähr so schnell, wie Fingernägel wachsen",
+      "description": "Laserpulse, die von Spiegeln der Apollo-Astronauten auf dem Mond zurückkommen, zeigen: Der Mond entfernt sich jedes Jahr etwa 3,8 Zentimeter von der Erde. Schuld sind die Gezeiten, die auch unsere Tage langsam verlängern, und fossile Korallen zeigen Jahre mit rund 400 Tagen. #mond #weltraum #astronomie #apollo #gezeiten"
+    },
+    "fr": {
+      "title": "La Lune s'éloigne de la Terre, à peu près à la vitesse à laquelle poussent vos ongles",
+      "description": "Des impulsions laser renvoyées par les miroirs laissés sur la Lune par les astronautes d'Apollo montrent qu'elle s'éloigne de la Terre d'environ 3,8 centimètres par an. Les marées en sont la cause, elles allongent aussi lentement nos journées, et des coraux fossiles gardent la trace d'années d'environ 400 jours. #lune #espace #astronomie #apollo #marees"
+    },
+    "hi": {
+      "title": "चाँद धरती से दूर जा रहा है, लगभग उसी रफ़्तार से जिससे नाख़ून बढ़ते हैं",
+      "description": "अपोलो अंतरिक्ष यात्रियों के चाँद पर छोड़े दर्पणों से लौटती लेज़र किरणें बताती हैं कि चाँद हर साल लगभग 3.8 सेंटीमीटर धरती से दूर जा रहा है। इसकी वजह ज्वार है, जो हमारे दिनों को भी धीरे-धीरे लंबा कर रहा है, और मूंगा जीवाश्मों में लगभग 400 दिन वाले साल दर्ज हैं। #चाँद #अंतरिक्ष #खगोलविज्ञान #अपोलो #ज्वार"
+    }
+  },
+  "captions": {
+    "ko": [
+      "달은 지금도 지구에서 멀어지고 있습니다. 손톱이 자라는 속도와 비슷하게요.",
+      "1969년부터 아폴로 우주인들이 달에 거울을 두고 왔고, 거기서 튕겨 돌아오는 레이저의 시간을 재 보니 달은 해마다 약 3.8센티미터씩 멀어지고 있었습니다.",
+      "원인은 조석입니다. 달이 지구의 바다를 부풀리고, 지구의 자전이 그 부푼 곳을 살짝 앞으로 끌고 가면, 그 부푼 곳이 달을 앞쪽으로 당겨 궤도가 조금씩 넓어집니다.",
+      "같은 마찰로 지구 자전이 느려져 하루가 계속 길어지는데, 약 3억 9천만 년 된 산호 화석의 성장선을 보면 그때 1년은 약 400일이었습니다.",
+      "그리고 약 45억 년 전 달이 처음 생겼을 때는 지금보다 몇 배나 가까워서, 빠르게 돌던 젊은 지구의 하늘에 훨씬 크게 떠 있었을 것으로 모형은 봅니다.",
+      "손톱 자라는 만큼씩, 안녕."
+    ],
+    "ja": [
+      "月は今も地球から遠ざかっています。爪が伸びるのと同じくらいの速さで。",
+      "1969年からアポロの宇宙飛行士たちが月に鏡を置き、そこで跳ね返るレーザーの往復時間を測ると、月は毎年約3.8センチずつ遠ざかっていました。",
+      "原因は潮汐です。月が地球の海をふくらませ、地球の自転がそのふくらみを少し先へ運ぶと、そのふくらみが月を前へ引っぱり、軌道が少しずつ広がっていくのです。",
+      "同じブレーキで地球の自転は遅くなり、1日はどんどん長くなっています。約3億9000万年前のサンゴの化石の成長線を見ると、当時の1年は約400日でした。",
+      "そして約45億年前に月が生まれたとき、今より何倍も近くにあり、速く自転する若い地球の空にずっと大きく浮かんでいたとモデルは示しています。",
+      "爪が伸びる速さで、さようなら。"
+    ],
+    "es": [
+      "La Luna se está alejando de nosotros, más o menos a la velocidad a la que crecen tus uñas.",
+      "Los astronautas del Apolo dejaron espejos en la Luna a partir de 1969, y al medir cuánto tardan en volver los pulsos láser, los científicos vieron que se aleja unos 3,8 centímetros cada año.",
+      "La causa son las mareas: la Luna levanta un abultamiento en los océanos, la rotación de la Tierra lo adelanta un poco y ese abultamiento tira de la Luna hacia delante, ampliando poco a poco su órbita.",
+      "Ese mismo frenado hace que la Tierra gire más despacio, así que los días se alargan: las líneas de crecimiento de corales fósiles de unos 390 millones de años muestran que un año tenía unos 400 días.",
+      "Y cuando la Luna se formó, hace unos 4.500 millones de años, los modelos indican que estaba muchas veces más cerca, enorme en el cielo de una Tierra joven que giraba rápido.",
+      "Al ritmo de tus uñas, adiós."
+    ],
+    "pt": [
+      "A Lua está se afastando de nós, mais ou menos na velocidade em que suas unhas crescem.",
+      "Os astronautas da Apollo deixaram espelhos na Lua a partir de 1969 e, medindo o tempo de ida e volta de pulsos de laser, os cientistas viram que ela se afasta cerca de 3,8 centímetros por ano.",
+      "A causa são as marés: a Lua forma um bojo nos oceanos da Terra, a rotação da Terra leva esse bojo um pouco à frente e ele puxa a Lua para a frente, alargando aos poucos a órbita dela.",
+      "Esse mesmo freio deixa a rotação da Terra mais lenta, então os dias ficam mais longos: linhas de crescimento em corais fósseis de cerca de 390 milhões de anos mostram anos de uns 400 dias.",
+      "E quando a Lua se formou, há cerca de 4,5 bilhões de anos, os modelos indicam que ela estava muitas vezes mais perto, enorme no céu de uma Terra jovem que girava rápido.",
+      "No ritmo das suas unhas, adeus."
+    ],
+    "de": [
+      "Der Mond entfernt sich von uns, ungefähr so schnell, wie deine Fingernägel wachsen.",
+      "Apollo-Astronauten haben ab 1969 Spiegel auf dem Mond hinterlassen, und mit zurückgeworfenen Laserpulsen haben Forschende gemessen, dass er sich jedes Jahr etwa 3,8 Zentimeter weiter entfernt.",
+      "Schuld sind die Gezeiten: Der Mond hebt die Ozeane zu einem Flutberg an, die Erddrehung trägt ihn ein Stück voraus, und dieser Flutberg zieht den Mond nach vorn, sodass seine Bahn langsam größer wird.",
+      "Dieselbe Bremse verlangsamt die Erddrehung, die Tage werden also länger: Wachstumslinien in etwa 390 Millionen Jahre alten fossilen Korallen zeigen, dass ein Jahr damals rund 400 Tage hatte.",
+      "Und als der Mond vor etwa 4,5 Milliarden Jahren entstand, war er laut Modellen um ein Vielfaches näher und hing riesig am Himmel einer jungen, schnell rotierenden Erde.",
+      "Langsam wie wachsende Fingernägel: auf Wiedersehen."
+    ],
+    "fr": [
+      "La Lune s'éloigne de nous, à peu près à la vitesse à laquelle poussent vos ongles.",
+      "Les astronautes d'Apollo ont laissé des miroirs sur la Lune à partir de 1969, et en chronométrant des impulsions laser renvoyées, les scientifiques ont mesuré qu'elle s'éloigne d'environ 3,8 centimètres par an.",
+      "La cause, ce sont les marées : la Lune soulève un renflement dans les océans, la rotation de la Terre le porte un peu en avant, et ce renflement tire la Lune vers l'avant, élargissant peu à peu son orbite.",
+      "Ce même freinage ralentit la rotation de la Terre, donc les jours s'allongent : les stries de croissance de coraux fossiles vieux d'environ 390 millions d'années montrent des années d'environ 400 jours.",
+      "Et quand la Lune s'est formée, il y a environ 4,5 milliards d'années, les modèles indiquent qu'elle était bien plus proche, immense dans le ciel d'une jeune Terre qui tournait vite.",
+      "Au rythme où poussent vos ongles, au revoir."
+    ],
+    "hi": [
+      "चाँद हमसे दूर खिसक रहा है, लगभग उसी रफ़्तार से जिससे आपके नाख़ून बढ़ते हैं।",
+      "1969 से अपोलो अंतरिक्ष यात्रियों ने चाँद पर दर्पण छोड़े, और उनसे लौटती लेज़र किरणों का समय मापकर वैज्ञानिकों ने पाया कि चाँद हर साल लगभग 3.8 सेंटीमीटर दूर जा रहा है।",
+      "इसकी वजह ज्वार है: चाँद पृथ्वी के महासागरों में उभार बनाता है, पृथ्वी का घूमना उस उभार को थोड़ा आगे ले जाता है, और वह उभार चाँद को आगे की ओर खींचता है, जिससे उसकी कक्षा धीरे-धीरे बड़ी होती जाती है।",
+      "यही रुकावट पृथ्वी के घूमने को धीमा करती है, इसलिए दिन लंबे होते जा रहे हैं: करीब 39 करोड़ साल पुराने मूंगा जीवाश्मों की वृद्धि रेखाएँ बताती हैं कि तब एक साल में लगभग 400 दिन होते थे।",
+      "और करीब 4.5 अरब साल पहले जब चाँद बना, तो मॉडल बताते हैं कि वह आज से कई गुना पास था और तेज़ी से घूमती युवा पृथ्वी के आसमान में बहुत बड़ा दिखता था।",
+      "नाख़ून बढ़ने की रफ़्तार से, अलविदा।"
+    ]
+  }
+}

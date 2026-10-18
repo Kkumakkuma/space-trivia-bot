@@ -1,0 +1,160 @@
+{
+  "author": "claude",
+  "animal_key": "milky_way_orbit",
+  "display": "Milky Way",
+  "single": "Milky Way",
+  "category": "object",
+  "angle": "scale_comparison",
+  "format": "top_records",
+  "hook_line": "Right now, you are racing around the galaxy at more than 800,000 kilometers an hour.",
+  "hook": "OVER 800,000 KM/H RIGHT NOW",
+  "intro": "Right now, you are racing around the galaxy at more than 800,000 kilometers an hour.",
+  "facts": [
+    "That is the Sun's speed around the center of the Milky Way, about 230 kilometers every second, and Earth and everything on it come along for the ride.",
+    "Even at that speed, one lap around the galaxy takes about 230 million years, a span astronomers call a galactic year, and the Sun has finished only about 20.",
+    "So one galactic year ago, the Triassic period was underway, the continents were joined as Pangaea, and the first dinosaurs were only just appearing.",
+    "We see the Milky Way as a glowing band across the sky because we sit inside its flat disk, in a small arm called the Orion Spur, roughly 26,000 light years from the center."
+  ],
+  "outro": "Enjoy the ride.",
+  "title_en": "You're Racing Around the Galaxy at Over 800,000 km/h, and One Lap Takes 230 Million Years",
+  "title_ko": "지금 당신은 시속 80만 km가 넘는 속도로 은하를 돌고 있다, 한 바퀴에 2억 3천만 년",
+  "description_en": "The Sun carries Earth around the center of the Milky Way at about 230 kilometers per second, yet one lap still takes about 230 million years. One galactic year ago, the first dinosaurs were just appearing. #milkyway #galaxy #space #astronomy #sun",
+  "description_ko": "태양은 지구를 태운 채 초속 약 230킬로미터로 우리은하 중심을 돌지만, 한 바퀴에 약 2억 3천만 년이 걸립니다. 한 은하년 전 지구에서는 첫 공룡이 막 나타나던 참이었습니다. #우리은하 #은하수 #우주 #천문학 #태양",
+  "comment": "Does it feel like you're moving at 800,000 km/h right now?",
+  "tags": [
+    "shorts",
+    "space",
+    "milky way",
+    "galaxy",
+    "galactic year",
+    "sun",
+    "astronomy",
+    "did you know",
+    "trivia",
+    "dinosaurs"
+  ],
+  "pexels_keywords": [
+    "Milky Way",
+    "Milky Way night sky",
+    "Milky Way galaxy",
+    "Milky Way time lapse",
+    "Milky Way stars",
+    "Milky Way over mountains",
+    "Milky Way core",
+    "Milky Way band",
+    "Milky Way desert night",
+    "Milky Way astrophotography"
+  ],
+  "fact_keywords": [
+    "Milky Way galaxy time lapse",
+    "Milky Way night sky stars",
+    "Milky Way over landscape",
+    "Milky Way band across sky"
+  ],
+  "clips": [
+    [
+      9245420,
+      40261183
+    ],
+    [
+      27638338,
+      19182136
+    ],
+    [
+      28920412,
+      30575359
+    ],
+    [
+      30560632,
+      39126332
+    ]
+  ],
+  "localizations": {
+    "ko": {
+      "title": "지금 당신은 시속 80만 km가 넘는 속도로 은하를 돌고 있다, 한 바퀴에 2억 3천만 년",
+      "description": "태양은 지구를 태운 채 초속 약 230킬로미터로 우리은하 중심을 돌지만, 한 바퀴에 약 2억 3천만 년이 걸립니다. 한 은하년 전 지구에서는 첫 공룡이 막 나타나던 참이었습니다. #우리은하 #은하수 #우주 #천문학 #태양"
+    },
+    "ja": {
+      "title": "あなたは今、時速80万キロ以上で銀河を回っている、1周は2億3000万年",
+      "description": "太陽は地球を乗せたまま秒速約230キロで天の川銀河の中心を回っていますが、1周には約2億3000万年かかります。1銀河年前、地球では最初の恐竜が現れ始めたばかりでした。 #天の川 #銀河 #宇宙 #天文学 #太陽"
+    },
+    "es": {
+      "title": "Giras alrededor de la galaxia a más de 800.000 km/h, y una vuelta dura 230 millones de años",
+      "description": "El Sol lleva a la Tierra alrededor del centro de la Vía Láctea a unos 230 kilómetros por segundo, y aun así una vuelta tarda unos 230 millones de años. Hace un año galáctico, los primeros dinosaurios apenas estaban apareciendo. #vialactea #galaxia #espacio #astronomia #sol"
+    },
+    "pt": {
+      "title": "Você gira pela galáxia a mais de 800 mil km/h, e uma volta leva 230 milhões de anos",
+      "description": "O Sol leva a Terra em volta do centro da Via Láctea a cerca de 230 quilômetros por segundo, e mesmo assim uma volta leva uns 230 milhões de anos. Um ano galáctico atrás, os primeiros dinossauros mal tinham surgido. #vialactea #galaxia #espaco #astronomia #sol"
+    },
+    "de": {
+      "title": "Du rast mit über 800.000 km/h um die Galaxie, und eine Runde dauert 230 Millionen Jahre",
+      "description": "Die Sonne trägt die Erde mit etwa 230 Kilometern pro Sekunde um das Zentrum der Milchstraße, und trotzdem dauert eine Runde rund 230 Millionen Jahre. Vor einem galaktischen Jahr tauchten gerade die ersten Dinosaurier auf. #milchstrasse #galaxie #weltraum #astronomie #sonne"
+    },
+    "fr": {
+      "title": "Vous filez autour de la galaxie à plus de 800 000 km/h, et un tour dure 230 millions d'années",
+      "description": "Le Soleil emporte la Terre autour du centre de la Voie lactée à environ 230 kilomètres par seconde, et pourtant un tour dure environ 230 millions d'années. Il y a une année galactique, les premiers dinosaures venaient juste d'apparaître. #voielactee #galaxie #espace #astronomie #soleil"
+    },
+    "hi": {
+      "title": "आप 8 लाख किमी/घंटा से ज़्यादा की रफ़्तार से आकाशगंगा घूम रहे हैं, एक चक्कर में 23 करोड़ साल",
+      "description": "सूरज पृथ्वी को साथ लेकर लगभग 230 किलोमीटर प्रति सेकंड की रफ़्तार से मिल्की वे के केंद्र का चक्कर लगाता है, फिर भी एक चक्कर में लगभग 23 करोड़ साल लगते हैं। एक गैलेक्टिक वर्ष पहले, शुरुआती डायनासोर बस दिखने लगे थे। #मिल्कीवे #आकाशगंगा #अंतरिक्ष #खगोलविज्ञान #सूरज"
+    }
+  },
+  "captions": {
+    "ko": [
+      "지금 이 순간에도 당신은 시속 80만 킬로미터가 넘는 속도로 은하를 돌고 있습니다.",
+      "태양이 우리은하 중심을 도는 속도가 초속 약 230킬로미터이고, 지구와 그 위의 모든 것이 함께 실려 갑니다.",
+      "그렇게 빨라도 은하를 한 바퀴 도는 데는 약 2억 3천만 년이 걸리고, 천문학자들은 이를 은하년이라 부르며, 태양은 지금까지 약 20바퀴밖에 돌지 못했습니다.",
+      "그러니까 한 은하년 전, 지구는 트라이아스기였고 대륙들은 판게아로 붙어 있었으며, 첫 공룡들이 막 나타나던 참이었습니다.",
+      "우리은하가 하늘을 가로지르는 빛의 띠로 보이는 건 우리가 납작한 원반 안, 오리온 돌출부라는 작은 팔에 있기 때문이고, 중심에서 약 2만 6천 광년 떨어져 있습니다.",
+      "즐거운 여행 되세요."
+    ],
+    "ja": [
+      "今この瞬間も、あなたは時速80万キロ以上で銀河を回っています。",
+      "それは天の川銀河の中心を回る太陽の速さで、秒速約230キロ。地球もその上のすべても一緒に運ばれています。",
+      "それほど速くても、銀河を1周するには約2億3000万年かかり、天文学者はこれを銀河年と呼びます。太陽はまだ約20周しかしていません。",
+      "つまり1銀河年前、地球は三畳紀で、大陸はパンゲアとしてひとつにつながり、最初の恐竜がちょうど現れ始めたころでした。",
+      "天の川が空を横切る光の帯に見えるのは、私たちが平たい円盤の中、オリオン腕と呼ばれる小さな腕にいるからで、中心からは約2万6000光年離れています。",
+      "どうぞ、旅を楽しんで。"
+    ],
+    "es": [
+      "Ahora mismo estás dando vueltas a la galaxia a más de 800.000 kilómetros por hora.",
+      "Es la velocidad del Sol alrededor del centro de la Vía Láctea, unos 230 kilómetros por segundo, y la Tierra y todo lo que hay en ella viajan con él.",
+      "Aun así, una vuelta a la galaxia dura unos 230 millones de años, lo que los astrónomos llaman un año galáctico, y el Sol solo ha completado unas 20.",
+      "Así que hace un año galáctico transcurría el Triásico, los continentes estaban unidos en Pangea y los primeros dinosaurios apenas estaban apareciendo.",
+      "Vemos la Vía Láctea como una franja brillante en el cielo porque estamos dentro de su disco plano, en un brazo pequeño llamado Espolón de Orión, a unos 26.000 años luz del centro.",
+      "Disfruta el viaje."
+    ],
+    "pt": [
+      "Agora mesmo você está girando ao redor da galáxia a mais de 800 mil quilômetros por hora.",
+      "Essa é a velocidade do Sol em torno do centro da Via Láctea, cerca de 230 quilômetros por segundo, e a Terra e tudo o que há nela vão junto.",
+      "Mesmo assim, uma volta pela galáxia leva cerca de 230 milhões de anos, o que os astrônomos chamam de ano galáctico, e o Sol completou só umas 20.",
+      "Então, um ano galáctico atrás, era o Triássico, os continentes estavam unidos na Pangeia e os primeiros dinossauros mal tinham surgido.",
+      "Vemos a Via Láctea como uma faixa brilhante no céu porque estamos dentro do seu disco achatado, num pequeno braço chamado Esporão de Órion, a uns 26 mil anos-luz do centro.",
+      "Aproveite a viagem."
+    ],
+    "de": [
+      "Gerade jetzt rast du mit mehr als 800.000 Kilometern pro Stunde um die Galaxie.",
+      "So schnell kreist die Sonne um das Zentrum der Milchstraße, etwa 230 Kilometer pro Sekunde, und die Erde mit allem darauf fährt mit.",
+      "Trotzdem dauert eine Runde um die Galaxie rund 230 Millionen Jahre, ein sogenanntes galaktisches Jahr, und die Sonne hat erst etwa 20 geschafft.",
+      "Vor einem galaktischen Jahr herrschte also die Trias, die Kontinente bildeten zusammen Pangaea, und die ersten Dinosaurier tauchten gerade erst auf.",
+      "Wir sehen die Milchstraße als leuchtendes Band am Himmel, weil wir in ihrer flachen Scheibe sitzen, in einem kleinen Arm namens Orion-Sporn, rund 26.000 Lichtjahre vom Zentrum entfernt.",
+      "Gute Fahrt."
+    ],
+    "fr": [
+      "En ce moment même, vous foncez autour de la galaxie à plus de 800 000 kilomètres à l'heure.",
+      "C'est la vitesse du Soleil autour du centre de la Voie lactée, environ 230 kilomètres par seconde, et la Terre et tout ce qu'elle porte suivent le mouvement.",
+      "Même à cette vitesse, un tour de la galaxie prend environ 230 millions d'années, ce que les astronomes appellent une année galactique, et le Soleil n'en a bouclé qu'une vingtaine.",
+      "Il y a une année galactique, c'était donc le Trias, les continents formaient la Pangée, et les premiers dinosaures venaient tout juste d'apparaître.",
+      "Nous voyons la Voie lactée comme une bande lumineuse dans le ciel parce que nous sommes dans son disque plat, dans un petit bras appelé l'éperon d'Orion, à environ 26 000 années-lumière du centre.",
+      "Bon voyage."
+    ],
+    "hi": [
+      "इस वक़्त भी आप आकाशगंगा के चारों ओर 8 लाख किलोमीटर प्रति घंटे से ज़्यादा की रफ़्तार से घूम रहे हैं।",
+      "यह मिल्की वे के केंद्र के चारों ओर सूरज की रफ़्तार है, लगभग 230 किलोमीटर प्रति सेकंड, और पृथ्वी व उस पर मौजूद सब कुछ साथ-साथ चलता है।",
+      "इतनी तेज़ी के बावजूद आकाशगंगा का एक चक्कर लगाने में लगभग 23 करोड़ साल लगते हैं, जिसे खगोलविद गैलेक्टिक वर्ष कहते हैं, और सूरज ने अब तक लगभग 20 ही चक्कर पूरे किए हैं।",
+      "यानी एक गैलेक्टिक वर्ष पहले ट्राइऐसिक काल चल रहा था, सारे महाद्वीप पैंजिया के रूप में जुड़े थे और पहले डायनासोर बस दिखने ही लगे थे।",
+      "हमें मिल्की वे आसमान में चमकती पट्टी जैसी दिखती है क्योंकि हम उसकी चपटी डिस्क के अंदर, ओरायन स्पर नाम की एक छोटी भुजा में हैं, केंद्र से लगभग 26,000 प्रकाश वर्ष दूर।",
+      "सफ़र का मज़ा लीजिए।"
+    ]
+  }
+}
