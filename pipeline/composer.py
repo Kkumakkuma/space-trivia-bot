@@ -692,11 +692,12 @@ def compose(
     raw_total = cursor - pad_between + end_pad
     # 2026-07-17 v4 (여행봇 검증분 이식): 적응형 길이. v3의 '항상 59.7s 강제'는 내레이션이
     # 짧게 나온 회차에서 마지막 클립 루프 + 무자막 데드타임을 만들었다(리텐션 붕괴).
-    # tail 3.5s — 7.0이면 cta_start=max(outro시작, total-7)이 outro 종료 후로 밀려 CTA-outro 음성 동기(v5)가 깨진다. 3.5면 CTA가 outro 발화 시작과 동시에 뜨고 노출 = outro(~2-3s)+3.5s.
+    # tail 0.9s(2026-10-18, 이전 3.5s) — 발화 뒤 여운 = end_pad 0.6 + 0.9 = 1.5s. 끝의 빈 시간을 줄여 평균 시청 %·다시 보기를 올린다
+    # (100만+ 쇼츠 벤치마크·분석 API 실측). CTA 는 아래에서 outro 발화 시작과 동시에 뜬다(v5 동기 유지).
     # 우주 내레이션 실측 ~46.6s → 보통 total ~53s+, 하한은 config.MIN_VIDEO_DURATION_SEC.
     cap_dur = final_video_duration()
     min_dur = float(getattr(_cfg, "MIN_VIDEO_DURATION_SEC", 40))
-    tail = 3.5  # 음성이 끝난 뒤 BGM/CTA가 남는 아웃트로 길이
+    tail = 0.9  # 음성이 끝난 뒤 BGM/CTA가 남는 아웃트로 길이(end_pad 0.6 별도)
     target = raw_total + tail
     if target > cap_dur:
         # 60초 방어: 넘치면 아웃트로(BGM 꼬리)를 줄여서 cap 안으로 넣는다.
@@ -835,7 +836,7 @@ def compose(
     # outro 음성은 timeline 마지막 라인. cta_start = outro_voice_start (자막=음성 동시 시작).
     last_tts_start = timeline[-1]["start"] if timeline else (total_dur - 4.0)
     last_tts_end = timeline[-1]["end"] if timeline else total_dur
-    cta_start = max(last_tts_start, total_dur - 7.0)  # 최소 7초 자리 보장 (CTA 보이는 시간)
+    cta_start = last_tts_start  # outro 발화 시작 = CTA 시작(2026-10-18: 고정 7초 창 제거, 노출 = outro + 1.5s)
     cta_dur = max(0.0, total_dur - cta_start)
     if cta_dur < 1.0:
         cta_dur = 0.0

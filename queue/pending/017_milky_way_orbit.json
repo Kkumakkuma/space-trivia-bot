@@ -16,8 +16,8 @@
     "We see the Milky Way as a glowing band across the sky because we sit inside its flat disk, in a small arm called the Orion Spur, roughly 26,000 light years from the center."
   ],
   "outro": "Enjoy the ride.",
-  "title_en": "You're Racing Around the Galaxy at Over 800,000 km/h, and One Lap Takes 230 Million Years",
-  "title_ko": "지금 당신은 시속 80만 km가 넘는 속도로 은하를 돌고 있다, 한 바퀴에 2억 3천만 년",
+  "title_en": "You're Orbiting the Galactic Center at Over 800,000 km/h 🤯",
+  "title_ko": "당신은 시속 80만 km가 넘는 속도로 은하 중심을 도는 중 🤯",
   "description_en": "The Sun carries Earth around the center of the Milky Way at about 230 kilometers per second, yet one lap still takes about 230 million years. One galactic year ago, the first dinosaurs were just appearing. #milkyway #galaxy #space #astronomy #sun",
   "description_ko": "태양은 지구를 태운 채 초속 약 230킬로미터로 우리은하 중심을 돌지만, 한 바퀴에 약 2억 3천만 년이 걸립니다. 한 은하년 전 지구에서는 첫 공룡이 막 나타나던 참이었습니다. #우리은하 #은하수 #우주 #천문학 #태양",
   "comment": "Does it feel like you're moving at 800,000 km/h right now?",
@@ -71,31 +71,31 @@
   ],
   "localizations": {
     "ko": {
-      "title": "지금 당신은 시속 80만 km가 넘는 속도로 은하를 돌고 있다, 한 바퀴에 2억 3천만 년",
+      "title": "당신은 시속 80만 km가 넘는 속도로 은하 중심을 도는 중 🤯",
       "description": "태양은 지구를 태운 채 초속 약 230킬로미터로 우리은하 중심을 돌지만, 한 바퀴에 약 2억 3천만 년이 걸립니다. 한 은하년 전 지구에서는 첫 공룡이 막 나타나던 참이었습니다. #우리은하 #은하수 #우주 #천문학 #태양"
     },
     "ja": {
-      "title": "あなたは今、時速80万キロ以上で銀河を回っている、1周は2億3000万年",
+      "title": "あなたは銀河の中心を時速80万キロ超で回っている 🤯",
       "description": "太陽は地球を乗せたまま秒速約230キロで天の川銀河の中心を回っていますが、1周には約2億3000万年かかります。1銀河年前、地球では最初の恐竜が現れ始めたばかりでした。 #天の川 #銀河 #宇宙 #天文学 #太陽"
     },
     "es": {
-      "title": "Giras alrededor de la galaxia a más de 800.000 km/h, y una vuelta dura 230 millones de años",
+      "title": "Orbitas el centro de la galaxia a más de 800.000 km/h 🤯",
       "description": "El Sol lleva a la Tierra alrededor del centro de la Vía Láctea a unos 230 kilómetros por segundo, y aun así una vuelta tarda unos 230 millones de años. Hace un año galáctico, los primeros dinosaurios apenas estaban apareciendo. #vialactea #galaxia #espacio #astronomia #sol"
     },
     "pt": {
-      "title": "Você gira pela galáxia a mais de 800 mil km/h, e uma volta leva 230 milhões de anos",
+      "title": "Você orbita o centro da galáxia a mais de 800 mil km/h 🤯",
       "description": "O Sol leva a Terra em volta do centro da Via Láctea a cerca de 230 quilômetros por segundo, e mesmo assim uma volta leva uns 230 milhões de anos. Um ano galáctico atrás, os primeiros dinossauros mal tinham surgido. #vialactea #galaxia #espaco #astronomia #sol"
     },
     "de": {
-      "title": "Du rast mit über 800.000 km/h um die Galaxie, und eine Runde dauert 230 Millionen Jahre",
+      "title": "Du umkreist das Zentrum der Galaxie mit über 800.000 km/h 🤯",
       "description": "Die Sonne trägt die Erde mit etwa 230 Kilometern pro Sekunde um das Zentrum der Milchstraße, und trotzdem dauert eine Runde rund 230 Millionen Jahre. Vor einem galaktischen Jahr tauchten gerade die ersten Dinosaurier auf. #milchstrasse #galaxie #weltraum #astronomie #sonne"
     },
     "fr": {
-      "title": "Vous filez autour de la galaxie à plus de 800 000 km/h, et un tour dure 230 millions d'années",
+      "title": "Vous tournez autour du centre de la galaxie à plus de 800 000 km/h 🤯",
       "description": "Le Soleil emporte la Terre autour du centre de la Voie lactée à environ 230 kilomètres par seconde, et pourtant un tour dure environ 230 millions d'années. Il y a une année galactique, les premiers dinosaures venaient juste d'apparaître. #voielactee #galaxie #espace #astronomie #soleil"
     },
     "hi": {
-      "title": "आप 8 लाख किमी/घंटा से ज़्यादा की रफ़्तार से आकाशगंगा घूम रहे हैं, एक चक्कर में 23 करोड़ साल",
+      "title": "आप 8 लाख किमी/घंटे से ज़्यादा रफ़्तार से आकाशगंगा के केंद्र का चक्कर लगा रहे हैं 🤯",
       "description": "सूरज पृथ्वी को साथ लेकर लगभग 230 किलोमीटर प्रति सेकंड की रफ़्तार से मिल्की वे के केंद्र का चक्कर लगाता है, फिर भी एक चक्कर में लगभग 23 करोड़ साल लगते हैं। एक गैलेक्टिक वर्ष पहले, शुरुआती डायनासोर बस दिखने लगे थे। #मिल्कीवे #आकाशगंगा #अंतरिक्ष #खगोलविज्ञान #सूरज"
     }
   },

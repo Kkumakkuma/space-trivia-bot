@@ -16,8 +16,8 @@
     "Sunlight reaches Earth in about 8 minutes, but Neptune, the farthest planet, orbits 4.5 billion kilometers out, roughly 30 times farther, so the trip takes light about 4 hours."
   ],
   "outro": "Four hours at light speed, and still in our backyard.",
-  "title_en": "One Planet Outweighs the Other 7 Combined, and It Makes the Sun Wobble",
-  "title_ko": "나머지 행성 7개를 합친 것보다 무거운 행성, 태양까지 흔든다",
+  "title_en": "One Planet Makes the Sun Wobble 🤯",
+  "title_ko": "태양을 흔드는 행성이 있다 🤯",
   "description_en": "All eight planets circle the Sun the same way on a nearly flat plane, a leftover of the spinning disk they formed from. Jupiter has about two and a half times the mass of the other seven planets combined, enough to swing the Sun around a point just outside its surface, and sunlight needs about 4 hours to reach Neptune. #solarsystem #space #astronomy #jupiter #planets",
   "description_ko": "태양계의 여덟 행성은 모두 같은 방향으로, 거의 한 평면 위에서 태양을 돕니다. 회전하던 원반 하나에서 생겨났기 때문입니다. 목성 하나의 질량은 나머지 일곱 행성을 다 합친 것의 약 2.5배입니다. 이렇게 무거운 목성과 태양이 함께 도는 질량중심은 태양 표면 바로 바깥에 있습니다. 지구까지 8분이면 오는 햇빛도 해왕성까지는 약 4시간이 걸립니다. #태양계 #우주 #목성 #천문학",
   "comment": "Before today, did you picture the Sun sitting perfectly still at the center?",
@@ -71,31 +71,31 @@
   ],
   "localizations": {
     "ko": {
-      "title": "나머지 행성 7개를 합친 것보다 무거운 행성, 태양까지 흔든다",
+      "title": "태양을 흔드는 행성이 있다 🤯",
       "description": "태양계의 여덟 행성은 모두 같은 방향으로, 거의 한 평면 위에서 태양을 돕니다. 회전하던 원반 하나에서 생겨났기 때문입니다. 목성 하나의 질량은 나머지 일곱 행성을 다 합친 것의 약 2.5배입니다. 이렇게 무거운 목성과 태양이 함께 도는 질량중심은 태양 표면 바로 바깥에 있습니다. 지구까지 8분이면 오는 햇빛도 해왕성까지는 약 4시간이 걸립니다. #태양계 #우주 #목성 #천문학"
     },
     "ja": {
-      "title": "他の惑星7つを合わせたより重い惑星は、太陽まで揺らしている",
+      "title": "太陽を揺らす惑星がある 🤯",
       "description": "太陽系の8つの惑星は、すべて同じ向きに、ほぼ同じ平面の上で太陽を回っています。回転する一枚の円盤から生まれたなごりです。木星の質量は他の7つの惑星を合わせた約2.5倍。その重さで、太陽は表面のすぐ外にある共通重心のまわりを回っています。地球まで約8分で届く太陽の光も、海王星までは約4時間かかります。 #太陽系 #宇宙 #木星 #天文学"
     },
     "es": {
-      "title": "Un planeta pesa más que los otros 7 juntos y hace tambalear al Sol",
+      "title": "Un planeta hace tambalear al Sol 🤯",
       "description": "Los ocho planetas giran alrededor del Sol en el mismo sentido y casi en un mismo plano, herencia del disco giratorio en el que se formaron. Júpiter tiene unas dos veces y media la masa de los otros siete planetas juntos, suficiente para hacer girar al Sol alrededor de un punto justo fuera de su superficie, y la luz del Sol tarda unas 4 horas en llegar a Neptuno. #sistemasolar #espacio #astronomia #jupiter #planetas"
     },
     "pt": {
-      "title": "Um planeta pesa mais que os outros 7 juntos e faz o Sol balançar",
+      "title": "Um planeta faz o Sol balançar 🤯",
       "description": "Os oito planetas giram em torno do Sol no mesmo sentido e quase no mesmo plano, herança do disco giratório onde se formaram. Júpiter tem cerca de duas vezes e meia a massa dos outros sete planetas juntos, o suficiente para fazer o Sol girar em torno de um ponto logo além da sua superfície, e a luz do Sol leva cerca de 4 horas para chegar a Netuno. #sistemasolar #espaco #astronomia #jupiter #planetas"
     },
     "de": {
-      "title": "Ein Planet wiegt mehr als die anderen 7 zusammen und bringt die Sonne ins Wanken",
+      "title": "Ein Planet bringt die Sonne zum Wackeln 🤯",
       "description": "Alle acht Planeten umkreisen die Sonne in derselben Richtung und fast in einer Ebene, ein Erbe der rotierenden Scheibe, aus der sie entstanden sind. Jupiter hat etwa zweieinhalbmal so viel Masse wie die sieben anderen Planeten zusammen, genug, um die Sonne um einen Punkt knapp außerhalb ihrer Oberfläche kreisen zu lassen, und Sonnenlicht braucht rund 4 Stunden bis zum Neptun. #sonnensystem #weltraum #astronomie #jupiter #planeten"
     },
     "fr": {
-      "title": "Une planète pèse plus que les 7 autres réunies et fait vaciller le Soleil",
+      "title": "Une planète fait vaciller le Soleil 🤯",
       "description": "Les huit planètes tournent autour du Soleil dans le même sens et presque dans un même plan, héritage du disque en rotation où elles sont nées. Jupiter a environ deux fois et demie la masse des sept autres planètes réunies, assez pour faire tourner le Soleil autour d'un point situé juste au-delà de sa surface, et la lumière du Soleil met environ 4 heures pour atteindre Neptune. #systemesolaire #espace #astronomie #jupiter #planetes"
     },
     "hi": {
-      "title": "बाकी 7 ग्रह मिलकर भी इससे हल्के हैं, यह ग्रह सूर्य तक को डगमगा देता है",
+      "title": "एक ग्रह सूरज को डगमगा देता है 🤯",
       "description": "सौरमंडल के आठों ग्रह एक ही दिशा में और लगभग एक ही समतल में सूर्य की परिक्रमा करते हैं, क्योंकि वे एक ही घूमती डिस्क से बने थे। बृहस्पति का द्रव्यमान बाकी सातों ग्रहों के कुल द्रव्यमान का करीब ढाई गुना है, इतना कि सूर्य अपनी सतह के ठीक बाहर के एक बिंदु के चारों ओर घूमता है, और सूर्य की रोशनी को नेपच्यून तक पहुंचने में करीब 4 घंटे लगते हैं। #सौरमंडल #बृहस्पति #अंतरिक्ष #space #astronomy"
     }
   },
