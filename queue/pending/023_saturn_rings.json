@@ -1,0 +1,196 @@
+{
+  "author": "claude",
+  "animal_key": "saturn_rings",
+  "display": "Saturn",
+  "single": "Saturn",
+  "category": "planet",
+  "angle": "future_events",
+  "format": "classic_trivia",
+  "hook_line": "In 2025, Saturn's rings seemed to vanish, and the real story is even stranger.",
+  "hook": "ARE SATURN'S RINGS DISAPPEARING?",
+  "intro": "In 2025, Saturn's rings seemed to vanish, and the real story is even stranger.",
+  "facts": [
+    "That year, Earth crossed the plane of the rings, so from here they were edge-on. They stretch hundreds of thousands of kilometers, yet the main rings are typically just 10 meters thick.",
+    "But the rings really are losing material. A 2018 study estimated their icy rain into Saturn could fill an Olympic swimming pool in about half an hour.",
+    "At that rate, they could be gone in about 300 million years, or in under 100 million if Cassini's measurements of falling ring material hold up.",
+    "They may also be young. Some studies put them at a few hundred million years old or less, while a 2024 study argues they could be billions of years old."
+  ],
+  "outro": "Saturn won't wear its rings forever.",
+  "title_en": "Are Saturn's Rings Disappearing? 🤔",
+  "title_ko": "토성 고리가 사라지고 있을까? 🤔",
+  "description_en": "In March 2025, Saturn's rings seemed to vanish because Earth crossed their plane and they appeared edge-on. The rings stretch hundreds of thousands of kilometers, but the main rings are typically only about 10 meters thick. They really are losing material: a 2018 study estimated that 'ring rain' carries enough icy material into Saturn to fill an Olympic pool in about half an hour. At that rate the rings could be gone in about 300 million years, or under 100 million if Cassini's measured inflow is included. Their age is still debated. #saturn #saturnrings #space #astronomy #cassini",
+  "description_ko": "2025년 3월, 지구가 토성 고리의 평면을 지나면서 고리가 옆면으로 보여 사라진 듯했습니다. 고리는 수십만 km에 걸쳐 있지만 주 고리의 두께는 보통 10m 안팎입니다. 그리고 고리는 실제로 줄고 있습니다. 2018년 연구는 '고리 비'가 약 30분마다 올림픽 수영장 하나를 채울 만큼의 얼음 물질을 토성으로 끌어들인다고 추정했고, 이 속도면 약 3억 년, 카시니가 측정한 적도 유입량까지 더하면 1억 년도 안 돼 고리가 사라질 수 있습니다. 고리의 나이는 아직 논쟁 중입니다. #토성 #토성고리 #우주 #천문학 #카시니",
+  "comment": "Did you know Saturn's rings are raining into the planet? 🤯",
+  "tags": [
+    "shorts",
+    "space",
+    "saturn",
+    "saturn rings",
+    "ring rain",
+    "cassini",
+    "astronomy",
+    "planets",
+    "did you know",
+    "science"
+  ],
+  "pexels_keywords": [
+    "saturn planet",
+    "saturn rings",
+    "planet with rings",
+    "night sky planets",
+    "telescope night sky",
+    "ice crystals",
+    "rain drops",
+    "stars time lapse",
+    "solar system planets",
+    "space planet animation"
+  ],
+  "fact_keywords": [
+    "night sky telescope",
+    "ice crystals macro",
+    "snow falling slow motion",
+    "starry night sky time lapse"
+  ],
+  "clips": [
+    [
+      30432877,
+      14922976,
+      11485362
+    ],
+    [
+      6743124,
+      7127511,
+      7127619
+    ],
+    [
+      35573084,
+      39591591,
+      30054113
+    ],
+    [
+      36637000,
+      29680813,
+      5149094
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 0,
+      "path": "queue/assets/023_saturn_globe.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 0,
+      "cut_index": 2,
+      "path": "queue/assets/023_edge_on.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 1,
+      "path": "queue/assets/023_ring_rain.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 1,
+      "path": "queue/assets/023_faded_rings.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 0,
+      "path": "queue/assets/023_ring_particles.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "토성 고리가 사라지고 있을까? 🤔",
+      "description": "2025년 3월, 지구가 토성 고리의 평면을 지나면서 고리가 옆면으로 보여 사라진 듯했습니다. 고리는 수십만 km에 걸쳐 있지만 주 고리의 두께는 보통 10m 안팎입니다. 그리고 고리는 실제로 줄고 있습니다. 2018년 연구는 '고리 비'가 약 30분마다 올림픽 수영장 하나를 채울 만큼의 얼음 물질을 토성으로 끌어들인다고 추정했고, 이 속도면 약 3억 년, 카시니가 측정한 적도 유입량까지 더하면 1억 년도 안 돼 고리가 사라질 수 있습니다. 고리의 나이는 아직 논쟁 중입니다. #토성 #토성고리 #우주 #천문학 #카시니"
+    },
+    "ja": {
+      "title": "土星の環は消えていくの？ 🤔",
+      "description": "2025年3月、地球が土星の環の面を横切り、環が真横を向いて消えたように見えました。環は数十万キロに広がりますが、主な環の厚さはふつう10メートルほどです。そして環は実際に減っています。2018年の研究は、「環の雨」が約30分でオリンピック用プール1杯分の氷の物質を土星へ運ぶと推定しました。このペースなら約3億年、カッシーニが測定した赤道への流入も含めると1億年足らずで環がなくなるかもしれません。環の年齢はまだ議論が続いています。 #土星 #土星の環 #宇宙 #天文学 #カッシーニ"
+    },
+    "es": {
+      "title": "¿Están desapareciendo los anillos de Saturno? 🤔",
+      "description": "En marzo de 2025, los anillos de Saturno parecieron desaparecer porque la Tierra cruzó su plano y quedaron orientados de canto respecto a nosotros. Se extienden cientos de miles de kilómetros, pero los anillos principales suelen medir solo unos 10 metros de grosor. Y sí están perdiendo material: un estudio de 2018 estimó que la «lluvia de los anillos» lleva hacia Saturno suficiente material helado para llenar una piscina olímpica en aproximadamente media hora. A ese ritmo podrían desaparecer en unos 300 millones de años, o en menos de 100 millones si se incluye el aporte ecuatorial medido por Cassini. Su edad sigue en debate. #saturno #anillosdesaturno #espacio #astronomia #cassini"
+    },
+    "pt": {
+      "title": "Os anéis de Saturno estão sumindo? 🤔",
+      "description": "Em março de 2025, os anéis de Saturno pareceram sumir porque a Terra cruzou o plano deles e eles ficaram de perfil. Eles se estendem por centenas de milhares de quilômetros, mas os anéis principais costumam ter só uns 10 metros de espessura. E eles estão mesmo perdendo material: um estudo de 2018 estimou que a 'chuva dos anéis' leva para Saturno gelo suficiente para encher uma piscina olímpica em cerca de meia hora. Nesse ritmo, poderiam sumir em uns 300 milhões de anos, ou em menos de 100 milhões incluindo o fluxo equatorial medido pela Cassini. A idade deles ainda está em debate. #saturno #aneisdesaturno #espaco #astronomia #cassini"
+    },
+    "de": {
+      "title": "Verschwinden Saturns Ringe? 🤔",
+      "description": "Im März 2025 schienen Saturns Ringe zu verschwinden, weil die Erde ihre Ebene durchquerte und sie genau auf der Kante standen. Sie erstrecken sich über Hunderttausende Kilometer, doch die Hauptringe sind meist nur etwa 10 Meter dick. Und sie verlieren tatsächlich Material: Eine Studie von 2018 schätzte, dass der 'Ringregen' in etwa einer halben Stunde so viel Eis auf den Saturn bringt, dass ein olympisches Becken voll würde. Bei diesem Tempo könnten die Ringe in etwa 300 Millionen Jahren verschwunden sein, mit dem von Cassini gemessenen Zustrom am Äquator sogar in weniger als 100 Millionen. Wie alt sie sind, ist umstritten. #saturn #saturnringe #weltraum #astronomie #cassini"
+    },
+    "fr": {
+      "title": "Les anneaux de Saturne sont-ils en train de disparaître ? 🤔",
+      "description": "En mars 2025, les anneaux de Saturne ont semblé disparaître, car la Terre traversait leur plan et ils se présentaient par la tranche. Ils s'étendent sur des centaines de milliers de kilomètres, mais les anneaux principaux ne font en général qu'une dizaine de mètres d'épaisseur. Et ils perdent vraiment de la matière : une étude de 2018 a estimé que la « pluie des anneaux » envoie sur Saturne de quoi remplir une piscine olympique en une demi-heure environ. À ce rythme, ils pourraient disparaître en 300 millions d'années environ, voire moins de 100 millions en incluant l'apport équatorial mesuré par Cassini. Leur âge reste débattu. #saturne #anneauxdesaturne #espace #astronomie #cassini"
+    },
+    "hi": {
+      "title": "क्या शनि के छल्ले गायब हो रहे हैं? 🤔",
+      "description": "मार्च 2025 में धरती शनि के छल्लों के तल से गुज़री, इसलिए छल्ले किनारे से दिखे और गायब होते लगे। ये लाखों किलोमीटर तक फैले हैं, फिर भी मुख्य छल्ले आम तौर पर सिर्फ़ 10 मीटर के आसपास मोटे हैं। और ये सच में घट रहे हैं: 2018 के एक अध्ययन का अनुमान है कि 'छल्लों की बारिश' करीब आधे घंटे में एक ओलंपिक पूल भरने जितना बर्फ़ीला पदार्थ शनि पर गिराती है। इस रफ़्तार से छल्ले लगभग 30 करोड़ साल में, और कैसिनी के मापे अतिरिक्त भूमध्यरेखीय प्रवाह को जोड़ें तो 10 करोड़ साल से भी कम समय में ख़त्म हो सकते हैं। उनकी उम्र पर अब भी बहस है। #शनि #शनिकेछल्ले #अंतरिक्ष #खगोलविज्ञान #कैसिनी"
+    }
+  },
+  "captions": {
+    "ko": [
+      "2025년, 토성의 고리가 사라진 것처럼 보였습니다. 그런데 진짜 이야기는 훨씬 더 놀랍습니다.",
+      "그해 지구가 고리 평면을 지나면서, 고리의 얇은 가장자리가 지구를 향하는 배치가 되었습니다. 고리는 수십만 킬로미터에 걸쳐 있지만, 주 고리의 두께는 보통 10미터 정도에 불과합니다.",
+      "하지만 고리는 실제로 물질을 잃고 있습니다. 2018년 연구는 토성으로 떨어지는 이 얼음 비가 약 30분이면 올림픽 수영장 하나를 채울 수 있다고 추정했습니다.",
+      "이 속도라면 고리는 약 3억 년 뒤, 카시니의 낙하 물질 측정값이 맞다면 1억 년도 안 돼 사라질 수 있습니다.",
+      "고리는 젊을 수도 있습니다. 고리 나이를 수억 년 이하로 보는 연구들이 있는 반면, 2024년 연구는 수십억 년일 수도 있다고 주장합니다.",
+      "토성이 고리를 영원히 두르고 있지는 않을 겁니다."
+    ],
+    "ja": [
+      "2025年、土星の環が消えたように見えました。でも本当の話は、もっと不思議です。",
+      "その年、地球が環の面を横切り、環の薄い縁が地球を向く位置関係になりました。環は数十万キロにわたって広がっているのに、主な環の厚さはふつう10メートルほどしかありません。",
+      "でも環は、実際に物質を失っています。2018年の研究では、土星に降り注ぐこの氷の雨は、約30分でオリンピック用プールを満たすほどだと推定されました。",
+      "このペースなら、環は約3億年で、カッシーニによる落下物質の測定が正しければ1億年もたたずに消えるかもしれません。",
+      "環は若い可能性もあります。数億年以下とする研究がある一方で、2024年の研究は数十億年前からあるかもしれないと主張しています。",
+      "土星が環を永遠にまとっているわけではありません。"
+    ],
+    "es": [
+      "En 2025, los anillos de Saturno parecieron desaparecer, y la historia real es aún más extraña.",
+      "Ese año, la Tierra cruzó el plano de los anillos, que quedaron de canto desde aquí. Se extienden cientos de miles de kilómetros, pero los anillos principales suelen tener solo unos 10 metros de grosor.",
+      "Pero los anillos sí están perdiendo material. Un estudio de 2018 estimó que su lluvia de hielo sobre Saturno podría llenar una piscina olímpica en aproximadamente media hora.",
+      "A ese ritmo, podrían desaparecer en unos 300 millones de años, o en menos de 100 millones si se confirman las mediciones de Cassini sobre el material que cae.",
+      "Además, podrían ser jóvenes. Algunos estudios les dan unos pocos cientos de millones de años o menos, mientras que un estudio de 2024 sostiene que podrían tener miles de millones de años.",
+      "Saturno no llevará sus anillos para siempre."
+    ],
+    "pt": [
+      "Em 2025, os anéis de Saturno pareceram sumir, e a história real é ainda mais estranha.",
+      "Naquele ano, a Terra cruzou o plano dos anéis, que ficaram de perfil em relação a nós. Eles se estendem por centenas de milhares de quilômetros, mas os anéis principais costumam ter só uns 10 metros de espessura.",
+      "Mas os anéis estão mesmo perdendo material. Um estudo de 2018 estimou que essa chuva de gelo sobre Saturno poderia encher uma piscina olímpica em cerca de meia hora.",
+      "Nesse ritmo, eles poderiam sumir em uns 300 milhões de anos, ou em menos de 100 milhões se as medições da Cassini sobre o material que cai se confirmarem.",
+      "Eles também podem ser jovens. Alguns estudos falam em algumas centenas de milhões de anos ou menos, enquanto um estudo de 2024 defende que podem ter bilhões de anos.",
+      "Saturno não vai usar seus anéis para sempre."
+    ],
+    "de": [
+      "2025 schienen Saturns Ringe zu verschwinden, und die wahre Geschichte ist noch seltsamer.",
+      "In jenem Jahr durchquerte die Erde die Ringebene, sodass die schmalen Kanten der Ringe zu uns zeigten. Sie erstrecken sich über Hunderttausende Kilometer, doch die Hauptringe sind meist nur etwa 10 Meter dick.",
+      "Aber die Ringe verlieren tatsächlich Material. Eine Studie von 2018 schätzte, dass dieser Eisregen auf den Saturn in etwa einer halben Stunde ein olympisches Schwimmbecken füllen könnte.",
+      "Bei diesem Tempo könnten sie in etwa 300 Millionen Jahren verschwunden sein, oder in weniger als 100 Millionen, falls sich Cassinis Messungen des herabfallenden Ringmaterials bestätigen.",
+      "Vielleicht sind sie auch jung. Manche Studien schätzen sie auf höchstens einige hundert Millionen Jahre, eine Studie von 2024 hält dagegen Milliarden Jahre für möglich.",
+      "Saturn wird seine Ringe nicht ewig tragen."
+    ],
+    "fr": [
+      "En 2025, les anneaux de Saturne ont semblé disparaître, et la vraie histoire est encore plus étrange.",
+      "Cette année-là, la Terre a traversé le plan des anneaux, qui se présentaient alors par la tranche face à nous. Ils s'étendent sur des centaines de milliers de kilomètres, mais les anneaux principaux ne font en général qu'une dizaine de mètres d'épaisseur.",
+      "Mais les anneaux perdent vraiment de la matière. Une étude de 2018 a estimé que cette pluie de glace sur Saturne pourrait remplir une piscine olympique en une demi-heure environ.",
+      "À ce rythme, ils pourraient disparaître dans environ 300 millions d'années, voire moins de 100 millions si les mesures de Cassini sur la matière qui tombe se confirment.",
+      "Ils pourraient aussi être jeunes. Certaines études leur donnent quelques centaines de millions d'années au plus, alors qu'une étude de 2024 estime qu'ils pourraient avoir des milliards d'années.",
+      "Saturne ne portera pas ses anneaux éternellement."
+    ],
+    "hi": [
+      "2025 में शनि के छल्ले गायब होते दिखे, और असली कहानी इससे भी अजीब है।",
+      "उस साल धरती छल्लों के तल से होकर गुज़री, इसलिए यहाँ से उनका पतला किनारा हमारी ओर था। ये छल्ले लाखों किलोमीटर तक फैले हैं, फिर भी मुख्य छल्लों की मोटाई आम तौर पर सिर्फ़ 10 मीटर के आसपास है।",
+      "लेकिन छल्ले सच में अपना पदार्थ खो रहे हैं। 2018 के एक अध्ययन का अनुमान है कि शनि पर गिरने वाली यह बर्फ़ीली बारिश करीब आधे घंटे में एक ओलंपिक स्विमिंग पूल भर सकती है।",
+      "इसी रफ़्तार से वे लगभग 30 करोड़ साल में ख़त्म हो सकते हैं, और अगर कैसिनी के गिरते पदार्थ वाले माप सही निकले, तो 10 करोड़ साल से भी कम समय में।",
+      "हो सकता है ये छल्ले नए भी हों। कुछ अध्ययन इन्हें बस कुछ दसियों करोड़ साल या उससे भी कम पुराना मानते हैं, जबकि 2024 का एक अध्ययन कहता है कि ये अरबों साल पुराने हो सकते हैं।",
+      "शनि अपने छल्ले हमेशा नहीं पहने रहेगा।"
+    ]
+  }
+}

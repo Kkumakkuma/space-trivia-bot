@@ -1,0 +1,194 @@
+{
+  "author": "claude",
+  "animal_key": "neutron_star",
+  "display": "Neutron Star",
+  "single": "Neutron Star",
+  "category": "star",
+  "angle": "records_extremes",
+  "format": "top_records",
+  "hook_line": "How could a sugar-cube-sized sample of a star weigh as much as all of humanity?",
+  "hook": "HOW HEAVY IS A NEUTRON STAR?",
+  "intro": "How could a sugar-cube-sized sample of a star weigh as much as all of humanity?",
+  "facts": [
+    "A neutron star is the core left behind when a massive star explodes in a supernova: more than the Sun's mass, crushed into a ball about the size of a city.",
+    "Many spin incredibly fast, some hundreds of times a second, and the fastest known whirls around 716 times every second.",
+    "Their magnetic fields can be trillions of times stronger than Earth's, and magnetars, the most extreme kind, are about a thousand times stronger still.",
+    "And NASA says collisions between neutron stars may be the universe's main source of gold and platinum."
+  ],
+  "outro": "Some of Earth's gold may have been forged that way.",
+  "title_en": "How Heavy Is a Neutron Star? 🤯",
+  "title_ko": "중성자별은 얼마나 무거울까? 🤯",
+  "description_en": "A neutron star is the collapsed core of a massive star that exploded: more than the Sun's mass in a ball about the size of a city, so dense that a sugar cube of it would weigh as much as all the people on Earth. Some spin hundreds of times a second, the fastest known about 716 times, their magnetic fields can be trillions of times Earth's, and their collisions may be the main source of the universe's gold and platinum. #neutronstar #space #astronomy #pulsar #gold",
+  "description_ko": "중성자별은 무거운 별이 폭발하고 남은 핵입니다. 태양보다 큰 질량이 도시만 한 공에 모여 있을 정도로 밀도가 높아, 그 물질이 각설탕 하나 크기만큼 있다면 지구의 모든 사람을 합친 만큼 무거울 것입니다. 어떤 것은 1초에 수백 번 돌고 가장 빠른 것은 약 716번 돌며, 자기장은 지구의 수조 배에 이르고, 중성자별끼리의 충돌은 우주에서 금과 백금의 주된 공급원일 수 있습니다. #중성자별 #우주 #천문학 #펄서 #금",
+  "comment": "Did you know the gold in your jewelry may have come from colliding dead stars? 🤯",
+  "tags": [
+    "shorts",
+    "space",
+    "neutron star",
+    "pulsar",
+    "magnetar",
+    "kilonova",
+    "gold",
+    "astronomy",
+    "did you know",
+    "science"
+  ],
+  "pexels_keywords": [
+    "neutron star",
+    "pulsar",
+    "bright star space",
+    "supernova explosion",
+    "stars time lapse",
+    "gold nuggets",
+    "gold jewelry",
+    "deep space stars",
+    "space explosion",
+    "magnetic field"
+  ],
+  "fact_keywords": [
+    "bright star space",
+    "stars rotating time lapse",
+    "magnetic field animation",
+    "gold nuggets close up"
+  ],
+  "clips": [
+    [
+      35288525,
+      37652488
+    ],
+    [
+      29668381,
+      39272652
+    ],
+    [
+      34908797,
+      15886614,
+      40449011
+    ],
+    [
+      8516369,
+      8516547,
+      6340529
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 0,
+      "path": "queue/assets/025_neutron_star.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 0,
+      "cut_index": 2,
+      "path": "queue/assets/025_city_scale.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 1,
+      "path": "queue/assets/025_pulsar_beams.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 1,
+      "path": "queue/assets/025_magnetar.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 0,
+      "path": "queue/assets/025_kilonova.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "중성자별은 얼마나 무거울까? 🤯",
+      "description": "중성자별은 무거운 별이 폭발하고 남은 핵입니다. 태양보다 큰 질량이 도시만 한 공에 모여 있을 정도로 밀도가 높아, 그 물질이 각설탕 하나 크기만큼 있다면 지구의 모든 사람을 합친 만큼 무거울 것입니다. 어떤 것은 1초에 수백 번 돌고 가장 빠른 것은 약 716번 돌며, 자기장은 지구의 수조 배에 이르고, 중성자별끼리의 충돌은 우주에서 금과 백금의 주된 공급원일 수 있습니다. #중성자별 #우주 #천문학 #펄서 #금"
+    },
+    "ja": {
+      "title": "中性子星はどれくらい重い？ 🤯",
+      "description": "中性子星は、重い星が爆発した後に残った核です。太陽より大きな質量が、都市ほどの大きさの球に詰まっています。その密度の物質が角砂糖1個分あれば、地球上の全人類を合わせたほどの重さになるでしょう。1秒に数百回自転するものもあり、最速は約716回。磁場は地球の数兆倍にもなり、中性子星同士の衝突は宇宙の金やプラチナの主な供給源かもしれません。 #中性子星 #宇宙 #天文学 #パルサー #金"
+    },
+    "es": {
+      "title": "¿Cuánto pesa una estrella de neutrones? 🤯",
+      "description": "Una estrella de neutrones es el núcleo que queda tras la explosión de una estrella masiva: más masa que el Sol en una bola del tamaño de una ciudad, tan densa que una porción de ese material del tamaño de un terrón de azúcar pesaría tanto como toda la humanidad. Algunas giran cientos de veces por segundo, la más rápida conocida unas 716, sus campos magnéticos pueden ser billones de veces el de la Tierra y sus choques podrían ser la principal fuente de oro y platino del universo. #estrelladeneutrones #espacio #astronomia #pulsar #oro"
+    },
+    "pt": {
+      "title": "Quanto pesa uma estrela de nêutrons? 🤯",
+      "description": "Uma estrela de nêutrons é o núcleo que sobra depois que uma estrela massiva explode: mais massa que o Sol numa bola do tamanho de uma cidade, tão densa que uma porção desse material do tamanho de um cubo de açúcar pesaria tanto quanto todas as pessoas da Terra. Algumas giram centenas de vezes por segundo, a mais rápida conhecida cerca de 716, seus campos magnéticos podem ser trilhões de vezes mais fortes que o da Terra e suas colisões podem ser a principal fonte de ouro e platina do universo. #estreladeneutrons #espaco #astronomia #pulsar #ouro"
+    },
+    "de": {
+      "title": "Wie schwer ist ein Neutronenstern? 🤯",
+      "description": "Ein Neutronenstern ist der Kern, der übrig bleibt, wenn ein massereicher Stern explodiert: mehr Masse als die Sonne in einer Kugel von der Größe einer Stadt, so dicht, dass ein Stück so groß wie ein Zuckerwürfel so viel wiegen würde wie alle Menschen der Erde zusammen. Manche drehen sich hunderte Male pro Sekunde, der schnellste bekannte etwa 716-mal, ihre Magnetfelder können Billionen Mal stärker sein als das der Erde, und ihre Kollisionen könnten die Hauptquelle für Gold und Platin im Universum sein. #neutronenstern #weltraum #astronomie #pulsar #gold"
+    },
+    "fr": {
+      "title": "Combien pèse une étoile à neutrons ? 🤯",
+      "description": "Une étoile à neutrons est le cœur qui reste après l'explosion d'une étoile massive : plus que la masse du Soleil dans une boule de la taille d'une ville, si dense qu'un morceau gros comme un sucre pèserait autant que toute l'humanité. Certaines tournent des centaines de fois par seconde, la plus rapide connue environ 716 fois, leurs champs magnétiques peuvent être des milliers de milliards de fois plus forts que celui de la Terre, et leurs collisions pourraient être la principale source d'or et de platine de l'Univers. #etoileaneutrons #espace #astronomie #pulsar #or"
+    },
+    "hi": {
+      "title": "न्यूट्रॉन तारा कितना भारी होता है? 🤯",
+      "description": "न्यूट्रॉन तारा किसी विशाल तारे के फटने के बाद बचा हुआ केंद्र है: सूरज से ज़्यादा द्रव्यमान, एक शहर जितनी बड़ी गेंद में। अगर उसी घनत्व के पदार्थ का चीनी के एक क्यूब जितना नमूना हो, तो उसका वज़न धरती के सभी लोगों के कुल वज़न के बराबर होगा। कुछ एक सेकंड में सैकड़ों बार घूमते हैं, सबसे तेज़ ज्ञात तारा करीब 716 बार, उनके चुंबकीय क्षेत्र धरती से कई लाख करोड़ गुना ताक़तवर हो सकते हैं, और उनकी टक्करें ब्रह्मांड में सोने और प्लैटिनम का मुख्य स्रोत हो सकती हैं। #न्यूट्रॉनतारा #अंतरिक्ष #खगोलविज्ञान #पल्सर #सोना"
+    }
+  },
+  "captions": {
+    "ko": [
+      "별 물질이 각설탕만큼만 있어도 어떻게 인류 전체만큼 무거울 수 있을까요?",
+      "중성자별은 무거운 별이 초신성으로 폭발하고 남은 핵입니다. 태양보다 큰 질량이 도시만 한 공 속에 짓눌려 있습니다.",
+      "많은 중성자별이 엄청나게 빨리 돕니다. 1초에 수백 번 도는 것도 있고, 알려진 가장 빠른 것은 1초에 약 716번 돕니다.",
+      "자기장은 지구의 수조 배에 이를 수 있고, 가장 극단적인 종류인 마그네타는 거기서 다시 천 배쯤 더 강합니다.",
+      "그리고 NASA에 따르면 중성자별끼리의 충돌은 우주에서 금과 백금의 주된 공급원일 수 있습니다.",
+      "지구에 있는 금의 일부도 그렇게 만들어졌을지 모릅니다."
+    ],
+    "ja": [
+      "角砂糖ほどの大きさの星の物質が、どうして全人類と同じくらい重くなり得るのでしょう？",
+      "中性子星は、重い星が超新星爆発を起こした後に残る核です。太陽より大きな質量が、都市ほどの大きさの球に押し込められています。",
+      "多くの中性子星はとてつもない速さで自転し、1秒に数百回回るものもあります。知られている中で最速のものは、1秒に約716回転します。",
+      "磁場は地球の数兆倍にもなり、最も極端なタイプのマグネターは、さらにその約1000倍も強いのです。",
+      "そしてNASAによると、中性子星同士の衝突は、宇宙の金やプラチナの主な供給源かもしれません。",
+      "地球にある金の一部も、そうして作られたのかもしれません。"
+    ],
+    "es": [
+      "¿Cómo podría una muestra de material estelar, del tamaño de un terrón de azúcar, pesar tanto como toda la humanidad?",
+      "Una estrella de neutrones es el núcleo que queda cuando una estrella masiva explota como supernova: más masa que el Sol, aplastada en una bola del tamaño de una ciudad.",
+      "Muchas giran a una velocidad increíble, algunas giran cientos de veces por segundo, y la más rápida conocida da unas 716 vueltas cada segundo.",
+      "Sus campos magnéticos pueden ser billones de veces más fuertes que el de la Tierra, y los magnetares, el tipo más extremo, son unas mil veces más fuertes aún.",
+      "Y, según la NASA, las colisiones entre estrellas de neutrones podrían ser la principal fuente de oro y platino del universo.",
+      "Parte del oro de la Tierra podría haberse forjado así."
+    ],
+    "pt": [
+      "Como uma amostra de estrela do tamanho de um cubo de açúcar poderia pesar tanto quanto toda a humanidade?",
+      "Uma estrela de nêutrons é o núcleo que sobra quando uma estrela massiva explode como supernova: mais massa que o Sol, esmagada numa bola do tamanho de uma cidade.",
+      "Muitas giram incrivelmente rápido, algumas delas centenas de vezes por segundo, e a mais rápida conhecida dá cerca de 716 voltas a cada segundo.",
+      "Seus campos magnéticos podem ser trilhões de vezes mais fortes que o da Terra, e os magnetares, o tipo mais extremo, são cerca de mil vezes mais fortes ainda.",
+      "E, segundo a NASA, colisões entre estrelas de nêutrons podem ser a principal fonte de ouro e platina do universo.",
+      "Parte do ouro da Terra pode ter sido forjada assim."
+    ],
+    "de": [
+      "Wie könnte eine zuckerwürfelgroße Probe eines Sterns so viel wiegen wie die gesamte Menschheit?",
+      "Ein Neutronenstern ist der Kern, der übrig bleibt, wenn ein massereicher Stern als Supernova explodiert: mehr Masse als die Sonne, zusammengepresst zu einer Kugel von der Größe einer Stadt.",
+      "Viele drehen sich unglaublich schnell, manche hunderte Male pro Sekunde, und der schnellste bekannte rotiert etwa 716-mal in jeder Sekunde.",
+      "Ihre Magnetfelder können Billionen Mal stärker sein als das der Erde, und Magnetare, die extremste Art, sind noch etwa tausendmal stärker.",
+      "Und laut NASA könnten Kollisionen zwischen Neutronensternen die Hauptquelle für Gold und Platin im Universum sein.",
+      "Ein Teil des Goldes auf der Erde könnte so entstanden sein."
+    ],
+    "fr": [
+      "Comment un échantillon d'étoile gros comme un sucre pourrait-il peser autant que toute l'humanité ?",
+      "Une étoile à neutrons est le cœur qui reste quand une étoile massive explose en supernova : plus que la masse du Soleil, écrasée dans une boule de la taille d'une ville.",
+      "Beaucoup tournent à une vitesse folle, certaines des centaines de fois par seconde, et la plus rapide connue fait environ 716 tours chaque seconde.",
+      "Leurs champs magnétiques peuvent être des milliers de milliards de fois plus forts que celui de la Terre, et ceux des magnétars, le type le plus extrême, sont encore environ mille fois plus forts.",
+      "Et selon la NASA, les collisions entre étoiles à neutrons pourraient être la principale source d'or et de platine de l'Univers.",
+      "Une partie de l'or de la Terre a peut-être été forgée ainsi."
+    ],
+    "hi": [
+      "किसी तारे के पदार्थ का चीनी के एक क्यूब जितना नमूना पूरी मानवता जितना भारी कैसे हो सकता है?",
+      "न्यूट्रॉन तारा वह केंद्र है जो किसी विशाल तारे के सुपरनोवा में फटने के बाद बचता है: सूरज से ज़्यादा द्रव्यमान, एक शहर जितनी बड़ी गेंद में दबा हुआ।",
+      "कई न्यूट्रॉन तारे बेहद तेज़ी से घूमते हैं, कुछ एक सेकंड में सैकड़ों बार, और सबसे तेज़ ज्ञात तारा हर सेकंड करीब 716 चक्कर लगाता है।",
+      "उनके चुंबकीय क्षेत्र धरती के चुंबकीय क्षेत्र से कई लाख करोड़ गुना शक्तिशाली हो सकते हैं, और सबसे चरम प्रकार के मैग्नेटार उससे भी करीब हज़ार गुना शक्तिशाली होते हैं।",
+      "और NASA के मुताबिक, न्यूट्रॉन तारों की टक्करें ब्रह्मांड में सोने और प्लैटिनम का मुख्य स्रोत हो सकती हैं।",
+      "धरती का कुछ सोना भी शायद इसी तरह बना हो।"
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "author": "claude",
+  "animal_key": "mars_red",
+  "display": "Mars",
+  "single": "Mars",
+  "category": "planet",
+  "angle": "myth_busting",
+  "format": "classic_trivia",
+  "hook_line": "Could Mars's red dust reveal a wetter past than we thought?",
+  "hook": "WHY IS MARS RED?",
+  "intro": "Could Mars's red dust reveal a wetter past than we thought?",
+  "facts": [
+    "Its surface is coated in fine dust rich in iron oxides, the same kind of compound as rust, and winds have spread that dust across the whole planet.",
+    "For decades, the leading idea was hematite, an iron oxide thought to have formed in dry conditions, after Mars's wet era had ended.",
+    "But a 2025 study found the dust better matches ferrihydrite, which forms quickly in cool water, so Mars may have rusted while water was still around.",
+    "And at sunset, that fine dust keeps blue light closer to the Sun than red light, so Martian sunsets glow blue around the Sun."
+  ],
+  "outro": "A red planet with blue sunsets.",
+  "title_en": "Why Is Mars Red? 🤔",
+  "title_ko": "화성은 왜 붉을까? 🤔",
+  "description_en": "Mars is red because its surface is coated in fine dust rich in iron oxides, the stuff of rust, spread across the planet by wind. For decades, the leading idea was dry-formed hematite, but a 2025 study found the dust better matches ferrihydrite, which forms quickly in cool water, suggesting Mars rusted while water was still present. And the same fine dust makes the sky around the setting Sun glow blue. #mars #space #astronomy #redplanet #science",
+  "description_ko": "화성이 붉은 건 녹과 같은 산화철이 풍부한 고운 먼지가 표면을 덮고 있고, 바람이 그 먼지를 행성 전체에 퍼뜨렸기 때문입니다. 수십 년 동안은 메마른 환경에서 생긴 적철석이 유력했지만, 2025년 연구는 그 먼지가 차가운 물에서 빠르게 생기는 페리하이드라이트와 더 잘 맞는다고 밝혀, 화성이 물이 있던 시절에 녹슬었을 가능성을 보여 줬습니다. 같은 고운 먼지 덕분에 화성에서는 지는 해 주변 하늘이 파랗게 빛납니다. #화성 #우주 #천문학 #붉은행성 #과학",
+  "comment": "Would you rather watch a sunset on Mars or on Earth? 🤔",
+  "tags": [
+    "shorts",
+    "space",
+    "mars",
+    "red planet",
+    "ferrihydrite",
+    "mars sunset",
+    "astronomy",
+    "planets",
+    "did you know",
+    "science"
+  ],
+  "pexels_keywords": [
+    "mars planet",
+    "red planet",
+    "rust texture",
+    "red desert dunes",
+    "dust storm",
+    "iron oxide rust close up",
+    "red rock canyon",
+    "desert wind sand",
+    "blue sunset",
+    "planet rotating space"
+  ],
+  "fact_keywords": [
+    "rust texture close up",
+    "red desert dunes aerial",
+    "dust storm desert",
+    "red rocky desert landscape"
+  ],
+  "clips": [
+    [
+      7829485,
+      7829853,
+      8474632
+    ],
+    [
+      29517838,
+      8474604,
+      18897114
+    ],
+    [
+      30221295,
+      8474682,
+      34162473
+    ],
+    [
+      8474658,
+      24811239
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 0,
+      "path": "queue/assets/024_mars_globe.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 0,
+      "cut_index": 2,
+      "path": "queue/assets/024_dust_storm.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 1,
+      "path": "queue/assets/024_dry_mars.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 1,
+      "path": "queue/assets/024_wet_mars.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 0,
+      "path": "queue/assets/024_blue_sunset.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "화성은 왜 붉을까? 🤔",
+      "description": "화성이 붉은 건 녹과 같은 산화철이 풍부한 고운 먼지가 표면을 덮고 있고, 바람이 그 먼지를 행성 전체에 퍼뜨렸기 때문입니다. 수십 년 동안은 메마른 환경에서 생긴 적철석이 유력했지만, 2025년 연구는 그 먼지가 차가운 물에서 빠르게 생기는 페리하이드라이트와 더 잘 맞는다고 밝혀, 화성이 물이 있던 시절에 녹슬었을 가능성을 보여 줬습니다. 같은 고운 먼지 덕분에 화성에서는 지는 해 주변 하늘이 파랗게 빛납니다. #화성 #우주 #천문학 #붉은행성 #과학"
+    },
+    "ja": {
+      "title": "火星はなぜ赤い？ 🤔",
+      "description": "火星が赤いのは、さびと同じ酸化鉄を多く含む細かいちりが表面を覆い、風が惑星全体に広げているからです。何十年もの間、乾いた環境でできたヘマタイト説が有力でしたが、2025年の研究で、ちりは冷たい水の中で素早くできるフェリハイドライトによく合うと分かり、火星は水があったころにさびた可能性が出てきました。同じ細かいちりのおかげで、火星では沈む太陽のまわりの空が青く輝きます。 #火星 #宇宙 #天文学 #赤い惑星 #科学"
+    },
+    "es": {
+      "title": "¿Por qué Marte es rojo? 🤔",
+      "description": "Marte es rojo porque su superficie está cubierta de un polvo fino rico en óxidos de hierro, como la herrumbre, que el viento ha esparcido por todo el planeta. Durante décadas, la idea principal fue la hematita formada en seco, pero un estudio de 2025 halló que el polvo coincide mejor con la ferrihidrita, que se forma rápido en agua fría, lo que sugiere que Marte se oxidó cuando aún había agua. Ese mismo polvo fino hace que el cielo alrededor del Sol poniente brille en azul. #marte #espacio #astronomia #planetarojo #ciencia"
+    },
+    "pt": {
+      "title": "Por que Marte é vermelho? 🤔",
+      "description": "Marte é vermelho porque a superfície é coberta por uma poeira fina rica em óxidos de ferro, como a ferrugem, espalhada pelo vento por todo o planeta. Por décadas, a principal explicação foi a hematita formada em condições secas, mas um estudo de 2025 descobriu que as características da poeira correspondem melhor às da ferridrita, que se forma rápido em água fria, sugerindo que Marte enferrujou quando ainda havia água. Essa mesma poeira fina faz o céu ao redor do Sol poente brilhar azul. #marte #espaco #astronomia #planetavermelho #ciencia"
+    },
+    "de": {
+      "title": "Warum ist der Mars rot? 🤔",
+      "description": "Der Mars ist rot, weil feiner Staub voller Eisenoxide, also der Stoff, aus dem Rost besteht, seine Oberfläche bedeckt und vom Wind über den ganzen Planeten verteilt wurde. Jahrzehntelang galt trocken entstandener Hämatit als Erklärung, doch eine Studie von 2025 ergab, dass der Staub besser zu Ferrihydrit passt, der in kaltem Wasser rasch entsteht. Der Mars rostete demnach wohl, als es noch Wasser gab. Derselbe feine Staub lässt den Himmel rund um die untergehende Sonne blau leuchten. #mars #weltraum #astronomie #roterplanet #wissenschaft"
+    },
+    "fr": {
+      "title": "Pourquoi la planète Mars est-elle rouge ? 🤔",
+      "description": "Mars est rouge parce que sa surface est couverte d'une fine poussière riche en oxydes de fer, comme la rouille, répandue par le vent sur toute la planète. Pendant des décennies, on pensait à de l'hématite formée au sec, mais une étude de 2025 a montré que la poussière correspond mieux à la ferrihydrite, qui se forme vite dans l'eau froide : Mars aurait rouillé quand l'eau était encore là. Cette même poussière fine fait briller en bleu le ciel autour du Soleil couchant. #mars #espace #astronomie #planeterouge #science"
+    },
+    "hi": {
+      "title": "मंगल लाल क्यों है? 🤔",
+      "description": "मंगल लाल इसलिए है क्योंकि उसकी सतह जंग जैसे आयरन ऑक्साइड से भरपूर महीन धूल से ढकी है, जिसे हवाओं ने पूरे ग्रह पर फैला दिया है। दशकों तक सूखी परिस्थितियों में बने हेमेटाइट को इसकी वजह माना गया, लेकिन 2025 के एक अध्ययन में यह धूल ठंडे पानी में जल्दी बनने वाले फेरिहाइड्राइट से ज़्यादा मेल खाती मिली, यानी मंगल पर जंग शायद तब लगी जब वहाँ पानी था। यही महीन धूल मंगल पर डूबते सूरज के आसपास के आसमान को नीला चमका देती है। #मंगल #अंतरिक्ष #खगोलविज्ञान #लालग्रह #विज्ञान"
+    }
+  },
+  "captions": {
+    "ko": [
+      "화성의 붉은 먼지는 우리가 생각했던 것보다 더 습했던 과거를 보여 줄 수 있을까요?",
+      "화성 표면은 녹과 같은 종류의 화합물인 산화철이 풍부한 고운 먼지로 덮여 있고, 바람이 그 먼지를 행성 전체에 퍼뜨렸습니다.",
+      "수십 년 동안 유력한 설명은 적철석이었습니다. 화성의 물이 많던 시기가 끝난 뒤, 메마른 환경에서 생긴 산화철로 여겨졌습니다.",
+      "그런데 2025년 연구에 따르면 그 먼지는 차가운 물에서 빠르게 생기는 페리하이드라이트와 더 잘 맞았습니다. 그렇다면 화성은 아직 물이 있을 때 녹슬었을지도 모릅니다.",
+      "그리고 해 질 녘이면 그 고운 먼지가 붉은빛보다 파란빛을 태양 가까이에 더 모아 두어서, 화성의 노을은 해 주변이 파랗게 빛납니다.",
+      "붉은 행성의 파란 노을입니다."
+    ],
+    "ja": [
+      "火星の赤いちりは、想像以上に水の多かった過去を物語るのでしょうか？",
+      "火星の表面は、さびと同じ仲間の化合物である酸化鉄を多く含む細かいちりに覆われ、風がそのちりを惑星全体に広げてきました。",
+      "何十年もの間、有力だったのはヘマタイトという説でした。火星の水の多い時代が終わった後、乾いた環境でできた酸化鉄だと考えられていたのです。",
+      "ところが2025年の研究では、そのちりは、冷たい水の中で素早くできるフェリハイドライトのほうによく一致すると分かりました。火星は、まだ水があったころにさびたのかもしれません。",
+      "そして日暮れには、その細かいちりが赤い光より青い光を太陽の近くに集めるため、火星の夕焼けは太陽のまわりが青く輝きます。",
+      "赤い惑星の、青い夕焼けです。"
+    ],
+    "es": [
+      "¿Podría el polvo rojo de Marte revelar un pasado más húmedo de lo que creíamos?",
+      "Su superficie está cubierta de un polvo fino rico en óxidos de hierro, el mismo tipo de compuesto que la herrumbre, y los vientos lo han esparcido por todo el planeta.",
+      "Durante décadas, la idea principal fue la hematita, un óxido de hierro que se creía formado en condiciones secas, cuando la etapa húmeda de Marte ya había terminado.",
+      "Pero un estudio de 2025 halló que el polvo coincide mejor con la ferrihidrita, que se forma rápido en agua fría, así que Marte podría haberse oxidado cuando todavía había agua.",
+      "Y al atardecer, ese polvo fino mantiene la luz azul más cerca del Sol que la roja, así que los atardeceres marcianos brillan en azul alrededor del Sol.",
+      "Un planeta rojo con atardeceres azules."
+    ],
+    "pt": [
+      "Será que a poeira vermelha de Marte revela um passado mais úmido do que imaginávamos?",
+      "A superfície é coberta por uma poeira fina rica em óxidos de ferro, o mesmo tipo de composto da ferrugem, e os ventos espalharam essa poeira pelo planeta inteiro.",
+      "Por décadas, a principal explicação foi a hematita, um óxido de ferro que se pensava ter se formado em condições secas, depois do fim da fase úmida de Marte.",
+      "Mas um estudo de 2025 mostrou que as características da poeira correspondem melhor às da ferridrita, que se forma rapidamente em água fria. Isso sugere que Marte pode ter enferrujado quando ainda havia água por lá.",
+      "E, ao entardecer, essa poeira fina mantém a luz azul mais perto do Sol do que a vermelha, e por isso o pôr do sol em Marte brilha azul ao redor do Sol.",
+      "Um planeta vermelho com pores do sol azuis."
+    ],
+    "de": [
+      "Könnte der rote Marsstaub auf eine feuchtere Vergangenheit hindeuten, als wir dachten?",
+      "Seine Oberfläche ist mit feinem Staub voller Eisenoxide bedeckt, derselben Art von Verbindung wie Rost, und Winde haben diesen Staub über den ganzen Planeten verteilt.",
+      "Jahrzehntelang galt Hämatit als beste Erklärung, ein Eisenoxid, das sich vermutlich unter trockenen Bedingungen gebildet hatte, nachdem die feuchte Phase des Mars vorbei war.",
+      "Doch eine Studie von 2025 ergab, dass der Staub besser zu Ferrihydrit passt, der in kaltem Wasser rasch entsteht. Der Mars könnte also gerostet sein, als es noch Wasser gab.",
+      "Und bei Sonnenuntergang hält dieser feine Staub blaues Licht näher an der Sonne als rotes, deshalb leuchten Sonnenuntergänge auf dem Mars rund um die Sonne blau.",
+      "Ein roter Planet mit blauen Sonnenuntergängen."
+    ],
+    "fr": [
+      "La poussière rouge de Mars pourrait-elle révéler un passé plus humide qu'on ne le pensait ?",
+      "Sa surface est couverte d'une fine poussière riche en oxydes de fer, la même famille de composés que la rouille, et les vents l'ont répandue sur toute la planète.",
+      "Pendant des décennies, l'explication dominante était l'hématite, un oxyde de fer censé s'être formé dans des conditions sèches, après la fin de la période humide de Mars.",
+      "Mais une étude de 2025 a montré que la poussière correspond mieux à la ferrihydrite, qui se forme vite dans l'eau froide : Mars aurait donc pu rouiller quand l'eau était encore là.",
+      "Et au coucher du soleil, cette fine poussière garde la lumière bleue plus près du Soleil que la rouge, si bien que les couchers de soleil martiens brillent en bleu autour du Soleil.",
+      "Une planète rouge aux couchers de soleil bleus."
+    ],
+    "hi": [
+      "क्या मंगल की लाल धूल बता सकती है कि उसका अतीत हमारी सोच से भी ज़्यादा नम था?",
+      "उसकी सतह आयरन ऑक्साइड से भरपूर महीन धूल से ढकी है, यानी उसी तरह के यौगिक से जिससे जंग बनती है, और हवाओं ने यह धूल पूरे ग्रह पर फैला दी है।",
+      "दशकों तक सबसे मान्य विचार हेमेटाइट का था, एक आयरन ऑक्साइड जिसके बारे में माना जाता था कि वह मंगल का गीला दौर ख़त्म होने के बाद सूखी परिस्थितियों में बना।",
+      "लेकिन 2025 के एक अध्ययन में पाया गया कि यह धूल फेरिहाइड्राइट से ज़्यादा मेल खाती है, जो ठंडे पानी में जल्दी बनता है, यानी मंगल पर जंग शायद तब लगी जब वहाँ पानी मौजूद था।",
+      "और सूर्यास्त के समय यह महीन धूल लाल रोशनी की तुलना में नीली रोशनी को सूरज के ज़्यादा पास रखती है, इसलिए मंगल पर ढलते सूरज के आसपास नीली चमक दिखती है।",
+      "नीले सूर्यास्तों वाला एक लाल ग्रह।"
+    ]
+  }
+}

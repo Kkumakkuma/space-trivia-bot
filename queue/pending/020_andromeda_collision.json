@@ -1,0 +1,190 @@
+{
+  "author": "claude",
+  "animal_key": "andromeda_collision",
+  "display": "Andromeda Galaxy",
+  "single": "Andromeda",
+  "category": "galaxy",
+  "angle": "future_events",
+  "format": "classic_trivia",
+  "hook_line": "Will the Andromeda galaxy crash into ours? The answer keeps changing.",
+  "hook": "WILL ANDROMEDA HIT US?",
+  "intro": "Will the Andromeda galaxy crash into ours? The answer keeps changing.",
+  "facts": [
+    "Andromeda is the nearest big galaxy, about 2.5 million light-years away, and it's heading our way at roughly 400,000 kilometers an hour.",
+    "In 2012, Hubble measurements led NASA to predict a head-on collision about four billion years from now.",
+    "Then a 2025 study, using Hubble and Gaia data and adding nearby galaxies like the Large Magellanic Cloud, found only about a 50-50 chance of a merger in the next 10 billion years.",
+    "But a 2026 study with newer Gaia measurements raised the odds to about 90 percent in its baseline model, with a merger around 6.5 billion years from now."
+  ],
+  "outro": "Even then, its stars would almost never hit ours.",
+  "title_en": "Will Andromeda Hit Us? 🤔",
+  "title_ko": "안드로메다가 우리와 부딪칠까? 🤔",
+  "description_en": "The Andromeda galaxy, about 2.5 million light-years away, is heading toward us at roughly 400,000 km/h. In 2012, Hubble data led NASA to predict a head-on collision in about 4 billion years. A 2025 study using Hubble and Gaia data put the odds of a merger in the next 10 billion years at about 50-50, and a 2026 study with newer Gaia measurements raised them to about 90% in its baseline model. Even in a collision, stars are so far apart that they would almost never hit each other. #andromeda #milkyway #galaxy #space #astronomy",
+  "description_ko": "약 250만 광년 떨어진 안드로메다 은하는 시속 약 40만 km로 다가오고 있습니다. 2012년 NASA는 허블 자료로 약 40억 년 뒤 정면충돌을 예측했지만, 2025년 연구는 허블·가이아 자료로 100억 년 안에 합쳐질 확률을 반반 정도로 봤고, 2026년 연구는 더 새로운 가이아 측정값으로 연구진의 기준 모형에서 약 90%로 다시 올렸습니다. 충돌하더라도 별과 별 사이가 워낙 멀어 별끼리 부딪치는 일은 거의 없습니다. #안드로메다 #우리은하 #은하 #우주 #천문학",
+  "comment": "Do you think Andromeda will hit us? 🤔",
+  "tags": [
+    "shorts",
+    "space",
+    "andromeda",
+    "milky way",
+    "galaxy collision",
+    "hubble",
+    "gaia",
+    "astronomy",
+    "did you know",
+    "science"
+  ],
+  "pexels_keywords": [
+    "andromeda galaxy",
+    "milky way galaxy",
+    "spiral galaxy",
+    "galaxy animation",
+    "milky way night sky",
+    "stars time lapse",
+    "deep space stars",
+    "galaxy rotating",
+    "night sky milky way timelapse",
+    "cosmos"
+  ],
+  "fact_keywords": [
+    "milky way night sky",
+    "spiral galaxy",
+    "galaxy animation",
+    "deep space stars"
+  ],
+  "clips": [
+    [
+      16829181,
+      32024433,
+      38636586
+    ],
+    [
+      27975940,
+      39577100,
+      39576806
+    ],
+    [
+      39576931,
+      39577076,
+      39859850
+    ],
+    [
+      39267198,
+      37988519,
+      39272656
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 0,
+      "path": "queue/assets/020_andromeda_sky.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 1,
+      "path": "queue/assets/020_head_on.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 1,
+      "path": "queue/assets/020_near_miss.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 1,
+      "path": "queue/assets/020_merged.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "안드로메다가 우리와 부딪칠까? 🤔",
+      "description": "약 250만 광년 떨어진 안드로메다 은하는 시속 약 40만 km로 다가오고 있습니다. 2012년 NASA는 허블 자료로 약 40억 년 뒤 정면충돌을 예측했지만, 2025년 연구는 허블·가이아 자료로 100억 년 안에 합쳐질 확률을 반반 정도로 봤고, 2026년 연구는 더 새로운 가이아 측정값으로 연구진의 기준 모형에서 약 90%로 다시 올렸습니다. 충돌하더라도 별과 별 사이가 워낙 멀어 별끼리 부딪치는 일은 거의 없습니다. #안드로메다 #우리은하 #은하 #우주 #천문학"
+    },
+    "ja": {
+      "title": "アンドロメダ銀河は天の川にぶつかる？ 🤔",
+      "description": "約250万光年先のアンドロメダ銀河は、時速約40万キロで近づいています。2012年、NASAはハッブルのデータから約40億年後の正面衝突を予測しましたが、2025年の研究はハッブルとガイアのデータで今後100億年以内の合体確率を五分五分程度とし、2026年の研究はより新しいガイアの測定値で、研究チームの基準モデルでは約90%に引き上げました。衝突しても星と星の間はとても離れているため、星同士がぶつかることはほとんどありません。 #アンドロメダ銀河 #天の川銀河 #銀河 #宇宙 #天文学"
+    },
+    "es": {
+      "title": "¿Chocará Andrómeda con nosotros? 🤔",
+      "description": "La galaxia de Andrómeda, a unos 2,5 millones de años luz, se acerca a unos 400.000 km/h. En 2012, los datos del Hubble llevaron a la NASA a predecir un choque frontal dentro de unos 4000 millones de años. Un estudio de 2025 con datos del Hubble y Gaia situó la probabilidad de fusión en los próximos 10 000 millones de años en un 50 %, y otro de 2026, con mediciones más recientes de Gaia, la subió a cerca del 90 % en su modelo de referencia. Aun en un choque, las estrellas están tan separadas que casi nunca chocarían entre sí. #andromeda #vialactea #galaxia #espacio #astronomia"
+    },
+    "pt": {
+      "title": "Andrômeda vai colidir com a gente? 🤔",
+      "description": "A galáxia de Andrômeda, a cerca de 2,5 milhões de anos-luz, se aproxima a uns 400 mil km/h. Em 2012, dados do Hubble levaram a NASA a prever uma colisão frontal daqui a cerca de 4 bilhões de anos. Um estudo de 2025 com dados do Hubble e do Gaia colocou a chance de fusão nos próximos 10 bilhões de anos em cerca de 50%, e um de 2026, com medições mais novas do Gaia, elevou para cerca de 90% no seu modelo de referência. Mesmo numa colisão, as estrelas estão tão distantes umas das outras que quase nunca se chocariam. #andromeda #vialactea #galaxia #espaco #astronomia"
+    },
+    "de": {
+      "title": "Stößt Andromeda mit uns zusammen? 🤔",
+      "description": "Die rund 2,5 Millionen Lichtjahre entfernte Andromedagalaxie nähert sich mit etwa 400.000 km/h. 2012 sagte die NASA anhand von Hubble-Daten einen Frontalzusammenstoß in etwa 4 Milliarden Jahren voraus. Eine Studie von 2025 mit Hubble- und Gaia-Daten sah die Chance auf eine Verschmelzung in den nächsten 10 Milliarden Jahren bei etwa 50:50, eine Studie von 2026 mit neueren Gaia-Messungen in ihrem Referenzmodell bei rund 90 Prozent. Selbst bei einem Zusammenstoß liegen die Sterne so weit auseinander, dass sie kaum je kollidieren würden. #andromeda #milchstraße #galaxie #weltraum #astronomie"
+    },
+    "fr": {
+      "title": "Andromède va-t-elle nous percuter ? 🤔",
+      "description": "La galaxie d'Andromède, à environ 2,5 millions d'années-lumière, se rapproche à quelque 400 000 km/h. En 2012, les données de Hubble ont conduit la NASA à prédire une collision frontale dans environ 4 milliards d'années. Une étude de 2025 fondée sur les données de Hubble et de Gaia a estimé la probabilité d'une fusion dans les 10 prochains milliards d'années à environ 50 %, et une étude de 2026, utilisant des mesures plus récentes de Gaia, a porté cette probabilité à environ 90 % dans son modèle de référence. Même en cas de collision, les étoiles sont si éloignées qu'elles ne se heurteraient presque jamais. #andromede #voielactee #galaxie #espace #astronomie"
+    },
+    "hi": {
+      "title": "क्या एंड्रोमेडा हमसे टकराएगी? 🤔",
+      "description": "लगभग 25 लाख प्रकाश-वर्ष दूर एंड्रोमेडा आकाशगंगा करीब 4 लाख किमी प्रति घंटे की रफ़्तार से पास आ रही है। 2012 में हबल के डेटा के आधार पर NASA ने लगभग 4 अरब साल बाद आमने-सामने की टक्कर का अनुमान लगाया था। 2025 के एक अध्ययन ने हबल और गाइया के डेटा से अगले 10 अरब साल में विलय की संभावना करीब 50-50 बताई, और 2026 के एक अध्ययन ने गाइया के नए मापों से अपने आधार मॉडल में इसे लगभग 90 प्रतिशत कर दिया। टक्कर होने पर भी तारे एक-दूसरे से इतने दूर हैं कि वे शायद ही कभी टकराएँगे। #एंड्रोमेडा #आकाशगंगा #अंतरिक्ष #खगोलविज्ञान #विज्ञान"
+    }
+  },
+  "captions": {
+    "ko": [
+      "안드로메다 은하는 우리 은하와 충돌할까요? 그 답은 계속 바뀌고 있습니다.",
+      "안드로메다는 가장 가까운 큰 은하로, 약 250만 광년 떨어져 있고 시속 약 40만 킬로미터로 우리 쪽으로 다가오고 있습니다.",
+      "2012년, NASA는 허블 관측을 바탕으로 약 40억 년 뒤 정면충돌이 일어난다고 예측했습니다.",
+      "그런데 2025년 연구는 허블과 가이아 자료에 대마젤란운 같은 이웃 은하까지 넣어 계산했고, 앞으로 100억 년 안에 합쳐질 확률은 반반 정도에 그쳤습니다.",
+      "하지만 2026년 연구는 더 새로운 가이아 측정값을 쓴 기준 모형에서 병합 확률을 약 90%로 끌어올렸고, 병합 시점은 약 65억 년 뒤로 봤습니다.",
+      "그렇게 되더라도 별끼리 부딪치는 일은 거의 없을 겁니다."
+    ],
+    "ja": [
+      "アンドロメダ銀河は、私たちの銀河にぶつかるのでしょうか？ その答えは変わり続けています。",
+      "アンドロメダは最も近い大きな銀河で、約250万光年先にあり、時速およそ40万キロでこちらに近づいています。",
+      "2012年、NASAはハッブルの観測をもとに、約40億年後に正面衝突すると予測しました。",
+      "ところが2025年の研究は、ハッブルとガイアのデータに大マゼラン雲などの近くの銀河も加えて計算し、今後100億年以内に合体する確率は五分五分程度だとしました。",
+      "しかし2026年の研究は、より新しいガイアの測定値を使った基準モデルで確率を約90%に引き上げ、合体は約65億年後としました。",
+      "それでも、星同士がぶつかることはほとんどないでしょう。"
+    ],
+    "es": [
+      "¿Chocará la galaxia de Andrómeda con la nuestra? La respuesta no deja de cambiar.",
+      "Andrómeda es la galaxia grande más cercana, a unos 2,5 millones de años luz, y viene hacia nosotros a unos 400.000 kilómetros por hora.",
+      "En 2012, las mediciones del Hubble llevaron a la NASA a predecir un choque frontal dentro de unos 4000 millones de años.",
+      "Luego, un estudio de 2025 que usó datos del Hubble y de Gaia, e incluyó galaxias vecinas como la Gran Nube de Magallanes, encontró apenas un 50 % de probabilidad de fusión en los próximos 10 000 millones de años.",
+      "Pero un estudio de 2026, con mediciones más recientes de Gaia, elevó la probabilidad a cerca del 90 % en su modelo de referencia, con una fusión dentro de unos 6500 millones de años.",
+      "Aun así, sus estrellas casi nunca chocarían con las nuestras."
+    ],
+    "pt": [
+      "A galáxia de Andrômeda vai colidir com a nossa? A resposta não para de mudar.",
+      "Andrômeda é a galáxia grande mais próxima, a cerca de 2,5 milhões de anos-luz, e vem na nossa direção a uns 400 mil quilômetros por hora.",
+      "Em 2012, medições do Hubble levaram a NASA a prever uma colisão frontal daqui a cerca de 4 bilhões de anos.",
+      "Depois, um estudo de 2025 com dados do Hubble e do Gaia, que incluiu galáxias vizinhas como a Grande Nuvem de Magalhães, encontrou só cerca de 50% de chance de fusão nos próximos 10 bilhões de anos.",
+      "Mas um estudo de 2026, com medições mais novas do Gaia, elevou a chance para cerca de 90% no seu modelo de referência, com a fusão daqui a uns 6,5 bilhões de anos.",
+      "Mesmo assim, as estrelas dela quase nunca colidiriam com as nossas."
+    ],
+    "de": [
+      "Wird die Andromedagalaxie mit unserer zusammenstoßen? Die Antwort ändert sich ständig.",
+      "Andromeda ist die nächste große Galaxie, rund 2,5 Millionen Lichtjahre entfernt, und sie kommt mit etwa 400.000 Kilometern pro Stunde auf uns zu.",
+      "2012 sagte die NASA anhand von Hubble-Messungen einen Frontalzusammenstoß in etwa vier Milliarden Jahren voraus.",
+      "Dann ergab eine Studie von 2025 mit Hubble- und Gaia-Daten, die auch Nachbargalaxien wie die Große Magellansche Wolke einbezog, nur etwa eine 50:50-Chance auf eine Verschmelzung in den nächsten 10 Milliarden Jahren.",
+      "Doch eine Studie von 2026 mit neueren Gaia-Messungen erhöhte die Wahrscheinlichkeit in ihrem Referenzmodell auf rund 90 Prozent, mit einer Verschmelzung in etwa 6,5 Milliarden Jahren.",
+      "Selbst dann würden ihre Sterne kaum je mit unseren zusammenstoßen."
+    ],
+    "fr": [
+      "La galaxie d'Andromède va-t-elle percuter la nôtre ? La réponse ne cesse de changer.",
+      "Andromède est la grande galaxie la plus proche, à environ 2,5 millions d'années-lumière, et elle fonce vers nous à quelque 400 000 kilomètres par heure.",
+      "En 2012, les mesures de Hubble ont conduit la NASA à prédire une collision frontale dans environ quatre milliards d'années.",
+      "Puis une étude de 2025, fondée sur les données de Hubble et de Gaia et tenant compte de galaxies voisines comme le Grand Nuage de Magellan, n'a trouvé qu'environ une chance sur deux de fusion dans les dix prochains milliards d'années.",
+      "Mais une étude de 2026, avec des mesures plus récentes de Gaia, a fait remonter la probabilité à environ 90 % dans son modèle de référence, avec une fusion dans environ 6,5 milliards d'années.",
+      "Même dans ce cas, ses étoiles n'entreraient presque jamais en collision avec les nôtres."
+    ],
+    "hi": [
+      "क्या एंड्रोमेडा आकाशगंगा हमारी आकाशगंगा से टकराएगी? इसका जवाब बार-बार बदल रहा है।",
+      "एंड्रोमेडा सबसे पास की बड़ी आकाशगंगा है, लगभग 25 लाख प्रकाश-वर्ष दूर, और यह करीब 4 लाख किलोमीटर प्रति घंटे की रफ़्तार से हमारी ओर बढ़ रही है।",
+      "2012 में हबल के मापों के आधार पर NASA ने अनुमान लगाया कि लगभग 4 अरब साल बाद आमने-सामने की टक्कर होगी।",
+      "फिर 2025 के एक अध्ययन ने हबल और गाइया के डेटा का इस्तेमाल किया और लार्ज मैगेलैनिक क्लाउड जैसी पड़ोसी आकाशगंगाओं के असर को भी शामिल किया, और पाया कि अगले 10 अरब साल में विलय की संभावना सिर्फ़ लगभग 50 प्रतिशत है।",
+      "लेकिन 2026 के एक अध्ययन ने गाइया के नए मापों पर आधारित अपने आधार मॉडल में यह संभावना बढ़ाकर लगभग 90 प्रतिशत कर दी, जिसमें विलय करीब 6.5 अरब साल बाद होगा।",
+      "तब भी उसके तारे हमारे तारों से शायद ही कभी टकराएँगे।"
+    ]
+  }
+}

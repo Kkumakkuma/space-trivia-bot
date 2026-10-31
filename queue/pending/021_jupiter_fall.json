@@ -1,0 +1,196 @@
+{
+  "author": "claude",
+  "animal_key": "jupiter_fall",
+  "display": "Jupiter",
+  "single": "Jupiter",
+  "category": "planet",
+  "angle": "weird_physics",
+  "format": "what_if",
+  "hook_line": "If you jumped into Jupiter, where would you finally land?",
+  "hook": "WHAT IF YOU FELL INTO JUPITER?",
+  "intro": "If you jumped into Jupiter, where would you finally land?",
+  "facts": [
+    "Nowhere: Jupiter has no true surface. You'd drop through clouds, likely ammonia ice on top, then ammonium hydrosulfide, then water.",
+    "Its winds can blow at over 500 kilometers an hour, and its Great Red Spot is a storm big enough to swallow Earth.",
+    "Deeper down, NASA says the pressure and heat would crush, melt and vaporize a spacecraft, squeezing hydrogen into a liquid that conducts electricity like metal.",
+    "And at the center, data from NASA's Juno probe suggest the core is bigger than expected and not solid, but partly dissolved and fuzzy, with no clear edge."
+  ],
+  "outro": "So you'd never land, not even at the core.",
+  "title_en": "What If You Fell Into Jupiter? 😱",
+  "title_ko": "목성에 빠지면 어떻게 될까? 😱",
+  "description_en": "Jupiter has no true surface: a fall would take you through cloud layers likely made of ammonia ice, ammonium hydrosulfide and water. Jupiter also has winds of over 500 km/h and a storm, the Great Red Spot, big enough to swallow Earth. Deeper down, extreme pressure and heat crush, melt and vaporize spacecraft and turn hydrogen into an electrically conducting liquid, and Juno data suggest the core is partly dissolved, or 'fuzzy.' #jupiter #space #astronomy #whatif #nasa",
+  "description_ko": "목성에는 진짜 표면이 없어서, 떨어지면 암모니아 얼음·황화수소암모늄·물로 된 것으로 보이는 구름층을 지나게 됩니다. 목성에는 시속 500km가 넘는 바람과 지구를 삼킬 만큼 큰 폭풍 대적점도 있습니다. 더 깊은 곳의 압력과 열은 우주선도 짓누르고 녹이고 기화시키며 수소를 금속처럼 전기가 통하는 액체로 바꾸고, 주노 탐사선 자료는 중심핵마저 일부가 녹아 경계가 흐릿하다고 시사합니다. #목성 #우주 #천문학 #만약에 #NASA",
+  "comment": "Which planet should we jump into next? 🤔",
+  "tags": [
+    "shorts",
+    "space",
+    "jupiter",
+    "what if",
+    "gas giant",
+    "great red spot",
+    "juno",
+    "astronomy",
+    "did you know",
+    "science"
+  ],
+  "pexels_keywords": [
+    "jupiter planet",
+    "gas giant planet",
+    "clouds time lapse",
+    "falling through clouds",
+    "storm clouds",
+    "lightning storm",
+    "planet rotating space",
+    "space stars",
+    "thunderstorm",
+    "clouds from above"
+  ],
+  "fact_keywords": [
+    "falling through clouds",
+    "storm clouds time lapse",
+    "lightning storm night",
+    "planet rotating space"
+  ],
+  "clips": [
+    [
+      39536271,
+      39024911,
+      11733622
+    ],
+    [
+      10740623,
+      10740616,
+      31410686
+    ],
+    [
+      35047933,
+      39831591,
+      30296083
+    ],
+    [
+      14618955,
+      11565218,
+      39553996
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 0,
+      "path": "queue/assets/021_jupiter_globe.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 0,
+      "cut_index": 2,
+      "path": "queue/assets/021_falling_astronaut.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 0,
+      "path": "queue/assets/021_great_red_spot.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 1,
+      "path": "queue/assets/021_deep_interior.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 0,
+      "path": "queue/assets/021_fuzzy_core.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "목성에 빠지면 어떻게 될까? 😱",
+      "description": "목성에는 진짜 표면이 없어서, 떨어지면 암모니아 얼음·황화수소암모늄·물로 된 것으로 보이는 구름층을 지나게 됩니다. 목성에는 시속 500km가 넘는 바람과 지구를 삼킬 만큼 큰 폭풍 대적점도 있습니다. 더 깊은 곳의 압력과 열은 우주선도 짓누르고 녹이고 기화시키며 수소를 금속처럼 전기가 통하는 액체로 바꾸고, 주노 탐사선 자료는 중심핵마저 일부가 녹아 경계가 흐릿하다고 시사합니다. #목성 #우주 #천문학 #만약에 #NASA"
+    },
+    "ja": {
+      "title": "もし木星に落ちたら？ 😱",
+      "description": "木星には本当の地表がなく、落ちるとアンモニアの氷、硫化水素アンモニウム、水でできているとみられる雲の層を通り抜けることになります。木星では時速500キロを超える風が吹き、地球を飲み込めるほど大きな嵐・大赤斑もあります。深部の圧力と熱は探査機を押しつぶし、溶かし、蒸発させ、水素を金属のように電気を通す液体に変えます。ジュノーのデータでは、核も一部が溶けて境目がぼやけているようです。 #木星 #宇宙 #天文学 #もしも #NASA"
+    },
+    "es": {
+      "title": "¿Y si cayeras en Júpiter? 😱",
+      "description": "Júpiter no tiene una superficie de verdad: al caer atravesarías capas de nubes, probablemente de hielo de amoníaco, hidrosulfuro de amonio y agua. Júpiter también tiene vientos de más de 500 km/h y una tormenta, la Gran Mancha Roja, tan grande que podría tragarse la Tierra. Más abajo, la presión y el calor aplastan, funden y vaporizan las naves y convierten el hidrógeno en un líquido conductor, y los datos de Juno sugieren que el núcleo está en parte disuelto, o difuso. #jupiter #espacio #astronomia #curiosidades #nasa"
+    },
+    "pt": {
+      "title": "E se você caísse em Júpiter? 😱",
+      "description": "Júpiter não tem uma superfície de verdade: numa queda, você atravessaria camadas de nuvens, provavelmente de gelo de amônia, hidrossulfeto de amônio e água. Júpiter também tem ventos de mais de 500 km/h e uma tempestade, a Grande Mancha Vermelha, tão grande que poderia engolir a Terra. Mais fundo, a pressão e o calor esmagam, derretem e vaporizam naves e transformam o hidrogênio num líquido condutor, e os dados da Juno sugerem um núcleo parcialmente dissolvido, com limites difusos. #jupiter #espaco #astronomia #curiosidades #nasa"
+    },
+    "de": {
+      "title": "Was wäre, wenn du in den Jupiter fallen würdest? 😱",
+      "description": "Jupiter hat keine echte Oberfläche: Bei einem Sturz ginge es durch Wolkenschichten, wohl aus Ammoniakeis, Ammoniumhydrogensulfid und Wasser. Auf Jupiter gibt es außerdem Winde mit über 500 km/h und einen Sturm, den Großen Roten Fleck, so groß, dass er die Erde verschlucken könnte. Weiter unten zerquetschen, schmelzen und verdampfen Druck und Hitze jede Raumsonde und machen Wasserstoff zu einer leitfähigen Flüssigkeit, und Juno-Daten deuten auf einen teilweise aufgelösten, verschwommenen Kern hin. #jupiter #weltraum #astronomie #waswärewenn #nasa"
+    },
+    "fr": {
+      "title": "Et si vous tombiez dans Jupiter ? 😱",
+      "description": "Jupiter n'a pas de vraie surface : en tombant, vous traverseriez des couches de nuages, sans doute de glace d'ammoniac, d'hydrosulfure d'ammonium et d'eau. Jupiter connaît aussi des vents de plus de 500 km/h et une tempête, la Grande Tache rouge, assez grande pour avaler la Terre. Plus bas, la pression et la chaleur écrasent, font fondre et vaporisent les vaisseaux et transforment l'hydrogène en liquide conducteur, et les données de Juno suggèrent un noyau en partie dissous, aux limites floues. #jupiter #espace #astronomie #etsi #nasa"
+    },
+    "hi": {
+      "title": "अगर आप बृहस्पति में गिर जाएँ तो? 😱",
+      "description": "बृहस्पति की कोई असली सतह नहीं है: गिरने पर बादलों की ऐसी परतों से होकर गुज़रना होगा जो संभवतः अमोनिया की बर्फ़, अमोनियम हाइड्रोसल्फ़ाइड और पानी से बनी हैं। बृहस्पति पर 500 किमी प्रति घंटे से तेज़ हवाएँ भी चलती हैं और ग्रेट रेड स्पॉट नाम का इतना बड़ा तूफ़ान भी है कि वह धरती को निगल सकता है। गहराई में दबाव और गर्मी अंतरिक्ष यानों को कुचल, पिघला और वाष्पीकृत कर देते हैं और हाइड्रोजन को बिजली का संचालन करने वाला तरल बना देते हैं, और जूनो के डेटा से संकेत मिलता है कि कोर भी कुछ हद तक घुला हुआ और धुंधला है। #बृहस्पति #अंतरिक्ष #खगोलविज्ञान #अगरऐसाहो #NASA"
+    }
+  },
+  "captions": {
+    "ko": [
+      "목성에 뛰어든다면, 결국 어디에 착지하게 될까요?",
+      "어디에도 착지할 수 없습니다. 목성에는 진짜 표면이 없습니다. 구름층을 뚫고 떨어지게 될 텐데, 맨 위는 암모니아 얼음, 그다음은 황화수소암모늄, 그 아래는 물로 된 구름일 가능성이 큽니다.",
+      "바람은 시속 500킬로미터를 넘기도 하고, 대적점은 지구를 통째로 삼킬 만큼 큰 폭풍입니다.",
+      "더 깊이 내려가면, NASA 설명대로 극심한 압력과 열이 우주선도 짓누르고 녹이고 기화시키며, 수소를 금속처럼 전기가 통하는 액체로 압축합니다.",
+      "그리고 NASA 주노 탐사선 자료는 중심핵이 예상보다 크고 고체 덩어리도 아니며, 일부가 주변 물질에 녹아 섞여 경계가 흐릿한 상태임을 시사합니다.",
+      "결국 어디에도 착지하지 못합니다. 핵에서조차요."
+    ],
+    "ja": [
+      "もし木星に飛び込んだら、最後はどこに着地するのでしょうか？",
+      "どこにも着地しません。木星には本当の地表がないのです。雲の層を落ちていくことになり、上からアンモニアの氷、次に硫化水素アンモニウム、その下は水の雲だと考えられています。",
+      "風は時速500キロを超えることもあり、大赤斑は地球をまるごと飲み込めるほど大きな嵐です。",
+      "さらに深くでは、NASAによると圧力と熱が探査機を押しつぶし、溶かし、蒸発させ、水素を圧縮して金属のように電気を通す液体に変えてしまいます。",
+      "そして中心については、NASAの探査機ジュノーのデータから、核は予想より大きく固体でもなく、一部が周りに溶け込んで境目のぼやけた状態だと考えられています。",
+      "結局、どこにも着地できません。核でさえも。"
+    ],
+    "es": [
+      "Si saltaras a Júpiter, ¿dónde acabarías aterrizando?",
+      "En ningún sitio: Júpiter no tiene una superficie de verdad. Caerías a través de capas de nubes: probablemente hielo de amoníaco arriba, luego hidrosulfuro de amonio y después agua.",
+      "Sus vientos pueden superar los 500 kilómetros por hora, y la Gran Mancha Roja es una tormenta tan grande que podría tragarse la Tierra.",
+      "Más abajo, según la NASA, la presión y el calor aplastarían, fundirían y vaporizarían una nave espacial, comprimiendo el hidrógeno en un líquido que conduce la electricidad como un metal.",
+      "Y en el centro, los datos de la sonda Juno de la NASA sugieren que el núcleo es más grande de lo esperado y no es sólido, sino que está en parte disuelto y difuso, sin un borde claro.",
+      "Así que nunca aterrizarías, ni siquiera en el núcleo."
+    ],
+    "pt": [
+      "Se você pulasse em Júpiter, onde acabaria pousando?",
+      "Em lugar nenhum: Júpiter não tem uma superfície de verdade. Você cairia por camadas de nuvens: provavelmente gelo de amônia em cima, depois hidrossulfeto de amônio e, mais abaixo, água.",
+      "Os ventos podem passar de 500 quilômetros por hora, e a Grande Mancha Vermelha é uma tempestade tão grande que poderia engolir a Terra.",
+      "Mais fundo, segundo a NASA, a pressão e o calor esmagariam, derreteriam e vaporizariam uma nave, comprimindo o hidrogênio num líquido que conduz eletricidade como metal.",
+      "E, no centro, os dados da sonda Juno, da NASA, sugerem que o núcleo é maior do que se esperava e não é sólido, mas está parcialmente dissolvido e tem limites difusos.",
+      "Ou seja, você nunca pousaria, nem mesmo no núcleo."
+    ],
+    "de": [
+      "Wenn du in den Jupiter springen würdest, wo würdest du am Ende landen?",
+      "Nirgends: Jupiter hat keine echte Oberfläche. Du würdest durch Wolkenschichten fallen, oben wohl aus Ammoniakeis, dann aus Ammoniumhydrogensulfid, darunter aus Wasser.",
+      "Seine Winde können über 500 Kilometer pro Stunde erreichen, und der Große Rote Fleck ist ein Sturm, so groß, dass er die Erde verschlucken könnte.",
+      "Weiter unten würden Druck und Hitze laut NASA eine Raumsonde zerquetschen, schmelzen und verdampfen und dabei Wasserstoff zu einer Flüssigkeit pressen, die Strom leitet wie ein Metall.",
+      "Und im Zentrum deuten Daten der NASA-Sonde Juno darauf hin, dass der Kern größer als erwartet und nicht fest ist, sondern teilweise aufgelöst und verschwommen, ohne klare Grenze.",
+      "Du würdest also nie landen, nicht einmal am Kern."
+    ],
+    "fr": [
+      "Si vous sautiez dans Jupiter, où finiriez-vous par atterrir ?",
+      "Nulle part : Jupiter n'a pas de vraie surface. Vous traverseriez des couches de nuages : sans doute de la glace d'ammoniac en haut, puis de l'hydrosulfure d'ammonium, puis de l'eau.",
+      "Ses vents peuvent dépasser 500 kilomètres par heure, et la Grande Tache rouge est une tempête assez grande pour avaler la Terre.",
+      "Plus bas, selon la NASA, la pression et la chaleur écraseraient, feraient fondre et vaporiseraient un vaisseau, en comprimant l'hydrogène en un liquide qui conduit l'électricité comme un métal.",
+      "Et au centre, les données de la sonde Juno de la NASA suggèrent que le noyau est plus gros que prévu et n'est pas solide, mais en partie dissous et diffus, sans limite nette.",
+      "Vous n'atterririez donc jamais, pas même sur le noyau."
+    ],
+    "hi": [
+      "अगर आप बृहस्पति में कूद जाएँ, तो आख़िर उतरने की जगह कहाँ मिलेगी?",
+      "कहीं नहीं: बृहस्पति की कोई असली सतह नहीं है। बादलों की परतों से होकर नीचे जाना होगा, शायद सबसे ऊपर अमोनिया की बर्फ़, फिर अमोनियम हाइड्रोसल्फ़ाइड, और उसके नीचे पानी।",
+      "वहाँ हवाएँ 500 किलोमीटर प्रति घंटे से भी तेज़ चल सकती हैं, और ग्रेट रेड स्पॉट इतना बड़ा तूफ़ान है कि पूरी धरती को निगल सकता है।",
+      "और गहराई में, NASA के मुताबिक, दबाव और गर्मी किसी अंतरिक्ष यान को कुचल, पिघला और वाष्पीकृत कर देंगे, और हाइड्रोजन को दबाकर ऐसा तरल बना देंगे जो धातु की तरह बिजली का संचालन करता है।",
+      "और बिल्कुल बीच में, NASA के जूनो यान के डेटा से संकेत मिलता है कि कोर उम्मीद से बड़ा है और ठोस नहीं, बल्कि कुछ हद तक घुला हुआ और धुंधला है, जिसकी कोई स्पष्ट सीमा नहीं है।",
+      "यानी कहीं भी उतरना संभव नहीं होगा, कोर पर भी नहीं।"
+    ]
+  }
+}
