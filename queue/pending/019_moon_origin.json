@@ -1,0 +1,196 @@
+{
+  "author": "claude",
+  "animal_key": "moon_origin",
+  "display": "Moon",
+  "single": "Moon",
+  "category": "moon",
+  "angle": "discovery_story",
+  "format": "classic_trivia",
+  "hook_line": "To find out where the Moon came from, look down, because part of the answer may be under your feet.",
+  "hook": "WHERE DID THE MOON COME FROM?",
+  "intro": "To find out where the Moon came from, look down, because part of the answer may be under your feet.",
+  "facts": [
+    "About 4.5 billion years ago, a planet roughly the size of Mars, nicknamed Theia, is thought to have slammed into the young Earth.",
+    "The Moon formed from the wreckage, and if much of it came from Earth, that could explain why Apollo's Moon rocks carry almost the same isotope fingerprints as Earth rocks.",
+    "And it may have taken only hours: 2022 supercomputer simulations suggest the crash could have flung a newborn Moon straight into orbit.",
+    "As for Theia, in 2023 researchers proposed that parts of it survive deep inside Earth, as two continent-sized blobs, one under Africa and one under the Pacific."
+  ],
+  "outro": "Theia may never have left.",
+  "title_en": "Where Did the Moon Come From? 🤔",
+  "title_ko": "달은 어디서 왔을까? 🤔",
+  "description_en": "About 4.5 billion years ago, a Mars-sized planet nicknamed Theia is thought to have hit the young Earth, and the Moon formed from the wreckage. 2022 simulations suggest the Moon could have formed within hours, and a 2023 study proposed that parts of Theia survive as two continent-sized blobs deep in Earth's mantle, under Africa and the Pacific. #moon #space #astronomy #theia #earth",
+  "description_ko": "약 45억 년 전, 테이아라는 화성만 한 행성이 어린 지구와 부딪쳤고 그 잔해에서 달이 생겼다고 여겨집니다. 2022년 시뮬레이션은 달이 몇 시간 만에 만들어졌을 수도 있다고 보았고, 2023년 연구는 테이아의 일부가 아프리카와 태평양 아래 지구 맨틀 깊은 곳에 대륙만 한 덩어리 두 개로 남아 있다고 제안했습니다. #달 #우주 #천문학 #테이아 #지구",
+  "comment": "Did you know the Moon may have formed in just a few hours? 🤯",
+  "tags": [
+    "shorts",
+    "space",
+    "moon",
+    "theia",
+    "giant impact",
+    "moon formation",
+    "earth",
+    "astronomy",
+    "did you know",
+    "trivia"
+  ],
+  "pexels_keywords": [
+    "moon",
+    "moon surface",
+    "full moon",
+    "moon close up",
+    "earth from space",
+    "moon rising",
+    "moon craters",
+    "planet earth rotating",
+    "moon night sky",
+    "lava"
+  ],
+  "fact_keywords": [
+    "earth from space",
+    "moon surface close up",
+    "full moon night sky",
+    "planet earth rotating"
+  ],
+  "clips": [
+    [
+      38345559,
+      39904534,
+      39878395
+    ],
+    [
+      36963635,
+      37000508,
+      37003414
+    ],
+    [
+      18226789,
+      18194375,
+      36964618
+    ],
+    [
+      39428970,
+      38690857,
+      34620296
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 2,
+      "path": "queue/assets/019_theia_approach.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 0,
+      "cut_index": 3,
+      "path": "queue/assets/019_theia_impact.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 1,
+      "path": "queue/assets/019_debris_ring.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 1,
+      "path": "queue/assets/019_newborn_moon.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 0,
+      "path": "queue/assets/019_mantle_blobs.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "달은 어디서 왔을까? 🤔",
+      "description": "약 45억 년 전, 테이아라는 화성만 한 행성이 어린 지구와 부딪쳤고 그 잔해에서 달이 생겼다고 여겨집니다. 2022년 시뮬레이션은 달이 몇 시간 만에 만들어졌을 수도 있다고 보았고, 2023년 연구는 테이아의 일부가 아프리카와 태평양 아래 지구 맨틀 깊은 곳에 대륙만 한 덩어리 두 개로 남아 있다고 제안했습니다. #달 #우주 #천문학 #테이아 #지구"
+    },
+    "ja": {
+      "title": "月はどこから来たの？ 🤔",
+      "description": "約45億年前、テイアと呼ばれる火星ほどの惑星が若い地球に衝突し、その残骸から月が生まれたと考えられています。2022年のシミュレーションは月が数時間でできた可能性を示し、2023年の研究は、テイアの一部がアフリカと太平洋の下、地球のマントル深部に大陸ほどの大きさの2つの塊として残っていると提唱しました。 #月 #宇宙 #天文学 #テイア #地球"
+    },
+    "es": {
+      "title": "¿De dónde salió la Luna? 🤔",
+      "description": "Hace unos 4500 millones de años, un planeta del tamaño de Marte apodado Tea habría chocado contra la joven Tierra, y la Luna se formó con los restos. Simulaciones de 2022 sugieren que pudo formarse en cuestión de horas, y un estudio de 2023 propuso que partes de Tea sobreviven como dos masas del tamaño de un continente en lo profundo del manto terrestre, bajo África y el Pacífico. #luna #espacio #astronomia #tea #tierra"
+    },
+    "pt": {
+      "title": "De onde veio a Lua? 🤔",
+      "description": "Há cerca de 4,5 bilhões de anos, um planeta do tamanho de Marte apelidado de Theia teria se chocado com a jovem Terra, e a Lua se formou com os destroços. Simulações de 2022 sugerem que ela pode ter se formado em questão de horas, e um estudo de 2023 propôs que partes de Theia sobrevivem como duas massas do tamanho de continentes nas profundezas do manto terrestre, sob a África e o Pacífico. #lua #espaco #astronomia #theia #terra"
+    },
+    "de": {
+      "title": "Woher kommt der Mond? 🤔",
+      "description": "Vor etwa 4,5 Milliarden Jahren soll ein marsgroßer Planet namens Theia mit der jungen Erde zusammengestoßen sein, und aus den Trümmern entstand der Mond. Simulationen von 2022 legen nahe, dass das in wenigen Stunden geschehen sein könnte, und eine Studie von 2023 stellte die These auf, dass Teile von Theia als zwei kontinentgroße Klumpen tief im Erdmantel unter Afrika und dem Pazifik überdauern. #mond #weltraum #astronomie #theia #erde"
+    },
+    "fr": {
+      "title": "D'où vient la Lune ? 🤔",
+      "description": "Il y a environ 4,5 milliards d'années, une planète de la taille de Mars surnommée Théia aurait percuté la jeune Terre, et la Lune serait née des débris. Des simulations de 2022 suggèrent qu'elle a pu se former en quelques heures, et une étude de 2023 a avancé l'hypothèse qu'une partie de Théia subsiste sous la forme de deux masses de la taille d'un continent, dans les profondeurs du manteau terrestre, sous l'Afrique et le Pacifique. #lune #espace #astronomie #theia #terre"
+    },
+    "hi": {
+      "title": "चाँद कहाँ से आया? 🤔",
+      "description": "माना जाता है कि लगभग 4.5 अरब साल पहले थिया नाम का मंगल जितना बड़ा ग्रह शुरुआती धरती से टकराया और उसके मलबे से चाँद बना। 2022 के सिमुलेशन बताते हैं कि हो सकता है चाँद कुछ ही घंटों में बन गया हो, और 2023 के एक अध्ययन ने सुझाव दिया कि थिया के कुछ हिस्से धरती के मैंटल में गहराई में महाद्वीप जितने बड़े दो पिंडों के रूप में मौजूद हैं, एक अफ्रीका के नीचे और एक प्रशांत महासागर के नीचे। #चाँद #अंतरिक्ष #खगोलविज्ञान #थिया #धरती"
+    }
+  },
+  "captions": {
+    "ko": [
+      "달이 어디서 왔는지 알고 싶다면 아래를 보세요. 그 답의 일부가 여러분 발밑에 있을지도 모르니까요.",
+      "약 45억 년 전, 테이아라는 별명이 붙은 화성만 한 행성이 어린 지구와 충돌했다고 여겨집니다.",
+      "그 잔해로 달이 만들어졌고, 달을 이루는 물질의 상당 부분이 지구에서 왔다면 아폴로가 가져온 달 암석의 동위원소 지문이 지구 암석과 거의 같은 이유도 설명할 수 있습니다.",
+      "게다가 단 몇 시간 만에 일어났을지도 모릅니다. 2022년 슈퍼컴퓨터 시뮬레이션에 따르면 충돌 직후 갓 태어난 달이 곧장 궤도로 튕겨 나갔을 수 있습니다.",
+      "테이아는 어떻게 됐을까요? 2023년 연구진은 그 일부가 지구 깊숙이, 아프리카 아래와 태평양 아래의 대륙만 한 덩어리 두 개로 남아 있다고 제안했습니다.",
+      "테이아는 한 번도 떠난 적이 없는지도 모릅니다."
+    ],
+    "ja": [
+      "月がどこから来たのか知りたければ、下を見てください。答えの一部は、あなたの足元にあるかもしれません。",
+      "約45億年前、火星ほどの大きさの惑星、通称テイアが、若い地球に衝突したと考えられています。",
+      "その残骸から月が生まれました。もしその多くが地球由来なら、アポロが持ち帰った月の岩石の同位体の特徴が、地球の岩石とほぼ同じ理由も説明できます。",
+      "しかも、ほんの数時間の出来事だったかもしれません。2022年のスーパーコンピューターによるシミュレーションは、生まれたばかりの月が衝突で直接軌道に放り出された可能性を示しています。",
+      "ではテイアは？ 2023年、研究者たちは、その一部が地球の奥深く、アフリカと太平洋の下にある大陸ほどの大きさの2つの塊として残っていると提唱しました。",
+      "テイアは、一度も去っていないのかもしれません。"
+    ],
+    "es": [
+      "Para saber de dónde vino la Luna, mira hacia abajo, porque parte de la respuesta podría estar bajo tus pies.",
+      "Hace unos 4500 millones de años, un planeta del tamaño de Marte, apodado Tea, habría chocado contra la joven Tierra.",
+      "La Luna se formó con los restos, y si buena parte venía de la Tierra, eso podría explicar por qué las rocas lunares de las misiones Apolo tienen casi la misma huella isotópica que las rocas terrestres.",
+      "Y quizá bastaron unas horas: simulaciones por supercomputadora de 2022 sugieren que el choque pudo haber lanzado una Luna recién nacida directamente en órbita.",
+      "En cuanto a Tea, en 2023 un equipo de investigación propuso que partes de ella sobreviven en lo profundo de la Tierra, como dos masas del tamaño de un continente, una bajo África y otra bajo el Pacífico.",
+      "Puede que Tea nunca se haya ido."
+    ],
+    "pt": [
+      "Para saber de onde a Lua veio, olhe para baixo, porque parte da resposta pode estar sob os seus pés.",
+      "Há cerca de 4,5 bilhões de anos, um planeta do tamanho de Marte, apelidado de Theia, teria se chocado com a jovem Terra.",
+      "A Lua se formou com os destroços, e se boa parte do material que a compõe veio da Terra, isso poderia explicar por que as rochas lunares das missões Apollo têm quase a mesma assinatura isotópica das rochas da Terra.",
+      "E talvez tenham bastado algumas horas: simulações em supercomputador de 2022 sugerem que a colisão pode ter lançado uma Lua recém-nascida direto para a órbita.",
+      "Quanto a Theia, em 2023 uma equipe de pesquisa propôs que partes dela sobrevivem nas profundezas da Terra, como duas massas do tamanho de continentes, uma sob a África e outra sob o Pacífico.",
+      "Talvez Theia nunca tenha ido embora."
+    ],
+    "de": [
+      "Wenn du wissen willst, woher der Mond kommt, schau nach unten: Ein Teil der Antwort könnte unter deinen Füßen liegen.",
+      "Vor etwa 4,5 Milliarden Jahren soll ein etwa marsgroßer Planet, Theia genannt, mit der jungen Erde zusammengestoßen sein.",
+      "Aus den Trümmern entstand der Mond. Stammte viel davon von der Erde, könnte das erklären, warum die Mondgesteine der Apollo-Missionen fast denselben isotopischen Fingerabdruck tragen wie Gesteine der Erde.",
+      "Und vielleicht dauerte es nur Stunden: Supercomputer-Simulationen von 2022 legen nahe, dass der Aufprall einen neu entstandenen Mond direkt in eine Umlaufbahn geschleudert haben könnte.",
+      "Und Theia? 2023 stellten Forschende die These auf, dass Teile von ihr tief im Erdinneren überdauern, als zwei kontinentgroße Klumpen, einer unter Afrika und einer unter dem Pazifik.",
+      "Vielleicht ist Theia nie gegangen."
+    ],
+    "fr": [
+      "Pour savoir d'où vient la Lune, regardez vers le bas : une partie de la réponse se trouve peut-être sous vos pieds.",
+      "Il y a environ 4,5 milliards d'années, une planète de la taille de Mars, surnommée Théia, aurait percuté la jeune Terre.",
+      "La Lune s'est formée à partir des débris, et si une grande partie venait de la Terre, cela pourrait expliquer pourquoi les roches lunaires d'Apollo portent presque la même signature isotopique que les roches terrestres.",
+      "Et il n'aurait peut-être fallu que quelques heures : des simulations sur superordinateur de 2022 suggèrent que l'impact a pu projeter une jeune Lune directement en orbite.",
+      "Quant à Théia, une équipe de recherche a avancé en 2023 l'hypothèse qu'une partie de cette planète subsiste dans les profondeurs de la Terre, sous la forme de deux masses de la taille d'un continent, l'une sous l'Afrique, l'autre sous le Pacifique.",
+      "Théia n'est peut-être jamais partie."
+    ],
+    "hi": [
+      "अगर जानना है कि चाँद कहाँ से आया, तो नीचे देखिए, क्योंकि जवाब का एक हिस्सा शायद आपके पैरों के नीचे है।",
+      "माना जाता है कि लगभग 4.5 अरब साल पहले, मंगल जितना बड़ा एक ग्रह, जिसे थिया नाम दिया गया है, शुरुआती दौर की धरती से टकराया था।",
+      "उसी मलबे से चाँद बना, और अगर चाँद के पदार्थ का एक बड़ा हिस्सा धरती से आया था, तो इससे समझ आ सकता है कि अपोलो मिशनों से लाई गई चाँद की चट्टानों में आइसोटोप के निशान लगभग धरती की चट्टानों जैसे ही क्यों हैं।",
+      "और शायद इसमें बस कुछ घंटे लगे: 2022 के सुपरकंप्यूटर सिमुलेशन बताते हैं कि हो सकता है टक्कर ने नए बने चाँद को सीधे कक्षा में फेंक दिया हो।",
+      "और थिया? 2023 में शोधकर्ताओं ने सुझाव दिया कि उसके कुछ हिस्से आज भी धरती के भीतर गहराई में मौजूद हैं, महाद्वीप जितने बड़े दो पिंडों के रूप में, एक अफ्रीका के नीचे और एक प्रशांत महासागर के नीचे।",
+      "शायद थिया कभी यहाँ से गया ही नहीं।"
+    ]
+  }
+}

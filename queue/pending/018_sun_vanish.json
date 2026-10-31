@@ -1,0 +1,190 @@
+{
+  "author": "claude",
+  "animal_key": "sun_vanish",
+  "display": "Sun",
+  "single": "Sun",
+  "category": "star",
+  "angle": "weird_physics",
+  "format": "what_if",
+  "hook_line": "If the Sun vanished right now, nothing would happen for eight minutes, and then everything would change.",
+  "hook": "WHAT IF THE SUN VANISHED?",
+  "intro": "If the Sun vanished right now, nothing would happen for eight minutes, and then everything would change.",
+  "facts": [
+    "Sunlight takes about eight minutes to reach us, and changes in gravity travel just as fast. So for eight minutes, Earth would keep circling a Sun that was already gone.",
+    "Then daylight would vanish. But Jupiter would keep shining for over an hour, and Saturn for more than two, because sunlight bouncing off them takes a much longer route to us.",
+    "Earth would sail off in a straight line. By one estimate, within a week the average surface temperature would drop below zero Fahrenheit, and within a year, to around minus 100.",
+    "The oceans would freeze over from the top, but that ice could insulate the water below, keeping it from freezing solid for hundreds of thousands of years."
+  ],
+  "outro": "Luckily, the Sun can't just vanish.",
+  "title_en": "What If the Sun Vanished? 😱",
+  "title_ko": "태양이 사라진다면? 😱",
+  "description_en": "If the Sun vanished, we wouldn't notice for about eight minutes: sunlight takes that long to reach us, and changes in gravity travel just as fast. Then daylight would go out, Jupiter and Saturn would keep shining for a while, and Earth would drift off and freeze, though ice could keep the deep oceans liquid for hundreds of thousands of years. The Sun can't really vanish like this; it's a thought experiment. #sun #space #astronomy #whatif #science",
+  "description_ko": "태양이 사라져도 우리는 약 8분 동안 알아채지 못합니다. 햇빛이 오는 데 그만큼 걸리고, 중력의 변화도 똑같이 빠르게 전해지기 때문입니다. 그 뒤 햇빛이 끊기고 목성과 토성은 한동안 더 빛나 보이며, 지구는 궤도를 벗어나 얼어붙겠지만 얼음 덕분에 깊은 바다는 수십만 년 동안 얼지 않을 수 있습니다. 실제로 태양이 이렇게 사라질 수는 없고, 사고 실험입니다. #태양 #우주 #천문학 #만약에 #과학",
+  "comment": "Did you know changes in gravity travel at the speed of light? 🤯",
+  "tags": [
+    "shorts",
+    "space",
+    "sun",
+    "what if",
+    "astronomy",
+    "gravity",
+    "speed of light",
+    "solar system",
+    "science",
+    "did you know"
+  ],
+  "pexels_keywords": [
+    "sun",
+    "sun surface",
+    "solar flare",
+    "sunset time lapse",
+    "night sky time lapse",
+    "earth from space",
+    "jupiter planet",
+    "saturn planet",
+    "frozen ocean ice",
+    "stars time lapse"
+  ],
+  "fact_keywords": [
+    "sun surface",
+    "night sky time lapse",
+    "earth from space",
+    "frozen ocean ice"
+  ],
+  "clips": [
+    [
+      12120629,
+      33709892,
+      39321127
+    ],
+    [
+      39056665,
+      40265344,
+      30039749
+    ],
+    [
+      30762714,
+      7127974,
+      7042452
+    ],
+    [
+      36298433,
+      35740661,
+      36274229
+    ]
+  ],
+  "images": [
+    {
+      "fact_index": 0,
+      "cut_index": 3,
+      "path": "queue/assets/018_sun_empty_orbit.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 1,
+      "cut_index": 1,
+      "path": "queue/assets/018_jupiter_saturn.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 2,
+      "cut_index": 0,
+      "path": "queue/assets/018_frozen_earth.jpg",
+      "required": false
+    },
+    {
+      "fact_index": 3,
+      "cut_index": 2,
+      "path": "queue/assets/018_ice_ocean.jpg",
+      "required": false
+    }
+  ],
+  "localizations": {
+    "ko": {
+      "title": "태양이 사라진다면? 😱",
+      "description": "태양이 사라져도 우리는 약 8분 동안 알아채지 못합니다. 햇빛이 오는 데 그만큼 걸리고, 중력의 변화도 똑같이 빠르게 전해지기 때문입니다. 그 뒤 햇빛이 끊기고 목성과 토성은 한동안 더 빛나 보이며, 지구는 궤도를 벗어나 얼어붙겠지만 얼음 덕분에 깊은 바다는 수십만 년 동안 얼지 않을 수 있습니다. 실제로 태양이 이렇게 사라질 수는 없고, 사고 실험입니다. #태양 #우주 #천문학 #만약에 #과학"
+    },
+    "ja": {
+      "title": "もし太陽が消えたら？ 😱",
+      "description": "太陽が消えても、私たちは約8分間気づきません。太陽の光が届くまでそれだけかかり、重力の変化も同じ速さで伝わるからです。その後、昼の光は消え、木星と土星はしばらく輝き続け、地球は宇宙をさまよいながら凍りついていきます。それでも氷のおかげで、深い海は数十万年も凍らずに残るかもしれません。実際に太陽がこんなふうに消えることはなく、これは思考実験です。 #太陽 #宇宙 #天文学 #もしも #科学"
+    },
+    "es": {
+      "title": "¿Y si el Sol desapareciera? 😱",
+      "description": "Si el Sol desapareciera, no lo notaríamos durante unos ocho minutos: es lo que tarda su luz en llegarnos, y los cambios en la gravedad viajan igual de rápido. Después se apagaría el día, Júpiter y Saturno seguirían brillando un rato y la Tierra se alejaría y se congelaría, aunque el hielo podría mantener líquidos los océanos profundos durante cientos de miles de años. El Sol no puede desaparecer así de verdad; es un experimento mental. #sol #espacio #astronomia #ciencia #curiosidades"
+    },
+    "pt": {
+      "title": "E se o Sol desaparecesse? 😱",
+      "description": "Se o Sol desaparecesse, não perceberíamos por cerca de oito minutos: é o tempo que a luz dele leva para chegar até nós, e as mudanças na gravidade viajam na mesma velocidade. Depois o dia se apagaria, Júpiter e Saturno continuariam brilhando por um tempo e a Terra se afastaria e congelaria, embora o gelo pudesse manter os oceanos profundos líquidos por centenas de milhares de anos. O Sol não pode sumir assim de verdade; é um experimento mental. #sol #espaco #astronomia #ciencia #curiosidades"
+    },
+    "de": {
+      "title": "Was wäre, wenn die Sonne verschwinden würde? 😱",
+      "description": "Würde die Sonne verschwinden, würden wir es etwa acht Minuten lang nicht merken: So lange braucht ihr Licht zu uns, und Änderungen der Schwerkraft breiten sich genauso schnell aus. Danach würde es dunkel, Jupiter und Saturn würden noch eine Weile leuchten, und die Erde würde davontreiben und gefrieren. Das Eis könnte die tiefen Ozeane aber Hunderttausende Jahre flüssig halten. Die Sonne kann nicht wirklich so verschwinden, es ist ein Gedankenexperiment. #sonne #weltraum #astronomie #wissenschaft #waswärewenn"
+    },
+    "fr": {
+      "title": "Et si le Soleil disparaissait ? 😱",
+      "description": "Si le Soleil disparaissait, nous ne le remarquerions pas pendant environ huit minutes : c'est le temps que met sa lumière à nous parvenir, et les variations de la gravité voyagent aussi vite. Ensuite, le jour s'éteindrait, Jupiter et Saturne brilleraient encore un moment, et la Terre s'éloignerait en gelant, mais la glace pourrait garder les océans profonds liquides pendant des centaines de milliers d'années. Le Soleil ne peut pas vraiment disparaître ainsi : c'est une expérience de pensée. #soleil #espace #astronomie #science #etsi"
+    },
+    "hi": {
+      "title": "अगर सूरज गायब हो जाए तो? 😱",
+      "description": "अगर सूरज गायब हो जाए, तो हमें लगभग आठ मिनट तक पता नहीं चलेगा: उसकी रोशनी को हम तक पहुँचने में इतना ही समय लगता है, और गुरुत्वाकर्षण में बदलाव भी उतनी ही तेज़ी से पहुँचते हैं। फिर दिन का उजाला बुझ जाएगा, बृहस्पति और शनि कुछ देर चमकते रहेंगे, और धरती दूर भटककर जम जाएगी, हालाँकि बर्फ़ गहरे महासागरों को लाखों साल तक तरल रख सकती है। असल में सूरज ऐसे गायब नहीं हो सकता, यह एक विचार प्रयोग है। #सूरज #अंतरिक्ष #खगोलविज्ञान #विज्ञान #अगरऐसाहो"
+    }
+  },
+  "captions": {
+    "ko": [
+      "지금 태양이 사라진다면 8분 동안은 아무 일도 없다가, 그다음엔 모든 게 달라질 겁니다.",
+      "햇빛이 지구까지 오는 데 약 8분이 걸리고, 중력의 변화도 똑같이 빠르게 전해집니다. 그래서 8분 동안 지구는 이미 사라진 태양 주위를 계속 돌 겁니다.",
+      "그다음 햇빛이 끊길 겁니다. 그래도 목성은 한 시간 넘게, 토성은 두 시간 넘게 계속 빛날 겁니다. 두 행성에 반사돼 오는 햇빛은 우리에게 오는 길이 훨씬 길기 때문입니다.",
+      "지구는 일직선으로 날아가 버릴 겁니다. 한 추정에 따르면 일주일 안에 평균 지표 온도가 섭씨 영하 18도 아래로, 1년 안에는 영하 73도 안팎까지 떨어집니다.",
+      "바다는 위에서부터 얼겠지만, 그 얼음이 아래 물을 단열해 수십만 년 동안 바닥까지 꽁꽁 얼지 않게 막아 줄 수 있습니다.",
+      "다행히 태양은 그렇게 갑자기 사라질 수 없습니다."
+    ],
+    "ja": [
+      "今この瞬間に太陽が消えても、8分間は何も起こりません。そしてその後、すべてが変わります。",
+      "太陽の光が地球に届くまで約8分かかり、重力の変化も同じ速さで伝わります。だから8分間、地球はもう存在しない太陽の周りを回り続けるでしょう。",
+      "そして昼の光が消えます。それでも木星は1時間を超えて、土星は2時間を超えて輝き続けるでしょう。それらの惑星に反射して届く太陽の光は、ずっと長い道のりをたどってくるからです。",
+      "地球はまっすぐ宇宙へ飛び出していきます。ある推定では、1週間以内に地表の平均気温はマイナス18度を下回り、1年以内にマイナス73度前後まで下がります。",
+      "海は表面から凍りますが、その氷が下の水を断熱し、数十万年にわたって底まで凍りつくのを防ぐ可能性があります。",
+      "幸い、太陽が突然消えることはありません。"
+    ],
+    "es": [
+      "Si el Sol desapareciera ahora mismo, no pasaría nada durante ocho minutos, y luego todo cambiaría.",
+      "La luz del Sol tarda unos ocho minutos en llegarnos, y los cambios en la gravedad viajan igual de rápido. Así que, durante ocho minutos, la Tierra seguiría girando alrededor de un Sol que ya no existiría.",
+      "Después se apagaría la luz del día. Pero Júpiter seguiría brillando más de una hora, y Saturno más de dos, porque la luz solar que rebota en ellos recorre un camino mucho más largo hasta nosotros.",
+      "La Tierra saldría disparada en línea recta. Según una estimación, en una semana la temperatura media de la superficie caería por debajo de los 18 grados bajo cero, y en un año, hasta unos 73 bajo cero.",
+      "Los océanos se congelarían desde arriba, pero ese hielo podría aislar el agua de abajo y evitar que se congelaran por completo durante cientos de miles de años.",
+      "Por suerte, el Sol no puede desaparecer así como así."
+    ],
+    "pt": [
+      "Se o Sol desaparecesse agora, nada aconteceria por oito minutos, e depois tudo mudaria.",
+      "A luz do Sol leva cerca de oito minutos para chegar até nós, e as mudanças na gravidade viajam na mesma velocidade. Então, por oito minutos, a Terra continuaria girando em torno de um Sol que já não existiria.",
+      "Depois a luz do dia se apagaria. Mas Júpiter continuaria brilhando por mais de uma hora, e Saturno por mais de duas, porque a luz do Sol que é refletida por esses planetas percorre um caminho muito mais longo até nós.",
+      "A Terra seguiria em linha reta pelo espaço. Segundo uma estimativa, em uma semana a temperatura média da superfície cairia abaixo de 18 graus negativos, e em um ano, para cerca de 73 negativos.",
+      "Os oceanos congelariam de cima para baixo, mas esse gelo poderia isolar a água de baixo e impedir que congelassem por completo durante centenas de milhares de anos.",
+      "Ainda bem que o Sol não pode simplesmente sumir."
+    ],
+    "de": [
+      "Würde die Sonne jetzt verschwinden, würde acht Minuten lang nichts passieren, und dann würde sich alles ändern.",
+      "Sonnenlicht braucht etwa acht Minuten bis zu uns, und Änderungen der Schwerkraft breiten sich genauso schnell aus. Acht Minuten lang würde die Erde also weiter um eine Sonne kreisen, die es schon nicht mehr gäbe.",
+      "Dann würde das Tageslicht verschwinden. Doch Jupiter würde noch über eine Stunde leuchten und Saturn mehr als zwei, denn das Sonnenlicht, das an ihnen zurückgeworfen wird, hat einen viel längeren Weg zu uns.",
+      "Die Erde würde geradeaus ins All davonfliegen. Einer Schätzung nach fiele die Durchschnittstemperatur an der Oberfläche innerhalb einer Woche unter minus 18 Grad, innerhalb eines Jahres auf etwa minus 73.",
+      "Die Ozeane würden von oben zufrieren, doch das Eis könnte das Wasser darunter isolieren und es Hunderttausende Jahre lang davor bewahren, ganz durchzufrieren.",
+      "Zum Glück kann die Sonne nicht einfach verschwinden."
+    ],
+    "fr": [
+      "Si le Soleil disparaissait maintenant, il ne se passerait rien pendant huit minutes, puis tout changerait.",
+      "La lumière du Soleil met environ huit minutes à nous parvenir, et les variations de la gravité voyagent aussi vite. Pendant huit minutes, la Terre continuerait donc de tourner autour d'un Soleil déjà disparu.",
+      "Puis la lumière du jour s'éteindrait. Mais Jupiter brillerait encore plus d'une heure, et Saturne plus de deux, car la lumière solaire renvoyée par ces planètes fait un trajet bien plus long jusqu'à nous.",
+      "La Terre filerait en ligne droite. Selon une estimation, en une semaine, la température moyenne en surface descendrait sous les −18 °C, et en un an, autour de −73 °C.",
+      "Les océans gèleraient par le haut, mais cette glace pourrait isoler l'eau en dessous et l'empêcher de geler entièrement pendant des centaines de milliers d'années.",
+      "Heureusement, le Soleil ne peut pas simplement disparaître."
+    ],
+    "hi": [
+      "अगर सूरज अभी गायब हो जाए, तो आठ मिनट तक कुछ नहीं होगा, और फिर सब कुछ बदल जाएगा।",
+      "सूरज की रोशनी को हम तक पहुँचने में लगभग आठ मिनट लगते हैं, और गुरुत्वाकर्षण में बदलाव भी उतनी ही तेज़ी से पहुँचते हैं। इसलिए आठ मिनट तक धरती उस सूरज की परिक्रमा करती रहेगी जो पहले ही गायब हो चुका है।",
+      "फिर दिन का उजाला ख़त्म हो जाएगा। लेकिन बृहस्पति एक घंटे से ज़्यादा और शनि दो घंटे से ज़्यादा चमकते रहेंगे, क्योंकि उनसे टकराकर लौटने वाली सूरज की रोशनी को हम तक पहुँचने के लिए कहीं ज़्यादा लंबा रास्ता तय करना पड़ता है।",
+      "धरती सीधी रेखा में अंतरिक्ष में निकल जाएगी। एक अनुमान के मुताबिक, एक हफ़्ते के भीतर सतह का औसत तापमान माइनस 18 डिग्री सेल्सियस से नीचे गिर जाएगा, और एक साल में लगभग माइनस 73 तक।",
+      "महासागर ऊपर से जम जाएँगे, लेकिन वह बर्फ़ नीचे के पानी के लिए कंबल का काम कर सकती है और उसे लाखों साल तक पूरी तरह जमने से बचा सकती है।",
+      "शुक्र है, सूरज यूँ अचानक गायब नहीं हो सकता।"
+    ]
+  }
+}
